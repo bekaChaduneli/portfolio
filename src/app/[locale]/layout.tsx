@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar/Navbar";
 import i18nConfig from "../i18nConfig";
 import { ReactNode } from "react";
 import { dir } from "i18next";
-import LanguageChanger from "@/components/LanguageChanger";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +24,10 @@ export default function RootLayout({
   children: ReactNode;
   params: { locale: string };
 }) {
-  console.log(locale);
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body className={inter.className}>
-        <LanguageChanger locale={locale} />
-
-        <Navbar />
+      <body id="root" className={inter.className}>
+        <Navbar locale={locale} />
         {children}
       </body>
     </html>
