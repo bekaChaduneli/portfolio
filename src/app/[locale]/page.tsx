@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
-import Calendly from "@/components/Calendly";
 
 const i18nNamespaces = ["home"];
 
