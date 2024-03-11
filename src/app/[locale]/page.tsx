@@ -18,6 +18,17 @@ export default async function Home({
     >
       <main>
         <Header />
+        <div id="aura-hero" className="canvas svelte-firmm6">
+          <div className="mask svelte-firmm6"></div>
+          <div className="canvas-holder svelte-firmm6">
+            <canvas
+              id="canvas"
+              width="32"
+              height="32"
+              className="svelte-firmm6"
+            ></canvas>
+          </div>
+        </div>
       </main>
     </TranslationsProvider>
   );
