@@ -12,7 +12,7 @@ export default function Navbar({ locale }: { locale: string }) {
   console.log(pathname);
   return (
     <div className="flex justify-center">
-      <div className="flex max-w-[1440px] justify-between rounded-md p-[20px]">
+      <div className="flex max-w-[1440px] gap-[80px] justify-between rounded-md p-[20px]">
         <div className="flex gap-[20px] py-5 px-3 rounded-[30px] transition duration-500 relative">
           <TransitionLink
             className={classNames(
@@ -54,7 +54,7 @@ export default function Navbar({ locale }: { locale: string }) {
             Blog
           </TransitionLink>
         </div>
-        <div className="flex gap-[20px]">
+        <div className="flex gap-[20px] py-5 px-3 rounded-[30px] transition duration-500 relative">
           <Calendly />
           <LanguageChanger locale={locale} />
           <ThemeSwitch />
