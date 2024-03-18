@@ -1,9 +1,7 @@
-"use client";
-
-import { FiSun, FiMoon } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { Moon, Sun } from "lucide-react";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
@@ -24,11 +22,23 @@ export default function ThemeSwitch() {
       />
     );
 
+  console.log(resolvedTheme);
+
   if (resolvedTheme === "dark") {
-    return <FiSun onClick={() => setTheme("light")} />;
+    return (
+      <Sun
+        className="w-[22px] h-[22px] text-[#ede7de]"
+        onClick={() => setTheme("light")}
+      />
+    );
   }
 
   if (resolvedTheme === "light") {
-    return <FiMoon onClick={() => setTheme("dark")} />;
+    return (
+      <Moon
+        className="text-[#556f66] w-[22px] h-[22px]"
+        onClick={() => setTheme("dark")}
+      />
+    );
   }
 }

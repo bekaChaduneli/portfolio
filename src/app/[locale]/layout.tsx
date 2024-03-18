@@ -29,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <body id="root" className={inter.className}>
-        <CanvasComponent />
-        <div className="z-4">
-          <Navbar locale={locale} />
-          <Providers>{children}</Providers>
-        </div>
+        <Providers>
+          <CanvasComponent />
+          <div className="z-4">
+            <Navbar locale={locale} />
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );
