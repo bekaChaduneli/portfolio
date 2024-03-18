@@ -6,6 +6,7 @@ import i18nConfig from "../i18nConfig";
 import { ReactNode } from "react";
 import { dir } from "i18next";
 import { Providers } from "./providers";
+import CanvasComponent from "@/components/CanvasComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,10 +29,11 @@ export default function RootLayout({
   return (
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <body id="root" className={inter.className}>
-        <Providers>
+        <CanvasComponent />
+        <div className="z-4">
           <Navbar locale={locale} />
-          {children}
-        </Providers>
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 "use client";
+import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { ChangeEvent } from "react";
@@ -7,8 +8,7 @@ export default function LanguageChanger({ locale }: { locale: string }) {
   let currentLocale = locale;
   const router = useRouter();
   const currentPathname = usePathname();
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = e.target.value;
+  const handleChange = (newLocale: string) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("NEXT_LOCALE", newLocale);
     }
@@ -17,9 +17,36 @@ export default function LanguageChanger({ locale }: { locale: string }) {
   };
 
   return (
-    <select onChange={handleChange} value={currentLocale}>
-      <option value="en">English</option>
-      <option value="ka">Georgian</option>
-    </select>
+    <div className="flex gap-[8px] items-center">
+      <button
+        onClick={() => handleChange("en")}
+        className="p-[8px] cursor-pointer text-[#556f66] dark:text-[#ede7de] text-[18px] font-bold"
+      >
+        EN
+      </button>
+      <div className="w-[48px] relative h-[2px]">
+        <div className="relative w-full h-full bg-[#556f66] dark:bg-[#ede7de] dark:bg-opacity-[30%] bg-opacity-[30%]"></div>
+        <div
+          className={classNames(
+            "absolute w-[50%] top-0 h-full bg-[#556f66] dark:bg-[#ede7de]",
+            {
+              "right-0": currentLocale === "ka",
+              "left-0": currentLocale === "en",
+            }
+          )}
+        ></div>
+      </div>
+
+      <button
+        onClick={() => handleChange("ka")}
+        className="p-[8px] cursor-pointer text-[#556f66] dark:text-[#ede7de] text-[18px] font-bold"
+      >
+        KA
+      </button>
+    </div>
+    // <select onChange={handleChange} value={currentLocale}>
+    //   <option value="en">English</option>
+    //   <option value="ka">Georgian</option>
+    // </select>
   );
 }
