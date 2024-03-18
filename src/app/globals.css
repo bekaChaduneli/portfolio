@@ -5,49 +5,16 @@
 @layer base {
   :root {
   }
-
-  .dark {
+  body {
   }
-}
-.stair .transition-container {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  left: 0;
-
-  top: 0;
-
-  pointer-events: none;
-
-  z-index: 2;
-}
-
-.stair .transition-container div {
-  position: relative;
-
-  height: 100%;
-
-  width: 100%;
-  background-color: black;
-}
-
-.stair .transition-background {
-  position: fixed;
-
-  width: 100%;
-
-  height: 100vh;
-
-  background-color: black;
-
-  z-index: 1;
-
-  pointer-events: none;
-
-  top: 0;
-
-  left: 0;
+  .dark {
+    transition: background-color 0.3s ease;
+    background-color: #233831;
+  }
+  .light {
+    background-color: #ede7de;
+    transition: background-color 0.3s ease;
+  }
 }
 
 @layer base {

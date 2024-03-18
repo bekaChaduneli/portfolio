@@ -1,15 +1,33 @@
+"use client";
 import Header from "@/components/Header";
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
+import { useEffect, useState } from "react";
 
 const i18nNamespaces = ["home"];
 
-export default async function Home({
+export default function Home({
   params: { locale },
 }: {
   params: { locale: any };
 }) {
-  const { t, resources } = await initTranslations(locale, i18nNamespaces);
+  const [translations, setTranslations] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchTranslations = async () => {
+      const { t, resources } = await initTranslations(locale, i18nNamespaces);
+      setTranslations({ t, resources });
+    };
+
+    fetchTranslations();
+  }, [locale]);
+
+  if (!translations) {
+    return <div className="w-full h-full bg-black"></div>;
+  }
+
+  const { t, resources } = translations;
+
   return (
     <TranslationsProvider
       namespaces={i18nNamespaces}
@@ -18,17 +36,6 @@ export default async function Home({
     >
       <main>
         <Header />
-        <div id="aura-hero" className="canvas svelte-firmm6">
-          <div className="mask svelte-firmm6"></div>
-          <div className="canvas-holder svelte-firmm6">
-            <canvas
-              id="canvas"
-              width="32"
-              height="32"
-              className="svelte-firmm6"
-            ></canvas>
-          </div>
-        </div>
       </main>
     </TranslationsProvider>
   );

@@ -1,18 +1,42 @@
 "use client";
 import Calendly from "../Calendly";
 import LanguageChanger from "../LanguageChanger";
-import TransitionLink from "../animations/PageToPageTransition/TransitionLink";
+import ThemeSwitch from "../ThemeSwitch";
+import TransitionLink from "../TransitionLink";
 
 export default function Navbar({ locale }: { locale: string }) {
   return (
     <div>
       <LanguageChanger locale={locale} />
       <Calendly />
-      <TransitionLink href="/en" label="home ->" />
-      <TransitionLink href="/en/about" label="About ->" />
-      <TransitionLink href="/en/main" label="main ->" />
-      <TransitionLink href="/en/blog" label="blog ->" />
-      <TransitionLink href="/en/contact" label="contact ->" />
+      <TransitionLink className="p-2 border-[1px] rounded" href={`/${locale}`}>
+        Home
+      </TransitionLink>
+      <TransitionLink
+        className="p-2 border-[1px] rounded"
+        href={`/${locale}/about`}
+      >
+        About
+      </TransitionLink>
+      <TransitionLink
+        className="p-2 border-[1px] rounded"
+        href={`/${locale}/main`}
+      >
+        Bain
+      </TransitionLink>
+      <TransitionLink
+        className="p-2 border-[1px] rounded"
+        href={`/${locale}/blog`}
+      >
+        Blog
+      </TransitionLink>
+      <TransitionLink
+        className="p-2 border-[1px] rounded"
+        href={`/${locale}/contact`}
+      >
+        Contact
+      </TransitionLink>
+      <ThemeSwitch />
     </div>
   );
 }

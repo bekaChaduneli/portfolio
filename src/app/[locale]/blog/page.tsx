@@ -1,14 +1,31 @@
+"use client";
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
+import { useEffect, useState } from "react";
 
 const i18nNamespaces = ["blog"];
 
-export default async function Blog({
+export default function Blog({
   params: { locale },
 }: {
   params: { locale: any };
 }) {
-  const { t, resources } = await initTranslations(locale, i18nNamespaces);
+  const [translations, setTranslations] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchTranslations = async () => {
+      const { t, resources } = await initTranslations(locale, i18nNamespaces);
+      setTranslations({ t, resources });
+    };
+
+    fetchTranslations();
+  }, [locale]);
+
+  if (!translations) {
+    return <div className="w-full h-full bg-black"></div>;
+  }
+
+  const { t, resources } = translations;
 
   return (
     <TranslationsProvider

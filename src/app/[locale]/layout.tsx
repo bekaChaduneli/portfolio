@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import i18nConfig from "../i18nConfig";
 import { ReactNode } from "react";
 import { dir } from "i18next";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +26,12 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <body id="root" className={inter.className}>
-        <Navbar locale={locale} />
-        {children}
+        <Providers>
+          <Navbar locale={locale} />
+          {children}
+        </Providers>
       </body>
     </html>
   );
