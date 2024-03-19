@@ -22,12 +22,10 @@ export default function ThemeSwitch() {
       />
     );
 
-  console.log(resolvedTheme);
-
   if (resolvedTheme === "dark") {
     return (
       <Sun
-        className="w-[22px] h-[22px] text-[#ede7de]"
+        className="w-[22px] h-[22px] text-[#ede7de] cursor-pointer"
         onClick={() => setTheme("light")}
       />
     );
@@ -36,7 +34,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === "light") {
     return (
       <Moon
-        className="text-[#2b3b7a] w-[22px] h-[22px]"
+        className="text-[#2b3b7a] w-[22px] h-[22px] cursor-pointer"
         onClick={() => setTheme("dark")}
       />
     );

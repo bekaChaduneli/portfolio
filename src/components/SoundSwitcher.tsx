@@ -6,12 +6,12 @@ export default function SoundSwitcher() {
 
   return audio ? (
     <Volume2
-      className="dark:text-[#ede7de] text-[#2b3b7a] w-[22px] h-[22px]"
+      className="dark:text-[#ede7de] cursor-pointer text-[#2b3b7a] w-[22px] h-[22px]"
       onClick={() => setAudio(false)}
     />
   ) : (
     <VolumeX
-      className="w-[22px] h-[22px] dark:text-[#ede7de] text-[#2b3b7a]"
+      className="w-[22px] h-[22px] dark:text-[#ede7de] text-[#2b3b7a] "
       onClick={() => setAudio(true)}
     />
   );

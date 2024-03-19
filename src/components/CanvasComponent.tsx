@@ -26,9 +26,10 @@ const CanvasComponent: React.FC = () => {
 
       // Set gradient colors
       gradient.addColorStop(0, "#e44f4f");
-      gradient.addColorStop(0.3, "#d345e9");
-      gradient.addColorStop(0.6, "#e0bf38");
-      gradient.addColorStop(0.9, "#72ffe7");
+      gradient.addColorStop(0.2, "#d345e9");
+      gradient.addColorStop(0.4, "#e0bf38");
+      gradient.addColorStop(0.67, "#4c9ecb");
+      gradient.addColorStop(0.92, "#7d549f");
 
       // Fill with gradient
       ctx.fillStyle = gradient;
@@ -49,23 +50,14 @@ const CanvasComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="">
-      <div className="absolute z-[-2] left-0 bottom-0 w-full h-[80%] bg-gradient-to-b from-transparent to-[#ede7de] dark:to-[#1c2a62]"></div>
+    <div className="max-h-[100%] overflow-hidden">
       <div className="">
         <canvas
-          className="w-[100vw] h-[100vh] absolute left-0 right-0 bottom-0 top-0 overflow-hidden opacity-5"
+          className="w-[100%] opacity-[20%] dark:opacity-[30%] h-[100%] absolute  left-0 right-0 bottom-0 top-0 overflow-hidden inset-0"
           ref={canvasRef}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            zIndex: -3,
-            width: "100%",
-            height: "100%",
-            opacity: 0.3,
-          }}
         />
       </div>
+      <div className="absolute left-0 bottom-0 w-full h-[80%] bg-gradient-to-t from-[#ede7de] via-[#ede7deaf] to-transparent dark:from-[#1c2a62] dark:via-[#1c2a62b5]"></div>
     </div>
   );
 };

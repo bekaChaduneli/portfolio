@@ -44,9 +44,5 @@ export default function LanguageChanger({ locale }: { locale: string }) {
         KA
       </button>
     </div>
-    // <select onChange={handleChange} value={currentLocale}>
-    //   <option value="en">English</option>
-    //   <option value="ka">Georgian</option>
-    // </select>
   );
 }
