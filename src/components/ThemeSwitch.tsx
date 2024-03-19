@@ -36,7 +36,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === "light") {
     return (
       <Moon
-        className="text-[#556f66] w-[22px] h-[22px]"
+        className="text-[#2b3b7a] w-[22px] h-[22px]"
         onClick={() => setTheme("dark")}
       />
     );

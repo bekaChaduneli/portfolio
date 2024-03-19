@@ -20,15 +20,15 @@ export default function LanguageChanger({ locale }: { locale: string }) {
     <div className="flex gap-[8px] items-center">
       <button
         onClick={() => handleChange("en")}
-        className="p-[8px] cursor-pointer text-[#556f66] dark:text-[#ede7de] text-[18px] font-bold"
+        className="p-[8px] cursor-pointer text-[#2b3b7a] dark:text-[#ede7de] text-[18px] font-bold"
       >
         EN
       </button>
       <div className="w-[48px] relative h-[2px]">
-        <div className="relative w-full h-full bg-[#556f66] dark:bg-[#ede7de] dark:bg-opacity-[30%] bg-opacity-[30%]"></div>
+        <div className="relative w-full h-full bg-[#2b3b7a] dark:bg-[#ede7de] dark:bg-opacity-[30%] bg-opacity-[30%]"></div>
         <div
           className={classNames(
-            "absolute w-[50%] top-0 h-full bg-[#556f66] dark:bg-[#ede7de]",
+            "absolute w-[50%] top-0 h-full bg-[#2b3b7a] dark:bg-[#ede7de]",
             {
               "right-0": currentLocale === "ka",
               "left-0": currentLocale === "en",
@@ -39,7 +39,7 @@ export default function LanguageChanger({ locale }: { locale: string }) {
 
       <button
         onClick={() => handleChange("ka")}
-        className="p-[8px] cursor-pointer text-[#556f66] dark:text-[#ede7de] text-[18px] font-bold"
+        className="p-[8px] cursor-pointer text-[#2b3b7a] dark:text-[#ede7de] text-[18px] font-bold"
       >
         KA
       </button>

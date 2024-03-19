@@ -16,9 +16,9 @@ export default function Navbar({ locale }: { locale: string }) {
         <div className="flex gap-[20px] py-5 px-3 rounded-[30px] transition duration-500 relative ">
           <TransitionLink
             className={classNames(
-              "py-[2px] px-4 rounded-[24px] font-bold text-[18px] text-[#556f66] dark:text-[#ede7de]",
+              "py-[2px] px-4 rounded-[24px] font-bold text-[18px] text-[#2b3b7a] dark:text-[#ede7de]",
               {
-                "backdrop-blur-lg bg-[#ede7de] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#556f66]":
+                "backdrop-blur-lg bg-[#ede7de] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#2b3b7a]":
                   pathname === `/${locale}`,
               }
             )}
@@ -28,9 +28,9 @@ export default function Navbar({ locale }: { locale: string }) {
           </TransitionLink>
           <TransitionLink
             className={classNames(
-              "py-[6px] px-6 rounded-[24px] font-bold text-[18px] text-[#556f66] dark:text-[#ede7de]",
+              "py-[6px] px-6 rounded-[24px] font-bold text-[18px] text-[#2b3b7a] dark:text-[#ede7de]",
               {
-                " backdrop-blur-lg bg-[#ede7de] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#556f66]":
+                " backdrop-blur-lg bg-[#ede7de] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#2b3b7a]":
                   pathname === `/${locale}/about`,
               }
             )}
@@ -38,15 +38,15 @@ export default function Navbar({ locale }: { locale: string }) {
           >
             About
           </TransitionLink>
-          <span className="py-[6px] px-6 rounded-[24px] font-bold text-[18px] text-[#556f66] dark:text-[#ede7de]">
+          <span className="py-[6px] px-6 rounded-[24px] font-bold text-[18px] text-[#2b3b7a] dark:text-[#ede7de]">
             Projects
             <span className="w-2 h-2 bg-black"></span>
           </span>
           <TransitionLink
             className={classNames(
-              "py-[6px] px-6 rounded-[24px] font-bold text-[18px] text-[#556f66] dark:text-[#ede7de]",
+              "py-[6px] px-6 rounded-[24px] font-bold text-[18px] text-[#2b3b7a] dark:text-[#ede7de]",
               {
-                "backdrop-blur-lg bg-[#ede7de] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#556f66]":
+                "backdrop-blur-lg bg-[#ede7de] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#2b3b7a]":
                   pathname === `/${locale}/blog`,
               }
             )}

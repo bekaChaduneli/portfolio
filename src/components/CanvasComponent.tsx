@@ -25,10 +25,10 @@ const CanvasComponent: React.FC = () => {
       );
 
       // Set gradient colors
-      gradient.addColorStop(0, "#028961");
-      gradient.addColorStop(0.3, "#11d5ab");
-      gradient.addColorStop(0.6, "#87e800");
-      gradient.addColorStop(0.9, "#00e3d4");
+      gradient.addColorStop(0, "#e44f4f");
+      gradient.addColorStop(0.3, "#d345e9");
+      gradient.addColorStop(0.6, "#e0bf38");
+      gradient.addColorStop(0.9, "#72ffe7");
 
       // Fill with gradient
       ctx.fillStyle = gradient;
@@ -50,7 +50,7 @@ const CanvasComponent: React.FC = () => {
 
   return (
     <div className="">
-      <div className="absolute z-[-2] left-0 bottom-0 w-full h-[80%] bg-gradient-to-b from-transparent to-[#ede7de] dark:to-[#233831]"></div>
+      <div className="absolute z-[-2] left-0 bottom-0 w-full h-[80%] bg-gradient-to-b from-transparent to-[#ede7de] dark:to-[#1c2a62]"></div>
       <div className="">
         <canvas
           className="w-[100vw] h-[100vh] absolute left-0 right-0 bottom-0 top-0 overflow-hidden opacity-5"
