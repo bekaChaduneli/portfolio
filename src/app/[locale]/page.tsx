@@ -34,7 +34,7 @@ export default function Home({
       locale={locale}
       resources={resources}
     >
-      <main>
+      <main className="z-[22]">
         <Header />
       </main>
     </TranslationsProvider>

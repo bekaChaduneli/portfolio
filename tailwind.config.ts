@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        graphik: ["Graphik"], // Default font
+        acorn: ["Acorn"], // Acorn font
+        deacon: ["Deacon"], // deacon font
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

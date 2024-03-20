@@ -7,8 +7,27 @@ import { ReactNode } from "react";
 import { dir } from "i18next";
 import { Providers } from "./providers";
 import CanvasComponent from "@/components/CanvasComponent";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const graphik = localFont({
+  src: "./static-fonts/Graphik-Regular.woff2",
+  display: "swap",
+});
+
+const daecon = localFont({
+  src: "./static-fonts/Deacon-Black.woff2",
+  display: "swap",
+});
+
+const beatrice = localFont({
+  src: "./static-fonts/Beatrice-Medium.woff2",
+  display: "swap",
+});
+
+const acorn = localFont({
+  src: "./static-fonts/Beatrice-Medium.woff2",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Beka Chaduneli",
@@ -28,10 +47,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
-      <body id="root" className={inter.className}>
+      <body id="root" className={"graphik"}>
         <Providers>
           <CanvasComponent />
-          <div className="z-4">
+          <div className="z-[4]">
             <Navbar locale={locale} />
             {children}
           </div>

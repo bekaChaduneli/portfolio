@@ -33,11 +33,30 @@
   }
 }
 
+@font-face {
+  font-family: "Acorn";
+  src: url("./[locale]/static-fonts/acorn.woff2") format("woff2");
+  /* Add more font formats if needed */
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Deacon";
+  src: url("./[locale]/static-fonts/Deacon-Black.woff2") format("woff2");
+  /* Add more font formats if needed */
+  font-weight: bold;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    /* Set default font family */
+    font-family: "Graphik", sans-serif;
   }
 }
