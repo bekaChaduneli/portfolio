@@ -10,19 +10,23 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <div>
       <div
         id="banner-1"
-        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-0 w-1/4"
+        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-0 w-[20%]"
       />
       <div
         id="banner-2"
-        className=" min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-1/4 w-1/4"
+        className=" min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-[20%] w-[20%]"
       />
       <div
         id="banner-3"
-        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-2/4 w-1/4 "
+        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-[40%] w-[20%]"
       />
       <div
         id="banner-4"
-        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-3/4 w-1/4 "
+        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-[60%] w-[20%]"
+      />
+      <div
+        id="banner-5"
+        className="min-h-screen bg-[#2b3b7a] dark:bg-[#131c3e] z-10 fixed top-0 left-[80%] w-[20%]"
       />
       {children}
     </div>
