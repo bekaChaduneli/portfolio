@@ -17,6 +17,20 @@
   .custom-order {
     --n-menu-title-order: 2;
   }
+  .box-shadow-light {
+    box-shadow: 0 0 0 2px #e2d7c573;
+    transition: all 300ms ease;
+  }
+  .box-shadow-dark {
+    transition: all 300ms ease;
+    box-shadow: 0 0 0 2px #1d2f7642;
+  }
+  .box-shadow-light:hover {
+    box-shadow: 0 0 0 4px #e2d7c573;
+  }
+  .box-shadow-dark:hover {
+    box-shadow: 0 0 0 4px #1d2f7642;
+  }
 }
 
 @layer base {

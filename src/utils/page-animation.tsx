@@ -17,6 +17,13 @@ export const animatePageIn = () => {
       yPercent: -100,
       duration: 0.5,
       stagger: 0.1,
+      onStart: () => {
+        document.body.style.cursor = "wait";
+        // hide loader
+      },
+      onComplete: () => {
+        document.body.style.cursor = "auto";
+      },
     });
   }
 };
@@ -37,8 +44,13 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       yPercent: 0,
       stagger: 0.1,
       duration: 0.5,
+      onStart: () => {
+        document.body.style.cursor = "wait";
+        // show loader
+      },
       onComplete: () => {
         router.push(href);
+        document.body.style.cursor = "wait";
       },
     });
   }

@@ -9,7 +9,7 @@ import SoundSwitcher from "../SoundSwitcher";
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Archive, ChevronDown, Crown } from "lucide-react";
 import Image from "next/image";
 
 const i18nNamespaces = ["navbar"];
@@ -45,8 +45,7 @@ export default function Navbar({ locale }: { locale: string }) {
   }
 
   const { t, resources } = translations;
-  console.log(t("about"));
-  console.log(locale);
+
   return (
     <TranslationsProvider
       namespaces={i18nNamespaces}
@@ -113,46 +112,60 @@ export default function Navbar({ locale }: { locale: string }) {
                 <div className="hidden group-hover:flex hover:flex relative right-[275px] top-[78%] hover:z-[2]">
                   <div className="w-[500px] h-[12px] absolute"></div>
                   <span className="pt-[10px]">
-                    <span className="absolute w-[470px] custom-order h-[308px] rounded-[8px] bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.6] backdrop-blur-[6px] backdrop-saturate-[1.4] flex flex-col justify-between">
+                    <span className="absolute w-[470px] custom-order h-[274px] rounded-[8px] bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.6] backdrop-blur-[6px] backdrop-saturate-[1.4] flex flex-col justify-between">
                       <TransitionLink
                         href={`/${locale}/main`}
                         className="p-2 pb-0"
                       >
-                        <div className="w-[454px] rounded-[12px] h-[142px] backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-blur-[20px]">
-                          <Image
-                            src={"/main.png"}
-                            alt="main"
-                            width={220}
-                            height={264}
-                            className="rounded-[12px] object-cover w-full h-full"
-                          />
-                          <span className="my-[12px] bottom-0 left-0 absolute p-2">
-                            <span className="text-[32px]">
-                              {t("main")}
-                              {" - "}
+                        <div
+                          className={classNames(
+                            "w-[454px] box-shadow-light dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9bb] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
+                            {
+                              "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]":
+                                pathname.endsWith("main"),
+                            }
+                          )}
+                        >
+                          <span className="p-[25px] flex items-start justify-between">
+                            <span className="h-[74px] min-w-[74px] w-[74px] rounded-full flex items-center justify-center  bg-[#e2d7c573]/[0.7] dark:bg-[#1d2f7642]/[0.7] box-shadow-light dark:box-shadow-dark">
+                              <Crown className="cover w-[26px] h-[26px] text-yellow-600 dark:text-yellow-300  transition-all duration-300 hover:scale-[120%] scale-[100%]" />
                             </span>
-                            <p className="text-[14px]">{t("main-text")}</p>
+                            <span className="flex flex-col gap-[8px] items-start max-w-[260px] text-left">
+                              <h3 className="text-[18px] dark:text-[#6f87eb]">
+                                {t("main")}
+                              </h3>
+                              <span className="text-[12px] text-[#748cecfa] dark:text-[#dedeed] font-normal">
+                                {t("main-text")}
+                              </span>
+                            </span>
                           </span>
                         </div>
                       </TransitionLink>
                       <TransitionLink
                         href={`/${locale}/archive`}
-                        className="p-2 "
+                        className="p-2 pt-0"
                       >
-                        <div className="w-[454px] rounded-[12px] h-[142px] backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-blur-[20px]">
-                          <Image
-                            src={"/archive.png"}
-                            alt="archive"
-                            width={220}
-                            height={264}
-                            className="rounded-[12px] object-cover w-full h-full"
-                          />
-                          <span className="my-[12px] bottom-0 left-0 absolute p-2">
-                            <span className="text-[32px] text-start">
-                              {t("archive")}
-                              {" - "}
+                        <div
+                          className={classNames(
+                            "w-[454px] box-shadow-light dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9aa] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
+                            {
+                              "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]":
+                                pathname.endsWith("archive"),
+                            }
+                          )}
+                        >
+                          <span className="p-[25px] flex items-start justify-between">
+                            <span className="h-[74px] min-w-[74px] w-[74px] rounded-full flex items-center justify-center  bg-[#e2d7c573]/[0.7] dark:bg-[#1d2f7642]/[0.7] box-shadow-light dark:box-shadow-dark">
+                              <Archive className="cover w-[26px] h-[26px]" />
                             </span>
-                            <p className="text-[14px]">{t("archive-text")}</p>
+                            <span className="flex flex-col gap-[8px] items-start max-w-[260px] text-left">
+                              <h3 className="text-[18px] dark:text-[#6f87eb]">
+                                {t("archive")}
+                              </h3>
+                              <span className="text-[12px] text-[#748cecfa] dark:text-[#dedeed] font-normal">
+                                {t("archive-text")}
+                              </span>
+                            </span>
                           </span>
                         </div>
                       </TransitionLink>
