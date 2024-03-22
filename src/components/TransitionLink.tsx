@@ -4,7 +4,7 @@ import { animatePageOut } from "@/utils/page-animation";
 
 interface Props {
   href: string;
-  children: string;
+  children: any;
   className?: string;
 }
 

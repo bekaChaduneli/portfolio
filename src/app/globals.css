@@ -36,16 +36,21 @@
 @font-face {
   font-family: "Acorn";
   src: url("./[locale]/static-fonts/acorn.woff2") format("woff2");
-  /* Add more font formats if needed */
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Deacon";
-  src: url("./[locale]/static-fonts/Deacon-Black.woff2") format("woff2");
-  /* Add more font formats if needed */
-  font-weight: bold;
+  font-family: "Graphik";
+  src: url("./[locale]/static-fonts/Graphik-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGO";
+  src: url("./[locale]/static-fonts/firago-700.woff2") format("woff2");
+  font-weight: normal;
   font-style: normal;
 }
 

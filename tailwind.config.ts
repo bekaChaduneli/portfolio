@@ -19,9 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        graphik: ["Graphik"], // Default font
-        acorn: ["Acorn"], // Acorn font
-        deacon: ["Deacon"], // deacon font
+        graphik: ["Graphik"],
+        acorn: ["Acorn"],
+        firago: ["FiraGO"],
       },
       colors: {
         border: "hsl(var(--border))",

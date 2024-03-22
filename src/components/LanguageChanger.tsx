@@ -2,7 +2,6 @@
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-import { ChangeEvent } from "react";
 
 export default function LanguageChanger({ locale }: { locale: string }) {
   let currentLocale = locale;
@@ -20,7 +19,7 @@ export default function LanguageChanger({ locale }: { locale: string }) {
     <div className="flex gap-[8px] items-center">
       <button
         onClick={() => handleChange("en")}
-        className="p-[8px] cursor-pointer text-[#2b3b7a] dark:text-[#ede7de] text-[18px] font-bold"
+        className="p-[8px] cursor-pointer text-[#2b3b7a] dark:text-[#ede7de] text-[18px] font-bold font-graphik"
       >
         EN
       </button>
@@ -39,7 +38,7 @@ export default function LanguageChanger({ locale }: { locale: string }) {
 
       <button
         onClick={() => handleChange("ka")}
-        className="p-[8px] cursor-pointer text-[#2b3b7a] dark:text-[#ede7de] text-[18px] font-bold"
+        className="p-[8px] cursor-pointer text-[#2b3b7a] dark:text-[#ede7de] text-[18px] font-bold font-graphik"
       >
         KA
       </button>

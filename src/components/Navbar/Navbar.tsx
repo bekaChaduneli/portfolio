@@ -10,7 +10,6 @@ import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useEffect, useState } from "react";
 import { Archive, ChevronDown, Crown } from "lucide-react";
-import Image from "next/image";
 
 const i18nNamespaces = ["navbar"];
 
@@ -45,6 +44,8 @@ export default function Navbar({ locale }: { locale: string }) {
   }
 
   const { t, resources } = translations;
+  const htmlTag = document.documentElement;
+  const langAttribute = htmlTag.getAttribute("lang");
 
   return (
     <TranslationsProvider
@@ -62,7 +63,14 @@ export default function Navbar({ locale }: { locale: string }) {
             }
           )}
         >
-          <div className="flex px-3 gap-[20px] xl:gap-[35px] rounded-[30px] transition duration-500 relative">
+          <div
+            className={classNames(
+              "flex px-3 gap-[20px] xl:gap-[35px] rounded-[30px] transition duration-500 relative",
+              {
+                "gap-[7px]": langAttribute === "ka",
+              }
+            )}
+          >
             <span className="py-3">
               <TransitionLink
                 className={classNames(
@@ -114,8 +122,8 @@ export default function Navbar({ locale }: { locale: string }) {
                   <span className="pt-[10px]">
                     <span className="absolute w-[470px] custom-order h-[274px] rounded-[8px] bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.6] backdrop-blur-[6px] backdrop-saturate-[1.4] flex flex-col justify-between">
                       <TransitionLink
-                        href={`/${locale}/main`}
                         className="p-2 pb-0"
+                        href={`/${locale}/main`}
                       >
                         <div
                           className={classNames(
@@ -128,7 +136,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         >
                           <span className="p-[25px] flex items-start justify-between">
                             <span className="h-[74px] min-w-[74px] w-[74px] rounded-full flex items-center justify-center  bg-[#e2d7c573]/[0.7] dark:bg-[#1d2f7642]/[0.7] box-shadow-light dark:box-shadow-dark">
-                              <Crown className="cover w-[26px] h-[26px] text-yellow-600 dark:text-yellow-300  transition-all duration-300 hover:scale-[120%] scale-[100%]" />
+                              <Crown className="cover w-[26px] h-[26px] text-yellow-600 dark:text-yellow-300 transition-all duration-300 hover:scale-[120%] scale-[100%]" />
                             </span>
                             <span className="flex flex-col gap-[8px] items-start max-w-[260px] text-left">
                               <h3 className="text-[18px] dark:text-[#6f87eb]">
@@ -142,8 +150,8 @@ export default function Navbar({ locale }: { locale: string }) {
                         </div>
                       </TransitionLink>
                       <TransitionLink
-                        href={`/${locale}/archive`}
                         className="p-2 pt-0"
+                        href={`/${locale}/archive`}
                       >
                         <div
                           className={classNames(
@@ -156,7 +164,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         >
                           <span className="p-[25px] flex items-start justify-between">
                             <span className="h-[74px] min-w-[74px] w-[74px] rounded-full flex items-center justify-center  bg-[#e2d7c573]/[0.7] dark:bg-[#1d2f7642]/[0.7] box-shadow-light dark:box-shadow-dark">
-                              <Archive className="cover w-[26px] h-[26px]" />
+                              <Archive className="cover w-[26px] h-[26px] transition-all duration-300 hover:scale-[120%] scale-[100%]" />
                             </span>
                             <span className="flex flex-col gap-[8px] items-start max-w-[260px] text-left">
                               <h3 className="text-[18px] dark:text-[#6f87eb]">
@@ -190,7 +198,14 @@ export default function Navbar({ locale }: { locale: string }) {
               </TransitionLink>
             </span>
           </div>
-          <div className="flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center">
+          <div
+            className={classNames(
+              "flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center",
+              {
+                "gap-[12px]": langAttribute === "ka",
+              }
+            )}
+          >
             <Calendly t={t} />
             <ThemeSwitch />
             <SoundSwitcher />
