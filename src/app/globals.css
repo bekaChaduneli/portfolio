@@ -6,6 +6,18 @@
   :root {
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div {
+    font-feature-settings: "case" on;
+  }
+
   .dark {
     transition: background-color 0.3s ease;
     background-color: #1c2a62;
@@ -30,6 +42,36 @@
   }
   .box-shadow-dark:hover {
     box-shadow: 0 0 0 4px #1d2f7642;
+  }
+  .bounce-top {
+    animation: bounce-top 3s ease-in-out infinite;
+  }
+  .bounce-bottom {
+    animation: bounce-bottom 3s ease-in-out infinite;
+  }
+}
+
+@keyframes bounce-top {
+  0% {
+    transform: translateY(-22%) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(0) rotate(-12deg);
+  }
+  100% {
+    transform: translateY(-22%) rotate(-6deg);
+  }
+}
+
+@keyframes bounce-bottom {
+  0% {
+    transform: translateY(-32px) rotate(6deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-32px) rotate(6deg);
   }
 }
 

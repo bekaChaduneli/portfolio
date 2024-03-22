@@ -53,12 +53,12 @@ export default function Navbar({ locale }: { locale: string }) {
       locale={locale}
       resources={resources}
     >
-      <div className="flex justify-center p-[24px] z-[5]">
+      <div className="flex justify-center p-[24px]">
         <div
           className={classNames(
-            "hidden lg:flex fixed w-[940px] xl:w-[1100px] backdrop-filter transition-all   duration-500 justify-between rounded-[70px] px-[6px]",
+            "hidden lg:flex fixed z-[5] w-[954px] xl:w-[1200px] backdrop-filter transition-all   duration-500 justify-between rounded-[70px] px-[6px]",
             {
-              " bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.6] backdrop-blur-[6px] backdrop-saturate-[1.4]":
+              " bg-[#f7f2f2]/[.78] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[6px] backdrop-saturate-[1.4]":
                 scrolled,
             }
           )}
@@ -117,10 +117,10 @@ export default function Navbar({ locale }: { locale: string }) {
                   ? t("archive")
                   : t("projects")}
                 <ChevronDown className="w-[16px] h-[16px] transition-all duration-300 group-hover:rotate-180 ml-[8px]" />
-                <div className="hidden group-hover:flex hover:flex relative right-[275px] top-[78%] hover:z-[2]">
+                <div className="hidden group-hover:flex hover:flex relative right-[275px] top-[78%]">
                   <div className="w-[500px] h-[12px] absolute"></div>
                   <span className="pt-[10px]">
-                    <span className="absolute w-[470px] custom-order h-[274px] rounded-[8px] bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.6] backdrop-blur-[6px] backdrop-saturate-[1.4] flex flex-col justify-between">
+                    <span className="absolute w-[470px] custom-order h-[274px] rounded-[8px] bg-[#f7f2f2]/[.78] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[6px] backdrop-saturate-[1.4] flex flex-col justify-between">
                       <TransitionLink
                         className="p-2 pb-0"
                         href={`/${locale}/main`}
@@ -202,7 +202,7 @@ export default function Navbar({ locale }: { locale: string }) {
             className={classNames(
               "flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center",
               {
-                "gap-[12px]": langAttribute === "ka",
+                "gap-[px]": langAttribute === "ka",
               }
             )}
           >

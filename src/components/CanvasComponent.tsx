@@ -50,14 +50,14 @@ const CanvasComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-h-[100%] overflow-hidden z-[-2]">
-      <div className="z-[-3]">
+    <div className="max-h-[100%] overflow-hidden">
+      <div className="">
         <canvas
-          className="w-[100%] opacity-[42%] dark:opacity-[35%] h-[100%] absolute  left-0 right-0 bottom-0 top-0 overflow-hidden inset-0 z-[-4]"
+          className="w-[100%] opacity-[42%] dark:opacity-[35%] h-[100%] absolute  left-0 right-0 bottom-0 top-0 overflow-hidden inset-0"
           ref={canvasRef}
         />
       </div>
-      <div className="absolute left-0 bottom-0 w-full h-[80%] bg-gradient-to-t from-[#ede7de] via-[#ede7deaf] to-transparent dark:from-[#1c2a62] dark:via-[#1c2a62b5] z-[-1]"></div>
+      <div className="absolute left-0 bottom-0 w-full h-[80%] bg-gradient-to-t from-[#ede7de] via-[#ede7deaf] to-transparent dark:from-[#1c2a62] dark:via-[#1c2a62b5]"></div>
     </div>
   );
 };

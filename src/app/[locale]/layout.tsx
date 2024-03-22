@@ -39,7 +39,7 @@ export default function RootLayout({
       >
         <Providers>
           <CanvasComponent />
-          <div className="z-[4]">
+          <div className="">
             <Navbar locale={locale} />
             {children}
           </div>
