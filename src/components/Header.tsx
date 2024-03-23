@@ -2,12 +2,11 @@
 
 import classNames from "classnames";
 import gsap from "gsap";
-import { Calendar, FileText, MapPinned, PhoneCall } from "lucide-react";
+import { MapPinned, PhoneCall } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { MaskText } from "./animations/MaskText";
-import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import InfinityText from "./animations/InfinityText";
 
@@ -34,15 +33,19 @@ export default function Header() {
         gsap.fromTo(
           profile,
           {
-            marginRight: "202px",
-            marginTop: "100px",
+            marginRight: "162px",
+            marginTop: "70px",
+            scaleX: ".0",
+            scaleY: ".0",
             opacity: "0%",
           },
           {
             marginRight: "0px",
             marginTop: "0px",
+            scaleX: "99%",
+            scaleY: "99%",
             opacity: "100%",
-            duration: 1.1,
+            duration: 0.7,
             onComplete: () => {
               profile.classList.add("bounce-top");
               profile.classList.add("delay-1000");
@@ -61,7 +64,7 @@ export default function Header() {
           {
             opacity: "100%",
             width: "auto",
-            duration: 1.3,
+            duration: 1.1,
           }
         );
       }, 370);
@@ -70,15 +73,19 @@ export default function Header() {
         gsap.fromTo(
           location,
           {
-            marginLeft: "250px",
-            marginTop: "150px",
+            marginLeft: "180px",
+            marginTop: "100px",
+            scaleX: ".0",
+            scaleY: ".0",
             opacity: "0%",
           },
           {
             marginLeft: "0px",
             marginTop: "0px",
+            scaleX: "99%",
+            scaleY: "99%",
             opacity: "100%",
-            duration: 1.1,
+            duration: 0.7,
             onStart: () => {
               location.classList.add("bounce-top");
             },
@@ -89,17 +96,19 @@ export default function Header() {
         gsap.fromTo(
           phone,
           {
-            marginRight: "220px",
-            marginBottom: "150px",
+            marginRight: "160px",
+            scaleX: ".0",
+            scaleY: ".0",
+            marginBottom: "100px",
             opacity: "0%",
           },
           {
             marginRight: "0px",
             marginBottom: "0px",
-
             opacity: "100%",
-            duration: 1.1,
-
+            scaleX: "99%",
+            scaleY: "99%",
+            duration: 0.7,
             onComplete: () => {
               phone.classList.add("bounce-bottom");
               phone.classList.add("delay-300");
@@ -111,20 +120,19 @@ export default function Header() {
         gsap.fromTo(
           year,
           {
-            marginLeft: "220px",
-            marginBottom: "150px",
-
+            marginLeft: "160px",
+            marginBottom: "100px",
+            scaleX: ".0",
+            scaleY: ".0",
             opacity: "0%",
           },
           {
             marginLeft: "0px",
+            scaleX: "99%",
+            scaleY: "99%",
             marginBottom: "0px",
-
             opacity: "100%",
             duration: 1.1,
-            onUpdate: (e) => {
-              console.log(e);
-            },
             onStart: () => {},
             onComplete: () => {
               year.classList.add("bounce-bottom");
@@ -159,7 +167,7 @@ export default function Header() {
           </span>
           <span
             ref={locationRef}
-            className="absolute left-0 top-0 flex flex-col text-[14px] xl:text-[16px] items-center max-w-max w-max-content lg:gap-[8px] xl:gap-[10px] lg:rounded-t-[16px] xl:rounded-t-[20px] lg:rounded-bl-[16px] xl:rounded-bl-[20px] rotate-[-6deg] py-[10px] lg:px-[16px] xl:px-[20px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] uppercase xl:left-[12px] opacity-0"
+            className="absolute left-0 top-0 flex flex-col text-[14px] xl:text-[16px] items-center max-w-max w-max-content lg:gap-[8px] xl:gap-[10px] lg:rounded-t-[16px] xl:rounded-t-[20px] lg:rounded-bl-[16px] xl:rounded-bl-[20px] py-[10px] lg:px-[16px] xl:px-[20px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] uppercase xl:left-[12px] opacity-0 rotate-[-6deg]"
           >
             <MapPinned className="w-[32px] h-[32px] xl:w-[40px] xl:h-[40px]" />
             {t("location")}
@@ -180,7 +188,7 @@ export default function Header() {
           </span>
           <span
             ref={phoneRef}
-            className="flex absolute right-[6px] bottom-0 items-center max-w-max w-max-content gap-[10px] lg:rounded-[14px] xl:rounded-[20px] rotate-[4deg] lg:text-[18px] xl:text-[20px] py-[10px] lg:px-[18px] xl:px-[26px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] opacity-0"
+            className="flex absolute right-[6px] bottom-0 items-center max-w-max w-max-content gap-[10px] lg:rounded-[14px] xl:rounded-[20px] lg:text-[18px] xl:text-[20px] py-[10px] lg:px-[18px] xl:px-[26px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] opacity-0 rotate-[4deg]"
           >
             <PhoneCall className="lg:w-[20px] lg:h-[20px] xl:w-[24px] xl:h-[24px]" />
             {t("phone")}

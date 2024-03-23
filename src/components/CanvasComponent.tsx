@@ -57,7 +57,7 @@ const CanvasComponent: React.FC = () => {
           ref={canvasRef}
         />
       </div>
-      <div className="absolute left-0 bottom-0 w-full h-[80%] bg-gradient-to-t from-[#ede7de] via-[#ede7deaf] to-transparent dark:from-[#1c2a62] dark:via-[#1c2a62b5]"></div>
+      <div className="absolute left-0 bottom-0 w-full transition-all duration-[0.3s] h-[80%] bg-gradient-to-t from-[#ede7de] via-[#ede7deaf] to-transparent dark:from-[#1c2a62] dark:via-[#1c2a62b5]"></div>
     </div>
   );
 };
