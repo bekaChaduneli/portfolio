@@ -24,28 +24,19 @@ const CanvasComponent: React.FC = () => {
         Math.cos(time * 0.005 + Math.PI) * canvas.height
       );
 
-      // Set gradient colors
       gradient.addColorStop(0, "#e44f4f");
       gradient.addColorStop(0.2, "#d345e9");
       gradient.addColorStop(0.4, "#cba524");
       gradient.addColorStop(0.67, "#cb5b4c");
       gradient.addColorStop(0.92, "#a8db8e");
 
-      // Fill with gradient
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Increment time
       time++;
-
-      // Request next frame
       animationFrameId = requestAnimationFrame(draw);
     };
-
-    // Start animation
     draw();
 
-    // Cleanup function
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 

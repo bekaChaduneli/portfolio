@@ -49,6 +49,45 @@
   .bounce-bottom {
     animation: bounce-bottom 3s ease-in-out infinite;
   }
+
+  .hamburger:hover line {
+    background-color: red;
+  }
+
+  .navButton_dark::before,
+  .navButton_light::before,
+  .navButton_dark--open,
+  .navButton_light--open {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100%;
+    padding: 1px;
+
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .navButton_dark--open,
+  .navButton_dark::before {
+    background: #ede7de;
+  }
+
+  .navButton_light--open,
+  .navButton_light::before {
+    background: #283d8b;
+  }
+
+  .navButton_light,
+  .navButton_dark {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @keyframes bounce-top {

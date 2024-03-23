@@ -12,7 +12,6 @@ import InfinityText from "./animations/InfinityText";
 
 export default function Header() {
   const { t } = useTranslation();
-
   const htmlTag = document.documentElement;
   const langAttribute = htmlTag.getAttribute("lang");
   const profileRef = useRef(null);
@@ -20,6 +19,7 @@ export default function Header() {
   const yearRef = useRef(null);
   const phoneRef = useRef(null);
   const skillsRef = useRef(null);
+
   useEffect(() => {
     const tl = gsap.timeline();
     const profile = profileRef.current;
@@ -149,7 +149,7 @@ export default function Header() {
   });
 
   return (
-    <div className="mt-[90px] sm:mt-[130px] md:mt-[150px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
+    <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
       <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
         <div className="hidden lg:block absolute w-full z-[0] h-full">
           <span
@@ -232,6 +232,7 @@ export default function Header() {
           >
             <InfinityText
               texts={[
+                "skills:",
                 "next",
                 "nest",
                 "cypress",

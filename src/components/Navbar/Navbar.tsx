@@ -1,16 +1,19 @@
 "use client";
 import { usePathname } from "next/navigation";
-import Calendly from "../Calendly";
-import LanguageChanger from "../LanguageChanger";
+import Calendly from "./Calendly";
+import LanguageChanger from "./LanguageChanger";
 import TransitionLink from "../TransitionLink";
 import classNames from "classnames";
-import ThemeSwitch from "../ThemeSwitch";
-import SoundSwitcher from "../SoundSwitcher";
+import ThemeSwitch from "./ThemeSwitch";
+import SoundSwitcher from "./SoundSwitcher";
 import initTranslations from "@/app/i18n";
+import { Turn as Hamburger } from "hamburger-react";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useEffect, useState } from "react";
 import { Archive, ChevronDown, Crown, Menu } from "lucide-react";
 import Image from "next/image";
+import { useDisableOverflow } from "@/hooks/useDisableOverflow";
+import { useTheme } from "next-themes";
 
 const i18nNamespaces = ["navbar"];
 
@@ -18,6 +21,14 @@ export default function Navbar({ locale }: { locale: string }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [translations, setTranslations] = useState<any>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const theme = useTheme();
+
+  useDisableOverflow(isOpen);
+
+  const changeMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +68,7 @@ export default function Navbar({ locale }: { locale: string }) {
       <div className="flex justify-center p-[24px]">
         <div
           className={classNames(
-            "hidden lg:flex fixed z-[5] w-[954px] xl:w-[1200px] backdrop-filter transition-all   duration-500 justify-between rounded-[70px] px-[6px]",
+            "hidden lg:flex fixed z-[5] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
             {
               " bg-[#f7f2f2]/[.78] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[6px] backdrop-saturate-[1.4]":
                 scrolled,
@@ -213,19 +224,34 @@ export default function Navbar({ locale }: { locale: string }) {
             <LanguageChanger locale={locale} />
           </div>
         </div>
-        <div className="flex lg:hidden fixed z-[5] w-full px-[20px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
+        <div className="flex cursor-pointer lg:hidden fixed z-[5] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
           <TransitionLink href={`/${locale}`} className="cursor-pointer">
             <Image
-              className="w-[48px] h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-white rounded-full"
+              className="w-[48px] h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-[#ede7de] rounded-full"
               src="/profile.jpg"
               alt="profile"
               width={650}
               height={650}
             />
           </TransitionLink>
-
-          <div className="p-[10px] sm:p-[12px] md:p-[14px] rounded-full bg-white">
-            <Menu className=" w-[28px] h-[28px] sm:w-[30px] sm:h-[30px] md:w-[32px] md:h-[32px] text-black" />
+          <div
+            className={
+              theme.theme === "light" ? "navButton_light" : "navButton_dark"
+            }
+          >
+            <Hamburger
+              size={24}
+              rounded
+              color={
+                isOpen
+                  ? "#CE1B1B"
+                  : theme.theme === "light"
+                  ? "#ede7de"
+                  : "#283D8B"
+              }
+              toggled={isOpen}
+              toggle={changeMenu}
+            />
           </div>
         </div>
       </div>

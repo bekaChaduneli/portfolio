@@ -6,7 +6,6 @@ import { ReactNode } from "react";
 import { dir } from "i18next";
 import { Providers } from "./providers";
 import CanvasComponent from "@/components/CanvasComponent";
-import classNames from "classnames";
 import { Noto_Sans_Georgian } from "next/font/google";
 
 export const metadata: Metadata = {

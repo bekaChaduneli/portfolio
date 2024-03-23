@@ -19,6 +19,7 @@
     "framer-motion": "^11.0.20",
     "graphql": "^16.8.1",
     "gsap": "^3.12.5",
+    "hamburger-react": "^2.5.0",
     "i18next": "^23.10.1",
     "i18next-resources-to-backend": "^1.2.0",
     "locomotive-scroll": "^4.1.4",
