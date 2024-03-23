@@ -149,7 +149,7 @@ export default function Header() {
   });
 
   return (
-    <div className="mt-[150px] sm:mt-[160px] md:mt-[120px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
+    <div className="mt-[90px] sm:mt-[130px] md:mt-[150px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
       <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
         <div className="hidden lg:block absolute w-full z-[0] h-full">
           <span
@@ -200,9 +200,9 @@ export default function Header() {
             className={classNames(
               "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
               {
-                "text-[85px] sm:text-[126px] md:text-[144px] xl:text-[184px] font-acorn leading-[100%] font-extrabold":
+                "text-[24.3vw] sm:text-[24.6vw] lg:text-[144px] xl:text-[184px] font-acorn leading-[100%] font-extrabold":
                   langAttribute === "en",
-                "text-[53px] sm:text-[81px] md:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]":
+                "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]":
                   langAttribute === "ka",
               }
             )}
@@ -215,9 +215,9 @@ export default function Header() {
             className={classNames(
               "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
               {
-                "text-[40px] sm:text-[60px] md:text-[68px] xl:text-[87px] font-acorn leading-[100%] font-extrabold":
+                "text-[11.5vw] lg:text-[68px] xl:text-[87px] font-acorn leading-[100%] font-extrabold":
                   langAttribute === "en",
-                "text-[35px] sm:text-[53px] md:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]":
+                "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]":
                   langAttribute === "ka",
               }
             )}
@@ -228,7 +228,7 @@ export default function Header() {
 
           <div
             ref={skillsRef}
-            className="max-w-[320px] opacity-0 w-0 sm:max-w-[490px] md:max-w-[536px] xl:max-w-[684px] mt-[16px] py-[8px] rounded-[36px] md:rounded-[58px] border-[1px] border-[#203277] dark:border-[#a9baff] overflow-hidden"
+            className="max-w-[90vw] opacity-0 w-0 lg:max-w-[536px] xl:max-w-[684px] mt-[8px] sm:mt-[10px] lg:mt-[16px] py-[5px] sm:py-[6px] lg:py-[8px] rounded-[16px] sm:rounded-[20px] lg:rounded-[36px] md:rounded-[58px] border-[1px] border-[#203277] dark:border-[#a9baff] overflow-hidden"
           >
             <InfinityText
               texts={[
@@ -272,8 +272,8 @@ export default function Header() {
                 "adobe XD",
                 "figma",
               ]}
-              className="text-[#203277] dark:text-[#a9baff] mr-[16px] flex items-center gap-[16px] text-[24px] capitalize"
-              iconClassName="text-[#203277] dark:text-[#f7f2f2] w-[16px] h-[16px]"
+              className="text-[#203277] dark:text-[#a9baff] mr-[16px] flex items-center gap-[16px] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] capitalize"
+              iconClassName="text-[#203277] dark:text-[#f7f2f2] w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] lg:w-[16px] lg:h-[16px]"
               baseVelocity={-0.8}
             />
           </div>
