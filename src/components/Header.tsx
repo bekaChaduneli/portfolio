@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { MaskText } from "./animations/MaskText";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import InfinityText from "./animations/InfinityText";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -19,14 +20,16 @@ export default function Header() {
   const locationRef = useRef(null);
   const yearRef = useRef(null);
   const phoneRef = useRef(null);
+  const skillsRef = useRef(null);
   useEffect(() => {
     const tl = gsap.timeline();
     const profile = profileRef.current;
     const location = locationRef.current;
     const year = yearRef.current;
     const phone = phoneRef.current;
+    const skills = skillsRef.current;
 
-    if (year && profile && location && phone) {
+    if (year && profile && location && phone && skills) {
       setTimeout(() => {
         gsap.fromTo(
           profile,
@@ -39,7 +42,7 @@ export default function Header() {
             marginRight: "0px",
             marginTop: "0px",
             opacity: "100%",
-            duration: 0.6,
+            duration: 1.1,
             onComplete: () => {
               profile.classList.add("bounce-top");
               profile.classList.add("delay-1000");
@@ -47,6 +50,21 @@ export default function Header() {
           }
         );
       }, 770);
+
+      setTimeout(() => {
+        gsap.fromTo(
+          skills,
+          {
+            width: "0px",
+            opacity: "0%",
+          },
+          {
+            opacity: "100%",
+            width: "auto",
+            duration: 1.3,
+          }
+        );
+      }, 370);
 
       setTimeout(() => {
         gsap.fromTo(
@@ -60,7 +78,7 @@ export default function Header() {
             marginLeft: "0px",
             marginTop: "0px",
             opacity: "100%",
-            duration: 0.6,
+            duration: 1.1,
             onStart: () => {
               location.classList.add("bounce-top");
             },
@@ -80,7 +98,7 @@ export default function Header() {
             marginBottom: "0px",
 
             opacity: "100%",
-            duration: 0.6,
+            duration: 1.1,
 
             onComplete: () => {
               phone.classList.add("bounce-bottom");
@@ -103,8 +121,10 @@ export default function Header() {
             marginBottom: "0px",
 
             opacity: "100%",
-            duration: 0.6,
-
+            duration: 1.1,
+            onUpdate: (e) => {
+              console.log(e);
+            },
             onStart: () => {},
             onComplete: () => {
               year.classList.add("bounce-bottom");
@@ -166,7 +186,7 @@ export default function Header() {
             {t("phone")}
           </span>
         </div>
-        <div ref={ref} className="z-[1]">
+        <div ref={ref} className="z-[1] flex flex-col items-center">
           <MaskText
             index={0}
             className={classNames(
@@ -198,7 +218,57 @@ export default function Header() {
             {t("profession")}
           </MaskText>
 
-          <div className="w-[320px] sm:w-[490px] md:w-[536px] xl:w-[684px] mt-[16px] h-[50px] md:h-[70px] rounded-[36px] md:rounded-[58px] border-[2px] border-[#203277] dark:border-[#a9baff]"></div>
+          <div
+            ref={skillsRef}
+            className="max-w-[320px] opacity-0 w-0 sm:max-w-[490px] md:max-w-[536px] xl:max-w-[684px] mt-[16px] py-[8px] rounded-[36px] md:rounded-[58px] border-[1px] border-[#203277] dark:border-[#a9baff] overflow-hidden"
+          >
+            <InfinityText
+              texts={[
+                "next",
+                "nest",
+                "cypress",
+                "typescript",
+                "node",
+                "react",
+                "python",
+                "javascript",
+                "express",
+                "django",
+                "mongoDB",
+                "prisma",
+                "graphQL",
+                "AWS",
+                "linux",
+                "jest",
+                "fireBase",
+                "framer",
+                "docker",
+                "jenkins",
+                "gsap",
+                "redux",
+                "postgreSql",
+                "mySql",
+                "tailwind",
+                "sass",
+                "chakra UI",
+                "styled components",
+                "redis",
+                "webpack",
+                "babel",
+                "git",
+                "mocha",
+                "bash",
+                "sqlLite",
+                "html",
+                "css",
+                "adobe XD",
+                "figma",
+              ]}
+              className="text-[#203277] dark:text-[#a9baff] mr-[16px] flex items-center gap-[16px] text-[24px] capitalize"
+              iconClassName="text-[#203277] dark:text-[#f7f2f2] w-[16px] h-[16px]"
+              baseVelocity={-0.8}
+            />
+          </div>
         </div>
       </div>
     </div>
