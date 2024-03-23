@@ -9,7 +9,8 @@ import SoundSwitcher from "../SoundSwitcher";
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useEffect, useState } from "react";
-import { Archive, ChevronDown, Crown } from "lucide-react";
+import { Archive, ChevronDown, Crown, Menu } from "lucide-react";
+import Image from "next/image";
 
 const i18nNamespaces = ["navbar"];
 
@@ -210,6 +211,21 @@ export default function Navbar({ locale }: { locale: string }) {
             <ThemeSwitch />
             <SoundSwitcher />
             <LanguageChanger locale={locale} />
+          </div>
+        </div>
+        <div className="flex lg:hidden fixed z-[5] w-full px-[20px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
+          <TransitionLink href={`/${locale}`} className="cursor-pointer">
+            <Image
+              className="w-[48px] h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-white rounded-full"
+              src="/profile.jpg"
+              alt="profile"
+              width={650}
+              height={650}
+            />
+          </TransitionLink>
+
+          <div className="p-[10px] sm:p-[12px] md:p-[14px] rounded-full bg-white">
+            <Menu className=" w-[28px] h-[28px] sm:w-[30px] sm:h-[30px] md:w-[32px] md:h-[32px] text-black" />
           </div>
         </div>
       </div>
