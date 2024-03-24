@@ -10,10 +10,11 @@ import initTranslations from "@/app/i18n";
 import { Turn as Hamburger } from "hamburger-react";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useEffect, useState } from "react";
-import { Archive, ChevronDown, Crown, Menu } from "lucide-react";
+import { Archive, ChevronDown, Crown } from "lucide-react";
 import Image from "next/image";
 import { useDisableOverflow } from "@/hooks/useDisableOverflow";
 import { useTheme } from "next-themes";
+import Menu from "./Menu";
 
 const i18nNamespaces = ["navbar"];
 
@@ -224,10 +225,10 @@ export default function Navbar({ locale }: { locale: string }) {
             <LanguageChanger locale={locale} />
           </div>
         </div>
-        <div className="flex cursor-pointer lg:hidden fixed z-[5] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
-          <TransitionLink href={`/${locale}`} className="cursor-pointer">
+        <div className="flex cursor-pointer lg:hidden fixed z-[45] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
+          <TransitionLink href={`/${locale}`} className="cursor-pointer group">
             <Image
-              className="w-[48px] h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-[#ede7de] rounded-full"
+              className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-[#ede7de] rounded-full"
               src="/profile.jpg"
               alt="profile"
               width={650}
@@ -254,6 +255,8 @@ export default function Navbar({ locale }: { locale: string }) {
             />
           </div>
         </div>
+
+        <Menu t={t} locale={locale} isOpen={isOpen} changeMenu={changeMenu} />
       </div>
     </TranslationsProvider>
   );

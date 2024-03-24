@@ -19,7 +19,6 @@ export const animatePageIn = () => {
       stagger: 0.1,
       onStart: () => {
         document.body.style.cursor = "wait";
-        // hide loader
       },
       onComplete: () => {
         document.body.style.cursor = "auto";

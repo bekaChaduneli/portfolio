@@ -4,17 +4,19 @@ import { animatePageOut } from "@/utils/page-animation";
 
 interface Props {
   href: string;
+  onClick?: () => void;
   children: any;
   className?: string;
 }
 
-const TransitionLink = ({ href, className, children }: Props) => {
+const TransitionLink = ({ href, className, onClick, children }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
   const handleClick = () => {
     if (pathname !== href) {
       animatePageOut(href, router);
+      onClick && onClick();
     }
   };
 
