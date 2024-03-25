@@ -11,7 +11,7 @@ import { wrap } from "framer-motion";
 import { Sparkle } from "lucide-react";
 
 type InfinityTextProps = {
-  texts: Array;
+  texts: Array<string>;
   className: string;
   iconClassName: string;
   baseVelocity: number;

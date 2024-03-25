@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import "./globals.css";
-// import PageTransitionEffect from "@/components/animations/PageTransitionEffect";
 
 type Props = {
   children: ReactNode;

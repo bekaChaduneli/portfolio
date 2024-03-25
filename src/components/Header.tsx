@@ -4,11 +4,12 @@ import classNames from "classnames";
 import gsap from "gsap";
 import { MapPinned, PhoneCall } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MaskText } from "./animations/MaskText";
 import { useInView } from "react-intersection-observer";
 import InfinityText from "./animations/InfinityText";
+import useMousePosition from "@/utils/useMousePosition";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -19,9 +20,11 @@ export default function Header() {
   const yearRef = useRef(null);
   const phoneRef = useRef(null);
   const skillsRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const { x, y } = useMousePosition();
+  const size = isHovered ? 272 : 0;
 
   useEffect(() => {
-    const tl = gsap.timeline();
     const profile = profileRef.current;
     const location = locationRef.current;
     const year = yearRef.current;
@@ -195,36 +198,40 @@ export default function Header() {
           </span>
         </div>
         <div ref={ref} className="z-[1] flex flex-col items-center">
-          <MaskText
-            index={0}
-            className={classNames(
-              "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
-              {
-                "text-[24.3vw] sm:text-[24.6vw] lg:text-[144px] xl:text-[184px] font-acorn leading-[100%] font-extrabold":
-                  langAttribute === "en",
-                "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]":
-                  langAttribute === "ka",
-              }
-            )}
-            inView={inView}
-          >
-            {t("header_name")}
-          </MaskText>
-          <MaskText
-            index={1}
-            className={classNames(
-              "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
-              {
-                "text-[11.5vw] lg:text-[68px] xl:text-[87px] font-acorn leading-[100%] font-extrabold":
-                  langAttribute === "en",
-                "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]":
-                  langAttribute === "ka",
-              }
-            )}
-            inView={inView}
-          >
-            {t("profession")}
-          </MaskText>
+          <div className="flex flex-col items-center relative">
+            <div>
+              <MaskText
+                index={0}
+                className={classNames(
+                  "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
+                  {
+                    "text-[24.3vw] sm:text-[24.6vw] lg:text-[144px] xl:text-[184px] font-acorn leading-[100%] font-extrabold":
+                      langAttribute === "en",
+                    "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]":
+                      langAttribute === "ka",
+                  }
+                )}
+                inView={inView}
+              >
+                {t("header_name")}
+              </MaskText>
+              <MaskText
+                index={1}
+                className={classNames(
+                  "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
+                  {
+                    "text-[11.5vw] lg:text-[68px] xl:text-[87px] font-acorn leading-[100%] font-extrabold":
+                      langAttribute === "en",
+                    "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]":
+                      langAttribute === "ka",
+                  }
+                )}
+                inView={inView}
+              >
+                {t("profession")}
+              </MaskText>
+            </div>
+          </div>
 
           <div
             ref={skillsRef}
