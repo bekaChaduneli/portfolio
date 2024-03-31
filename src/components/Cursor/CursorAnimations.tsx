@@ -8,58 +8,37 @@ import classNames from "classnames";
 const CursorAnimations: React.FC = () => {
   const { isCursorActive, cursorText, cursorBackground } = useCursorStore();
   const { x, y } = useMousePosition();
-  const size = isCursorActive ? 400 : 40;
-
+  const htmlTag = document?.documentElement;
+  const langAttribute = htmlTag.getAttribute("lang");
   return (
     <motion.div
-      className={classNames(
-        "fixed z-50 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 opacity-0 invisible",
-        {
-          "opacity-100 visible": isCursorActive,
-        }
-      )}
+      className="fixed z-[9999] pointer-events-none"
       style={{
-        WebkitMaskPosition: `${x && x - size / 2}px ${y && y - size / 2}px`,
-        WebkitMaskSize: `${size}px`,
-        transition: "transform 0.1s cubic-bezier(0.5, 0, 0.25, 1)",
+        translateX: `${x && x}px`,
+        translateY: `${y && y - 20}px`,
+        transition: "transform 0.3s ease-out", // Adjust the duration and easing as needed
       }}
     >
       <div
         className={classNames(
-          "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 rotate-[-15deg] flex items-center justify-center w-24 overflow-hidden rounded-full text-lg transition-transform duration-200 ease-in-out",
+          `absolute w-[100px] transition duration-300 scale-[0%] h-[100px] rounded-full bg-[#283d8b]/[60%] dark:bg-[#fff]/[40%] backdrop-blur-[6px] left-[50%] top-[50%] -translate-x-[50%] rotate-[-32deg] -translate-y-[50%] `,
           {
-            "scale-100 rotate-[-15deg]": isCursorActive,
+            "!scale-[99%] !rotate-[0deg]": isCursorActive,
           }
         )}
       >
-        <div
+        <h1
           className={classNames(
-            `absolute left-1/2 w-full h-full top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0 bg-white rounded-full transition-transform duration-200 ease-in-out`,
+            "whitespace-nowrap absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-34%] text-white capitalize font-bold",
             {
-              "rotate-0": !isCursorActive,
-            }
-          )}
-        ></div>
-        <span
-          className={classNames(
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[15deg] text-black p-2 transition-transform duration-200 ease-in-out",
-            {
-              "rotate-[15deg]": !isCursorActive,
+              "": isCursorActive,
+              "font-graphik text-[20px]": langAttribute === "en",
+              "font-firago text-[18px]": langAttribute === "ka",
             }
           )}
         >
           {cursorText}
-        </span>
-        <span
-          className={classNames(
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[15deg] text-black p-2 transition-transform duration-200 ease-in-out",
-            {
-              "rotate-[15deg]": !isCursorActive,
-            }
-          )}
-        >
-          Drag
-        </span>
+        </h1>
       </div>
     </motion.div>
   );

@@ -4,22 +4,17 @@ import classNames from "classnames";
 import gsap from "gsap";
 import { MapPinned, PhoneCall } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { MaskText } from "./animations/MaskText";
 import { useInView } from "react-intersection-observer";
 import InfinityText from "./animations/InfinityText";
-import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
 
 export default function Header() {
   const { t } = useTranslation();
   const htmlTag = document.documentElement;
   const langAttribute = htmlTag.getAttribute("lang");
-  const [isHovered, setIsHovered] = useState(false);
-  const { x, y } = useMousePosition();
-  const size = isHovered ? 272 : 0;
   const { setIsCursorActive, setCursorBackground, setCursorText } =
     useCursorStore();
 
@@ -151,7 +146,17 @@ export default function Header() {
   });
 
   return (
-    <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
+    <div
+      onMouseEnter={() => {
+        setIsCursorActive(true);
+        setCursorBackground("#e2d7c5");
+        setCursorText(t("scroll"));
+      }}
+      onMouseLeave={() => {
+        setIsCursorActive(false);
+      }}
+      className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]"
+    >
       <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
         <div className="hidden lg:block absolute w-full z-[0] h-full">
           <span
@@ -199,17 +204,7 @@ export default function Header() {
         <div ref={ref} className="z-[1] flex flex-col items-center">
           <div className="flex flex-col items-center relative">
             <div className="body">
-              <p
-                onMouseEnter={() => {
-                  setIsCursorActive(true);
-                  setCursorBackground("#e2d7c573");
-                  setCursorText("test 1");
-                }}
-                onMouseLeave={() => {
-                  setIsCursorActive(false);
-                  setCursorText("");
-                }}
-              >
+              <p>
                 <MaskText
                   index={0}
                   className={classNames(

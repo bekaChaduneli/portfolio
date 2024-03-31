@@ -12,7 +12,6 @@ export default function Home({
   params: { locale: any };
 }) {
   const [translations, setTranslations] = useState<any>(null);
-
   useEffect(() => {
     const fetchTranslations = async () => {
       const { t, resources } = await initTranslations(locale, i18nNamespaces);
