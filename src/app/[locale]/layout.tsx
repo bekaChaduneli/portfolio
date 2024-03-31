@@ -7,6 +7,7 @@ import { dir } from "i18next";
 import { Providers } from "./providers";
 import CanvasComponent from "@/components/CanvasComponent";
 import { Noto_Sans_Georgian } from "next/font/google";
+import CursorAnimations from "@/components/Cursor/CursorAnimations";
 
 export const metadata: Metadata = {
   title: "Beka Chaduneli",
@@ -38,6 +39,7 @@ export default function RootLayout({
       >
         <Providers>
           <CanvasComponent />
+          <CursorAnimations />
           <div className="">
             <Navbar locale={locale} />
             {children}
