@@ -210,7 +210,7 @@ export default function Header() {
                   className={classNames(
                     "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
                     {
-                      "text-[24.3vw] sm:text-[24.6vw] lg:text-[144px] xl:text-[184px] font-acorn leading-[100%] font-extrabold":
+                      "text-[21.5vw] lg:text-[126px] xl:text-[164px] font-geom leading-[100%] font-extrabold":
                         langAttribute === "en",
                       "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]":
                         langAttribute === "ka",
@@ -225,7 +225,7 @@ export default function Header() {
                   className={classNames(
                     "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
                     {
-                      "text-[11.5vw] lg:text-[68px] xl:text-[87px] font-acorn leading-[100%] font-extrabold":
+                      "text-[10.4vw] pl-[1.7%] lg:pl-0 lg:text-[62px] xl:text-[80.5px] font-geom leading-[112%] font-extrabold":
                         langAttribute === "en",
                       "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]":
                         langAttribute === "ka",

@@ -21,8 +21,8 @@ const config = {
     extend: {
       fontFamily: {
         graphik: ["Graphik"],
-        acorn: ["Acorn"],
         firago: ["FiraGO"],
+        geom: ["Geom"],
       },
       colors: {
         border: "hsl(var(--border))",

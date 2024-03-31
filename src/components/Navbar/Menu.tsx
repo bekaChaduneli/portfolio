@@ -40,7 +40,7 @@ export default function Menu({
               " w-full z-[44]": isOpen,
               "hidden ": !isOpen,
               "font-firago": locale === "ka",
-              "font-acorn": locale === "en",
+              "font-geom": locale === "en",
             }
           )}
         >
