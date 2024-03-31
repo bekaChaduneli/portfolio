@@ -1,15 +1,20 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
 import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
 import { motion } from "framer-motion";
 import classNames from "classnames";
 
-const CursorAnimations: React.FC = () => {
-  const { isCursorActive, cursorText, cursorBackground } = useCursorStore();
+export default function CursorAnimations() {
+  const { isCursorActive, cursorText } = useCursorStore();
   const { x, y } = useMousePosition();
-  const htmlTag = document?.documentElement;
-  const langAttribute = htmlTag.getAttribute("lang");
+  const [langAttribute, setLangAttribute] = useState<string>("");
+
+  useEffect(() => {
+    const htmlTag = document.documentElement;
+    const lang = htmlTag.getAttribute("lang");
+    setLangAttribute(lang ? lang : "en");
+  }, []);
   return (
     <motion.div
       className="fixed z-[9999] pointer-events-none"
@@ -42,6 +47,4 @@ const CursorAnimations: React.FC = () => {
       </div>
     </motion.div>
   );
-};
-
-export default CursorAnimations;
+}
