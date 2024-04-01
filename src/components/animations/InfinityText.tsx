@@ -43,6 +43,7 @@ export default function InfinityText({
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
     baseX.set(baseX.get() + moveBy);
   });
+
   return (
     <div className="overflow-hidden relative m-0 whitespace-nowrap flex w-full left-0 flex-nowrap">
       <motion.div

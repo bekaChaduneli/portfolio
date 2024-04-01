@@ -161,16 +161,16 @@ export default function Header() {
       <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
         <div
           className={classNames(
-            "hidden transition-all !duration-[2s] lg:block absolute z-[0]",
+            "hidden transition-all h-full w-full !duration-[2s] lg:block absolute z-[0]",
             {
-              "w-[94%] h-[94%]": scrollHover,
-              "h-full w-full": !scrollHover,
+              "opacity-[75%] scale-[96%]": scrollHover,
+              "opacity-[100%] scale-[100%]": !scrollHover,
             }
           )}
         >
           <span
             id="profile"
-            className="w-[110px] top-0 absolute h-[110px] lg:right-[44px] xl:right-[82px] opacity-0 rotate-[-6deg]"
+            className="w-[110px] h-[110px] top-0 absolute  lg:right-[44px] xl:right-[82px] opacity-0 rotate-[-6deg]"
           >
             <span className="lg:w-[96px] lg:h-[96px] xl:w-[110px] xl:h-[110px] bg-[#203277] dark:bg-[#a9baff] absolute rounded-t-full rounded-br-full" />
             <Image
@@ -223,10 +223,10 @@ export default function Header() {
             setIsCursorActive(false);
             setScrollHover(false);
           }}
-          className="z-[1] flex flex-col items-center"
+          className="cursor-pointer z-[1] flex flex-col items-center"
         >
-          <div className="flex flex-col items-center relative">
-            <div className="body">
+          <div className="flex  flex-col items-center relative">
+            <div className="">
               <p>
                 <MaskText
                   index={0}
