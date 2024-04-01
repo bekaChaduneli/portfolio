@@ -4,7 +4,7 @@ import classNames from "classnames";
 import gsap from "gsap";
 import { MapPinned, PhoneCall } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MaskText } from "./animations/MaskText";
 import { useInView } from "react-intersection-observer";
@@ -17,6 +17,7 @@ export default function Header() {
   const langAttribute = htmlTag.getAttribute("lang");
   const { setIsCursorActive, setCursorBackground, setCursorText } =
     useCursorStore();
+  const [scrollHover, setScrollHover] = useState(false);
 
   useEffect(() => {
     const profile = document.querySelector("#profile");
@@ -145,20 +146,28 @@ export default function Header() {
     triggerOnce: true,
   });
 
+  const scrollBottom = () => {
+    const targetScroll = 660;
+    console.log(targetScroll);
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div
-      onMouseEnter={() => {
-        setIsCursorActive(true);
-        setCursorBackground("#e2d7c5");
-        setCursorText(t("scroll"));
-      }}
-      onMouseLeave={() => {
-        setIsCursorActive(false);
-      }}
-      className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]"
-    >
+    <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
       <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
-        <div className="hidden lg:block absolute w-full z-[0] h-full">
+        <div
+          className={classNames(
+            "hidden transition-all !duration-[2s] lg:block absolute z-[0]",
+            {
+              "w-[94%] h-[94%]": scrollHover,
+              "h-full w-full": !scrollHover,
+            }
+          )}
+        >
           <span
             id="profile"
             className="w-[110px] top-0 absolute h-[110px] lg:right-[44px] xl:right-[82px] opacity-0 rotate-[-6deg]"
@@ -201,7 +210,21 @@ export default function Header() {
             {t("phone")}
           </span>
         </div>
-        <div ref={ref} className="z-[1] flex flex-col items-center">
+        <div
+          ref={ref}
+          onClick={() => scrollBottom()}
+          onMouseEnter={() => {
+            setIsCursorActive(true);
+            setCursorBackground("#e2d7c5");
+            setCursorText(t("scroll"));
+            setScrollHover(true);
+          }}
+          onMouseLeave={() => {
+            setIsCursorActive(false);
+            setScrollHover(false);
+          }}
+          className="z-[1] flex flex-col items-center"
+        >
           <div className="flex flex-col items-center relative">
             <div className="body">
               <p>

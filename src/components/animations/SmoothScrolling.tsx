@@ -11,11 +11,8 @@ function SmoothScrolling({ children }: SmoothScrolling) {
     <ReactLenis
       root
       options={{
-        lerp: 0.04,
-        duration: 1.5,
-        smoothWheel: true,
-        syncTouch: true,
-        touchMultiplier: 1,
+        lerp: 0.02,
+        duration: 2,
       }}
     >
       {children}

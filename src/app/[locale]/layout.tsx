@@ -33,9 +33,9 @@ export default function RootLayout({
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <body
         id="root"
-        className={
-          locale === "en" ? "font-graphik" : notoSansGeorgian.className
-        }
+        className={`overflow-hidden 
+        ${locale === "en" ? "font-graphik" : notoSansGeorgian.className}
+        `}
       >
         <Providers>
           <CanvasComponent />
