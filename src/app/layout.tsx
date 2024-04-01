@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import "./globals.css";
+import SmoothScrolling from "@/components/animations/SmoothScrolling";
 
 type Props = {
   children: ReactNode;
@@ -8,5 +9,5 @@ type Props = {
 export const revalidate = 1;
 
 export default function RootLayout({ children }: Props) {
-  return children;
+  return <SmoothScrolling>{children}</SmoothScrolling>;
 }
