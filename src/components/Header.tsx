@@ -2,7 +2,6 @@
 
 import classNames from "classnames";
 import gsap from "gsap";
-import { MapPinned, PhoneCall } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -21,12 +20,12 @@ export default function Header() {
 
   useEffect(() => {
     const profile = document.querySelector("#profile");
-    const location = document.querySelector("#location");
-    const year = document.querySelector("#year");
-    const phone = document.querySelector("#phone");
+    const books = document.querySelector("#books");
+    const linkedin = document.querySelector("#linkedin");
+    const github = document.querySelector("#github");
     const skills = document.querySelector("#skills");
 
-    if (year && profile && location && phone && skills) {
+    if (linkedin && profile && books && github && skills) {
       setTimeout(() => {
         gsap.fromTo(
           profile,
@@ -69,7 +68,7 @@ export default function Header() {
 
       setTimeout(() => {
         gsap.fromTo(
-          location,
+          books,
           {
             marginLeft: "180px",
             marginTop: "100px",
@@ -85,14 +84,14 @@ export default function Header() {
             opacity: "100%",
             duration: 0.7,
             onStart: () => {
-              location.classList.add("bounce-top");
+              books.classList.add("bounce-top");
             },
           }
         );
       }, 670);
       setTimeout(() => {
         gsap.fromTo(
-          phone,
+          github,
           {
             marginRight: "160px",
             scaleX: ".0",
@@ -108,15 +107,15 @@ export default function Header() {
             scaleY: "99%",
             duration: 0.7,
             onComplete: () => {
-              phone.classList.add("bounce-bottom");
-              phone.classList.add("delay-300");
+              github.classList.add("bounce-bottom");
+              github.classList.add("delay-300");
             },
           }
         );
       }, 800);
       setTimeout(() => {
         gsap.fromTo(
-          year,
+          linkedin,
           {
             marginLeft: "160px",
             marginBottom: "100px",
@@ -133,8 +132,8 @@ export default function Header() {
             duration: 1.1,
             onStart: () => {},
             onComplete: () => {
-              year.classList.add("bounce-bottom");
-              year.classList.add("delay-700");
+              linkedin.classList.add("bounce-bottom");
+              linkedin.classList.add("delay-700");
             },
           }
         );
@@ -196,7 +195,7 @@ export default function Header() {
                 </marker>
               </defs>
               <g
-                className="transition-all duration-[0.6s] opacity-0 group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                className="transition-all duration-300 opacity-0 group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
                 stroke-width="22"
                 fill="none"
                 stroke-linecap="round"
@@ -211,10 +210,10 @@ export default function Header() {
               </g>
             </svg>
 
-            <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[13deg] transition duration-[0.5s] opacity-[0%] group-hover:opacity-[100%] translate-x-[-2px] xl:translate-x-[-8px] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]">
+            <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] translate-x-[-2px] xl:translate-x-[-8px] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]">
               Who I am
             </span>
-            <span className="lg:w-[96px] lg:h-[96px] xl:w-[110px] transition-all duration-[0.5s] xl:h-[110px] bg-[#203277] dark:bg-[#a9baff] absolute rounded-t-full rounded-br-full group-hover:rounded-bl-full " />
+            <span className="lg:w-[96px] lg:h-[96px] xl:w-[110px] transition-all duration-300 xl:h-[110px] bg-[#203277] dark:bg-[#a9baff] absolute rounded-t-full rounded-br-full group-hover:rounded-bl-full " />
             <Image
               className="lg:w-[80px] xl:w-[94px] translate-x-[8px] translate-y-[7px] rounded-full absolute"
               src="/profile.jpg"
@@ -224,17 +223,64 @@ export default function Header() {
             />
           </span>
           <span
-            id="location"
-            className="absolute left-0 top-0 flex flex-col text-[14px] xl:text-[16px] items-center max-w-max w-max-content lg:gap-[8px] xl:gap-[10px] lg:rounded-t-[16px] xl:rounded-t-[20px] lg:rounded-bl-[16px] xl:rounded-bl-[20px] py-[10px] lg:px-[16px] xl:px-[20px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] uppercase xl:left-[12px] opacity-0 rotate-[-6deg]"
+            id="books"
+            className="left-[34px] xl:left-[38px] absolute top-0 max-w-max w-max-content opacity-0 rotate-[-6deg] cursor-pointer group"
           >
-            <MapPinned className="w-[32px] h-[32px] xl:w-[40px] xl:h-[40px]" />
-            {t("location")}
+            <span className=" flex flex-col text-[14px] xl:text-[16px] items-center lg:gap-[8px] xl:gap-[10px] lg:rounded-t-[16px] xl:rounded-t-[20px] lg:rounded-bl-[16px] xl:rounded-bl-[20px] py-[17px] xl:py-[20px] lg:px-[17px] xl:px-[20px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] uppercase xl:left-[12px] transition-all duration-300 group-hover:rounded-[30px] group-hover:xl:rounded-[40px]">
+              <svg
+                className="absolute z-[0] w-[90px] h-[100px] translate-x-[-69px] translate-y-[-60px] xl:translate-x-[-81px] scale-[90%] xl:scale-[105%] transition-all duration-300 opacity-0 group-hover:opacity-[100%]"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                viewBox="0 0 800 800"
+              >
+                <g
+                  stroke-width="20"
+                  className="transition-all duration-[0.6s] opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="53.5 53"
+                  transform="matrix(-0.766044443118978,-0.6427876096865393,0.6427876096865393,-0.766044443118978,464.3027333729755,963.532821122207)"
+                >
+                  <path
+                    d="M128.29476928710938 178.5Q905.2947692871094 240.5 571.2947692871094 621.5 "
+                    marker-end="url(#SvgjsMarker1628)"
+                  ></path>
+                </g>
+                <defs>
+                  <marker
+                    markerWidth="5"
+                    markerHeight="5"
+                    refX="2.5"
+                    refY="2.5"
+                    viewBox="0 0 5 5"
+                    orient="auto"
+                    id="SvgjsMarker1628"
+                  >
+                    <polygon
+                      className="fill-[#203277] dark:fill-[#a9baff]"
+                      points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
+                    ></polygon>
+                  </marker>
+                </defs>
+              </svg>
+              <span className="absolute z-[2] font-geom xl:text-[20px] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]">
+                Reading List
+              </span>
+              <Image
+                className="lg:w-[86px] xl:w-[100px]"
+                src="/books.png"
+                alt="books"
+                width={650}
+                height={650}
+              />
+            </span>
           </span>
           <span
-            id="year"
+            id="linkedin"
             className="lg:w-[80px] xl:w-[110px] bottom-0 absolute h-[110px] lg:left-[80px] opacity-0 rotate-[4deg]"
           >
-            <span className="transition-all duration-[1.7s] flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] cursor-pointer xl:rounded-[30px] hover:rounded-[70%] bounce-age lg:p-[10px] xl:p-[14px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#ede7de] group">
+            <span className="transition-all duration-300 flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] cursor-pointer xl:rounded-[30px] hover:rounded-[70%] bounce-age lg:p-[10px] xl:p-[14px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#ede7de] group">
               <svg
                 className="absolute z-[0] w-[90px] h-[100px] translate-x-[-55px] translate-y-[-35px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
                 xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +289,7 @@ export default function Header() {
               >
                 <g
                   stroke-width="21"
-                  className="transition-all duration-[0.6s] opacity-0  group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                  className="transition-all duration-300 opacity-0  group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -272,7 +318,7 @@ export default function Header() {
                   </marker>
                 </defs>
               </svg>
-              <span className="absolute z-[2] font-geom xl:text-[20px] transition duration-[0.5s] opacity-0 group-hover:opacity-[100%] translate-x-[12px] xl:translate-y-[-82px] uppercase translate-y-[-64px] text-[#203277] dark:text-[#a9baff]">
+              <span className="absolute z-[2] font-geom xl:text-[20px] transition duration-300 opacity-0 group-hover:opacity-[100%] translate-x-[12px] xl:translate-y-[-82px] uppercase translate-y-[-64px] text-[#203277] dark:text-[#a9baff]">
                 Linkedin
               </span>
               <Image
@@ -285,19 +331,19 @@ export default function Header() {
             </span>
           </span>
           <span
-            id="phone"
+            id="github"
             className="flex absolute right-[62px] opacity-0 cursor-pointer bottom-0 group items-center max-w-max w-max-content"
           >
-            <span className="lg:rounded-[14px] transition-all duration-[1.7s] xl:rounded-[20px] py-[12px] lg:px-[10px] xl:px-[14px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] rotate-[4deg]  group-hover:rounded-[80%]">
+            <span className="lg:rounded-[14px] transition-all duration-300 xl:rounded-[20px] py-[12px] lg:px-[10px] xl:px-[14px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] rotate-[4deg]  group-hover:rounded-[80%]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 version="1.1"
                 viewBox="0 0 800 800"
-                className="absolute z-[0] transition-all duration-[0.9s] opacity-0 group-hover:opacity-[100%] w-[90px] h-[100px] translate-x-[42px] xl:translate-x-[66px] translate-y-[-51px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
+                className="absolute z-[0] transition-all duration-300 opacity-0 group-hover:opacity-[100%] w-[90px] h-[100px] translate-x-[42px] xl:translate-x-[66px] translate-y-[-51px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
               >
                 <g
                   stroke-width="21"
-                  className="transition-all duration-[0.6s] opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                  className="transition-all duration-300 opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -326,7 +372,7 @@ export default function Header() {
                   </marker>
                 </defs>
               </svg>
-              <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[2deg] transition-all duration-[0.9s] opacity-0 group-hover:opacity-[100%] translate-x-[6px] xl:translate-x-[12px] xl:translate-y-[-56px] uppercase translate-y-[-48px] text-[#203277] dark:text-[#a9baff]">
+              <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[2deg] transition-all duration-300 opacity-0 group-hover:opacity-[100%] translate-x-[6px] xl:translate-x-[12px] xl:translate-y-[-56px] uppercase translate-y-[-48px] text-[#203277] dark:text-[#a9baff]">
                 Github
               </span>
               <Image
