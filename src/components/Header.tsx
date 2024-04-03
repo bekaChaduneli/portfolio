@@ -170,9 +170,51 @@ export default function Header() {
         >
           <span
             id="profile"
-            className="w-[110px] h-[110px] top-0 absolute  lg:right-[44px] xl:right-[82px] opacity-0 rotate-[-6deg]"
+            className="w-[110px] h-[110px] top-0 absolute lg:right-[44px] xl:right-[82px] opacity-0 rotate-[-6deg] cursor-pointer group"
           >
-            <span className="lg:w-[96px] lg:h-[96px] xl:w-[110px] xl:h-[110px] bg-[#203277] dark:bg-[#a9baff] absolute rounded-t-full rounded-br-full" />
+            <svg
+              className="absolute z-[0] w-[90px] h-[100px] rotate-[20deg] translate-x-[48px] translate-y-[-28px] xl:translate-x-[64px] scale-[70%] xl:scale-[80%]"
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 640 800"
+            >
+              <defs>
+                <marker
+                  markerWidth="5"
+                  markerHeight="5"
+                  refX="2.5"
+                  refY="2.5"
+                  viewBox="0 0 5 5"
+                  orient="auto"
+                  id="SvgjsMarker2588"
+                >
+                  <polygon
+                    points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
+                    className="fill-[#203277] dark:fill-[#a9baff]"
+                  />
+                </marker>
+              </defs>
+              <g
+                className="transition-all duration-[0.6s] opacity-0 group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                stroke-width="22"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="rotate(204, 320, 400)"
+                stroke-dasharray="41.5 46"
+              >
+                <path
+                  d="M107.2482681274414 115.49057006835938Q-154.7517318725586 892.4905700683594 600.2482681274414 608.4905700683594 "
+                  marker-end="url(#SvgjsMarker2588)"
+                ></path>
+              </g>
+            </svg>
+
+            <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[13deg] transition duration-[0.5s] opacity-[0%] group-hover:opacity-[100%] translate-x-[-2px] xl:translate-x-[-8px] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]">
+              Who I am
+            </span>
+            <span className="lg:w-[96px] lg:h-[96px] xl:w-[110px] transition-all duration-[0.5s] xl:h-[110px] bg-[#203277] dark:bg-[#a9baff] absolute rounded-t-full rounded-br-full group-hover:rounded-bl-full " />
             <Image
               className="lg:w-[80px] xl:w-[94px] translate-x-[8px] translate-y-[7px] rounded-full absolute"
               src="/profile.jpg"
@@ -190,13 +232,53 @@ export default function Header() {
           </span>
           <span
             id="year"
-            className="lg:w-[80px] xl:w-[110px] bottom-0 absolute h-[110px] lg:left-[64px] xl:left-[68px] opacity-0 rotate-[4deg]"
+            className="lg:w-[80px] xl:w-[110px] bottom-0 absolute h-[110px] lg:left-[80px] opacity-0 rotate-[4deg]"
           >
-            <span className="flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] xl:rounded-[30px] bounce-age lg:p-[16px] xl:p-[24px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#ede7de]">
+            <span className="transition-all duration-[1.7s] flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] cursor-pointer xl:rounded-[30px] hover:rounded-[70%] bounce-age lg:p-[10px] xl:p-[14px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#ede7de] group">
+              <svg
+                className="absolute z-[0] w-[90px] h-[100px] translate-x-[-55px] translate-y-[-35px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                viewBox="0 0 800 800"
+              >
+                <g
+                  stroke-width="21"
+                  className="transition-all duration-[0.6s] opacity-0  group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="35.5 51"
+                  transform="rotate(230, 400, 400)"
+                >
+                  <path
+                    d="M127.06646728515625 191.5232105255127Q904.0664672851562 38.523210525512695 575.0664672851562 639.5232105255127 "
+                    marker-end="url(#SvgjsMarker1674)"
+                  ></path>
+                </g>
+                <defs>
+                  <marker
+                    markerWidth="5"
+                    markerHeight="5"
+                    refX="2.5"
+                    refY="2.5"
+                    viewBox="0 0 5 5"
+                    orient="auto"
+                    id="SvgjsMarker1674"
+                  >
+                    <polygon
+                      points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
+                      className="fill-[#203277] dark:fill-[#a9baff]"
+                    ></polygon>
+                  </marker>
+                </defs>
+              </svg>
+              <span className="absolute z-[2] font-geom xl:text-[20px] transition duration-[0.5s] opacity-0 group-hover:opacity-[100%] translate-x-[12px] xl:translate-y-[-82px] uppercase translate-y-[-64px] text-[#203277] dark:text-[#a9baff]">
+                Linkedin
+              </span>
               <Image
-                className="lg:w-[90px] xl:w-[104px]"
-                src="/year.png"
-                alt="year"
+                className="lg:w-[120px] xl:w-[154px]"
+                src="/linkedin.png"
+                alt="linkedin"
                 width={650}
                 height={650}
               />
@@ -204,10 +286,57 @@ export default function Header() {
           </span>
           <span
             id="phone"
-            className="flex absolute right-[6px] bottom-0 items-center max-w-max w-max-content gap-[10px] lg:rounded-[14px] xl:rounded-[20px] lg:text-[18px] xl:text-[20px] py-[10px] lg:px-[18px] xl:px-[26px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] opacity-0 rotate-[4deg]"
+            className="flex absolute right-[62px] opacity-0 cursor-pointer bottom-0 group items-center max-w-max w-max-content"
           >
-            <PhoneCall className="lg:w-[20px] lg:h-[20px] xl:w-[24px] xl:h-[24px]" />
-            {t("phone")}
+            <span className="lg:rounded-[14px] transition-all duration-[1.7s] xl:rounded-[20px] py-[12px] lg:px-[10px] xl:px-[14px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] rotate-[4deg]  group-hover:rounded-[80%]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                viewBox="0 0 800 800"
+                className="absolute z-[0] transition-all duration-[0.9s] opacity-0 group-hover:opacity-[100%] w-[90px] h-[100px] translate-x-[42px] xl:translate-x-[66px] translate-y-[-51px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
+              >
+                <g
+                  stroke-width="21"
+                  className="transition-all duration-[0.6s] opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-dasharray="35.5 51"
+                  transform="rotate(230, 400, 400)"
+                >
+                  <path
+                    d="M160 118.93435668945312Q379 895.9343566894531 640 598.9343566894531 "
+                    marker-end="url(#SvgjsMarker2229)"
+                  ></path>
+                </g>
+                <defs>
+                  <marker
+                    markerWidth="5"
+                    markerHeight="5"
+                    refX="2.5"
+                    refY="2.5"
+                    viewBox="0 0 5 5"
+                    orient="auto"
+                    id="SvgjsMarker2229"
+                  >
+                    <polygon
+                      points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
+                      className="fill-[#203277] dark:fill-[#a9baff]"
+                    ></polygon>
+                  </marker>
+                </defs>
+              </svg>
+              <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[2deg] transition-all duration-[0.9s] opacity-0 group-hover:opacity-[100%] translate-x-[6px] xl:translate-x-[12px] xl:translate-y-[-56px] uppercase translate-y-[-48px] text-[#203277] dark:text-[#a9baff]">
+                Github
+              </span>
+              <Image
+                className="lg:w-[68px] xl:w-[90px]"
+                src="/github.png"
+                alt="github"
+                width={650}
+                height={650}
+              />
+            </span>
           </span>
         </div>
         <div
