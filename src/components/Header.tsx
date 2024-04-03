@@ -210,8 +210,18 @@ export default function Header() {
               </g>
             </svg>
 
-            <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] translate-x-[-2px] xl:translate-x-[-8px] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]">
-              Who I am
+            <span
+              className={classNames(
+                "absolute z-[2] xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]",
+                {
+                  "font-geom translate-x-[-2px] xl:translate-x-[-8px]":
+                    langAttribute === "en",
+                  "font-firago translate-x-[-8px] xl:translate-x-[-14px]":
+                    langAttribute === "ka",
+                }
+              )}
+            >
+              {t("who-i-am")}
             </span>
             <span className="lg:w-[96px] lg:h-[96px] xl:w-[110px] transition-all duration-300 xl:h-[110px] bg-[#203277] dark:bg-[#a9baff] absolute rounded-t-full rounded-br-full group-hover:rounded-bl-full " />
             <Image
@@ -264,8 +274,16 @@ export default function Header() {
                   </marker>
                 </defs>
               </svg>
-              <span className="absolute z-[2] font-geom xl:text-[20px] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]">
-                Reading List
+              <span
+                className={classNames(
+                  "absolute z-[2] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]",
+                  {
+                    "font-geom xl:text-[20px]": langAttribute === "en",
+                    "font-firago xl:text-[17px]": langAttribute === "ka",
+                  }
+                )}
+              >
+                {t("reading-list")}
               </span>
               <Image
                 className="lg:w-[86px] xl:w-[100px]"
