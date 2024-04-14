@@ -9,15 +9,13 @@ import { Icons } from "../shared/Icons";
 import { useEffect } from "react";
 import classNames from "classnames";
 import Image from "next/image";
-interface HeaderInfosProps {
-  t: any;
-  scrollHover: Boolean;
-}
+import { HeaderInfosProps } from "@/types/ComponentTypes";
 
 export const HeaderInfos: React.FC<HeaderInfosProps> = ({ t, scrollHover }) => {
   const htmlTag = document.documentElement;
   const langAttribute = htmlTag.getAttribute("lang");
   useEffect(() => {
+    // animations not working using refs
     const profile = document.querySelector("#profile");
     const books = document.querySelector("#books");
     const linkedin = document.querySelector("#linkedin");

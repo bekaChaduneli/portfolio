@@ -1,7 +1,8 @@
+import { TFunction } from "i18next";
 import { useEffect, useState } from "react";
 import { PopupButton } from "react-calendly";
 
-const Calendly = ({ t }: any) => {
+const Calendly = ({ t }: { t: TFunction }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {

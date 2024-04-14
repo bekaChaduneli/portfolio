@@ -1,28 +1,18 @@
 "use client";
-import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
-import { useEffect, useState } from "react";
+import { useTranslations } from "@/hooks/useTransitions";
 
 const i18nNamespaces = ["projects"];
 
 export default function Projects({
   params: { locale },
 }: {
-  params: { locale: any };
+  params: { locale: string };
 }) {
-  const [translations, setTranslations] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setTranslations({ t, resources });
-    };
-
-    fetchTranslations();
-  }, [locale]);
+  const translations = useTranslations(locale, i18nNamespaces);
 
   if (!translations) {
-    return <div className="w-full h-full bg-black"></div>;
+    return <div>Loading...</div>;
   }
 
   const { t, resources } = translations;

@@ -1,3 +1,4 @@
+import { TFunction } from "i18next";
 import { ReactNode } from "react";
 
 export type InfinityTextProps = {
@@ -10,6 +11,23 @@ export type InfinityTextProps = {
 export type MaskTextType = {
   index: number;
   className: string;
-  inView: any;
+  inView: boolean;
   children: ReactNode;
 };
+
+export interface HeaderInfosProps {
+  t: TFunction;
+  scrollHover: Boolean;
+}
+
+export interface TransitionLinkType {
+  href: string;
+  onClick?: () => void;
+  children: ReactNode;
+  className?: string;
+}
+
+export interface Translations {
+  t: TFunction<"translation", undefined>;
+  resources: any;
+}

@@ -5,6 +5,7 @@ import TransitionLink from "../shared/TransitionLink";
 import ThemeSwitch from "./ThemeSwitch";
 import SoundSwitcher from "./SoundSwitcher";
 import { usePathname } from "next/navigation";
+import { TFunction } from "i18next";
 
 export default function Menu({
   isOpen,
@@ -15,7 +16,7 @@ export default function Menu({
   isOpen: boolean;
   changeMenu: () => void;
   locale: string;
-  t: any;
+  t: TFunction;
 }) {
   navigationLinks;
   const pathname = usePathname();

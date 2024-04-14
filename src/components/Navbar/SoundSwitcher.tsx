@@ -2,7 +2,7 @@ import { Volume2, VolumeX } from "lucide-react";
 import { useState } from "react";
 
 export default function SoundSwitcher() {
-  const [audio, setAudio] = useState(true);
+  const [audio, setAudio] = useState<boolean>(true);
 
   return audio ? (
     <Volume2

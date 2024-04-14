@@ -6,7 +6,7 @@ type SmoothScrolling = {
   children: ReactNode;
 };
 
-function SmoothScrolling({ children }: SmoothScrolling) {
+export default function SmoothScrolling({ children }: SmoothScrolling) {
   return (
     <ReactLenis
       root
@@ -19,5 +19,3 @@ function SmoothScrolling({ children }: SmoothScrolling) {
     </ReactLenis>
   );
 }
-
-export default SmoothScrolling;

@@ -44,7 +44,7 @@ export default function InfinityText({
         className="inherit flex whitespace-nowrap flex-nowrap"
         style={{ x }}
       >
-        {texts.map((text: string, index: any) => {
+        {texts.map((text: string, index: number) => {
           return (
             <span key={index} className={className}>
               {text}

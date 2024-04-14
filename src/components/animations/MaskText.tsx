@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export function MaskText({ index, className, inView, children }: MaskTextType) {
   const animation = {
     initial: { y: "100%" },
-    enter: (i: any) => ({
+    enter: (i: number) => ({
       y: "0",
       transition: {
         duration: 0.75,

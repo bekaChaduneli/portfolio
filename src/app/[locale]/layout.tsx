@@ -19,7 +19,7 @@ const notoSansGeorgian = Noto_Sans_Georgian({
 });
 
 export function generateStaticParams() {
-  return i18nConfig.locales.map((locale: any) => ({ locale }));
+  return i18nConfig.locales.map((locale: string) => ({ locale }));
 }
 
 export default function RootLayout({

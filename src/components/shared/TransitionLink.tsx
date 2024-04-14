@@ -1,15 +1,14 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import { animatePageOut } from "@/utils/page-animation";
+import { TransitionLinkType } from "@/types/ComponentTypes";
 
-interface Props {
-  href: string;
-  onClick?: () => void;
-  children: any;
-  className?: string;
-}
-
-const TransitionLink = ({ href, className, onClick, children }: Props) => {
+const TransitionLink = ({
+  href,
+  className,
+  onClick,
+  children,
+}: TransitionLinkType) => {
   const router = useRouter();
   const pathname = usePathname();
 
