@@ -4,7 +4,6 @@ import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
 import { motion } from "framer-motion";
 import classNames from "classnames";
-import Image from "next/image";
 
 export default function CursorAnimations() {
   const { isCursorActive, cursorText } = useCursorStore();

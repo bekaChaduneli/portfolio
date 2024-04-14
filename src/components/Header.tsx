@@ -1,7 +1,6 @@
 "use client";
 
 import classNames from "classnames";
-import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -9,6 +8,16 @@ import { MaskText } from "./animations/MaskText";
 import { useInView } from "react-intersection-observer";
 import InfinityText from "./animations/InfinityText";
 import useCursorStore from "@/store/use-cursor-store";
+import { skills } from "@/lib/siteData";
+import { Icons } from "./shared/Icons";
+import { useScroll } from "@/hooks/useScroll";
+import {
+  BooksAnimation,
+  GithubAnimation,
+  LinkedinAnimation,
+  ProfileAnimation,
+  SkillsAnimation,
+} from "@/utils/motion";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -27,116 +36,21 @@ export default function Header() {
 
     if (linkedin && profile && books && github && skills) {
       setTimeout(() => {
-        gsap.fromTo(
-          profile,
-          {
-            marginRight: "162px",
-            marginTop: "70px",
-            scaleX: ".0",
-            scaleY: ".0",
-            opacity: "0%",
-          },
-          {
-            marginRight: "0px",
-            marginTop: "0px",
-            scaleX: "99%",
-            scaleY: "99%",
-            opacity: "100%",
-            duration: 0.7,
-            onComplete: () => {
-              profile.classList.add("bounce-top");
-              profile.classList.add("delay-1000");
-            },
-          }
-        );
+        ProfileAnimation(profile);
       }, 770);
 
       setTimeout(() => {
-        gsap.fromTo(
-          skills,
-          {
-            width: "0px",
-            opacity: "0%",
-          },
-          {
-            opacity: "100%",
-            width: "auto",
-            duration: 1.1,
-          }
-        );
+        SkillsAnimation(skills);
       }, 370);
 
       setTimeout(() => {
-        gsap.fromTo(
-          books,
-          {
-            marginLeft: "180px",
-            marginTop: "100px",
-            scaleX: ".0",
-            scaleY: ".0",
-            opacity: "0%",
-          },
-          {
-            marginLeft: "0px",
-            marginTop: "0px",
-            scaleX: "99%",
-            scaleY: "99%",
-            opacity: "100%",
-            duration: 0.7,
-            onStart: () => {
-              books.classList.add("bounce-top");
-            },
-          }
-        );
+        BooksAnimation(books);
       }, 670);
       setTimeout(() => {
-        gsap.fromTo(
-          github,
-          {
-            marginRight: "160px",
-            scaleX: ".0",
-            scaleY: ".0",
-            marginBottom: "100px",
-            opacity: "0%",
-          },
-          {
-            marginRight: "0px",
-            marginBottom: "0px",
-            opacity: "100%",
-            scaleX: "99%",
-            scaleY: "99%",
-            duration: 0.7,
-            onComplete: () => {
-              github.classList.add("bounce-bottom");
-              github.classList.add("delay-300");
-            },
-          }
-        );
+        GithubAnimation(github);
       }, 800);
       setTimeout(() => {
-        gsap.fromTo(
-          linkedin,
-          {
-            marginLeft: "160px",
-            marginBottom: "100px",
-            scaleX: ".0",
-            scaleY: ".0",
-            opacity: "0%",
-          },
-          {
-            marginLeft: "0px",
-            scaleX: "99%",
-            scaleY: "99%",
-            marginBottom: "0px",
-            opacity: "100%",
-            duration: 1.1,
-            onStart: () => {},
-            onComplete: () => {
-              linkedin.classList.add("bounce-bottom");
-              linkedin.classList.add("delay-700");
-            },
-          }
-        );
+        LinkedinAnimation(linkedin);
       }, 620);
     }
   }, []);
@@ -144,16 +58,6 @@ export default function Header() {
     threshold: 0.75,
     triggerOnce: true,
   });
-
-  const scrollBottom = () => {
-    const targetScroll = 660;
-    console.log(targetScroll);
-
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
@@ -171,44 +75,7 @@ export default function Header() {
             id="profile"
             className="w-[110px] h-[110px] top-0 absolute lg:right-[44px] xl:right-[82px] opacity-0 rotate-[-6deg] cursor-pointer group"
           >
-            <svg
-              className="absolute z-[0] w-[90px] h-[100px] rotate-[20deg] translate-x-[48px] translate-y-[-28px] xl:translate-x-[64px] scale-[70%] xl:scale-[80%]"
-              xmlns="http://www.w3.org/2000/svg"
-              version="1.1"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              viewBox="0 0 640 800"
-            >
-              <defs>
-                <marker
-                  markerWidth="5"
-                  markerHeight="5"
-                  refX="2.5"
-                  refY="2.5"
-                  viewBox="0 0 5 5"
-                  orient="auto"
-                  id="SvgjsMarker2588"
-                >
-                  <polygon
-                    points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
-                    className="fill-[#203277] dark:fill-[#a9baff]"
-                  />
-                </marker>
-              </defs>
-              <g
-                className="transition-all duration-300 opacity-0 group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
-                stroke-width="22"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                transform="rotate(204, 320, 400)"
-                stroke-dasharray="41.5 46"
-              >
-                <path
-                  d="M107.2482681274414 115.49057006835938Q-154.7517318725586 892.4905700683594 600.2482681274414 608.4905700683594 "
-                  marker-end="url(#SvgjsMarker2588)"
-                ></path>
-              </g>
-            </svg>
+            <Icons.WhoIAmArrow className="absolute z-[0] w-[90px] h-[100px] rotate-[20deg] translate-x-[48px] translate-y-[-28px] xl:translate-x-[64px] scale-[70%] xl:scale-[80%]" />
 
             <span
               className={classNames(
@@ -237,43 +104,7 @@ export default function Header() {
             className="left-[34px] xl:left-[38px] absolute top-0 max-w-max w-max-content opacity-0 rotate-[-6deg] cursor-pointer group"
           >
             <span className=" flex flex-col text-[14px] xl:text-[16px] items-center lg:gap-[8px] xl:gap-[10px] lg:rounded-t-[16px] xl:rounded-t-[20px] lg:rounded-bl-[16px] xl:rounded-bl-[20px] py-[17px] xl:py-[20px] lg:px-[17px] xl:px-[20px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#203277] uppercase xl:left-[12px] transition-all duration-300 group-hover:rounded-[30px] group-hover:xl:rounded-[40px]">
-              <svg
-                className="absolute z-[0] w-[90px] h-[100px] translate-x-[-69px] translate-y-[-60px] xl:translate-x-[-81px] scale-[90%] xl:scale-[105%] transition-all duration-300 opacity-0 group-hover:opacity-[100%]"
-                xmlns="http://www.w3.org/2000/svg"
-                version="1.1"
-                viewBox="0 0 800 800"
-              >
-                <g
-                  stroke-width="20"
-                  className="transition-all duration-[0.6s] opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="53.5 53"
-                  transform="matrix(-0.766044443118978,-0.6427876096865393,0.6427876096865393,-0.766044443118978,464.3027333729755,963.532821122207)"
-                >
-                  <path
-                    d="M128.29476928710938 178.5Q905.2947692871094 240.5 571.2947692871094 621.5 "
-                    marker-end="url(#SvgjsMarker1628)"
-                  ></path>
-                </g>
-                <defs>
-                  <marker
-                    markerWidth="5"
-                    markerHeight="5"
-                    refX="2.5"
-                    refY="2.5"
-                    viewBox="0 0 5 5"
-                    orient="auto"
-                    id="SvgjsMarker1628"
-                  >
-                    <polygon
-                      className="fill-[#203277] dark:fill-[#a9baff]"
-                      points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
-                    ></polygon>
-                  </marker>
-                </defs>
-              </svg>
+              <Icons.ReadingArrow className="absolute z-[0] w-[90px] h-[100px] translate-x-[-69px] translate-y-[-60px] xl:translate-x-[-81px] scale-[90%] xl:scale-[105%] transition-all duration-300 opacity-0 group-hover:opacity-[100%]" />
               <span
                 className={classNames(
                   "absolute z-[2] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]",
@@ -299,43 +130,7 @@ export default function Header() {
             className="lg:w-[80px] xl:w-[110px] bottom-0 absolute h-[110px] lg:left-[80px] opacity-0 rotate-[4deg]"
           >
             <span className="transition-all duration-300 flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] cursor-pointer xl:rounded-[30px] hover:rounded-[70%] bounce-age lg:p-[10px] xl:p-[14px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#ede7de] group">
-              <svg
-                className="absolute z-[0] w-[90px] h-[100px] translate-x-[-55px] translate-y-[-35px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
-                xmlns="http://www.w3.org/2000/svg"
-                version="1.1"
-                viewBox="0 0 800 800"
-              >
-                <g
-                  stroke-width="21"
-                  className="transition-all duration-300 opacity-0  group-hover:opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="35.5 51"
-                  transform="rotate(230, 400, 400)"
-                >
-                  <path
-                    d="M127.06646728515625 191.5232105255127Q904.0664672851562 38.523210525512695 575.0664672851562 639.5232105255127 "
-                    marker-end="url(#SvgjsMarker1674)"
-                  ></path>
-                </g>
-                <defs>
-                  <marker
-                    markerWidth="5"
-                    markerHeight="5"
-                    refX="2.5"
-                    refY="2.5"
-                    viewBox="0 0 5 5"
-                    orient="auto"
-                    id="SvgjsMarker1674"
-                  >
-                    <polygon
-                      points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
-                      className="fill-[#203277] dark:fill-[#a9baff]"
-                    ></polygon>
-                  </marker>
-                </defs>
-              </svg>
+              <Icons.LinkedinArrow className="absolute z-[0] w-[90px] h-[100px] translate-x-[-55px] translate-y-[-35px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]" />
               <span className="absolute z-[2] font-geom xl:text-[20px] transition duration-300 opacity-0 group-hover:opacity-[100%] translate-x-[12px] xl:translate-y-[-82px] uppercase translate-y-[-64px] text-[#203277] dark:text-[#a9baff]">
                 Linkedin
               </span>
@@ -353,43 +148,7 @@ export default function Header() {
             className="flex absolute right-[62px] opacity-0 cursor-pointer bottom-0 group items-center max-w-max w-max-content"
           >
             <span className="lg:rounded-[14px] transition-all duration-300 xl:rounded-[20px] py-[12px] lg:px-[10px] xl:px-[14px] bg-[#f7f2f2]/[.85] backdrop-blur-[6px] backdrop-saturate-[1.4] rotate-[4deg]  group-hover:rounded-[80%]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                version="1.1"
-                viewBox="0 0 800 800"
-                className="absolute z-[0] transition-all duration-300 opacity-0 group-hover:opacity-[100%] w-[90px] h-[100px] translate-x-[42px] xl:translate-x-[66px] translate-y-[-51px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]"
-              >
-                <g
-                  stroke-width="21"
-                  className="transition-all duration-300 opacity-[100%] stroke-[#203277] dark:stroke-[#a9baff]"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="35.5 51"
-                  transform="rotate(230, 400, 400)"
-                >
-                  <path
-                    d="M160 118.93435668945312Q379 895.9343566894531 640 598.9343566894531 "
-                    marker-end="url(#SvgjsMarker2229)"
-                  ></path>
-                </g>
-                <defs>
-                  <marker
-                    markerWidth="5"
-                    markerHeight="5"
-                    refX="2.5"
-                    refY="2.5"
-                    viewBox="0 0 5 5"
-                    orient="auto"
-                    id="SvgjsMarker2229"
-                  >
-                    <polygon
-                      points="0,5 1.6666666666666667,2.5 0,0 5,2.5"
-                      className="fill-[#203277] dark:fill-[#a9baff]"
-                    ></polygon>
-                  </marker>
-                </defs>
-              </svg>
+              <Icons.GithubArrow className="absolute z-[0] transition-all duration-300 opacity-0 group-hover:opacity-[100%] w-[90px] h-[100px] translate-x-[42px] xl:translate-x-[66px] translate-y-[-51px] xl:translate-y-[-50px] scale-[90%] xl:scale-[105%]" />
               <span className="absolute z-[2] font-geom xl:text-[20px] rotate-[2deg] transition-all duration-300 opacity-0 group-hover:opacity-[100%] translate-x-[6px] xl:translate-x-[12px] xl:translate-y-[-56px] uppercase translate-y-[-48px] text-[#203277] dark:text-[#a9baff]">
                 Github
               </span>
@@ -405,7 +164,7 @@ export default function Header() {
         </div>
         <div
           ref={ref}
-          onClick={() => scrollBottom()}
+          onClick={() => useScroll(660)}
           onMouseEnter={() => {
             setIsCursorActive(true);
             setCursorBackground("#e2d7c5");
@@ -460,48 +219,7 @@ export default function Header() {
             className="max-w-[90vw] opacity-0 w-0 lg:max-w-[536px] xl:max-w-[684px] mt-[8px] sm:mt-[10px] lg:mt-[16px] py-[5px] sm:py-[6px] lg:py-[8px] rounded-[16px] sm:rounded-[20px] lg:rounded-[36px] md:rounded-[58px] border-[1px] border-[#203277] dark:border-[#a9baff] overflow-hidden"
           >
             <InfinityText
-              texts={[
-                "skills:",
-                "next",
-                "nest",
-                "cypress",
-                "typescript",
-                "node",
-                "react",
-                "python",
-                "javascript",
-                "express",
-                "django",
-                "mongoDB",
-                "prisma",
-                "graphQL",
-                "AWS",
-                "linux",
-                "jest",
-                "fireBase",
-                "framer",
-                "docker",
-                "jenkins",
-                "gsap",
-                "redux",
-                "postgreSql",
-                "mySql",
-                "tailwind",
-                "sass",
-                "chakra UI",
-                "styled components",
-                "redis",
-                "webpack",
-                "babel",
-                "git",
-                "mocha",
-                "bash",
-                "sqlLite",
-                "html",
-                "css",
-                "adobe XD",
-                "figma",
-              ]}
+              texts={skills}
               className="text-[#203277] dark:text-[#a9baff] mr-[16px] flex items-center gap-[16px] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] capitalize"
               iconClassName="text-[#203277] dark:text-[#f7f2f2] w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] lg:w-[16px] lg:h-[16px]"
               baseVelocity={-0.8}

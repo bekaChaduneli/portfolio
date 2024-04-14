@@ -1,12 +1,5 @@
+import { MaskTextType } from "@/types/ComponentsType";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
-
-type MaskTextType = {
-  index: number;
-  className: string;
-  inView: any;
-  children: ReactNode;
-};
 
 export function MaskText({ index, className, inView, children }: MaskTextType) {
   const animation = {
