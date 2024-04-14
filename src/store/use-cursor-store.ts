@@ -1,5 +1,5 @@
 import { CursorActions, CursorState } from "@/types/storeTypes";
-import create from "zustand";
+import { create } from "zustand";
 
 const useCursorStore = create<CursorState & CursorActions>((set) => ({
   cursorType: "",

@@ -6,7 +6,6 @@ import TransitionLink from "../shared/TransitionLink";
 import classNames from "classnames";
 import ThemeSwitch from "./ThemeSwitch";
 import SoundSwitcher from "./SoundSwitcher";
-import initTranslations from "@/app/[locale]/i18n";
 import { Turn as Hamburger } from "hamburger-react";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useEffect, useState } from "react";
@@ -15,14 +14,13 @@ import Image from "next/image";
 import { useDisableOverflow } from "@/hooks/useDisableOverflow";
 import { useTheme } from "next-themes";
 import Menu from "./Menu";
-import { Translations } from "@/types/ComponentTypes";
+import { useTranslations } from "@/hooks/useTransitions";
 
 const i18nNamespaces = ["navbar"];
 
 export default function Navbar({ locale }: { locale: string }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState<boolean>(false);
-  const [translations, setTranslations] = useState<Translations | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
 
@@ -44,17 +42,10 @@ export default function Navbar({ locale }: { locale: string }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  useEffect(() => {
-    const fetchTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setTranslations({ t, resources });
-    };
-
-    fetchTranslations();
-  }, [locale]);
+  const translations = useTranslations(locale, i18nNamespaces);
 
   if (!translations) {
-    return <div></div>;
+    return <div>Loading...</div>;
   }
 
   const { t, resources } = translations;
