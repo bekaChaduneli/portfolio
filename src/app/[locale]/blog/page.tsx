@@ -1,3 +1,4 @@
+"use client";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import { useTranslations } from "@/hooks/useTransitions";
 

@@ -1,8 +1,7 @@
 "use client";
 
 import classNames from "classnames";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MaskText } from "../animations/MaskText";
 import { useInView } from "react-intersection-observer";
