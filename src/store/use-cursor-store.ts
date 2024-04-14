@@ -1,7 +1,7 @@
-import { StoreActions, StoreState } from "@/types/storeTypes";
+import { CursorActions, CursorState } from "@/types/storeTypes";
 import create from "zustand";
 
-const useCursorStore = create<StoreState & StoreActions>((set) => ({
+const useCursorStore = create<CursorState & CursorActions>((set) => ({
   cursorType: "",
   isCursorActive: false,
   cursorAnimation: null,

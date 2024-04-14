@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Calendly from "./Calendly";
 import LanguageChanger from "./LanguageChanger";
-import TransitionLink from "../TransitionLink";
+import TransitionLink from "../shared/TransitionLink";
 import classNames from "classnames";
 import ThemeSwitch from "./ThemeSwitch";
 import SoundSwitcher from "./SoundSwitcher";

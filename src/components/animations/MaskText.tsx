@@ -1,4 +1,4 @@
-import { MaskTextType } from "@/types/ComponentsType";
+import { MaskTextType } from "@/types/ComponentTypes";
 import { motion } from "framer-motion";
 
 export function MaskText({ index, className, inView, children }: MaskTextType) {

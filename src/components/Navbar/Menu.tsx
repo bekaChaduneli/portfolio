@@ -1,7 +1,7 @@
 import LanguageChanger from "./LanguageChanger";
 import { navigationLinks } from "@/lib/siteData";
 import classNames from "classnames";
-import TransitionLink from "../TransitionLink";
+import TransitionLink from "../shared/TransitionLink";
 import ThemeSwitch from "./ThemeSwitch";
 import SoundSwitcher from "./SoundSwitcher";
 import { usePathname } from "next/navigation";

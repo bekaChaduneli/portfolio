@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import { wrap } from "framer-motion";
 import { Sparkle } from "lucide-react";
-import { InfinityTextProps } from "@/types/ComponentsType";
+import { InfinityTextProps } from "@/types/ComponentTypes";
 
 export default function InfinityText({
   texts,
