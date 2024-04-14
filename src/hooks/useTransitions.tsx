@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import initTranslations from "@/app/i18n";
 import { Translations } from "@/types/ComponentTypes";

@@ -10,7 +10,6 @@ import InfinityText from "../animations/InfinityText";
 import useCursorStore from "@/store/use-cursor-store";
 import { skills } from "@/lib/siteData";
 
-import { useScroll } from "@/hooks/useScroll";
 import { HeaderInfos } from "./HeaderInfos";
 
 export default function Header() {
@@ -25,6 +24,15 @@ export default function Header() {
     threshold: 0.75,
     triggerOnce: true,
   });
+  const scrollBottom = () => {
+    const targetScroll = 660;
+    console.log(targetScroll);
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
@@ -32,7 +40,7 @@ export default function Header() {
         <HeaderInfos scrollHover={scrollHover} t={t} />
         <div
           ref={ref}
-          onClick={() => useScroll(660)}
+          onClick={() => scrollBottom}
           onMouseEnter={() => {
             setIsCursorActive(true);
             setCursorBackground("#e2d7c5");
