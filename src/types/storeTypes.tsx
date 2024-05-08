@@ -12,3 +12,11 @@ export interface CursorActions {
   setCursorBackground: (color: string) => void;
   setCursorText: (text: string) => void;
 }
+
+export interface SoundState {
+  sound: boolean;
+}
+
+export interface SoundActions {
+  setSound: (sound: boolean) => void;
+}

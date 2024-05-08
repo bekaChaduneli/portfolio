@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react";
 import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import { motion } from "framer-motion";
 import classNames from "classnames";
 
 export default function CursorAnimations() {
   const { isCursorActive, cursorText } = useCursorStore();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { x, y } = useMousePosition();
   const [langAttribute, setLangAttribute] = useState<string>("");
 
@@ -16,7 +18,8 @@ export default function CursorAnimations() {
     setLangAttribute(lang ? lang : "en");
   }, []);
   return (
-    <motion.div
+    <>
+    {isDesktop ? (<motion.div
       className="fixed z-[10] pointer-events-none"
       style={{
         translateX: `${x && x}px`,
@@ -45,6 +48,8 @@ export default function CursorAnimations() {
           {cursorText}
         </h1>
       </div>
-    </motion.div>
+    </motion.div>) : <></>}
+    </>
+    
   );
 }

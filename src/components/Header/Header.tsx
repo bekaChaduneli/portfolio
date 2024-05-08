@@ -25,8 +25,6 @@ export default function Header() {
   });
   const scrollBottom = () => {
     const targetScroll = 660;
-    console.log(targetScroll);
-
     window.scrollTo({
       top: targetScroll,
       behavior: "smooth",
@@ -39,7 +37,7 @@ export default function Header() {
         <HeaderInfos scrollHover={scrollHover} t={t} />
         <div
           ref={ref}
-          onClick={() => scrollBottom}
+          onClick={() => scrollBottom()}
           onMouseEnter={() => {
             setIsCursorActive(true);
             setCursorBackground("#e2d7c5");
