@@ -6,7 +6,7 @@ export interface CursorState {
     cursorText: string;
 }
 
-type PopUpType = "books" | "aboutMe" | "linkedin" | "github";
+type PopUpType = "books" | "profile" | "linkedin" | "github";
 
 export interface PopUpState {
     type: PopUpType | null;

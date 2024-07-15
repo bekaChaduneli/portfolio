@@ -8,44 +8,47 @@ import { Providers } from "./providers";
 import CanvasComponent from "@/components/CanvasComponent";
 import { Noto_Sans_Georgian } from "next/font/google";
 import CursorAnimations from "@/components/Cursor/CursorAnimations";
+import PopUp from "@/components/shared/PopUp";
+import NoSsr from "@/hooks/noSsr";
 
 export const metadata: Metadata = {
-  title: "Beka Chaduneli",
-  description: "portfolio",
+    title: "Beka Chaduneli",
+    description: "portfolio",
 };
 
 const notoSansGeorgian = Noto_Sans_Georgian({
-  subsets: ["latin"],
+    subsets: ["latin"],
 });
 
 export function generateStaticParams() {
-  return i18nConfig.locales.map((locale: string) => ({ locale }));
+    return i18nConfig.locales.map((locale: string) => ({ locale }));
 }
 
 export default function RootLayout({
-  children,
-  params: { locale },
+    children,
+    params: { locale },
 }: {
-  children: ReactNode;
-  params: { locale: string };
+    children: ReactNode;
+    params: { locale: string };
 }) {
-  return (
-    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
-      <body
-        id="root"
-        className={`overflow-hidden 
+    return (
+        <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
+            <body
+                id="root"
+                className={`overflow-hidden 
         ${locale === "en" ? "font-graphik" : notoSansGeorgian.className}
         `}
-      >
-        <Providers>
-          <CanvasComponent />
-          <CursorAnimations />
-          <div className="">
-            <Navbar locale={locale} />
-            {children}
-          </div>
-        </Providers>
-      </body>
-    </html>
-  );
+            >
+                <Providers>
+                    <CanvasComponent />
+                    <CursorAnimations />
+                    <PopUp />
+                    <div className="">
+                        <Navbar locale={locale} />
+                        {children}
+                    </div>
+                </Providers>
+            </body>
+        </html>
+    );
 }
