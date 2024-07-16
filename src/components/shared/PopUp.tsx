@@ -9,7 +9,7 @@ export default function PopUp() {
     return (
         <div
             onClick={onClose}
-            className="absolute z-[10] inset-0 bg-black/40 transition-all duration-300"
+            className="absolute z-[10] inset-0 bg-black/20 transition-all duration-300 cursor-zoom-out"
         ></div>
     );
 }
