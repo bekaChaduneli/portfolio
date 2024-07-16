@@ -196,7 +196,7 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ t, scrollHover }) => {
                         />
                         <span
                             className={cn(
-                                "absolute z-[2] font-geom xl:text-[20px] rotate-[2deg] transition-all duration-300 opacity-0 group-hover:opacity-[100%] translate-x-[6px] xl:translate-x-[12px] xl:translate-y-[-56px] uppercase translate-y-[-48px] text-[#203277] dark:text-[#989aa1]",
+                                "absolute z-[2] font-geom xl:text-[20px] rotate-[2deg] transition-all duration-300 opacity-0 group-hover:opacity-[100%] translate-x-[6px] xl:translate-x-[12px] xl:translate-y-[-56px] uppercase translate-y-[-48px] text-[#203277] dark:text-[#a9baff]",
                                 isOpen && type === "github" && "opacity-100"
                             )}
                         >

@@ -7,35 +7,38 @@ import { useEffect, useState } from "react";
 const i18nNamespaces = ["home"];
 
 export default function Home({
-  params: { locale },
+    params: { locale },
 }: {
-  params: { locale: any };
+    params: { locale: any };
 }) {
-  const [translations, setTranslations] = useState<any>(null);
-  useEffect(() => {
-    const fetchTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setTranslations({ t, resources });
-    };
+    const [translations, setTranslations] = useState<any>(null);
+    useEffect(() => {
+        const fetchTranslations = async () => {
+            const { t, resources } = await initTranslations(
+                locale,
+                i18nNamespaces
+            );
+            setTranslations({ t, resources });
+        };
 
-    fetchTranslations();
-  }, [locale]);
+        fetchTranslations();
+    }, [locale]);
 
-  if (!translations) {
-    return <div className="w-full h-full bg-black"></div>;
-  }
+    if (!translations) {
+        return <div className="w-full h-full bg-black"></div>;
+    }
 
-  const { t, resources } = translations;
+    const { t, resources } = translations;
 
-  return (
-    <TranslationsProvider
-      namespaces={i18nNamespaces}
-      locale={locale}
-      resources={resources}
-    >
-      <main className="mb-[2000px]">
-        <Header />
-      </main>
-    </TranslationsProvider>
-  );
+    return (
+        <TranslationsProvider
+            namespaces={i18nNamespaces}
+            locale={locale}
+            resources={resources}
+        >
+            <main className="mb-[2000px]">
+                <Header />
+            </main>
+        </TranslationsProvider>
+    );
 }

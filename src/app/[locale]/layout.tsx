@@ -9,7 +9,6 @@ import CanvasComponent from "@/components/CanvasComponent";
 import { Noto_Sans_Georgian } from "next/font/google";
 import CursorAnimations from "@/components/Cursor/CursorAnimations";
 import PopUp from "@/components/shared/PopUp";
-import NoSsr from "@/hooks/noSsr";
 
 export const metadata: Metadata = {
     title: "Beka Chaduneli",
@@ -35,14 +34,15 @@ export default function RootLayout({
         <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
             <body
                 id="root"
-                className={`overflow-hidden 
+                className={`overflow-hidden
         ${locale === "en" ? "font-graphik" : notoSansGeorgian.className}
         `}
             >
+                {" "}
+                <PopUp />
                 <Providers>
                     <CanvasComponent />
                     <CursorAnimations />
-                    <PopUp />
                     <div className="">
                         <Navbar locale={locale} />
                         {children}
