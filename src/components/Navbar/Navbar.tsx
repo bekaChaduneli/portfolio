@@ -79,7 +79,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         <span className="py-3">
                             <TransitionLink
                                 className={classNames(
-                                    "px-4 h-full rounded-[24px] font-bold  text-[#2b3b7a] dark:text-[#ede7de]",
+                                    "px-4 h-full rounded-[24px] font-bold  text-primary dark:text-secondary",
                                     {
                                         "backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]":
                                             pathname === `/${locale}`,
@@ -93,7 +93,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         <span className="py-3">
                             <TransitionLink
                                 className={classNames(
-                                    "px-4 rounded-[24px] h-full font-bold  text-[#2b3b7a] dark:text-[#ede7de]",
+                                    "px-4 rounded-[24px] h-full font-bold  text-primary dark:text-secondary",
                                     {
                                         " backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]":
                                             pathname === `/${locale}/about`,
@@ -108,7 +108,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         <span className="py-3 group">
                             <button
                                 className={classNames(
-                                    "px-4 rounded-[24px] font-bold flex items-center text-[#2b3b7a] dark:text-[#ede7de] h-full",
+                                    "px-4 rounded-[24px] font-bold flex items-center text-primary dark:text-secondary h-full",
                                     {
                                         " backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]":
                                             pathname === `/${locale}/main` ||
@@ -197,7 +197,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         <span className="py-3">
                             <TransitionLink
                                 className={classNames(
-                                    "px-4 rounded-[24px] h-full font-bold relative text-[#2b3b7a] dark:text-[#ede7de]",
+                                    "px-4 rounded-[24px] h-full font-bold relative text-primary dark:text-secondary",
                                     {
                                         "backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]":
                                             pathname === `/${locale}/blog`,
@@ -229,7 +229,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         className="cursor-pointer group"
                     >
                         <Image
-                            className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-[#ede7de] rounded-full"
+                            className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-secondary rounded-full"
                             src="/profile.jpg"
                             alt="profile"
                             width={650}

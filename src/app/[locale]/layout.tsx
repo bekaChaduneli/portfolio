@@ -9,6 +9,7 @@ import CanvasComponent from "@/components/CanvasComponent";
 import { Noto_Sans_Georgian } from "next/font/google";
 import CursorAnimations from "@/components/Cursor/CursorAnimations";
 import PopUp from "@/components/shared/PopUp";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
     title: "Beka Chaduneli",
@@ -46,6 +47,7 @@ export default function RootLayout({
                     <div className="">
                         <Navbar locale={locale} />
                         {children}
+                        <Footer />
                     </div>
                 </Providers>
             </body>

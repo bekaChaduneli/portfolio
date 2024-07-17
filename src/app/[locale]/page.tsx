@@ -36,7 +36,7 @@ export default function Home({
             locale={locale}
             resources={resources}
         >
-            <main className="mb-[2000px]">
+            <main className="min-h-[100vh]">
                 <Header />
             </main>
         </TranslationsProvider>
