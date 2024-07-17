@@ -32,5 +32,10 @@
         "projects": "Projects",
         "talk": "Talk with me"
     },
-    "Projects": { "headline": "projects" }
+    "Projects": { "headline": "projects" },
+    "Footer": {
+        "Name": "Beka Chaduneli",
+        "Work": "Software Engineer",
+        "take-a-look": "Take a look at my socials:"
+    }
 }

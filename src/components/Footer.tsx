@@ -2,31 +2,122 @@
 import Image from "next/image";
 import React from "react";
 import NavigationLink from "./Navbar/NavigationLink";
+import { cn } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { Facebook, Linkedin, LucideGithub } from "lucide-react";
 
 export default function Footer() {
+    const locale = useLocale();
+    const pathname = usePathname();
+    const b = useTranslations("Navbar");
+    const t = useTranslations("Footer");
     return (
         <footer className="relative mb-[20px] mx-1 lg:mx-[20px] text-white flex justify-center">
-            <div className="w-full justify-between border-b-[1px] border-primary dark:border-secondary duration-300 transition-all py-[12px] max-w-[1200px]">
-                <NavigationLink
-                    href="/"
-                    className="cursor-pointer group flex gap-[12px] items-center"
-                >
-                    <Image
-                        className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-secondary rounded-full"
-                        src="/profile.jpg"
-                        alt="profile"
-                        width={650}
-                        height={650}
-                    />
-                    <div className="text-start">
-                        <h3 className="font-extrabold text-[20px] text-primary dark:text-secondary font-geom leading-[100%]">
-                            Beka Chaduneli
-                        </h3>
-                        <h3 className="font-medium text-[17.2px] text-primary dark:text-secondary">
-                            Software Engineer
-                        </h3>
+            <div className="max-w-[1200px] w-full">
+                <div className="w-full flex justify-between border-b-[1px] border-primary dark:border-secondary duration-300 transition-all pb-[24px]">
+                    <NavigationLink
+                        href="/"
+                        className="cursor-pointer group flex gap-[12px] items-center"
+                    >
+                        <Image
+                            className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-secondary rounded-full"
+                            src="/profile.jpg"
+                            alt="profile"
+                            width={650}
+                            height={650}
+                        />
+                        <div className="text-start">
+                            <h3
+                                className={cn(
+                                    "font-extrabold text-[20px] text-primary dark:text-secondary font-geom leading-[100%]",
+                                    locale === "ka" && "leading-[140%]"
+                                )}
+                            >
+                                {t("Name")}
+                            </h3>
+                            <h3
+                                className={cn(
+                                    "font-medium text-[17.2px] text-primary dark:text-secondary",
+                                    locale === "ka" && "text-[16px]"
+                                )}
+                            >
+                                {t("Work")}
+                            </h3>
+                        </div>
+                    </NavigationLink>
+                    <div className="flex gap-[20px] items-center">
+                        <NavigationLink
+                            className={cn(
+                                "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
+                                pathname === `/${locale}` &&
+                                    "opacity-100 underline"
+                            )}
+                            href="/"
+                        >
+                            {b("home")}
+                        </NavigationLink>
+                        <NavigationLink
+                            className={cn(
+                                "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
+                                pathname === `/${locale}/about` &&
+                                    "opacity-100 underline"
+                            )}
+                            href="/about"
+                        >
+                            {b("about")}
+                        </NavigationLink>
+                        <NavigationLink
+                            className={cn(
+                                "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
+                                pathname === `/${locale}/main` &&
+                                    "opacity-100 underline"
+                            )}
+                            href="/main"
+                        >
+                            {b("projects")}
+                        </NavigationLink>
+                        <NavigationLink
+                            className={cn(
+                                "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
+                                pathname === `/${locale}/blog` &&
+                                    "opacity-100 underline"
+                            )}
+                            href="/blog"
+                        >
+                            {b("blog")}
+                        </NavigationLink>
                     </div>
-                </NavigationLink>
+                </div>
+                <div className="pt-[24px] flex justify-between duration-300 transition-all">
+                    <h1 className="text-[18px] text-primary dark:text-secondary font-graphik font-semibold">
+                        {t("take-a-look")}
+                    </h1>
+                    <div className="flex gap-[20px] items-center">
+                        <Link
+                            className="group cursor-pointer"
+                            href="https://github.com/bekaChaduneli"
+                            target="_blank"
+                        >
+                            <LucideGithub className="w-[26px] h-[26px] text-primary dark:text-secondary transition-all duration-300 group-hover:scale-[124%]" />
+                        </Link>
+                        <Link
+                            className="group cursor-pointer"
+                            href="https://linkedin.com/in/beka-chaduneli-28203422b/"
+                            target="_blank"
+                        >
+                            <Linkedin className="w-[26px] h-[26px] text-primary dark:text-secondary transition-all duration-300 group-hover:scale-[124%]" />
+                        </Link>
+                        <Link
+                            className="group cursor-pointer"
+                            href="https://www.facebook.com/chadunelibb/"
+                            target="_blank"
+                        >
+                            <Facebook className="w-[26px] h-[26px] text-primary dark:text-secondary transition-all duration-300 group-hover:scale-[124%]" />
+                        </Link>
+                    </div>
+                </div>
             </div>
         </footer>
     );
