@@ -1,25 +1,24 @@
 import LanguageChanger from "./LanguageChanger";
 import { navigationLinks } from "@/lib/siteData";
 import classNames from "classnames";
-import TransitionLink from "../shared/TransitionLink";
 import ThemeSwitch from "./ThemeSwitch";
 import SoundSwitcher from "./SoundSwitcher";
 import { usePathname } from "next/navigation";
-import { TFunction } from "i18next";
+import { useTranslations } from "next-intl";
+import NavigationLink from "./NavigationLink";
 
 export default function Menu({
     isOpen,
     changeMenu,
     locale,
-    t,
 }: {
     isOpen: boolean;
     changeMenu: () => void;
     locale: string;
-    t: TFunction;
 }) {
     navigationLinks;
     const pathname = usePathname();
+    const t = useTranslations("Navbar");
     return (
         <div
             className={classNames(
@@ -45,8 +44,8 @@ export default function Menu({
                         }
                     )}
                 >
-                    <TransitionLink
-                        href={`/${locale}`}
+                    <NavigationLink
+                        href="/"
                         className={classNames(
                             "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase",
                             {
@@ -56,9 +55,9 @@ export default function Menu({
                         onClick={() => isOpen && changeMenu()}
                     >
                         {t("home")}
-                    </TransitionLink>
-                    <TransitionLink
-                        href={`/${locale}/about`}
+                    </NavigationLink>
+                    <NavigationLink
+                        href="/about"
                         className={classNames(
                             "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase",
                             {
@@ -69,9 +68,9 @@ export default function Menu({
                         onClick={() => isOpen && changeMenu()}
                     >
                         {t("about")}
-                    </TransitionLink>
-                    <TransitionLink
-                        href={`/${locale}/main`}
+                    </NavigationLink>
+                    <NavigationLink
+                        href="/main"
                         className={classNames(
                             "text-[#283d8b] dark:text-secondary text-[38px] leading-[100%] sm:text-[46px] md:text-[52px] font-bold uppercase",
                             {
@@ -83,9 +82,9 @@ export default function Menu({
                         onClick={() => isOpen && changeMenu()}
                     >
                         {t("projects")}
-                    </TransitionLink>
-                    <TransitionLink
-                        href={`/${locale}/blog`}
+                    </NavigationLink>
+                    <NavigationLink
+                        href="/blog"
                         className={classNames(
                             "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase",
                             {
@@ -95,7 +94,7 @@ export default function Menu({
                         onClick={() => isOpen && changeMenu()}
                     >
                         {t("blog")}
-                    </TransitionLink>
+                    </NavigationLink>
                 </nav>
             </div>
             <div className="absolute bottom-[40px] w-full px-[40px] flex justify-between items-center gap-[20px]">

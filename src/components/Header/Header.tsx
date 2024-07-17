@@ -2,7 +2,6 @@
 
 import classNames from "classnames";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { MaskText } from "../animations/MaskText";
 import { useInView } from "react-intersection-observer";
 import InfinityText from "../animations/InfinityText";
@@ -11,9 +10,10 @@ import { skills } from "@/lib/siteData";
 
 import { HeaderInfos } from "./HeaderInfos";
 import HeaderPopUp from "./HeaderPopUp";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
-    const { t } = useTranslation();
+    const t = useTranslations("Home");
     const htmlTag = document.documentElement;
     const langAttribute = htmlTag.getAttribute("lang");
     const { setIsCursorActive, setCursorBackground, setCursorText } =

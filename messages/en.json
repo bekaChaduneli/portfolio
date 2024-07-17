@@ -1,0 +1,29 @@
+{
+    "About": { "headline": "I am beka" },
+    "Admin": { "headline": "admin panel" },
+    "Archive": { "headline": "archive" },
+    "Blog": { "headline": "my blog" },
+    "Contact": { "headline": "contact" },
+    "Home": {
+        "header_name": "I'm Beka",
+        "location": "tbilisi, georgia",
+        "phone": "571118560",
+        "profession": "sofware engineer",
+        "reading-list": "reading list",
+        "scroll": "scroll",
+        "view": "view",
+        "who-i-am": "who i am"
+    },
+    "Navbar": {
+        "about": "About Me",
+        "archive": "Archive",
+        "archive-text": "Here you will find the rest of the projects I have worked on with a bit of information",
+        "blog": "Blog",
+        "home": "Home",
+        "main": "Main",
+        "main-text": "Here you will find the best projects I have worked on in as much detail as possible",
+        "projects": "Projects",
+        "talk": "Talk with me"
+    },
+    "Projects": { "headline": "projects" }
+}

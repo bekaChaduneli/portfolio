@@ -1,10 +1,10 @@
-import { TFunction } from "i18next";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { PopupButton } from "react-calendly";
 
-const Calendly = ({ t }: { t: TFunction }) => {
+const Calendly = () => {
     const [isClient, setIsClient] = useState(false);
-
+    const t = useTranslations("Navbar");
     useEffect(() => {
         setIsClient(true);
     }, []);

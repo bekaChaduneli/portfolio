@@ -1,31 +1,16 @@
 "use client";
-import TranslationsProvider from "@/components/TranslationsProvider";
-import { useTranslations } from "@/hooks/useTransitions";
 
-const i18nNamespaces = ["archive"];
+import { useTranslations } from "next-intl";
 
 export default function Archive({
-  params: { locale },
+    params: { locale },
 }: {
-  params: { locale: string };
+    params: { locale: string };
 }) {
-  const translations = useTranslations(locale, i18nNamespaces);
-
-  if (!translations) {
-    return <div>Loading...</div>;
-  }
-
-  const { t, resources } = translations;
-
-  return (
-    <TranslationsProvider
-      namespaces={i18nNamespaces}
-      locale={locale}
-      resources={resources}
-    >
-      <main>
-        <h1>{t("headline")}</h1>
-      </main>
-    </TranslationsProvider>
-  );
+    const t = useTranslations("Archive");
+    return (
+        <main>
+            <h1>{t("headline")}</h1>
+        </main>
+    );
 }
