@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 type Props = {
     params: {
@@ -21,6 +21,7 @@ export default function Blog({
 }: {
     params: { locale: string };
 }) {
+    unstable_setRequestLocale(locale);
     const t = useTranslations("Blog");
 
     return (

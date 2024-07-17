@@ -35,7 +35,7 @@ export default function Header() {
     return (
         <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
             <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
-                <HeaderInfos scrollHover={scrollHover} t={t} />
+                <HeaderInfos scrollHover={scrollHover} />
                 <HeaderPopUp />
                 <div
                     ref={ref}

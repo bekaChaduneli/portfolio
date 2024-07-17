@@ -12,11 +12,13 @@ import Image from "next/image";
 import { HeaderInfosProps } from "@/types/ComponentTypes";
 import usePopUpStore from "@/store/use-popup-store";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
-export const HeaderInfos: React.FC<HeaderInfosProps> = ({ t, scrollHover }) => {
+export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
     const htmlTag = document.documentElement;
     const langAttribute = htmlTag.getAttribute("lang");
     const { onOpen, isOpen, type } = usePopUpStore();
+    const t = useTranslations("Home");
     useEffect(() => {
         // animations not working using refs
         const profile = document.querySelector("#profile");
