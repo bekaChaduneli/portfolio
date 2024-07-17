@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 type Props = {
     params: {
@@ -15,11 +15,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-export default function About({
-    params: { locale },
-}: {
-    params: { locale: string };
-}) {
+export default function About() {
+    const locale = useLocale();
+
     unstable_setRequestLocale(locale);
 
     const t = useTranslations("About");

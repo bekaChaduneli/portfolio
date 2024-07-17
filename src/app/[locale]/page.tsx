@@ -1,13 +1,11 @@
-"use client";
-
 import Header from "@/components/Header/Header";
+import { useLocale } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-interface HomeProps {
-    params: { locale: string };
-}
+interface HomeProps {}
 
-const HomePage: React.FC<HomeProps> = ({ params: { locale } }: HomeProps) => {
+const HomePage: React.FC<HomeProps> = () => {
+    const locale = useLocale();
     unstable_setRequestLocale(locale);
 
     return (

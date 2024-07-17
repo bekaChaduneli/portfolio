@@ -10,7 +10,11 @@ import CursorAnimations from "@/components/Cursor/CursorAnimations";
 import PopUp from "@/components/shared/PopUp";
 import Footer from "@/components/Footer";
 import { locales } from "@/config";
-import { getMessages, getTranslations } from "next-intl/server";
+import {
+    getMessages,
+    getTranslations,
+    unstable_setRequestLocale,
+} from "next-intl/server";
 import { Metadata } from "next";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
@@ -42,6 +46,7 @@ export default async function LocaleLayout({
     children: ReactNode;
     params: { locale: string };
 }) {
+    unstable_setRequestLocale(locale);
     const messages = await getMessages();
     return (
         <html lang={locale} suppressHydrationWarning>
