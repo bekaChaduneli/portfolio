@@ -1,3 +1,4 @@
+// app/layout.tsx
 import "../globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { ReactNode } from "react";
@@ -10,6 +11,7 @@ import PopUp from "@/components/shared/PopUp";
 import Footer from "@/components/Footer";
 import { locales } from "@/config";
 import { getMessages, getTranslations } from "next-intl/server";
+import { Metadata } from "next";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
     subsets: ["latin"],
@@ -26,9 +28,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
     params: { locale },
-}: Omit<Props, "children">) {
+}: Omit<Props, "children"> & { pageTitle: string }): Promise<Metadata> {
     const t = await getTranslations({ locale, namespace: "LocaleLayout" });
-
     return {
         title: t("title"),
     };

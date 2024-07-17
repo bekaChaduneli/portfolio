@@ -45,7 +45,7 @@ export default function Navbar({ locale }: { locale: string }) {
         <div className="flex justify-center p-[24px]">
             <div
                 className={classNames(
-                    "hidden lg:flex fixed z-[45] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
+                    "hidden lg:flex fixed z-[9] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
                     {
                         " bg-[#f7f2f2]/[.78] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[6px] backdrop-saturate-[1.4]":
                             scrolled,
@@ -205,7 +205,7 @@ export default function Navbar({ locale }: { locale: string }) {
                     <LanguageChanger locale={locale} />
                 </div>
             </div>
-            <div className="flex cursor-pointer lg:hidden fixed z-[45] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
+            <div className="flex cursor-pointer lg:hidden fixed z-[9] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
                 <NavigationLink href="/" className="cursor-pointer group">
                     <Image
                         className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-secondary rounded-full"
