@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "../globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { ReactNode } from "react";
@@ -47,7 +46,7 @@ export default async function LocaleLayout({
     params: { locale: string };
 }) {
     unstable_setRequestLocale(locale);
-    const messages = await getMessages();
+    const messages = await getMessages({ locale });
     return (
         <html lang={locale} suppressHydrationWarning>
             <body
@@ -57,8 +56,8 @@ export default async function LocaleLayout({
         `}
             >
                 <NextIntlClientProvider messages={messages}>
-                    <PopUp />
                     <Providers>
+                        <PopUp />
                         <CanvasComponent />
                         <CursorAnimations />
                         <div className="">
