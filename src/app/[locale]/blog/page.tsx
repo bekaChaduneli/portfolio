@@ -1,31 +1,30 @@
-"use client";
-import TranslationsProvider from "@/components/TranslationsProvider";
-import { useTranslations } from "@/hooks/useTransitions";
+import { Metadata } from "next";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-const i18nNamespaces = ["blog"];
+type Props = {
+    params: {
+        locale: string;
+    };
+};
 
-export default function Blog({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const translations = useTranslations(locale, i18nNamespaces);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const locale = params.locale;
+    const t = await getTranslations({ locale, namespace: "LocaleLayout" });
+    return {
+        title: `${t("title")} | ${t("blog")}`,
+    };
+}
 
-  if (!translations) {
-    return <div>Loading...</div>;
-  }
+export default function Blog() {
+    const locale = useLocale();
 
-  const { t, resources } = translations;
+    unstable_setRequestLocale(locale);
+    const t = useTranslations("Blog");
 
-  return (
-    <TranslationsProvider
-      namespaces={i18nNamespaces}
-      locale={locale}
-      resources={resources}
-    >
-      <main>
-        <h1>{t("headline")}</h1>
-      </main>
-    </TranslationsProvider>
-  );
+    return (
+        <main>
+            <h1>{t("headline")}</h1>
+        </main>
+    );
 }

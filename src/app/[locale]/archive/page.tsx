@@ -1,31 +1,30 @@
-"use client";
-import TranslationsProvider from "@/components/TranslationsProvider";
-import { useTranslations } from "@/hooks/useTransitions";
+import { Metadata } from "next";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-const i18nNamespaces = ["archive"];
+type Props = {
+    params: {
+        locale: string;
+    };
+};
 
-export default function Archive({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const translations = useTranslations(locale, i18nNamespaces);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const locale = params.locale;
+    const t = await getTranslations({ locale, namespace: "LocaleLayout" });
+    return {
+        title: `${t("title")} | ${t("archive")}`,
+    };
+}
 
-  if (!translations) {
-    return <div>Loading...</div>;
-  }
+export default function Archive() {
+    const locale = useLocale();
 
-  const { t, resources } = translations;
+    unstable_setRequestLocale(locale);
 
-  return (
-    <TranslationsProvider
-      namespaces={i18nNamespaces}
-      locale={locale}
-      resources={resources}
-    >
-      <main>
-        <h1>{t("headline")}</h1>
-      </main>
-    </TranslationsProvider>
-  );
+    const t = useTranslations("Archive");
+    return (
+        <main>
+            <h1>{t("headline")}</h1>
+        </main>
+    );
 }

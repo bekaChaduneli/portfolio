@@ -12,11 +12,13 @@ import Image from "next/image";
 import { HeaderInfosProps } from "@/types/ComponentTypes";
 import usePopUpStore from "@/store/use-popup-store";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
-export const HeaderInfos: React.FC<HeaderInfosProps> = ({ t, scrollHover }) => {
+export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
     const htmlTag = document.documentElement;
     const langAttribute = htmlTag.getAttribute("lang");
     const { onOpen, isOpen, type } = usePopUpStore();
+    const t = useTranslations("Home");
     useEffect(() => {
         // animations not working using refs
         const profile = document.querySelector("#profile");
@@ -148,7 +150,7 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ t, scrollHover }) => {
                 >
                     <span
                         className={cn(
-                            "transition-all duration-300 flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] cursor-pointer xl:rounded-[30px] hover:rounded-[70%] bounce-age lg:p-[10px] xl:p-[14px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-[#ede7de] group",
+                            "transition-all duration-300 flex absolute left-0 bottom-0 items-center max-w-max w-max-content lg:rounded-[20px] cursor-pointer xl:rounded-[30px] hover:rounded-[70%] bounce-age lg:p-[10px] xl:p-[14px] bg-[#203277] dark:bg-[#a9baff] backdrop-blur-[6px] backdrop-saturate-[1.4] text-secondary group",
                             isOpen && type === "linkedin" && "!rounded-[70%]"
                         )}
                     >
