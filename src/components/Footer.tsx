@@ -7,14 +7,28 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Facebook, Linkedin, LucideGithub } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/motion";
 
 export default function Footer() {
   const locale = useLocale();
   const pathname = usePathname();
   const b = useTranslations("Navbar");
   const t = useTranslations("Footer");
+  const fadeInVariants = fadeIn({
+    direction: "up",
+    type: "tween",
+    delay: 0,
+    duration: 1.5,
+  });
   return (
-    <footer className="relative mb-[20px] px-[20px] sm:px-[30px] lg:px-[40px] lg:mx-[20px] text-white flex justify-center">
+    <motion.footer
+      variants={fadeInVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false }}
+      className="relative pb-[20px] px-[20px] sm:px-[30px] lg:px-[40px] lg:mx-[20px] text-white flex justify-center"
+    >
       <div className="max-w-[1200px] w-full">
         <div className="w-full flex justify-between lg:border-b-[1px] border-primary dark:border-secondary duration-300 transition-all lg:pb-[24px]">
           <NavigationLink
@@ -139,6 +153,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
