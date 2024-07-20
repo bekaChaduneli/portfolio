@@ -11,8 +11,8 @@ export default function SmoothScrolling({ children }: SmoothScrolling) {
     <ReactLenis
       root
       options={{
-        duration: 0.3,
         lerp: 0.05,
+        duration: 0.3,
       }}
     >
       {children}
