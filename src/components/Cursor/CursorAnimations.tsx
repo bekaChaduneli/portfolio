@@ -4,10 +4,11 @@ import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
 import { motion } from "framer-motion";
 import classNames from "classnames";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function CursorAnimations() {
   const { isCursorActive, cursorText } = useCursorStore();
-  const isDesktop = true;
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { x, y } = useMousePosition();
   const [langAttribute, setLangAttribute] = useState<string>("");
 

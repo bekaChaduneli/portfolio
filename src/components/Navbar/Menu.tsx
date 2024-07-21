@@ -6,6 +6,8 @@ import SoundSwitcher from "./SoundSwitcher";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import NavigationLink from "./NavigationLink";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/motion";
 
 export default function Menu({
   isOpen,
@@ -19,8 +21,15 @@ export default function Menu({
   navigationLinks;
   const pathname = usePathname();
   const t = useTranslations("Navbar");
+  const fadeInVariants = fadeIn({
+    direction: "down",
+    type: "tween",
+    delay: 0.3,
+    duration: 0.7,
+  });
   return (
-    <div
+    <motion.div
+      variants={fadeInVariants}
       className={classNames(
         "fixed flex flex-col duration-300 w-full h-full overflow-hidden lg:hidden bg-secondary dark:bg-[#283d8b] top-0 z-[30] animate-link-opacity",
         {
@@ -103,6 +112,6 @@ export default function Menu({
           <SoundSwitcher />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
