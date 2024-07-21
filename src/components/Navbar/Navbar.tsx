@@ -14,6 +14,8 @@ import { useTheme } from "next-themes";
 import Menu from "./Menu";
 import { useTranslations } from "next-intl";
 import NavigationLink from "./NavigationLink";
+import { motion } from "framer-motion";
+import { fadeIn, staggerContainer } from "@/utils/motion";
 
 export default function Navbar({ locale }: { locale: string }) {
   const pathname = usePathname();
@@ -41,9 +43,23 @@ export default function Navbar({ locale }: { locale: string }) {
     };
   }, []);
 
+  const fadeInVariants = fadeIn({
+    direction: "down",
+    type: "tween",
+    delay: 0,
+    duration: 1.5,
+  });
+
   return (
-    <div className="flex justify-center p-[24px]">
-      <div
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0 }}
+      className="flex justify-center p-[24px]"
+    >
+      <motion.div
+        variants={fadeInVariants}
         className={classNames(
           "hidden lg:flex fixed z-[9] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
           {
@@ -194,8 +210,11 @@ export default function Navbar({ locale }: { locale: string }) {
           <SoundSwitcher />
           <LanguageChanger locale={locale} />
         </div>
-      </div>
-      <div className="flex cursor-pointer lg:hidden fixed z-[31] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between">
+      </motion.div>
+      <motion.div
+        variants={fadeInVariants}
+        className="flex cursor-pointer lg:hidden fixed z-[31] w-full px-[20px] min-[420px]:px-[28px] sm:px-[30px] sm:py-[4px] md:py-[12px] md:px-[40px] items-center justify-between"
+      >
         <NavigationLink href="/" className="cursor-pointer group">
           <Image
             className="w-[48px] group-hover:scale-[85%] transition duration-200 h-[48px] border-[2px] sm:w-[54px] sm:h-[54px] md:w-[58px] md:h-[58px] sm:border-[3px] border-[#283D8B] dark:border-secondary rounded-full"
@@ -224,9 +243,9 @@ export default function Navbar({ locale }: { locale: string }) {
             toggle={changeMenu}
           />
         </div>
-      </div>
+      </motion.div>
 
       <Menu locale={locale} isOpen={isOpen} changeMenu={changeMenu} />
-    </div>
+    </motion.div>
   );
 }
