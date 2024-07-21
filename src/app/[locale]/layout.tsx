@@ -10,64 +10,65 @@ import PopUp from "@/components/shared/PopUp";
 import Footer from "@/components/Footer";
 import { locales } from "@/config";
 import {
-    getMessages,
-    getTranslations,
-    unstable_setRequestLocale,
+  getMessages,
+  getTranslations,
+  unstable_setRequestLocale,
 } from "next-intl/server";
 import { Metadata } from "next";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
-    subsets: ["latin"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 type Props = {
-    children: ReactNode;
-    params: { locale: string };
+  children: ReactNode;
+  params: { locale: string };
 };
 
 export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
-    params: { locale },
+  params: { locale },
 }: Omit<Props, "children"> & { pageTitle: string }): Promise<Metadata> {
-    const t = await getTranslations({ locale, namespace: "LocaleLayout" });
-    return {
-        title: t("title"),
-    };
+  const t = await getTranslations({ locale, namespace: "LocaleLayout" });
+  return {
+    title: t("title"),
+  };
 }
 
 export default async function LocaleLayout({
-    children,
-    params: { locale },
+  children,
+  params: { locale },
 }: {
-    children: ReactNode;
-    params: { locale: string };
+  children: ReactNode;
+  params: { locale: string };
 }) {
-    unstable_setRequestLocale(locale);
-    const messages = await getMessages({ locale });
-    return (
-        <html lang={locale} suppressHydrationWarning>
-            <body
-                id="root"
-                className={`overflow-hidden
-        ${locale === "en" ? "font-graphik" : notoSansGeorgian.className}
+  unstable_setRequestLocale(locale);
+  const messages = await getMessages({ locale });
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <body
+        id="root"
+        className={`overflow-hidden
+        ${locale === "en" ? "font-graphik" : notoSansGeorgian?.className || ""}
         `}
-            >
-                <NextIntlClientProvider messages={messages}>
-                    <Providers>
-                        <PopUp />
-                        <CanvasComponent />
-                        <CursorAnimations />
-                        <div className="">
-                            <Navbar locale={locale} />
-                            {children}
-                            <Footer />
-                        </div>
-                    </Providers>
-                </NextIntlClientProvider>
-            </body>
-        </html>
-    );
+      >
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <PopUp />
+            <CanvasComponent />
+            <CursorAnimations />
+            <div className="">
+              <Navbar locale={locale} />
+              {children}
+              <Footer />
+            </div>
+          </Providers>
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
 }

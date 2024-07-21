@@ -16,6 +16,9 @@ import { useTranslations } from "next-intl";
 import NavigationLink from "./NavigationLink";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/utils/motion";
+import useSoundStore from "@/store/use-sound-store";
+import useSound from "use-sound";
+import menu from "@/sounds/menu-open.mp3";
 
 export default function Navbar({ locale }: { locale: string }) {
   const pathname = usePathname();
@@ -23,7 +26,8 @@ export default function Navbar({ locale }: { locale: string }) {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
-
+  const { sound } = useSoundStore();
+  const [menuSound] = useSound(menu);
   useDisableOverflow(isOpen);
 
   const changeMenu = () => {
@@ -225,6 +229,9 @@ export default function Navbar({ locale }: { locale: string }) {
           />
         </NavigationLink>
         <div
+          onClick={() => {
+            sound && menuSound();
+          }}
           className={
             theme.theme === "light" ? "navButton_light" : "navButton_dark"
           }
