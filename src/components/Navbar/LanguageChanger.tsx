@@ -4,16 +4,14 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import useSoundStore from "@/store/use-sound-store";
 import useSound from "use-sound";
-import toEN from "@/sounds/toEnglish.mp3";
-import toKA from "@/sounds/toGeorgian.mp3";
+import toLang from "@/sounds/language.mp3";
 
 export default function LanguageChanger({ locale }: { locale: string }) {
   let currentLocale = locale;
   const router = useRouter();
   const currentPathname = usePathname();
   const { sound } = useSoundStore();
-  const [toEnglish] = useSound(toEN);
-  const [toGeorgian] = useSound(toKA);
+  const [toLanguage] = useSound(toLang);
   const handleChange = (newLocale: string) => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("NEXT_LOCALE", newLocale);
@@ -27,7 +25,7 @@ export default function LanguageChanger({ locale }: { locale: string }) {
       <button
         onClick={() => {
           handleChange("en");
-          sound && toEnglish();
+          sound && toLanguage();
         }}
         className="p-[8px] cursor-pointer text-primary dark:text-secondary text-[18px] font-bold font-graphik"
       >
@@ -49,7 +47,7 @@ export default function LanguageChanger({ locale }: { locale: string }) {
       <button
         onClick={() => {
           handleChange("ka");
-          sound && toGeorgian();
+          sound && toLanguage();
         }}
         className="p-[8px] cursor-pointer text-primary dark:text-secondary text-[18px] font-bold font-graphik"
       >
