@@ -26,7 +26,7 @@ export default function Footer() {
       variants={fadeInVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="relative pb-[20px] px-[20px] sm:px-[30px] lg:px-[40px] lg:mx-[20px] text-white flex justify-center"
     >
       <div className="max-w-[1200px] w-full">
