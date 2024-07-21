@@ -2,11 +2,17 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { Moon, Sun } from "lucide-react";
+import useSoundStore from "@/store/use-sound-store";
+import useSound from "use-sound";
+import light from "@/sounds/light.mp3";
+import dark from "@/sounds/dark.mp3";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState<boolean>(false);
   const { setTheme, resolvedTheme } = useTheme();
-
+  const { sound } = useSoundStore();
+  const [toDark] = useSound(light);
+  const [toLight] = useSound(dark);
   useEffect(() => setMounted(true), []);
 
   if (!mounted)
@@ -26,7 +32,10 @@ export default function ThemeSwitch() {
     return (
       <Sun
         className="w-[22px] h-[22px] text-secondary cursor-pointer"
-        onClick={() => setTheme("light")}
+        onClick={() => {
+          setTheme("light");
+          sound && toLight();
+        }}
       />
     );
   }
@@ -35,7 +44,10 @@ export default function ThemeSwitch() {
     return (
       <Moon
         className="text-primary w-[22px] h-[22px] cursor-pointer"
-        onClick={() => setTheme("dark")}
+        onClick={() => {
+          setTheme("dark");
+          sound && toDark();
+        }}
       />
     );
   }
