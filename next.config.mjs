@@ -5,6 +5,8 @@ import withTM from "next-transpile-modules";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
+  output: "standalone",
+
   webpack(config) {
     config.module.rules.push(
       {
@@ -25,6 +27,19 @@ const nextConfig = {
       }
     );
     return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+
+      {
+        protocol: "http",
+        hostname: "**",
+      },
+    ],
   },
 };
 

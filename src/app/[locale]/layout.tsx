@@ -15,6 +15,7 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 import { Metadata } from "next";
+import { ApolloWrapper } from "@/lib/apollo-wrapper";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   subsets: ["latin"],
@@ -56,18 +57,20 @@ export default async function LocaleLayout({
         ${locale === "en" ? "font-graphik" : notoSansGeorgian?.className || ""}
         `}
       >
-        <NextIntlClientProvider messages={messages}>
-          <Providers>
-            <PopUp />
-            <CanvasComponent />
-            <CursorAnimations />
-            <div className="">
-              <Navbar locale={locale} />
-              {children}
-              <Footer />
-            </div>
-          </Providers>
-        </NextIntlClientProvider>
+        <ApolloWrapper>
+          <NextIntlClientProvider messages={messages}>
+            <Providers>
+              <PopUp />
+              <CanvasComponent />
+              <CursorAnimations />
+              <div className="">
+                <Navbar locale={locale} />
+                {children}
+                <Footer />
+              </div>
+            </Providers>
+          </NextIntlClientProvider>
+        </ApolloWrapper>
       </body>
     </html>
   );
