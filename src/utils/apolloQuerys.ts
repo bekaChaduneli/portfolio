@@ -21,3 +21,29 @@ export const GET_GITHUBREPOS = gql`
     }
   }
 `;
+
+export const GET_BOOKS = gql`
+  query GetBooks($type: String!) {
+    findManyBooks(where: { type: { equals: $type } }) {
+      id
+      image
+      link
+      pages
+      readedPages
+      type
+      finished
+      releaseDate
+      index
+      translations {
+        id
+        title
+        description
+        author
+        languageCode
+        booksId
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
