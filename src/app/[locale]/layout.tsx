@@ -15,7 +15,7 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 import { Metadata } from "next";
-import { ApolloWrapper } from "@/lib/apollo-wrapper";
+import { ApolloWrapper } from "./ApolloWrapper";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   subsets: ["latin"],
