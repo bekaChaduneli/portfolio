@@ -115,3 +115,58 @@ export const GET_PROFILE = gql`
     }
   }
 `;
+
+export const GET_LINKEDIN = gql`
+  query MyQuery {
+    findFirstLinkedin {
+      updatedAt
+      translations {
+        updatedAt
+        university
+        name
+        linkedinId
+        languageCode
+        id
+        createdAt
+        company
+        bio
+      }
+      topSkills {
+        linkedinId
+        id
+        createdAt
+        updatedAt
+        translations {
+          updatedAt
+          topSkillsId
+          name
+          languageCode
+          id
+          createdAt
+        }
+      }
+      posts {
+        translations {
+          updatedAt
+          reatedAt
+          postsId
+          languageCode
+          id
+          description
+        }
+        updatedAt
+        linkedinId
+        link
+        likes
+        image
+        id
+        createdAt
+        commentsSum
+      }
+      image
+      id
+      createdAt
+      banner
+    }
+  }
+`;
