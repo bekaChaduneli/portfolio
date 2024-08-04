@@ -47,3 +47,71 @@ export const GET_BOOKS = gql`
     }
   }
 `;
+
+export const GET_PROFILE = gql`
+  query findFirstProfile {
+    findFirstProfile {
+      updatedAt
+      translations {
+        updatedAt
+        universityAbout
+        university
+        surname
+        profileId
+        profession
+        name
+        location
+        languageCode
+        id
+        experience
+        createdAt
+        aboutMe
+      }
+      socials {
+        updatedAt
+        profileId
+        name
+        link
+        createdAt
+        id
+      }
+      resume
+      questions {
+        updatedAt
+        translations {
+          updatedAt
+          questionsId
+          question
+          languageCode
+          id
+          createdAt
+          answer
+        }
+        profileId
+        id
+        createdAt
+      }
+      mail
+      image
+      id
+      hobbys {
+        updatedAt
+        translations {
+          updatedAt
+          languageCode
+          id
+          hobbysId
+          createdAt
+          hobby
+          aboutHobby
+        }
+        profileId
+        image
+        id
+        createdAt
+      }
+      createdAt
+      age
+    }
+  }
+`;
