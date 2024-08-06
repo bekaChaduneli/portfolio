@@ -319,3 +319,24 @@ export const GET_ABOUTME = gql`
     }
   }
 `;
+
+export const GET_SERVICES = gql`
+  query findManyServices {
+    findManyServices {
+      updatedAt
+      order
+      id
+      createdAt
+      background
+      translations {
+        servicesId
+        updatedAt
+        name
+        languageCode
+        id
+        description
+        createdAt
+      }
+    }
+  }
+`;
