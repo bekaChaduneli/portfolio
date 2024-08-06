@@ -340,3 +340,26 @@ export const GET_SERVICES = gql`
     }
   }
 `;
+
+export const GET_RECOMMENDATIONS = gql`
+  query findManyRecommendations {
+    findManyRecommendations {
+      createdAt
+      date
+      id
+      updatedAt
+      image
+      translations {
+        updatedAt
+        role
+        recommendationsId
+        name
+        languageCode
+        id
+        description
+        createdAt
+        bio
+      }
+    }
+  }
+`;
