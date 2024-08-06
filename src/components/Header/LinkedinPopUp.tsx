@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import usePopUpStore from "@/store/use-popup-store";
-import { ILinkedin } from "@/types/linkedin";
+import { ILinkedinResponse } from "@/types/linkedin";
 import { GET_LINKEDIN } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
 import React from "react";
 
 export default function LinkedinPopUp() {
-  const { data, loading, error } = useQuery<ILinkedin>(GET_LINKEDIN);
+  const { data, loading, error } = useQuery<ILinkedinResponse>(GET_LINKEDIN);
   console.log(data);
   const { isOpen, type } = usePopUpStore();
   return (

@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import usePopUpStore from "@/store/use-popup-store";
-import { IProfile } from "@/types/profile";
+import { IProfileResponse } from "@/types/profile";
 import { GET_PROFILE } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
 import React from "react";
 
 export default function ProfilePopUp() {
-  const { data, loading, error } = useQuery<IProfile>(GET_PROFILE);
+  const { data, loading, error } = useQuery<IProfileResponse>(GET_PROFILE);
   console.log(data);
   const { isOpen, type } = usePopUpStore();
   return (

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import usePopUpStore from "@/store/use-popup-store";
-import { IBook } from "@/types/books";
+import { IBooksResponse } from "@/types/books";
 import { GET_BOOKS } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
@@ -8,7 +8,7 @@ import React, { useState } from "react";
 export default function BooksPopUp() {
   const [bookType, setBookType] = useState("programming");
 
-  const { data, loading, error } = useQuery<IBook>(GET_BOOKS, {
+  const { data, loading, error } = useQuery<IBooksResponse>(GET_BOOKS, {
     variables: { type: bookType },
   });
 

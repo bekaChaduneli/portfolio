@@ -170,3 +170,196 @@ export const GET_LINKEDIN = gql`
     }
   }
 `;
+
+export const GET_SKILLS = gql`
+  query findManySkills {
+    findManySkills {
+      updatedAt
+      translations {
+        updatedAt
+        name
+        languageCode
+        skillsId
+        id
+        createdAt
+        about
+      }
+      link
+      image
+      id
+      createdAt
+      color
+    }
+  }
+`;
+
+export const GET_BLOGS = gql`
+  query findManyBlogs($skip: Int!, $take: Int!) {
+    findManyBlogs(skip: $skip, take: $take) {
+      updatedAt
+      translations {
+        markdown
+        updatedAt
+        languageCode
+        id
+        headline
+        createdAt
+        blogsId
+        about
+      }
+      link
+      id
+      createdAt
+      background
+    }
+  }
+`;
+
+export const GET_ABOUTME = gql`
+  query findFirstAboutMe {
+    findFirstAboutMe {
+      updatedAt
+      projectNum
+      image
+      id
+      experience
+      createdAt
+      age
+      translations {
+        updatedAt
+        role
+        name
+        languageCode
+        id
+        createdAt
+        country
+        city
+        aboutMeId
+        about
+      }
+      works {
+        updatedAt
+        translations {
+          worksId
+          updatedAt
+          role
+          locationType
+          languageCode
+          location
+          id
+          employmentType
+          description
+          createdAt
+          company
+        }
+        toDate
+        link
+        id
+        fromDate
+        createdAt
+        aboutMeId
+      }
+      languages {
+        updatedAt
+        translations {
+          updatedAt
+          name
+          level
+          languagesId
+          languageCode
+          id
+          description
+          createdAt
+        }
+        id
+        createdAt
+        aboutMeId
+      }
+      education {
+        updatedAt
+        translations {
+          updatedAt
+          name
+          languageCode
+          gpa
+          id
+          fieldOfStudy
+          educationsId
+          description
+          degree
+          createdAt
+        }
+        toDate
+        link
+        id
+        fromDate
+        createdAt
+        aboutMeId
+      }
+      certificates {
+        updatedAt
+        translations {
+          organiation
+          updatedAt
+          name
+          languageCode
+          id
+          description
+          createdAt
+          certificatesId
+        }
+        link
+        issueDate
+        image
+        id
+        expirationDate
+        createdAt
+        aboutMeId
+      }
+    }
+  }
+`;
+
+export const GET_SERVICES = gql`
+  query findManyServices {
+    findManyServices {
+      updatedAt
+      order
+      id
+      createdAt
+      background
+      translations {
+        servicesId
+        updatedAt
+        name
+        languageCode
+        id
+        description
+        createdAt
+      }
+    }
+  }
+`;
+
+export const GET_RECOMMENDATIONS = gql`
+  query findManyRecommendations {
+    findManyRecommendations {
+      createdAt
+      date
+      id
+      updatedAt
+      image
+      translations {
+        updatedAt
+        role
+        recommendationsId
+        name
+        languageCode
+        id
+        description
+        createdAt
+        bio
+      }
+    }
+  }
+`;
