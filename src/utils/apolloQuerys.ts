@@ -170,3 +170,25 @@ export const GET_LINKEDIN = gql`
     }
   }
 `;
+
+export const GET_SKILLS = gql`
+  query findManySkills {
+    findManySkills {
+      updatedAt
+      translations {
+        updatedAt
+        name
+        languageCode
+        skillsId
+        id
+        createdAt
+        about
+      }
+      link
+      image
+      id
+      createdAt
+      color
+    }
+  }
+`;
