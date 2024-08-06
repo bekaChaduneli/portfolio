@@ -192,3 +192,25 @@ export const GET_SKILLS = gql`
     }
   }
 `;
+
+export const GET_BLOGS = gql`
+  query findManyBlogs($skip: Int!, $take: Int!) {
+    findManyBlogs(skip: $skip, take: $take) {
+      updatedAt
+      translations {
+        markdown
+        updatedAt
+        languageCode
+        id
+        headline
+        createdAt
+        blogsId
+        about
+      }
+      link
+      id
+      createdAt
+      background
+    }
+  }
+`;

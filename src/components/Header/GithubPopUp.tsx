@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils";
 import { useQuery } from "@apollo/client";
 import usePopUpStore from "@/store/use-popup-store";
-import { IGithubRepo } from "@/types/githubRepo";
+import { IGithubRepoResponse } from "@/types/githubRepo";
 import React from "react";
 import { GET_GITHUBREPOS } from "@/utils/apolloQuerys";
 
 export default function GithubPopUp() {
-  const { data, loading, error } = useQuery<IGithubRepo>(GET_GITHUBREPOS);
+  const { data, loading, error } =
+    useQuery<IGithubRepoResponse>(GET_GITHUBREPOS);
 
   console.log(data);
   const { isOpen, type } = usePopUpStore();
