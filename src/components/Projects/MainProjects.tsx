@@ -8,7 +8,7 @@ export default function MainProjects() {
   const { data, loading, error } = useQuery<IMainProjectsResponse>(
     GET_MAINPROJECTS,
     {
-      variables: { skip: 0, take: 2, createdAt: "asc" },
+      variables: { skip: 0, take: 10, createdAt: "asc" },
     }
   );
 

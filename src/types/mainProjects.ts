@@ -23,3 +23,7 @@ export interface IMainProjects {
 export interface IMainProjectsResponse {
   findManyMainProjects: IMainProjects[];
 }
+
+export interface IMainProjectResponse {
+  findUniqueMainProjects: IMainProjects;
+}
