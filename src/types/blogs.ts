@@ -16,3 +16,7 @@ export interface IBlogTranslation {
 export interface IBlogsResponse {
   findManyBlogs: IBlog[];
 }
+
+export interface IBlogResponse {
+  findUniqueBlogs: IBlog;
+}

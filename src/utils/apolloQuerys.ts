@@ -215,6 +215,28 @@ export const GET_BLOGS = gql`
   }
 `;
 
+export const GET_BLOG = gql`
+  query findUniqueBlogs($id: String!) {
+    findUniqueBlogs(where: { id: $id }) {
+      updatedAt
+      id
+      link
+      createdAt
+      background
+      translations {
+        updatedAt
+        markdown
+        languageCode
+        id
+        headline
+        createdAt
+        blogsId
+        about
+      }
+    }
+  }
+`;
+
 export const GET_ABOUTME = gql`
   query findFirstAboutMe {
     findFirstAboutMe {
@@ -360,6 +382,119 @@ export const GET_RECOMMENDATIONS = gql`
         createdAt
         bio
       }
+    }
+  }
+`;
+
+export const GET_MAINPROJECTS = gql`
+  query findManyMainProjects($skip: Int, $take: Int, $createdAt: SortOrder!) {
+    findManyMainProjects(
+      skip: $skip
+      take: $take
+      orderBy: { createdAt: $createdAt }
+    ) {
+      video
+      translations {
+        updatedAt
+        name
+        mainProjectsId
+        location
+        languageCode
+        description
+        id
+        createdAt
+        about
+      }
+      updatedAt
+      skills
+      mobileBackgrounds
+      link
+      isReal
+      images
+      id
+      github
+      createdAt
+      background
+    }
+  }
+`;
+
+export const GET_MAINPROJECT = gql`
+  query findUniqueMainProjects($id: String!) {
+    findUniqueMainProjects(where: { id: $id }) {
+      video
+      updatedAt
+      translations {
+        updatedAt
+        name
+        markdown
+        mainProjectsId
+        location
+        languageCode
+        id
+        description
+        createdAt
+        about
+      }
+      skills
+      mobileBackgrounds
+      link
+      isReal
+      images
+      id
+      github
+      createdAt
+      background
+    }
+  }
+`;
+
+export const GET_ARCHIVES = gql`
+  query archives($skip: Int, $take: Int, $createdAt: SortOrder!) {
+    archives(take: $take, skip: $skip, orderBy: { createdAt: $createdAt }) {
+      updatedAt
+      skills
+      link
+      isReal
+      id
+      github
+      createdAt
+      background
+      translations {
+        updatedAt
+        name
+        location
+        languageCode
+        id
+        description
+        createdAt
+        archiveId
+      }
+    }
+  }
+`;
+
+export const GET_ARCHIVE = gql`
+  query archive($id: String!) {
+    archive(where: { id: $id }) {
+      updatedAt
+      translations {
+        updatedAt
+        name
+        location
+        languageCode
+        id
+        description
+        createdAt
+        archiveId
+      }
+      skills
+      link
+      isReal
+      id
+      github
+      createdAt
+      background
     }
   }
 `;
