@@ -363,3 +363,36 @@ export const GET_RECOMMENDATIONS = gql`
     }
   }
 `;
+
+export const GET_MAINPROJECTS = gql`
+  query findManyMainProjects($skip: Int, $take: Int, $createdAt: SortOrder!) {
+    findManyMainProjects(
+      skip: $skip
+      take: $take
+      orderBy: { createdAt: $createdAt }
+    ) {
+      video
+      translations {
+        updatedAt
+        name
+        mainProjectsId
+        location
+        languageCode
+        description
+        id
+        createdAt
+        about
+      }
+      updatedAt
+      skills
+      mobileBackgrounds
+      link
+      isReal
+      images
+      id
+      github
+      createdAt
+      background
+    }
+  }
+`;
