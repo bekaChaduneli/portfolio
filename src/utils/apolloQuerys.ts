@@ -214,3 +214,108 @@ export const GET_BLOGS = gql`
     }
   }
 `;
+
+export const GET_ABOUTME = gql`
+  query findFirstAboutMe {
+    findFirstAboutMe {
+      updatedAt
+      projectNum
+      image
+      id
+      experience
+      createdAt
+      age
+      translations {
+        updatedAt
+        role
+        name
+        languageCode
+        id
+        createdAt
+        country
+        city
+        aboutMeId
+        about
+      }
+      works {
+        updatedAt
+        translations {
+          worksId
+          updatedAt
+          role
+          locationType
+          languageCode
+          location
+          id
+          employmentType
+          description
+          createdAt
+          company
+        }
+        toDate
+        link
+        id
+        fromDate
+        createdAt
+        aboutMeId
+      }
+      languages {
+        updatedAt
+        translations {
+          updatedAt
+          name
+          level
+          languagesId
+          languageCode
+          id
+          description
+          createdAt
+        }
+        id
+        createdAt
+        aboutMeId
+      }
+      education {
+        updatedAt
+        translations {
+          updatedAt
+          name
+          languageCode
+          gpa
+          id
+          fieldOfStudy
+          educationsId
+          description
+          degree
+          createdAt
+        }
+        toDate
+        link
+        id
+        fromDate
+        createdAt
+        aboutMeId
+      }
+      certificates {
+        updatedAt
+        translations {
+          organiation
+          updatedAt
+          name
+          languageCode
+          id
+          description
+          createdAt
+          certificatesId
+        }
+        link
+        issueDate
+        image
+        id
+        expirationDate
+        createdAt
+        aboutMeId
+      }
+    }
+  }
+`;
