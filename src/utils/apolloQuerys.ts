@@ -13,7 +13,6 @@ export const GET_GITHUBREPOS = gql`
         description
         createdAt
       }
-      stars
       link
       language
       id
@@ -23,13 +22,41 @@ export const GET_GITHUBREPOS = gql`
 `;
 
 export const GET_BOOKS = gql`
-  query GetBooks($type: String!) {
+  query findManyBooks {
+    findManyBooks {
+      id
+      image
+      link
+      pages
+      readedPages
+      type
+      stars
+      finished
+      releaseDate
+      index
+      translations {
+        id
+        title
+        description
+        author
+        languageCode
+        booksId
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+
+export const GET_BOOKS_BY_TYPE = gql`
+  query findManyBooks($type: String!) {
     findManyBooks(where: { type: { equals: $type } }) {
       id
       image
       link
       pages
       readedPages
+      stars
       type
       finished
       releaseDate
