@@ -10,6 +10,7 @@ export interface IBook {
   readedPages: string;
   type: string;
   finished: boolean;
+  stars: number;
   releaseDate: any;
   index: string;
   translations: IBookTranslation[];
