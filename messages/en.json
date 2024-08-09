@@ -47,6 +47,10 @@
     "orderBy": "orderBy : ",
     "date": "date",
     "stars": "stars",
-    "pages": "pages"
+    "pages": "pages",
+    "finished": "finished",
+    "page": "page",
+    "read": "read",
+    "seeMore": "See More"
   }
 }

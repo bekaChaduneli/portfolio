@@ -51,7 +51,7 @@ export default function BooksPopUp() {
   return (
     <div
       className={cn(
-        "w-[560px] h-[460px] xl:w-[640px] xl:h-[520px] px-[30px]  py-[20px] bg-[#f7f2f2]/[.92] backdrop-blur-[6px] backdrop-saturate-[1.4] rounded-[8px] absolute origin-top-left left-[136px] top-[46px] xl:left-[160px] xl:top-[54px] z-[11]",
+        "w-[680px] h-[460px] xl:w-[810px] xl:h-[520px] px-[30px]  py-[20px] bg-[#f7f2f2]/[.92] backdrop-blur-[6px] backdrop-saturate-[1.4] rounded-[8px] absolute origin-top-left left-[136px] top-[46px] xl:left-[160px] xl:top-[54px] z-[11]",
         isOpen && type === "books"
           ? " transition-all duration-500 scale-100"
           : "scale-0"
@@ -86,7 +86,7 @@ export default function BooksPopUp() {
         </div>
       </div>
 
-      <div className="mb-[16px] cursor-pointer group inline-block">
+      <div className="mb-[2px] cursor-pointer group inline-block">
         <div className="flex gap-[6px] items-center pb-[6px]">
           <label
             htmlFor="orderBy"
@@ -148,10 +148,9 @@ export default function BooksPopUp() {
           </div>
         </div>
       </div>
-
-      <div className="flex flex-col gap-[12px]">
+      <div className="flex flex-col gap-[12px] overflow-x-hidden overflow-y-scroll h-[322px] xl:h-[380px] custom-scrollbar">
         {data?.findManyBooks.map((book, index) => {
-          return <Book book={book} key={index} />;
+          return <Book t={t} book={book} key={index} />;
         })}
       </div>
     </div>
