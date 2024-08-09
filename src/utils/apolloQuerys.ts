@@ -49,8 +49,20 @@ export const GET_BOOKS = gql`
 `;
 
 export const GET_BOOKS_BY_TYPE = gql`
-  query findManyBooks($type: String!) {
-    findManyBooks(where: { type: { equals: $type } }) {
+  query findManyBooks(
+    $type: String!
+    $take: Int
+    $skip: Int
+    $stars: SortOrder
+    $pages: SortOrder
+    $releaseDate: SortOrder
+  ) {
+    findManyBooks(
+      take: $take
+      skip: $skip
+      where: { type: { equals: $type } }
+      orderBy: { stars: $stars, pages: $pages, releaseDate: $releaseDate }
+    ) {
       id
       image
       link
