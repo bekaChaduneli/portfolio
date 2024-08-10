@@ -1,52 +1,95 @@
 import { cn } from "@/lib/utils";
 import usePopUpStore from "@/store/use-popup-store";
-import { IBooksResponse } from "@/types/books";
-import { GET_BOOKS_BY_TYPE } from "@/utils/apolloQuerys";
+import { IBooksResponse, IBooksCountResponse } from "@/types/books";
+import { GET_BOOKS_BY_TYPE, GET_BOOKS_COUNT } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Book from "./Book";
 import { Icons } from "../shared/Icons";
 import { useLocale, useTranslations } from "next-intl";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function BooksPopUp() {
   const [bookType, setBookType] = useState("other");
   const [orderBy, setOrderBy] = useState("releaseDate");
-  const [content, setContent] = useState<IBooksResponse | undefined>(undefined);
-  const { data, loading, error, refetch } = useQuery<IBooksResponse>(
+  const [limit, setLimit] = useState(2);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [canFetch, setCanFetch] = useState(true);
+  const [scrollTime, setScrollTime] = useState(0);
+
+  const { data, loading, error, fetchMore } = useQuery<IBooksResponse>(
     GET_BOOKS_BY_TYPE,
     {
       variables: {
         type: bookType,
-        take: 5,
+        take: limit,
         skip: 0,
         stars: orderBy === "stars" ? "desc" : undefined,
         pages: orderBy === "pages" ? "desc" : undefined,
         releaseDate: orderBy === "releaseDate" ? "desc" : undefined,
       },
+      notifyOnNetworkStatusChange: true,
     }
   );
 
-  useEffect(() => {
-    if (data) {
-      setContent(data);
+  const { data: countData, loading: countLoading } =
+    useQuery<IBooksCountResponse>(GET_BOOKS_COUNT, {
+      variables: { type: bookType },
+      fetchPolicy: "cache-and-network",
+    });
+
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (listRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listRef.current;
+      if (scrollTop + clientHeight >= scrollHeight && !loadingMore) {
+        scrollTime === 0 && setScrollTime(scrollTime + 1);
+        if (
+          scrollTime > 0 &&
+          data &&
+          countData &&
+          !(countData.countBooks > data.findManyBooks.length)
+        ) {
+          setCanFetch(false);
+        } else {
+          setCanFetch(true);
+        }
+        if (canFetch) {
+          setLoadingMore(true);
+          fetchMore({
+            variables: {
+              type: bookType,
+              take: limit + 2,
+              skip: 0,
+              stars: orderBy === "stars" ? "desc" : undefined,
+              pages: orderBy === "pages" ? "desc" : undefined,
+              releaseDate: orderBy === "releaseDate" ? "desc" : undefined,
+            },
+          }).then(() => {
+            setLoadingMore(false);
+            setLimit((prevLimit) => prevLimit + 2);
+          });
+        }
+      }
     }
-    if (error) {
-      console.error(error.message);
-    }
-  }, [data, error]);
+  };
 
   useEffect(() => {
-    refetch();
-  }, [orderBy]);
+    const listElement = listRef.current;
+    if (listElement) {
+      listElement.addEventListener("scroll", handleScroll);
+      return () => {
+        listElement.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [loadingMore, limit, bookType, orderBy]);
 
   const { isOpen, type } = usePopUpStore();
   const locale = useLocale();
-
   const t = useTranslations("Books");
 
-  if (!content) {
-    return null;
-  }
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div
@@ -72,7 +115,11 @@ export default function BooksPopUp() {
               bookType === "other" ? "text-secondary" : "text-primary"
             )}
           >
-            {t("other")}
+            {`${t("other")}  ${
+              bookType === "other" && countData?.countBooks
+                ? `(${countData?.countBooks})`
+                : ""
+            }`}
           </div>
           <div
             onClick={() => setBookType("programming")}
@@ -81,7 +128,11 @@ export default function BooksPopUp() {
               bookType === "programming" ? "text-secondary" : "text-primary"
             )}
           >
-            {t("programming")}
+            {`${t("programming")}   ${
+              bookType === "programming" && countData?.countBooks
+                ? `(${countData?.countBooks})`
+                : ""
+            }`}
           </div>
         </div>
       </div>
@@ -148,10 +199,19 @@ export default function BooksPopUp() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[12px] overflow-x-hidden overflow-y-scroll h-[322px] xl:h-[380px] custom-scrollbar">
-        {data?.findManyBooks.map((book, index) => {
-          return <Book t={t} book={book} key={index} />;
-        })}
+
+      <div
+        className="flex flex-col gap-[12px] overflow-x-hidden overflow-y-scroll h-[322px] xl:h-[380px] custom-scrollbar data-lenis-prevent-wheel"
+        ref={listRef}
+      >
+        {data?.findManyBooks.map((book, index) => (
+          <Book t={t} book={book} key={index} />
+        ))}
+        {loadingMore && (
+          <div className="flex justify-center py-4">
+            <ClipLoader color="#2b3b7a" />
+          </div>
+        )}
       </div>
     </div>
   );

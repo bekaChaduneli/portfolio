@@ -2,11 +2,11 @@
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { ReactNode } from "react";
 
-type SmoothScrolling = {
+type SmoothScrollingProps = {
   children: ReactNode;
 };
 
-export default function SmoothScrolling({ children }: SmoothScrolling) {
+export default function SmoothScrolling({ children }: SmoothScrollingProps) {
   return (
     <ReactLenis
       root

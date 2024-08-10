@@ -23,13 +23,14 @@ export default function Book({ book, t }: { book: IBook; t: any }) {
       </div>
       <div className="w-[416px] xl:w-[540px]">
         <div className="flex justify-between w-full mb-[6px] items-start">
-          <span className="text-primary font-bold font-geom text-[16px] xl:text-[18px] w-[264px] xl:w-[340px] line-clamp-1">
+          <span className="text-primary font-bold font-geom text-[16px] xl:text-[18px] w-[248px] xl:w-[340px] line-clamp-1">
             {bookTranslation?.title}
           </span>
-          <span className="font-medium text-primary text-[14px] xl:text-[16px]">
+          <span className="font-medium line-clamp-1 text-primary text-[14px] xl:text-[16px]">
             {locale === "en" && "By"}{" "}
-            <span className="font-bold ">
-              {bookTranslation?.author}ს{locale === "ka" && "-გან"}
+            <span className="font-bold">
+              {bookTranslation?.author}
+              {locale === "ka" && "ს-გან"}
             </span>
           </span>
         </div>
@@ -39,7 +40,7 @@ export default function Book({ book, t }: { book: IBook; t: any }) {
               <Icons.Star key={index} className="w-[16px] h-[16px] " />
             ))}
           </div>
-          <div className="flex gap-[4px] text-primary text-[14px]">
+          <div className="flex gap-[4px] text-primary text-[14px] capitalize">
             {book.finished
               ? `${t("finished")} - ${book.pages} ${t("page")}`
               : `${t("read")} ${book.readedPages} / ${book.pages} ${t("page")}`}

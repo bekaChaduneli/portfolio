@@ -9,7 +9,6 @@ export default function GithubPopUp() {
   const { data, loading, error } =
     useQuery<IGithubRepoResponse>(GET_GITHUBREPOS);
 
-  console.log(data);
   const { isOpen, type } = usePopUpStore();
   return (
     <div
