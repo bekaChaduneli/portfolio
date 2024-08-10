@@ -201,7 +201,7 @@ export default function BooksPopUp() {
       </div>
 
       <div
-        className="flex flex-col gap-[12px] overflow-x-hidden overflow-y-scroll h-[322px] xl:h-[380px] custom-scrollbar"
+        className="flex flex-col gap-[12px] overflow-x-hidden overflow-y-scroll h-[322px] xl:h-[380px] custom-scrollbar data-lenis-prevent-wheel"
         ref={listRef}
       >
         {data?.findManyBooks.map((book, index) => (
@@ -209,7 +209,7 @@ export default function BooksPopUp() {
         ))}
         {loadingMore && (
           <div className="flex justify-center py-4">
-            <ClipLoader />
+            <ClipLoader color="#2b3b7a" />
           </div>
         )}
       </div>
