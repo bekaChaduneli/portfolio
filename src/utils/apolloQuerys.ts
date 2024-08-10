@@ -87,6 +87,12 @@ export const GET_BOOKS_BY_TYPE = gql`
   }
 `;
 
+export const GET_BOOKS_COUNT = gql`
+  query countBooks($type: String!) {
+    countBooks(type: $type)
+  }
+`;
+
 export const GET_PROFILE = gql`
   query findFirstProfile {
     findFirstProfile {

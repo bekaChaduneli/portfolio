@@ -7,7 +7,6 @@ import React from "react";
 
 export default function LinkedinPopUp() {
   const { data, loading, error } = useQuery<ILinkedinResponse>(GET_LINKEDIN);
-  console.log(data);
   const { isOpen, type } = usePopUpStore();
   return (
     <div

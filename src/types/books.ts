@@ -2,6 +2,10 @@ export interface IBooksResponse {
   findManyBooks: IBook[];
 }
 
+export interface IBooksCountResponse {
+  countBooks: number;
+}
+
 export interface IBook {
   id: string;
   image: string;

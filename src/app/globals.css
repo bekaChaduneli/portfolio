@@ -64,8 +64,13 @@
     background-color: red;
   }
 
+  .custom-scrollbar {
+    unicode-bidi: isolate;
+    -webkit-overflow-scrolling: auto;
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {

@@ -7,7 +7,6 @@ import React from "react";
 
 export default function ProfilePopUp() {
   const { data, loading, error } = useQuery<IProfileResponse>(GET_PROFILE);
-  console.log(data);
   const { isOpen, type } = usePopUpStore();
   return (
     <div
