@@ -8,6 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 import TopSkillsList from "./TopSkillsList";
+import Post from "./Post";
 
 export default function LinkedinPopUp() {
   const { data, loading, error } = useQuery<ILinkedinResponse>(GET_LINKEDIN);
@@ -102,6 +103,12 @@ export default function LinkedinPopUp() {
             <TopSkillsList topSkills={data?.findFirstLinkedin.topSkills} />
           </div>
         </div>
+        <h1 className="text-[20px] font-geom font-bold text-primary mb-[8px]">
+          {t("lastPosts")}
+        </h1>
+        {data?.findFirstLinkedin.posts.map((post, index) => {
+          return <Post locale={locale} key={index} post={post} />;
+        })}
       </div>
     </div>
   );

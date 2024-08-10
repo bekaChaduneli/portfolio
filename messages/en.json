@@ -56,6 +56,7 @@
   "Linkedin": {
     "topSkills": "Top Skills: ",
     "about": "About: ",
-    "profession": "Software Engineer"
+    "profession": "Software Engineer",
+  "lastPosts": "Last Posts: "
   }
 }

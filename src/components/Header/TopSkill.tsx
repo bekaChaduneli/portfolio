@@ -1,14 +1,15 @@
+import { ITopSkills } from "@/types/linkedin";
 import React from "react";
 
 export default function TopSkill({
   topSkill,
   locale,
 }: {
-  topSkill: any;
+  topSkill: ITopSkills;
   locale: string;
 }) {
   const data = topSkill?.translations?.find(
-    (translation: any) => translation.languageCode === locale
+    (translation) => translation.languageCode === locale
   );
-  return <p>{data.name}</p>;
+  return <p>{data && data.name}</p>;
 }

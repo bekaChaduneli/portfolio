@@ -2,12 +2,17 @@ import React from "react";
 import TopSkill from "./TopSkill";
 import { useLocale } from "next-intl";
 import { Sparkle } from "lucide-react";
+import { ITopSkills } from "@/types/linkedin";
 
-export default function TopSkillsList({ topSkills }: { topSkills: any }) {
+export default function TopSkillsList({
+  topSkills,
+}: {
+  topSkills: ITopSkills[] | undefined;
+}) {
   const locale = useLocale();
   return (
     <div className="text-[14px] font-light text-primary flex items-center">
-      {topSkills?.map((topSkill: any, index: number) => {
+      {topSkills?.map((topSkill: ITopSkills, index: number) => {
         return (
           <span className="flex items-center">
             <TopSkill locale={locale} topSkill={topSkill} key={index} />
