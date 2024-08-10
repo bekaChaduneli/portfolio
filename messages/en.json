@@ -52,5 +52,11 @@
     "page": "page",
     "read": "read",
     "seeMore": "See More"
+  },
+  "Linkedin": {
+    "topSkills": "Top Skills: ",
+    "about": "About: ",
+    "profession": "Software Engineer",
+  "lastPosts": "Last Posts: "
   }
 }

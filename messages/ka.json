@@ -53,5 +53,11 @@
     "page": "გვერდი",
     "read": "წაკითხულია",
     "seeMore": "ვრცლად"
+  },
+  "Linkedin": {
+    "topSkills": "საუკეთესო Skill-ები: ",
+    "about": "ჩემს შესახებ: ",
+    "profession": "Software ინჟინერი",
+    "lastPosts": "ბოლო პოსტები: "
   }
 }
