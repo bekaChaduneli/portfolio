@@ -57,6 +57,8 @@
     "topSkills": "Top Skills: ",
     "about": "About: ",
     "profession": "Software Engineer",
-  "lastPosts": "Last Posts: "
+    "lastPosts": "Last Posts: ",
+    "comments": "Comments",
+    "seeMore": "See More"
   }
 }
