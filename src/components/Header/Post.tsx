@@ -27,7 +27,7 @@ export default function Post({
 
     if (fileExtension && ["mp4", "webm", "ogg"].includes(fileExtension)) {
       return (
-        <video controls className="w-full h-auto rounded-[2px]">
+        <video controls className="h-[206px] w-auto cover rounded-[2px]">
           <source src={url} type={`video/${fileExtension}`} />
         </video>
       );
@@ -38,7 +38,7 @@ export default function Post({
           alt="background"
           width={600}
           height={600}
-          className="w-full h-auto"
+          className=" h-[206px] w-auto cover"
         />
       );
     }
@@ -47,7 +47,7 @@ export default function Post({
     <Link
       href={post.link}
       target="_blank"
-      className="rounded-[12px] border-[1px] border-primary/30 py-[16px] transition-all duration-300 hover:bg-primary/[4%] px-[12px] w-[370px] block max-w-[370px]"
+      className="rounded-[12px] border-[1px] border-primary/30 py-[16px] transition-all duration-300 hover:bg-primary/[4%] px-[12px] w-[370px] h-[420px] block min-w-[370px]"
     >
       <div className="flex gap-[10px] justify-start items-center mb-[12px]">
         <Image
