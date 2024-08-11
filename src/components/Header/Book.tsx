@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Icons } from "../shared/Icons";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function Book({ book, t }: { book: IBook; t: any }) {
   const locale = useLocale();
@@ -23,12 +24,17 @@ export default function Book({ book, t }: { book: IBook; t: any }) {
       </div>
       <div className="w-[416px] xl:w-[540px]">
         <div className="flex justify-between w-full mb-[6px] items-start">
-          <span className="text-primary font-bold font-geom text-[16px] xl:text-[18px] w-[248px] xl:w-[340px] line-clamp-1">
+          <span
+            className={cn(
+              "text-primary font-bold font-geom text-[16px] xl:text-[18px] w-[248px] xl:w-[340px] line-clamp-1",
+              locale === "ka" && "font-firago"
+            )}
+          >
             {bookTranslation?.title}
           </span>
           <span className="font-medium line-clamp-1 text-primary text-[14px] xl:text-[16px]">
             {locale === "en" && "By"}{" "}
-            <span className="font-bold">
+            <span className={cn("font-bold", locale === "ka" && "font-firago")}>
               {bookTranslation?.author}
               {locale === "ka" && "ს-გან"}
             </span>
@@ -54,7 +60,9 @@ export default function Book({ book, t }: { book: IBook; t: any }) {
           target="_blank"
           className="text-primary underline font-bold "
         >
-          <h1 className="text-end">{t("seeMore")}</h1>
+          <h1 className={cn("text-end", locale === "ka" && "font-firago")}>
+            {t("seeMore")}
+          </h1>
         </Link>
       </div>
     </div>

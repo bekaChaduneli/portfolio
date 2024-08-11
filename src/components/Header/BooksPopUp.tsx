@@ -112,7 +112,8 @@ export default function BooksPopUp() {
             onClick={() => setBookType("other")}
             className={cn(
               "w-[50%] capitalize flex h-full cursor-pointer justify-center font-bold items-center z-[1] text-[14px] transition-all duration-300",
-              bookType === "other" ? "text-secondary" : "text-primary"
+              bookType === "other" ? "text-secondary" : "text-primary",
+              locale === "ka" && "font-firago"
             )}
           >
             {`${t("other")}  ${
@@ -125,7 +126,8 @@ export default function BooksPopUp() {
             onClick={() => setBookType("programming")}
             className={cn(
               "w-[50%] capitalize h-full cursor-pointer justify-center items-center font-bold z-[1] flex  text-[14px] transition-all duration-300",
-              bookType === "programming" ? "text-secondary" : "text-primary"
+              bookType === "programming" ? "text-secondary" : "text-primary",
+              locale === "ka" && "font-firago"
             )}
           >
             {`${t("programming")}   ${
@@ -141,13 +143,18 @@ export default function BooksPopUp() {
         <div className="flex gap-[6px] items-center pb-[6px]">
           <label
             htmlFor="orderBy"
-            className="block text-primary font-geom font-bold capitalize"
+            className={cn(
+              "block text-primary font-geom font-bold capitalize",
+              locale === "ka" && "font-firago"
+            )}
           >
             {t("orderBy")}
           </label>
           <div className="flex flex-col gap-[8px]">
             <div className=" mt-[2px] text-sm font-medium text-primary flex gap-[8px] items-center ">
-              <span className="capitalize">
+              <span
+                className={cn("capitalize", locale === "ka" && "font-firago")}
+              >
                 {orderBy === "releaseDate"
                   ? t("date")
                   : orderBy === "stars"
@@ -170,7 +177,8 @@ export default function BooksPopUp() {
               "w-full h-[34px] capitalize border-b-[1px] hover:bg-primary hover:text-secondary transition-all duration-300 border-primary text-[14px] flex justify-center items-center",
               orderBy === "releaseDate"
                 ? "bg-primary text-secondary"
-                : "text-primary bg-secondary"
+                : "text-primary bg-secondary",
+              locale === "ka" && "font-firago"
             )}
           >
             {t("date")}
@@ -181,7 +189,8 @@ export default function BooksPopUp() {
               "w-full h-[34px] capitalize border-b-[1px] hover:bg-primary hover:text-secondary transition-all duration-300 border-primary text-[14px] flex justify-center items-center",
               orderBy === "stars"
                 ? "bg-primary text-secondary"
-                : "text-primary bg-secondary"
+                : "text-primary bg-secondary",
+              locale === "ka" && "font-firago"
             )}
           >
             {t("stars")}
@@ -192,7 +201,8 @@ export default function BooksPopUp() {
               "w-full h-[34px] capitalize hover:bg-primary hover:text-secondary transition-all duration-300 text-[14px] flex justify-center items-center",
               orderBy === "pages"
                 ? "bg-primary text-secondary"
-                : "text-primary bg-secondary"
+                : "text-primary bg-secondary",
+              locale === "ka" && "font-firago"
             )}
           >
             {t("pages")}

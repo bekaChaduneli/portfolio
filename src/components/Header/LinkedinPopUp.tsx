@@ -59,10 +59,20 @@ export default function LinkedinPopUp() {
         <div className="px-[22px] h-[294px]">
           <div className="flex justify-between items-center mb-[18px]">
             <div>
-              <h1 className="text-primary text-[22px] xl:text-[24px] font-bold leading-[100%]">
+              <h1
+                className={cn(
+                  "text-primary text-[22px] xl:text-[24px] font-bold leading-[100%]",
+                  locale === "ka" && "font-firago"
+                )}
+              >
                 {linkedin?.name}
               </h1>
-              <h1 className="xl:text-[18px] text-primary/75 font-light">
+              <h1
+                className={cn(
+                  "xl:text-[18px] text-primary/75 font-light",
+                  locale === "ka" && "font-firago"
+                )}
+              >
                 {t("profession")}
               </h1>
             </div>
@@ -75,7 +85,12 @@ export default function LinkedinPopUp() {
                   src="/work.jpeg"
                   className="h-[32px] rounded-full w-auto"
                 />
-                <h2 className="text-primary font-bold font-geom text-[14px]">
+                <h2
+                  className={cn(
+                    "text-primary font-bold font-geom text-[14px]",
+                    locale === "ka" && "font-firago"
+                  )}
+                >
                   {linkedin?.company}
                 </h2>
               </div>
@@ -87,13 +102,23 @@ export default function LinkedinPopUp() {
                   src="/university.jpg"
                   className="h-[32px] w-auto rounded-full"
                 />
-                <h2 className="text-primary font-bold font-geom max-w-[140px] line-clamp-2 text-[14px]">
+                <h2
+                  className={cn(
+                    "text-primary font-bold font-geom max-w-[140px] line-clamp-2 text-[14px]",
+                    locale === "ka" && "font-firago"
+                  )}
+                >
                   {linkedin?.university}
                 </h2>
               </div>
             </div>
           </div>
-          <h1 className="text-[20px] font-geom font-bold text-primary mb-[8px]">
+          <h1
+            className={cn(
+              "text-[20px] font-geom font-bold text-primary mb-[8px]",
+              locale === "ka" && "font-firago"
+            )}
+          >
             {t("about")}
           </h1>
           <p className="text-[14px] text-primary/75 mb-[14px]">
@@ -102,13 +127,23 @@ export default function LinkedinPopUp() {
           <div className="mb-[14px] rounded-[12px] border-[1px] border-primary/25 flex gap-[12px] items-start p-[16px]">
             <Gem className="w-[24px] h-auto" color="#2b3b7a" />
             <div>
-              <h1 className="text-primary font-bold text-[18px]">
+              <h1
+                className={cn(
+                  "text-primary font-bold text-[18px]",
+                  locale === "ka" && "font-firago"
+                )}
+              >
                 {t("topSkills")}
               </h1>
               <TopSkillsList topSkills={data?.findFirstLinkedin.topSkills} />
             </div>
           </div>
-          <h1 className="text-[20px] font-geom font-bold text-primary mb-[8px]">
+          <h1
+            className={cn(
+              "text-[20px] font-geom font-bold text-primary mb-[8px]",
+              locale === "ka" && "font-firago"
+            )}
+          >
             {t("lastPosts")}
           </h1>
           <div className="flex gap-[14px] overflow-x-scroll flex-nowrap custom-posts-scrollbar pb-[4px] mb-[4px]">
