@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import usePopUpStore from "@/store/use-popup-store";
-import { ILinkedinResponse } from "@/types/linkedin";
+import { ILinkedinResponse, IPosts } from "@/types/linkedin";
 import { GET_LINKEDIN } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
 import { Gem } from "lucide-react";
@@ -27,7 +27,7 @@ export default function LinkedinPopUp() {
   return (
     <div
       className={cn(
-        "w-[670px] xl:w-[822px] h-[480px] xl:h-[530px] bg-[#f7f2f2]/[.92] py-[8px] px-[10px] xl:px-[14px] xl:py-[12px] backdrop-blur-[6px] backdrop-saturate-[1.4] rounded-[8px] absolute origin-bottom-left left-[144px] xl:left-[160px] bottom-[68px] xl:bottom-[100px] z-[11]",
+        "w-[670px] xl:w-[822px] h-[550px] xl:h-[600px] bg-[#f7f2f2]/[.92] py-[8px] px-[10px] xl:px-[14px] xl:py-[12px] backdrop-blur-[6px] backdrop-saturate-[1.4] rounded-[8px] absolute origin-bottom-left left-[144px] xl:left-[160px] bottom-[50px] xl:bottom-[36px] z-[11]",
         isOpen && type === "linkedin"
           ? " transition-all duration-700 scale-100"
           : "scale-0"
@@ -53,7 +53,7 @@ export default function LinkedinPopUp() {
           className="w-[130px] xl:w-[150px] h-[130px] xl:h-[150px] absolute rounded-full border-[4px] border-secondary top-[90px] xl:top-[112px] left-[22px]"
         />
       </div>
-      <div className="px-[22px] h-[228px] overflow-x-hdden overflow-y-scroll custom-scrollbar">
+      <div className="px-[22px] h-[304px] overflow-x-hidden overflow-y-scroll custom-scrollbar">
         <div className="flex justify-between items-center mb-[18px]">
           <div>
             <h1 className="text-primary  text-[22px] xl:text-[24px] font-bold leading-[100%]">
@@ -107,8 +107,17 @@ export default function LinkedinPopUp() {
           {t("lastPosts")}
         </h1>
         {data?.findFirstLinkedin.posts.map((post, index) => {
-          return <Post locale={locale} key={index} post={post} />;
-        })}
+          return (
+            <Post
+              t={t}
+              logo={data?.findFirstLinkedin.image}
+              name={linkedin?.name}
+              locale={locale}
+              key={index}
+              post={post}
+            />
+          );
+        })}{" "}
       </div>
     </div>
   );
