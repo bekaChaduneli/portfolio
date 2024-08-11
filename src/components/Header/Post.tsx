@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { Icons } from "../shared/Icons";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function Post({
   post,
@@ -58,10 +59,20 @@ export default function Post({
           className="w-[42px] h-[42px] rounded-full"
         />
         <div>
-          <h1 className="text-primary  text-[145x] xl:text-[17px] font-bold leading-[100%]">
+          <h1
+            className={cn(
+              " text-primary  text-[15px] xl:text-[17px] font-bold leading-[100%]",
+              locale === "ka" && "font-firago"
+            )}
+          >
             {name}
           </h1>
-          <h1 className="xl:text-[14px] text-[12px] text-primary/75 font-light">
+          <h1
+            className={cn(
+              "xl:text-[14px] text-[12px] text-primary/75 font-light",
+              locale === "ka" && "font-firago"
+            )}
+          >
             {t("profession")}
           </h1>
         </div>
