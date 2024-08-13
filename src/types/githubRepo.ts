@@ -19,7 +19,7 @@ export interface IGithubRepoTranslation {
 }
 
 export interface IGithubRepoResponse {
-  findManyGithubRepos: IGithubRepo;
+  findManyGithubRepos: IGithubRepo[];
 }
 
 export interface IMyGithub {

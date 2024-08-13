@@ -64,6 +64,7 @@
   },
   "Github": {
     "followers": "გამომწერი",
-    "following": "გამოწერილი"
+    "following": "გამოწერილი",
+    "pinned": "ჩაპინულები:"
   }
 }

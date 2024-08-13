@@ -4,6 +4,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import GithubRepo from "./GithubRepo";
 
 export default function GithubDescription({
   t,
@@ -30,8 +31,8 @@ export default function GithubDescription({
         >
           {locale === "en"
             ? `
-<h1 className="text-primary text-[18px] leading-[22px] mb-[4px] font-geom font-bold" align="center">Hi 👋, I'm Beka Chaduneli</h1>
-<h3 className="text-primary/80 font-bold" align="center">Software Engineer from Georgia</h3>
+<h1 className="text-primary text-[24px] mb-[4px] font-geom font-bold" align="center">Hi 👋, I'm Beka Chaduneli</h1>
+<h3 className="text-primary/80 font-bold text-[18px] mb-[14px]" align="center">Software Engineer from Georgia</h3>
 
 - 🔭 I’m currently working on [Tetrobyte](https://www.tetrobyte.com/)
 
@@ -53,8 +54,8 @@ export default function GithubDescription({
 </div>
         `
             : `
-<h1 className="text-primary text-[18px] leading-[22px] mb-[4px] font-firago font-bold" align="center">გამარჯობა 👋, მე ვარ ბექა ჩადუნელი</h1>
-<h3 className="text-primary/80 font-bold font-firago mb-[18px]" align="center">Software ინჟინერი საქართველოდან</h3>
+<h1 className="text-primary text-[19px] xl:text-[22px] mb-[4px] font-firago font-bold" align="center">გამარჯობა 👋, მე ვარ ბექა ჩადუნელი</h1>
+<h3 className="text-primary/80 text-[16px] xl:text-[19px] font-bold font-firago mb-[18px]" align="center">Software ინჟინერი საქართველოდან</h3>
 
 - 🔭 ამჟამად ვმუშაობ - [**ტეტრობიტში**](https://www.tetrobyte.com/)
 
@@ -76,6 +77,19 @@ export default function GithubDescription({
 </div>
         `}
         </ReactMarkdown>
+      </div>
+      <h2
+        className={cn(
+          "text-primary mt-[16px] xl:mt-[6px] text-[18px] leading-[22px] mb-[14px] font-bold",
+          locale === "en" ? "font-geom" : "font-firago"
+        )}
+      >
+        {t("pinned")}
+      </h2>
+      <div className="flex gap-[17px] xl:gap-[18px] flex-wrap">
+        {repos?.findManyGithubRepos.map((repo, index) => {
+          return <GithubRepo key={index} data={repo} locale={locale} />;
+        })}
       </div>
     </div>
   );

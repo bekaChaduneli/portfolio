@@ -63,6 +63,7 @@
   },
   "Github": {
     "followers": "followers",
-    "following": "following"
+    "following": "following",
+    "pinned": "Pinned:"
   }
 }
