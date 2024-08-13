@@ -1,15 +1,38 @@
 import { cn } from "@/lib/utils";
 import { useQuery } from "@apollo/client";
 import usePopUpStore from "@/store/use-popup-store";
-import { IGithubRepoResponse } from "@/types/githubRepo";
-import React from "react";
+import { IGithubRepoResponse, IMyGithub } from "@/types/githubRepo";
+import React, { useEffect, useState } from "react";
 import { GET_GITHUBREPOS } from "@/utils/apolloQuerys";
+import axios from "axios";
 
 export default function GithubPopUp() {
   const { data, loading, error } =
     useQuery<IGithubRepoResponse>(GET_GITHUBREPOS);
 
+  const [myGithub, setMyGithub] = useState<IMyGithub | null>(null);
   const { isOpen, type } = usePopUpStore();
+  useEffect(() => {
+    const fetchGithub = async () => {
+      try {
+        const myGithubRes = await axios.get(
+          "https://api.github.com/users/bekachaduneli",
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN}`,
+            },
+          }
+        );
+        setMyGithub(myGithubRes.data);
+      } catch (error) {
+        console.error("Error fetching GitHub profile:", error);
+      }
+    };
+
+    fetchGithub();
+  }, []);
+
+  console.log(myGithub);
   return (
     <div
       className={cn(

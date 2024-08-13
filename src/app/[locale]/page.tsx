@@ -13,7 +13,7 @@ const HomePage: React.FC<HomeProps> = ({ params: { locale } }) => {
   unstable_setRequestLocale(locale);
 
   return (
-    <main className="min-h-[100vh]">
+    <main className="min-h-[100vh] transition-all duration-300">
       <Header />
       <Services />
       <MainProjects />
