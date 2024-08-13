@@ -60,5 +60,9 @@
     "lastPosts": "Last Posts: ",
     "comments": "Comments",
     "seeMore": "See More"
+  },
+  "Github": {
+    "followers": "followers",
+    "following": "following"
   }
 }

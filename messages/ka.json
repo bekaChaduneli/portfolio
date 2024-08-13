@@ -61,5 +61,9 @@
     "lastPosts": "ბოლო პოსტები: ",
     "comments": "კომენტარი",
     "seeMore": "ვრცლად"
+  },
+  "Github": {
+    "followers": "გამომწერი",
+    "following": "გამოწერილი"
   }
 }
