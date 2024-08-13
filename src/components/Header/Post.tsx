@@ -18,7 +18,6 @@ export default function Post({
   logo: string | undefined;
   name: string | undefined;
 }) {
-  console.log(post);
   const data = post?.translations?.find(
     (translation) => translation.languageCode === locale
   );

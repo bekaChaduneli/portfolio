@@ -13,7 +13,6 @@ import Post from "./Post";
 export default function LinkedinPopUp() {
   const { data, loading, error } = useQuery<ILinkedinResponse>(GET_LINKEDIN);
   const { isOpen, type } = usePopUpStore();
-  console.log(data);
 
   const locale = useLocale();
   const t = useTranslations("Linkedin");

@@ -50,10 +50,14 @@ export default async function LocaleLayout({
   unstable_setRequestLocale(locale);
   const messages = await getMessages({ locale });
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      className="transition-all duration-300"
+      lang={locale}
+      suppressHydrationWarning
+    >
       <body
         id="root"
-        className={`overflow-hidden
+        className={`overflow-hidden transition-all duration-300
         ${locale === "en" ? "font-graphik" : notoSansGeorgian?.className || ""}
         `}
       >
@@ -63,7 +67,7 @@ export default async function LocaleLayout({
               <PopUp />
               <CanvasComponent />
               <CursorAnimations />
-              <div className="">
+              <div className="transition-all duration-300">
                 <Navbar locale={locale} />
                 {children}
                 <Footer />

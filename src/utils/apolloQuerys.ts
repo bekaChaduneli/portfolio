@@ -16,6 +16,7 @@ export const GET_GITHUBREPOS = gql`
       link
       language
       id
+      stars
       createdAt
     }
   }
