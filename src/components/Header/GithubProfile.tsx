@@ -15,7 +15,7 @@ export default function GithubProfile({
   t: any;
 }) {
   return (
-    <div className="p-[8px] w-[216px] xl:w-[256px] border-[1px] border-primary/25 rounded-[12px] overflow-hidden">
+    <div className="p-[8px] min-w-[216px] w-[216px] xl:min-w-[256px] xl:w-[256px] border-[1px] border-primary/25 rounded-[12px] overflow-hidden">
       <Image
         src={github?.avatar_url ? github?.avatar_url : ""}
         width={600}

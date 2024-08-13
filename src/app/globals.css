@@ -119,6 +119,11 @@
     transition: background-color 0.3s ease-in-out;
   }
 
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
   .navButton_dark--open,
   .navButton_dark::before {
     background: #ede7de;
