@@ -25,8 +25,8 @@ export default function PopUp() {
         document.body.style.height = "100vh";
       }, 300);
     } else {
-      document.body.style.overflow = "";
-      document.body.style.height = "";
+      document.body.style.overflow = "auto";
+      document.body.style.height = "auto";
     }
   }, [isOpen]);
 
