@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --animation-cursor: 0.4s cubic-bezier(0.5, 0, 0.25, 1);
+    --scrollbar-thumb-color: #2b3b7a;
   }
 
   h1,
@@ -21,11 +22,13 @@
 
   .dark {
     transition: all 0.3s ease;
+    --scrollbar-thumb-color: #ede7de;
     background-color: #1c2a62;
   }
   .light {
     transition: all 0.3s ease;
     background-color: #ede7de;
+    --scrollbar-thumb-color: #2b3b7a;
   }
   .custom-order {
     --n-menu-title-order: 2;
@@ -66,13 +69,18 @@
 
   .custom-scrollbar,
   .custom-posts-scrollbar,
-  .custom-linkedin-scrollbar {
+  .custom-linkedin-scrollbar,
+  .blue-scrollbar {
     unicode-bidi: isolate;
     -webkit-overflow-scrolling: auto;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
     width: 5px;
+  }
+
+  .blue-scrollbar::-webkit-scrollbar {
+    width: 9px;
   }
 
   .custom-posts-scrollbar::-webkit-scrollbar {
@@ -85,7 +93,8 @@
 
   .custom-scrollbar::-webkit-scrollbar-track,
   .custom-posts-scrollbar::-webkit-scrollbar-track,
-  .custom-linkedin-scrollbar::-webkit-scrollbar-track {
+  .custom-linkedin-scrollbar::-webkit-scrollbar-track,
+  .blue-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
 
@@ -93,6 +102,12 @@
   .custom-posts-scrollbar::-webkit-scrollbar-thumb,
   .custom-linkedin-scrollbar::-webkit-scrollbar-thumb {
     background-color: #2b3b7a;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .blue-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
     cursor: pointer;
     border-radius: 10px;
   }

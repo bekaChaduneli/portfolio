@@ -36,8 +36,6 @@ export default function GithubPopUp() {
 
     fetchGithub();
   }, []);
-
-  console.log(myGithub);
   return (
     <div
       className={cn(

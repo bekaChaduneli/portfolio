@@ -51,7 +51,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <html
-      className="transition-all duration-300"
+      className="transition-all duration-300 blue-scrollbar "
       lang={locale}
       suppressHydrationWarning
     >

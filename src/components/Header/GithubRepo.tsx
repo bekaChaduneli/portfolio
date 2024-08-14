@@ -11,7 +11,6 @@ export default function GithubRepo({
   data: IGithubRepo;
   locale: string;
 }) {
-  console.log(data);
   const repo = data.translations?.find(
     (translation) => translation.languageCode === locale
   );
