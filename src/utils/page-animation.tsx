@@ -45,7 +45,6 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       duration: 0.5,
       onStart: () => {
         document.body.style.cursor = "wait";
-        // show loader
       },
       onComplete: () => {
         router.push(href);

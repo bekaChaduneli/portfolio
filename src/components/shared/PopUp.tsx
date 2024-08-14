@@ -5,6 +5,7 @@ import { useLenis } from "@studio-freight/react-lenis";
 import useSoundStore from "@/store/use-sound-store";
 import useSound from "use-sound";
 import pop from "@/sounds/pop-down.mp3";
+import { animateScroll as scroll } from "react-scroll";
 
 export default function PopUp() {
   const { isOpen, onClose } = usePopUpStore();
@@ -14,19 +15,20 @@ export default function PopUp() {
 
   useEffect(() => {
     if (isOpen) {
-      if (lenis) {
-        // lenis.scrollTo(0, { duration: 0.3, easing: (t) => t });
-        // Delay setting the body height until after the scroll completes
-        // setTimeout(() => {
-        //   document.body.style.overflow = "hidden";
-        //   document.body.style.height = "100vh";
-        // }, 300); // 500ms to match the scroll duration
-      }
+      scroll.scrollToTop({
+        duration: 300,
+        smooth: true,
+      });
+
+      setTimeout(() => {
+        document.body.style.overflow = "hidden";
+        document.body.style.height = "100vh";
+      }, 300);
     } else {
       document.body.style.overflow = "";
       document.body.style.height = "";
     }
-  }, [isOpen, lenis]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

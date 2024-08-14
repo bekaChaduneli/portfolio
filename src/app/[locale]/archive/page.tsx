@@ -17,11 +17,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function Archive() {
-  // const locale = useLocale();
-
-  // unstable_setRequestLocale(locale);
-
-  // const t = useTranslations("Archive");
   return (
     <main>
       <Archives />
