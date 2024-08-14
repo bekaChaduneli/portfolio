@@ -15,12 +15,12 @@ export default function PopUp() {
   useEffect(() => {
     if (isOpen) {
       if (lenis) {
-        lenis.scrollTo(0, { duration: 0.3, easing: (t) => t });
+        // lenis.scrollTo(0, { duration: 0.3, easing: (t) => t });
         // Delay setting the body height until after the scroll completes
-        setTimeout(() => {
-          document.body.style.overflow = "hidden";
-          document.body.style.height = "100vh";
-        }, 300); // 500ms to match the scroll duration
+        // setTimeout(() => {
+        //   document.body.style.overflow = "hidden";
+        //   document.body.style.height = "100vh";
+        // }, 300); // 500ms to match the scroll duration
       }
     } else {
       document.body.style.overflow = "";

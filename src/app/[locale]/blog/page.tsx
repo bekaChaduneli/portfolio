@@ -1,8 +1,6 @@
 import Blogs from "@/components/blogs/Blogs";
-
 import { Metadata } from "next";
-import { useLocale, useTranslations } from "next-intl";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: {
@@ -19,11 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function Blog() {
-  const t = useTranslations("Blog");
-
   return (
     <main>
-      <h1>{t("headline")}</h1>
       <Blogs />
     </main>
   );

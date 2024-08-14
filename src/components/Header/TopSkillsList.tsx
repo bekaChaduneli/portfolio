@@ -14,7 +14,7 @@ export default function TopSkillsList({
     <div className="text-[14px] font-light text-primary flex items-center">
       {topSkills?.map((topSkill: ITopSkills, index: number) => {
         return (
-          <span className="flex items-center">
+          <span key={index} className="flex items-center">
             <TopSkill locale={locale} topSkill={topSkill} key={index} />
             {index !== topSkills.length - 1 && (
               <Sparkle

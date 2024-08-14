@@ -12,20 +12,18 @@ import Image from "next/image";
 import { HeaderInfosProps } from "@/types/ComponentTypes";
 import usePopUpStore from "@/store/use-popup-store";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import useSoundStore from "@/store/use-sound-store";
 import useSound from "use-sound";
 import pop from "@/sounds/pop-up.mp3";
 
 export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
-  const htmlTag = document.documentElement;
-  const langAttribute = htmlTag.getAttribute("lang");
+  const locale = useLocale();
   const { onOpen, isOpen, type } = usePopUpStore();
   const { sound } = useSoundStore();
   const [popUp] = useSound(pop);
   const t = useTranslations("Home");
   useEffect(() => {
-    // animations not working using refs
     const profile = document.querySelector("#profile");
     const books = document.querySelector("#books");
     const linkedin = document.querySelector("#linkedin");
@@ -83,9 +81,9 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
               "absolute z-[2] xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]",
               {
                 "font-geom translate-x-[-2px] xl:translate-x-[-8px]":
-                  langAttribute === "en",
+                  locale === "en",
                 "font-firago translate-x-[-8px] xl:translate-x-[-14px]":
-                  langAttribute === "ka",
+                  locale === "ka",
                 "opacity-[100%]": isOpen && type === "profile",
               }
             )}
@@ -132,8 +130,8 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
               className={classNames(
                 "absolute z-[2] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]",
                 {
-                  "font-geom xl:text-[20px]": langAttribute === "en",
-                  "font-firago xl:text-[17px]": langAttribute === "ka",
+                  "font-geom xl:text-[20px]": locale === "en",
+                  "font-firago xl:text-[17px]": locale === "ka",
                   "opacity-[100%]": isOpen && type === "books",
                 }
               )}

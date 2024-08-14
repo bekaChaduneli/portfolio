@@ -1,7 +1,6 @@
 import Archives from "@/components/Projects/Archives";
 import { Metadata } from "next";
-import { useLocale, useTranslations } from "next-intl";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: {
@@ -18,14 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function Archive() {
-  const locale = useLocale();
+  // const locale = useLocale();
 
-  unstable_setRequestLocale(locale);
+  // unstable_setRequestLocale(locale);
 
-  const t = useTranslations("Archive");
+  // const t = useTranslations("Archive");
   return (
     <main>
-      <h1>{t("headline")}</h1>
       <Archives />
     </main>
   );

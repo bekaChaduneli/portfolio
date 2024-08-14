@@ -10,12 +10,12 @@ import { skills } from "@/lib/siteData";
 
 import { HeaderInfos } from "./HeaderInfos";
 import HeaderPopUp from "./HeaderPopUp";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export default function Header() {
   const t = useTranslations("Home");
-  const htmlTag = document.documentElement;
-  const langAttribute = htmlTag.getAttribute("lang");
+  const locale = useLocale();
   const { setIsCursorActive, setCursorBackground, setCursorText } =
     useCursorStore();
   const [scrollHover, setScrollHover] = useState(false);
@@ -24,13 +24,6 @@ export default function Header() {
     threshold: 0.75,
     triggerOnce: true,
   });
-  const scrollBottom = () => {
-    const targetScroll = 660;
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
@@ -39,7 +32,12 @@ export default function Header() {
         <HeaderPopUp />
         <div
           ref={ref}
-          onClick={() => scrollBottom()}
+          onClick={() => {
+            scroll.scrollTo(660, {
+              smooth: true,
+              duration: 500,
+            });
+          }}
           onMouseEnter={() => {
             setIsCursorActive(true);
             setCursorBackground("#e2d7c5");
@@ -54,16 +52,16 @@ export default function Header() {
         >
           <div className="flex  flex-col items-center relative">
             <div className="">
-              <p>
+              <div className="flex flex-col">
                 <MaskText
                   index={0}
                   className={classNames(
                     "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
                     {
                       "text-[21.5vw] lg:text-[126px] xl:text-[164px] font-geom leading-[100%] font-extrabold":
-                        langAttribute === "en",
+                        locale === "en",
                       "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]":
-                        langAttribute === "ka",
+                        locale === "ka",
                     }
                   )}
                   inView={inView}
@@ -76,16 +74,16 @@ export default function Header() {
                     "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
                     {
                       "text-[10.4vw] pl-[1.7%] lg:pl-0 lg:text-[62px] xl:text-[80.5px] font-geom leading-[112%] font-extrabold":
-                        langAttribute === "en",
+                        locale === "en",
                       "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]":
-                        langAttribute === "ka",
+                        locale === "ka",
                     }
                   )}
                   inView={inView}
                 >
                   {t("profession")}
                 </MaskText>
-              </p>
+              </div>
             </div>
           </div>
 

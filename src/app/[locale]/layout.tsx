@@ -1,13 +1,8 @@
-import "../globals.css";
-import Navbar from "@/components/Navbar/Navbar";
 import { ReactNode } from "react";
 import { Providers } from "./providers";
 import { NextIntlClientProvider } from "next-intl";
-import CanvasComponent from "@/components/CanvasComponent";
 import { Noto_Sans_Georgian } from "next/font/google";
-import CursorAnimations from "@/components/Cursor/CursorAnimations";
-import PopUp from "@/components/shared/PopUp";
-import Footer from "@/components/Footer";
+
 import { locales } from "@/config";
 import {
   getMessages,
@@ -16,6 +11,11 @@ import {
 } from "next-intl/server";
 import { Metadata } from "next";
 import { ApolloWrapper } from "./ApolloWrapper";
+import PopUp from "@/components/shared/PopUp";
+import CanvasComponent from "@/components/CanvasComponent";
+import CursorAnimations from "@/components/Cursor/CursorAnimations";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer";
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   subsets: ["latin"],
@@ -48,7 +48,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const messages = await getMessages({ locale });
+  const messages = await getMessages();
   return (
     <html
       className="transition-all duration-300"
@@ -62,7 +62,7 @@ export default async function LocaleLayout({
         `}
       >
         <ApolloWrapper>
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             <Providers>
               <PopUp />
               <CanvasComponent />
