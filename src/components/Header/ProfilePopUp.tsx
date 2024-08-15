@@ -20,6 +20,8 @@ export default function ProfilePopUp() {
   const { isOpen, type } = usePopUpStore();
   const locale = useLocale();
 
+  const { onClose } = usePopUpStore();
+
   const t = useTranslations("Profile");
 
   const profile = data?.findFirstProfile.translations?.find(
@@ -179,7 +181,7 @@ export default function ProfilePopUp() {
         </p>
         <h2
           className={cn(
-            "text-[20px] font-geom font-bold text-primary mb-[8px]",
+            "text-[20px] xl:text-[24px] font-geom font-bold text-primary mb-[8px]",
             locale === "ka" && "font-firago"
           )}
         >
@@ -192,13 +194,25 @@ export default function ProfilePopUp() {
         </div>
         <h2
           className={cn(
-            "text-[20px] font-geom font-bold text-primary mb-[8px]",
+            "text-[20px] xl:text-[24px] font-geom font-bold text-primary mb-[8px]",
             locale === "ka" && "font-firago"
           )}
         >
           {t("questions")}
         </h2>
         <AccordionVariant questions={questions} locale={locale} />
+        <Link
+          className={cn(
+            "w-full flex justify-center  py-[12px] mt-[16px] rounded-[24px] bg-primary hover:bg-[#131c3e] transition-all duration-300 text-secondary text-[20px] xl:text-[22px]",
+            locale == "en" ? "font-geom" : "font-firago"
+          )}
+          onClick={() => {
+            onClose();
+          }}
+          href="/about"
+        >
+          {t("seeMore")}
+        </Link>
       </div>
     </div>
   );
