@@ -73,6 +73,7 @@ export default function Navbar({ locale }: { locale: string }) {
         )}
       >
         <div
+          id="nav"
           className={classNames(
             "flex px-3 gap-[20px] xl:gap-[35px] rounded-[30px] transition duration-500 relative",
             {
@@ -82,6 +83,7 @@ export default function Navbar({ locale }: { locale: string }) {
         >
           <span className="py-3">
             <NavigationLink
+              id="home"
               className={classNames(
                 "px-4 h-full rounded-[24px] font-bold  text-primary flex items-center dark:text-secondary",
                 {
@@ -96,6 +98,7 @@ export default function Navbar({ locale }: { locale: string }) {
           </span>
           <span className="py-3">
             <NavigationLink
+              id="about"
               className={classNames(
                 "px-4 rounded-[24px] h-full font-bold  text-primary flex items-center dark:text-secondary",
                 {
@@ -130,7 +133,7 @@ export default function Navbar({ locale }: { locale: string }) {
                 <div className="w-[500px] h-[12px] absolute"></div>
                 <span className="pt-[10px]">
                   <span className="absolute w-[470px] custom-order h-[274px] rounded-[8px] bg-[#f7f2f2]/[.78] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[6px] backdrop-saturate-[1.4] flex flex-col justify-between">
-                    <NavigationLink className="p-2 pb-0" href="/main">
+                    <NavigationLink id="main" className="p-2 pb-0" href="/main">
                       <div
                         className={classNames(
                           "w-[454px] box-shadow-light dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9bb] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
@@ -155,7 +158,11 @@ export default function Navbar({ locale }: { locale: string }) {
                         </span>
                       </div>
                     </NavigationLink>
-                    <NavigationLink className="p-2 pt-0" href="/archive">
+                    <NavigationLink
+                      id="archive"
+                      className="p-2 pt-0"
+                      href="/archive"
+                    >
                       <div
                         className={classNames(
                           "w-[454px] box-shadow-light flex items-center dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9aa] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
@@ -188,6 +195,7 @@ export default function Navbar({ locale }: { locale: string }) {
 
           <span className="py-3">
             <NavigationLink
+              id="blog"
               className={classNames(
                 "px-4 rounded-[24px] flex items-center h-full font-bold relative text-primary dark:text-secondary",
                 {
@@ -210,7 +218,9 @@ export default function Navbar({ locale }: { locale: string }) {
           )}
         >
           <Calendly />
-          <ThemeSwitch />
+          <span data-cy="theme-switcher">
+            <ThemeSwitch />
+          </span>
           <SoundSwitcher />
           <LanguageChanger locale={locale} />
         </div>

@@ -20,8 +20,14 @@
     "paths": {
       "@/*": ["./src/*"],
       "@splidejs/react-splide": ["./src/types/splide.d.ts"]
-    }
+    },
+    "types": []
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "node_modules/@types/sinonjs__fake-timers",
+    "node_modules/@types/sizzle",
+    "node_modules/@types/yauzl"
+  ]
 }
