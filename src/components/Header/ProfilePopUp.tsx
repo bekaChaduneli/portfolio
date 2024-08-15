@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { Facebook, Linkedin } from "lucide-react";
 import Hobby from "./Hobby";
+import { AccordionVariant } from "../animations/accordions";
 
 export default function ProfilePopUp() {
   const { data, loading, error } = useQuery<IProfileResponse>(GET_PROFILE);
@@ -27,9 +28,7 @@ export default function ProfilePopUp() {
 
   const socials = data?.findFirstProfile.socials;
   const hobbys = data?.findFirstProfile.hobbys;
-  console.log(data?.findFirstProfile);
   const questions = data?.findFirstProfile.questions;
-
   if (!data?.findFirstProfile) {
     return null;
   }
@@ -186,11 +185,20 @@ export default function ProfilePopUp() {
         >
           {t("hobbys")}
         </h2>
-        <div className="flex flex-wrap justify-start gap-[14px] xl:gap-[20px]">
+        <div className="flex flex-wrap justify-start gap-[14px] xl:gap-[20px] mb-[24px]">
           {hobbys?.map((hobby, index) => {
             return <Hobby hobby={hobby} key={index} locale={locale} />;
           })}
         </div>
+        <h2
+          className={cn(
+            "text-[20px] font-geom font-bold text-primary mb-[8px]",
+            locale === "ka" && "font-firago"
+          )}
+        >
+          {t("questions")}
+        </h2>
+        <AccordionVariant questions={questions} locale={locale} />
       </div>
     </div>
   );
