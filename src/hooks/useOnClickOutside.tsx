@@ -1,12 +1,19 @@
 import { RefObject, useEffect, useCallback } from "react";
+import useSoundStore from "@/store/use-sound-store";
+import useSound from "use-sound";
+import pop from "@/sounds/pop-down.mp3";
 
 function useOnClickOutside(
   ref: RefObject<HTMLElement>,
   handler: (event: Event) => void
 ) {
+  const { sound } = useSoundStore();
+  const [popDown] = useSound(pop);
+
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
+        sound && popDown();
         handler(event);
       }
     },
@@ -16,6 +23,7 @@ function useOnClickOutside(
   const handleEscapeKey = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        sound && popDown();
         handler(event);
       }
     },
