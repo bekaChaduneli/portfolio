@@ -65,5 +65,14 @@
     "followers": "followers",
     "following": "following",
     "pinned": "Pinned:"
+  },
+  "Profile": {
+    "hiIam": "Hi, I'm",
+    "contactMe": "Contact To Me: ",
+    "experience": "My Experience: ",
+    "university": "I'm Student of ",
+    "hobbys": "Hobbys: ",
+    "questions": "Frequently Asked Questions: ",
+    "seeMore": "See More"
   }
 }

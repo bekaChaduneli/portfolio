@@ -20,7 +20,7 @@ export interface IProfile {
   resume: string;
   image: string;
   mail: string;
-  hobby: IHobbys[];
+  hobbys: IHobbys[];
   questions: IQuestions[];
   socials: ISocials[];
   translations: IProfileTranslation[];

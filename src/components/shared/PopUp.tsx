@@ -1,7 +1,6 @@
 "use client";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import usePopUpStore from "@/store/use-popup-store";
-import { useLenis } from "@studio-freight/react-lenis";
 import useSoundStore from "@/store/use-sound-store";
 import useSound from "use-sound";
 import pop from "@/sounds/pop-down.mp3";
@@ -9,7 +8,6 @@ import { animateScroll as scroll } from "react-scroll";
 
 export default function PopUp() {
   const { isOpen, onClose } = usePopUpStore();
-  const lenis = useLenis();
   const { sound } = useSoundStore();
   const [popDown] = useSound(pop);
 
@@ -27,8 +25,17 @@ export default function PopUp() {
     } else {
       document.body.style.overflow = "auto";
       document.body.style.height = "auto";
+      sound && popDown();
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    });
+  }, []);
 
   if (!isOpen) return null;
 
@@ -36,7 +43,6 @@ export default function PopUp() {
     <div
       onClick={() => {
         onClose();
-        sound && popDown();
       }}
       className=" z-[10] inset-0 fixed bg-black/20 cursor-zoom-out"
     ></div>
