@@ -1,3 +1,4 @@
+import AboutMeElement from "@/components/AboutMe/AboutMeElement";
 import Header from "@/components/Header/Header";
 import MainProjects from "@/components/Projects/MainProjects";
 import Recommendations from "@/components/Recommendations";
@@ -12,6 +13,7 @@ const HomePage: React.FC<HomeProps> = ({ params: { locale } }) => {
   return (
     <main className="min-h-[100vh] transition-all duration-300">
       <Header />
+      <AboutMeElement />
       <Services />
       <MainProjects />
       <Skills />

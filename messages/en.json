@@ -74,5 +74,10 @@
     "hobbys": "Hobbys: ",
     "questions": "Frequently Asked Questions: ",
     "seeMore": "See More"
+  },
+  "AboutMeElement": {
+    "about": "About",
+    "me": "Beka",
+    "seeMore": "See More"
   }
 }

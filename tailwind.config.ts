@@ -32,6 +32,7 @@ const config = {
         foreground: "hsl(var(--foreground))",
         primary: "#2b3b7a",
         secondary: "#ede7de",
+        linearPink: "#a9baff",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",

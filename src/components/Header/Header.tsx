@@ -12,12 +12,18 @@ import { HeaderInfos } from "./HeaderInfos";
 import HeaderPopUp from "./HeaderPopUp";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, animateScroll as scroll } from "react-scroll";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const t = useTranslations("Home");
   const locale = useLocale();
-  const { setIsCursorActive, setCursorBackground, setCursorText } =
-    useCursorStore();
+  const {
+    setIsCursorActive,
+    setCursorBackground,
+    setCursorText,
+    setCursorType,
+    onCloseAnimation,
+  } = useCursorStore();
   const [scrollHover, setScrollHover] = useState(false);
 
   const { ref, inView, entry } = useInView({
@@ -26,7 +32,14 @@ export default function Header() {
   });
 
   return (
-    <div className="mt-[80px] sm:mt-[90px] md:mt-[100px] lg:mt-[144px] xl:mt-[160px] flex items-center justify-center z-[0]">
+    <div
+      className={cn(
+        "mt-[34px] sm:mt-[90px] md:mt-[100px] mb-[10px] lg:mb-[110px] xl:mb-[200px] flex items-center justify-center z-[0]",
+        locale === "en"
+          ? "lg:mt-[144px] xl:mt-[190px]"
+          : "lg:mt-[174px] xl:mt-[220px]"
+      )}
+    >
       <div className="relative flex flex-col gap-[8px] py-[20px] md:py-[40px] lg:py-[110px] lg:w-[954px] xl:w-[1200px] justify-center items-center">
         <HeaderInfos scrollHover={scrollHover} />
         <HeaderPopUp />
@@ -42,6 +55,7 @@ export default function Header() {
             setIsCursorActive(true);
             setCursorBackground("#e2d7c5");
             setCursorText(t("scroll"));
+            setCursorType("text");
             setScrollHover(true);
           }}
           onMouseLeave={() => {

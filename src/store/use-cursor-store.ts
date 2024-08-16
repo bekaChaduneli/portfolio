@@ -11,6 +11,15 @@ const useCursorStore = create<CursorState & CursorActions>((set) => ({
   setCursorAnimation: (animation) => set({ cursorAnimation: animation }),
   setCursorBackground: (color) => set({ cursorBackground: color }),
   setCursorText: (text) => set({ cursorText: text }),
+  setCursorType: (text) => set({ cursorType: text }),
+  onCloseAnimation: () =>
+    set({
+      cursorType: "",
+      isCursorActive: false,
+      cursorAnimation: null,
+      cursorBackground: "#ffffff",
+      cursorText: "",
+    }),
 }));
 
 export default useCursorStore;

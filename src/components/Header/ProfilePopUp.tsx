@@ -5,7 +5,7 @@ import { GET_PROFILE } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
   TextEffectPerChar,
   TextEffectPerWord,
@@ -14,12 +14,13 @@ import Link from "next/link";
 import { Facebook, Linkedin } from "lucide-react";
 import Hobby from "./Hobby";
 import { AccordionVariant } from "../animations/accordions";
+import useCursorStore from "@/store/use-cursor-store";
 
 export default function ProfilePopUp() {
   const { data, loading, error } = useQuery<IProfileResponse>(GET_PROFILE);
   const { isOpen, type } = usePopUpStore();
   const locale = useLocale();
-
+  const [scrollHover, setScrollHover] = useState(false);
   const { onClose } = usePopUpStore();
 
   const t = useTranslations("Profile");
@@ -30,6 +31,14 @@ export default function ProfilePopUp() {
 
   const socials = data?.findFirstProfile.socials;
   const hobbys = data?.findFirstProfile.hobbys;
+
+  const {
+    setIsCursorActive,
+    setCursorBackground,
+    setCursorText,
+    setCursorType,
+    onCloseAnimation,
+  } = useCursorStore();
   const questions = data?.findFirstProfile.questions;
   if (!data?.findFirstProfile) {
     return null;
@@ -208,6 +217,16 @@ export default function ProfilePopUp() {
           )}
           onClick={() => {
             onClose();
+          }}
+          onMouseEnter={() => {
+            setIsCursorActive(true);
+            setCursorBackground("/come.gif");
+            setCursorType("gif");
+            setScrollHover(true);
+          }}
+          onMouseLeave={() => {
+            setIsCursorActive(false);
+            setScrollHover(false);
           }}
           href="/about"
         >
