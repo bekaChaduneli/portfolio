@@ -283,6 +283,20 @@ export const GET_BLOG = gql`
   }
 `;
 
+export const GET_ABOUTME_ELEMENT = gql`
+  query findFirstAboutMe {
+    findFirstAboutMe {
+      image
+      id
+      translations {
+        languageCode
+        id
+        about
+      }
+    }
+  }
+`;
+
 export const GET_ABOUTME = gql`
   query findFirstAboutMe {
     findFirstAboutMe {

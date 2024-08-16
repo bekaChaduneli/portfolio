@@ -19,6 +19,7 @@ import { fadeIn, staggerContainer } from "@/utils/motion";
 import useSoundStore from "@/store/use-sound-store";
 import useSound from "use-sound";
 import menu from "@/sounds/menu-open.mp3";
+import NoSsr from "@/hooks/noSsr";
 
 export default function Navbar({ locale }: { locale: string }) {
   const pathname = usePathname();
@@ -238,28 +239,36 @@ export default function Navbar({ locale }: { locale: string }) {
             height={650}
           />
         </NavigationLink>
-        <div
-          onClick={() => {
-            sound && menuSound();
-          }}
-          className={
-            theme.theme === "light" ? "navButton_light" : "navButton_dark"
-          }
-        >
-          <Hamburger
-            size={24}
-            rounded
-            color={
-              isOpen
-                ? "#CE1B1B"
-                : theme.theme === "light"
-                ? "#ede7de"
-                : "#283D8B"
-            }
-            toggled={isOpen}
-            toggle={changeMenu}
-          />
-        </div>
+        <NoSsr>
+          {theme?.theme ? (
+            <div
+              onClick={() => {
+                sound && menuSound();
+              }}
+              className={
+                theme?.theme && theme?.theme === "light"
+                  ? "navButton_light bg-primary rounded-full"
+                  : "navButton_dark bg-secondary rounded-full"
+              }
+            >
+              <Hamburger
+                size={24}
+                rounded
+                color={
+                  isOpen
+                    ? "#CE1B1B"
+                    : theme.theme === "light"
+                    ? "#ede7de"
+                    : "#283D8B"
+                }
+                toggled={isOpen}
+                toggle={changeMenu}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+        </NoSsr>
       </motion.div>
 
       <Menu locale={locale} isOpen={isOpen} changeMenu={changeMenu} />

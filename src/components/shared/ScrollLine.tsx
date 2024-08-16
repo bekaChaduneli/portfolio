@@ -22,7 +22,7 @@ export default function ScrollLine() {
       <motion.div
         ref={ref}
         className={cn(
-          "w-[1px] h-[140px] xl:h-[240px] bg-gradient-to-b origin-top from-transparent to-primary dark:to-secondary"
+          "w-[1px] h-[140px] sm:w-[h-200px] xl:h-[240px] bg-gradient-to-b origin-top from-transparent to-primary dark:to-secondary"
         )}
         initial={{ scaleY: 0 }}
         animate={controls}

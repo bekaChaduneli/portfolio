@@ -75,5 +75,9 @@
     "hobbys": "ჰობი: ",
     "questions": "ხშირად დასმული კითხვები: ",
     "seeMore": "ვრცლად"
+  },
+  "AboutMeElement": {
+    "about": "ჩემს",
+    "me": "შესახებ"
   }
 }

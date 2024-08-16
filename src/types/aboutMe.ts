@@ -120,3 +120,20 @@ export interface ILanguages {
 export interface IAboutMeResponse {
   findFirstAboutMe: IAboutMe;
 }
+
+export interface IAboutMeElement {
+  image: string;
+
+  id: string;
+  translations: IAboutMeElementTranslation[];
+}
+
+export interface IAboutMeElementTranslation {
+  languageCode: string;
+  id: string;
+  about: string;
+}
+
+export interface IAboutMeElementResponse {
+  findFirstAboutMe: IAboutMeElement;
+}
