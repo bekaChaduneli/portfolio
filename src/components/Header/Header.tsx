@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <div
       className={cn(
-        "mt-[80px] sm:mt-[90px] md:mt-[100px] mb-[10px] lg:mb-[110px] xl:mb-[200px] flex items-center justify-center z-[0]",
+        "mt-[34px] sm:mt-[90px] md:mt-[100px] mb-[10px] lg:mb-[110px] xl:mb-[200px] flex items-center justify-center z-[0]",
         locale === "en"
           ? "lg:mt-[144px] xl:mt-[190px]"
           : "lg:mt-[174px] xl:mt-[220px]"
