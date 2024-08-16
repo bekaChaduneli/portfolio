@@ -16,8 +16,13 @@ import { Link, animateScroll as scroll } from "react-scroll";
 export default function Header() {
   const t = useTranslations("Home");
   const locale = useLocale();
-  const { setIsCursorActive, setCursorBackground, setCursorText } =
-    useCursorStore();
+  const {
+    setIsCursorActive,
+    setCursorBackground,
+    setCursorText,
+    setCursorType,
+    onCloseAnimation,
+  } = useCursorStore();
   const [scrollHover, setScrollHover] = useState(false);
 
   const { ref, inView, entry } = useInView({
@@ -42,6 +47,7 @@ export default function Header() {
             setIsCursorActive(true);
             setCursorBackground("#e2d7c5");
             setCursorText(t("scroll"));
+            setCursorType("text");
             setScrollHover(true);
           }}
           onMouseLeave={() => {
