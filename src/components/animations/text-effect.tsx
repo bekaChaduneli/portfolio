@@ -1,5 +1,8 @@
 "use client";
+import Link from "next/link";
 import { TextEffect } from "../core/text-effect";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export function TextEffectWithCustomVariants({
   text,
@@ -98,3 +101,94 @@ export function TextEffectWithPreset({
     </TextEffect>
   );
 }
+
+const DURATION = 0.25;
+const STAGGER = 0.025;
+
+export const FlipLink = ({
+  children,
+  href,
+  className,
+  top,
+  onClick,
+}: {
+  children: any;
+  href: any;
+  className: any;
+  top: string;
+  onClick?: any;
+}) => {
+  return (
+    <Link className="w-full" href={href} onClick={onClick ? onClick : () => {}}>
+      <motion.div
+        initial="initial"
+        whileHover="hovered"
+        className={
+          className
+            ? className
+            : "relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-9xl"
+        }
+        style={{
+          lineHeight: 0.75,
+        }}
+      >
+        <div
+          className={cn(
+            "absolute inset-0 flex justify-center translate-y-[-50%]",
+            top ? top : "top-[56%]"
+          )}
+        >
+          {children.split("").map((l: any, i: any) => (
+            <motion.span
+              variants={{
+                initial: {
+                  y: 0,
+                },
+                hovered: {
+                  y: "-200%",
+                },
+              }}
+              transition={{
+                duration: DURATION,
+                ease: "easeInOut",
+                delay: STAGGER * i,
+              }}
+              className="inline-block"
+              key={i}
+            >
+              {l}
+            </motion.span>
+          ))}
+        </div>
+        <div
+          className={cn(
+            "absolute inset-0 flex justify-center translate-y-[-50%]",
+            top ? `${top}` : "top-[56%]"
+          )}
+        >
+          {children.split("").map((l: any, i: any) => (
+            <motion.span
+              variants={{
+                initial: {
+                  y: "200%",
+                },
+                hovered: {
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: DURATION,
+                ease: "easeInOut",
+                delay: STAGGER * i,
+              }}
+              className="inline-block"
+              key={i}
+            >
+              {l}
+            </motion.span>
+          ))}
+        </div>
+      </motion.div>
+    </Link>
+  );
+};

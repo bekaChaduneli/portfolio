@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { FlipLink } from "../animations/text-effect";
 
 export default function AboutMeElement() {
   const { data, loading, error } =
@@ -58,12 +59,13 @@ export default function AboutMeElement() {
           <p className="mt-[50px] line-clamp-[9] italic font-bold text-primary/80 dark:text-secondary/80 text-[14px] mb-[24px]">
             {translation?.about}
           </p>
-          <Link
-            className="text-[19px] w-full flex justify-center py-[6px] rounded-[16px] bg-primary text-secondary font-geom"
+          <FlipLink
+            className="text-[19px] w-full flex justify-center h-[40px] rounded-[16px] bg-primary text-secondary font-geom relative overflow-hidden whitespace-nowrap"
             href="/about"
+            top="top-[54%]"
           >
             {t("seeMore")}
-          </Link>
+          </FlipLink>
         </div>
       </div>
     </div>
