@@ -13,6 +13,7 @@ import { FlipLink } from "../animations/text-effect";
 import { fadeIn } from "@/utils/motion";
 import { MaskText } from "../animations/MaskText";
 import { InViewBasic } from "../animations/in-view";
+import Link from "next/link";
 
 export default function AboutMeElement() {
   const { data, loading, error } =
@@ -50,24 +51,36 @@ export default function AboutMeElement() {
   return (
     <div className="flex flex-col items-center z-[0] relative">
       <ScrollLine />
-      <div className="flex flex-col items-center md:flex-row md:gap-[40px] lg:gap-[70px] xl:gap-[120px] mt-[30px] md:mt-[30px] lg:mt-[40px]">
+      <div className="flex flex-col items-center md:flex-row md:gap-[40px] lg:gap-[70px] xl:gap-[120px] mt-[30px] md:mt-[30px] lg:mt-[40px] px-[20px]">
         <motion.div
           variants={fadeInVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="w-full overflow-hidden relative h-[80vw] mb-[30px] min-[500px]:h-[66vw]"
+          className="w-full bg-[#9d94e5] rounded-[26px] h-[320px] relative overflow-hidden group group-hover:bg-[#b1a9e9] transition-all duration-300 shadow-md group-hover:shadow-xl"
         >
-          <Image
-            className="absolute rounded-t-full inset-0 min-h-full min-w-[200%] left-[-50%] min-[500px]:min-w-[150%] min-[500px]:left-[-25%]"
-            width={2000}
-            height={2000}
-            src={aboutMe?.image ? aboutMe.image : ""}
-            alt="aboutMe"
-          />
+          <Link href="/about">
+            <h2 className="absolute left-[24px] tracking-[6px] top-[22px] text-[25px] font-bold font-mono text-secondary uppercase group-hover:left-[32px] transition-all duration-300">
+              {t("information")}
+            </h2>
+            <h2
+              className={cn(
+                "absolute left-[24px] text-[34px] font-geom text-[#505067] capitalize group-hover:left-[32px] transition-all duration-300",
+                locale === "en" ? "top-[47px]" : "top-[56px]"
+              )}
+            >
+              {t("aboutMe")}
+            </h2>
+            <Image
+              className="absolute w-auto h-auto left-[-126px] translate-x-[50%] top-[118px] group-hover:scale-[108%] transition-all duration-300"
+              width={700}
+              height={700}
+              src={aboutMe?.image ? aboutMe.image : ""}
+              alt="aboutMe"
+            />
+          </Link>
         </motion.div>
-        <div className="w-full px-[20px] relative">
-          {/* MaskText wrapper with its own ref */}
+        <div className="w-full relative">
           <div
             ref={maskTextRef}
             className="flex justify-center overflow-hidden h-[100px] min-[500px]:h-[130px]"
@@ -101,7 +114,7 @@ export default function AboutMeElement() {
           </div>
 
           <InViewBasic>
-            <p className="mt-[50px] line-clamp-[9] italic font-bold text-primary/80 dark:text-secondary/80 text-[14px] mb-[24px]">
+            <p className="mt-[12px] line-clamp-[9] italic font-bold text-primary/80 dark:text-secondary/80 text-[14px] mb-[24px]">
               {translation?.about}
             </p>
           </InViewBasic>

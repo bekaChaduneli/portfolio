@@ -32,8 +32,9 @@ export function MaskText({
       className={cn(
         "overflow-hidden",
         type === "aboutMeRight"
-          ? "relative top-[32px] h-[60px] left-[-30px] rotate-[-5deg] min-[500px]:h-[90px]"
-          : type === "aboutMeLeft" && "relative h-[60px] min-[500px]:h-[90px]"
+          ? "relative top-[17px] h-[60px] left-[-5px] rotate-[-5deg] min-[500px]:h-[90px]"
+          : type === "aboutMeLeft" &&
+              "relative h-[72px] rotate-[-5deg] min-[500px]:h-[90px]"
       )}
     >
       <motion.p
