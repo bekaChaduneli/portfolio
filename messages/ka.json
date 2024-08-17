@@ -79,6 +79,8 @@
   "AboutMeElement": {
     "about": "ჩემს",
     "me": "შესახებ",
-    "seeMore": "მეტის ნახვა"
+    "seeMore": "მეტის ნახვა",
+    "information": "ინფორმაცია",
+    "aboutMe": "ჩემზე"
   }
 }

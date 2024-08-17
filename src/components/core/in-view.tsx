@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, useState, useEffect } from "react";
 import {
   motion,
   useInView,
@@ -16,6 +16,7 @@ interface InViewProps {
   };
   transition?: Transition;
   viewOptions?: UseInViewOptions;
+  triggerOnce?: boolean; // Make triggerOnce optional
 }
 
 const defaultVariants = {
@@ -28,15 +29,23 @@ export function InView({
   variants = defaultVariants,
   transition,
   viewOptions,
+  triggerOnce = true,
 }: InViewProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, viewOptions);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated && triggerOnce) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated, triggerOnce]);
 
   return (
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={(triggerOnce && hasAnimated) || isInView ? "visible" : "hidden"}
       variants={variants}
       transition={transition}
     >

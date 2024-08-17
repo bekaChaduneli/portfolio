@@ -78,6 +78,8 @@
   "AboutMeElement": {
     "about": "About",
     "me": "Beka",
-    "seeMore": "See More"
+    "seeMore": "See More",
+    "information": "information",
+    "aboutMe": "About Me"
   }
 }

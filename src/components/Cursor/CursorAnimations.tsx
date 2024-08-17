@@ -58,7 +58,7 @@ export default function CursorAnimations() {
             transition: "transform 0.3s ease-out",
           }}
         >
-          <div className=" rotate-[-4deg] relative pointer-events-none w-[94px] h-[124px] top-[-122px] left-[8px] ">
+          <div className=" rotate-[-4deg] relative pointer-events-none w-[110px] h-[140px] top-[-140px] left-[14px] ">
             <div
               className={classNames(
                 "relative origin-bottom-left bg-cover transition-all scale-[0%] duration-500 overflow-hidden w-full border-[2px] border-primary h-full rounded-[8px]",
