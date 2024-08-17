@@ -26,6 +26,13 @@
     background-color: #1c2a62;
   }
 
+  .about_me_link_image:hover .about_me_link_button {
+    border-radius: 0px !important;
+  }
+  .about_me_link_button:hover {
+    border-radius: 4px !important;
+  }
+
   .light {
     transition: all 0.3s ease;
     background-color: #ede7de;

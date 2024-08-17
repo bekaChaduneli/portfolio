@@ -162,7 +162,7 @@ export const FlipLink = ({
                 ease: "easeInOut",
                 delay: STAGGER * i,
               }}
-              className={cn("inline-block", l === " " && wordSpace)}
+              className={cn("flex items-center", l === " " && wordSpace)}
               key={i}
             >
               {l}
@@ -195,7 +195,7 @@ export const FlipLink = ({
                 ease: "easeInOut",
                 delay: STAGGER * i,
               }}
-              className={cn("inline-block", l === " " && wordSpace)}
+              className={cn("flex items-center", l === " " && wordSpace)}
               key={i}
             >
               {l}

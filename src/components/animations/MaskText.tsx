@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { MaskTextType } from "@/types/ComponentTypes";
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
 export function MaskText({
   index,
@@ -9,6 +10,7 @@ export function MaskText({
   children,
   type,
 }: MaskTextType) {
+  const locale = useLocale();
   const animation = {
     initial: { y: "100%" },
     enter: (i: number) => ({
@@ -32,9 +34,10 @@ export function MaskText({
       className={cn(
         "overflow-hidden",
         type === "aboutMeRight"
-          ? "relative top-[17px] h-[60px] left-[-5px] rotate-[-5deg] min-[500px]:h-[90px]"
+          ? "relative top-[17px] h-[60px] left-[-5px] rotate-[-5deg] min-[500px]:h-[90px] md:h-[56px] xl:h-[90px]"
           : type === "aboutMeLeft" &&
-              "relative h-[72px] rotate-[-5deg] min-[500px]:h-[90px]"
+              "relative h-[72px] rotate-[-5deg] min-[500px]:h-[90px] md:h-[56px] xl:h-[90px]",
+        locale === "ka" && type === "aboutMeRight" ? "xl:top-[23px]" : ""
       )}
     >
       <motion.p
