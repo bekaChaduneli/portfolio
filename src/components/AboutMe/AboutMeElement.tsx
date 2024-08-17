@@ -57,7 +57,7 @@ export default function AboutMeElement() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="w-full bg-[#9d94e5] rounded-[26px] h-[320px] relative overflow-hidden group group-hover:bg-[#b1a9e9] transition-all duration-300 shadow-md group-hover:shadow-xl"
+          className="w-full bg-[#9d94e5] rounded-[26px] h-[320px] relative overflow-hidden group group-hover:bg-[#b1a9e9] shadow-md group-hover:shadow-xl"
         >
           <Link href="/about">
             <h2 className="absolute left-[24px] tracking-[6px] top-[22px] text-[25px] font-bold font-mono text-secondary uppercase group-hover:left-[32px] transition-all duration-300">
@@ -132,7 +132,10 @@ export default function AboutMeElement() {
               wordSpace="min-w-[7px]"
               top="top-[54%]"
               textAlign="center"
-              className="text-[19px] w-full"
+              className={cn(
+                "text-[19px] w-full",
+                locale === "ka" && "font-firago"
+              )}
             >
               {t("seeMore")}
             </FlipLink>
