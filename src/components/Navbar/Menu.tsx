@@ -45,7 +45,7 @@ export default function Menu({
       <div className="flex flex-col items-center mt-[20vh]">
         <nav
           className={classNames(
-            "lg:hidden flex flex-col gap-[20px] sm:gap-[26px] md:gap-[30px] items-center px-[20px]",
+            "lg:hidden flex flex-col min-[420px]:px-[28px] sm:px-[30px] md:px-[40px] gap-[20px] sm:gap-[26px] md:gap-[30px] items-center px-[20px]",
             {
               " w-full z-[44]": isOpen,
               "hidden ": !isOpen,
@@ -61,14 +61,18 @@ export default function Menu({
                 "opacity-[75%]": pathname === `/${locale}`,
               }
             )}
+            textAlign="left"
             href="/"
+            wordSpace="min-w-[14px]"
             onClick={() => isOpen && changeMenu()}
             top="top-[45%]"
           >
             {t("home")}
           </FlipLink>
           <FlipLink
+            textAlign="left"
             top="top-[45%]"
+            wordSpace="min-w-[14px]"
             href="/about"
             className={classNames(
               "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
@@ -81,6 +85,8 @@ export default function Menu({
             {t("about")}
           </FlipLink>
           <FlipLink
+            textAlign="left"
+            wordSpace="min-w-[14px]"
             href="/main"
             top="top-[45%]"
             className={classNames(
@@ -96,6 +102,8 @@ export default function Menu({
           <FlipLink
             href="/blog"
             top="top-[45%]"
+            wordSpace="min-w-[14px]"
+            textAlign="left"
             className={classNames(
               "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
               {

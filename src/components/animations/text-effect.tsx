@@ -111,12 +111,16 @@ export const FlipLink = ({
   className,
   top,
   onClick,
+  textAlign,
+  wordSpace,
 }: {
   children: any;
   href: any;
   className: any;
   top: string;
   onClick?: any;
+  wordSpace: string;
+  textAlign: string;
 }) => {
   return (
     <Link className="w-full" href={href} onClick={onClick ? onClick : () => {}}>
@@ -135,7 +139,12 @@ export const FlipLink = ({
         <div
           className={cn(
             "absolute inset-0 flex justify-center translate-y-[-50%]",
-            top ? top : "top-[56%]"
+            top ? top : "top-[56%]",
+            textAlign === "left"
+              ? "justify-start"
+              : textAlign === "center"
+              ? "justify-center"
+              : "justify-end"
           )}
         >
           {children.split("").map((l: any, i: any) => (
@@ -153,7 +162,7 @@ export const FlipLink = ({
                 ease: "easeInOut",
                 delay: STAGGER * i,
               }}
-              className="inline-block"
+              className={cn("inline-block", l === " " && wordSpace)}
               key={i}
             >
               {l}
@@ -163,7 +172,12 @@ export const FlipLink = ({
         <div
           className={cn(
             "absolute inset-0 flex justify-center translate-y-[-50%]",
-            top ? `${top}` : "top-[56%]"
+            top ? `${top}` : "top-[56%]",
+            textAlign === "left"
+              ? "justify-start"
+              : textAlign === "center"
+              ? "justify-center"
+              : "justify-end"
           )}
         >
           {children.split("").map((l: any, i: any) => (
@@ -181,7 +195,7 @@ export const FlipLink = ({
                 ease: "easeInOut",
                 delay: STAGGER * i,
               }}
-              className="inline-block"
+              className={cn("inline-block", l === " " && wordSpace)}
               key={i}
             >
               {l}

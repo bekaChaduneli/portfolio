@@ -1,7 +1,14 @@
+import { cn } from "@/lib/utils";
 import { MaskTextType } from "@/types/ComponentTypes";
 import { motion } from "framer-motion";
 
-export function MaskText({ index, className, inView, children }: MaskTextType) {
+export function MaskText({
+  index,
+  className,
+  inView,
+  children,
+  type,
+}: MaskTextType) {
   const animation = {
     initial: { y: "100%" },
     enter: (i: number) => ({
@@ -9,13 +16,26 @@ export function MaskText({ index, className, inView, children }: MaskTextType) {
       transition: {
         duration: 0.75,
         ease: [0.33, 1, 0.68, 1],
-        delay: 0.34 + 0.075 * i,
+        delay:
+          type === "aboutMeLeft"
+            ? 0.1
+            : type === "aboutMeRight"
+            ? 0.4
+            : 0.34 + 0.075 * i,
       },
     }),
   };
 
   return (
-    <div key={index} className="overflow-hidden">
+    <div
+      key={index}
+      className={cn(
+        "overflow-hidden",
+        type === "aboutMeRight"
+          ? "relative top-[32px] h-[60px] left-[-30px] rotate-[-5deg] min-[500px]:h-[90px]"
+          : type === "aboutMeLeft" && "relative h-[60px] min-[500px]:h-[90px]"
+      )}
+    >
       <motion.p
         custom={index}
         variants={animation}
