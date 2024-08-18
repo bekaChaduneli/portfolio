@@ -54,7 +54,8 @@ export default function CursorAnimations() {
         <motion.div
           className="fixed z-[32] pointer-events-none hidden xl:block"
           style={{
-            transform: `translate(${x && x}px, ${y && y - 10}px)`,
+            translateX: `${x && x}px`,
+            translateY: `${y && y - 10}px`,
             transition: "transform 0.3s ease-out",
           }}
         >
