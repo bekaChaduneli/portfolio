@@ -12,6 +12,7 @@ export type MaskTextType = {
   className: string;
   inView: boolean;
   children: ReactNode;
+  delay?: number;
   type?: string;
 };
 

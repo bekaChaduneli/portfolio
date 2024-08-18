@@ -81,5 +81,9 @@
     "seeMore": "See More",
     "information": "information",
     "aboutMe": "About Me"
+  },
+  "Services": {
+    "my": "My",
+    "services": "Services"
   }
 }

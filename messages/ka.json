@@ -82,5 +82,9 @@
     "seeMore": "მეტის ნახვა",
     "information": "ინფორმაცია",
     "aboutMe": "ჩემზე"
+  },
+  "Services": {
+    "my": "ჩემი",
+    "services": "სერვისები"
   }
 }
