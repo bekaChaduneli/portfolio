@@ -119,7 +119,7 @@ export default function AboutMeElement() {
         <div className="w-full relative">
           <div
             ref={maskTextRef}
-            className="flex justify-center overflow-hidden h-[100px] min-[500px]:h-[130px] md:h-[80px] xl:h-[110px]"
+            className="flex justify-center overflow-hidden h-[76px] min-[500px]:h-[130px] md:h-[80px] xl:h-[110px]"
           >
             <MaskText
               index={0}
@@ -127,8 +127,8 @@ export default function AboutMeElement() {
               className={cn(
                 "leading-[100%] text-primary dark:text-linearPink",
                 locale === "en"
-                  ? "font-geom translate-x-[-40px] text-[50px] min-[500px]:text-[70px] md:text-[44px] xl:text-[66px]"
-                  : "font-firago translate-x-[-70px] text-[60px] min-[500px]:text-[66px] md:text-[44px] xl:text-[60px]"
+                  ? "font-geom translate-x-[-40px] text-[40px] min-[500px]:text-[70px] md:text-[44px] xl:text-[66px]"
+                  : "font-firago translate-x-[-70px] text-[46px] min-[500px]:text-[66px] md:text-[44px] xl:text-[60px]"
               )}
               inView={maskTextInView}
             >
@@ -140,8 +140,8 @@ export default function AboutMeElement() {
               className={cn(
                 "leading-[100%] text-linearPink dark:text-secondary",
                 locale === "en"
-                  ? "font-geom top-[26px] min-[500px]:top-[36px] rotate-[-8deg] left-[46%] min-[500px]:left-[47%] text-[50px] min-[500px]:text-[70px] md:text-[44px] xl:text-[66px]"
-                  : "font-firago top-[36px] min-[500px]:top-[40px] left-[34%] min-[500px]:left-[38%] rotate-[-6deg] min-[500px]:rotate-[-4deg] text-[48px] min-[500px]:text-[55px] md:text-[40px] xl:text-[57px]"
+                  ? "font-geom top-[26px] min-[500px]:top-[36px] rotate-[-8deg] left-[46%] min-[500px]:left-[47%] text-[40px] min-[500px]:text-[70px] md:text-[44px] xl:text-[66px]"
+                  : "font-firago top-[36px] min-[500px]:top-[40px] left-[34%] min-[500px]:left-[38%] rotate-[-6deg] min-[500px]:rotate-[-4deg] text-[36px] min-[500px]:text-[55px] md:text-[40px] xl:text-[57px]"
               )}
               inView={maskTextInView}
             >
