@@ -96,7 +96,6 @@ export default function AboutMeElement() {
                 className="absolute w-auto h-auto left-[-126px] translate-x-[50%] top-[118px] group-hover:scale-[108%] transition-all duration-300"
                 width={10}
                 height={10}
-                fill
                 priority
                 src={aboutMe?.image ? aboutMe.image : ""}
                 alt="aboutMe"

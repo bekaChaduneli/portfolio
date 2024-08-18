@@ -26,7 +26,7 @@ export default function Book({ book, t }: { book: IBook; t: any }) {
         <div className="flex justify-between w-full mb-[6px] items-start">
           <span
             className={cn(
-              "text-primary font-bold font-geom text-[16px] xl:text-[18px] w-[248px] xl:w-[340px] line-clamp-1",
+              "text-primary font-bold font-geom text-[16px] xl:text-[18px] w-[238px] xl:w-[330px] line-clamp-1",
               locale === "ka" && "font-firago"
             )}
           >
