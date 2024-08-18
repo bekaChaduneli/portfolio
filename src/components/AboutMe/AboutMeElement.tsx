@@ -23,6 +23,7 @@ export default function AboutMeElement() {
   const locale = useLocale();
   const aboutMe = data?.findFirstAboutMe;
   const t = useTranslations("AboutMeElement");
+  const [isLoading, setIsLoading] = useState(true);
   const {
     setIsCursorActive,
     setCursorBackground,
@@ -41,7 +42,6 @@ export default function AboutMeElement() {
     duration: 0.8,
   });
 
-  // Separate refs for different elements
   const { ref: maskTextRef, inView: maskTextInView } = useInView({
     threshold: 0.75,
     triggerOnce: true,
@@ -91,12 +91,29 @@ export default function AboutMeElement() {
             >
               {t("aboutMe")}
             </h2>
+            {isLoading && (
+              <Image
+                className="absolute w-auto h-auto left-[-126px] translate-x-[50%] top-[118px] group-hover:scale-[108%] transition-all duration-300"
+                width={10}
+                height={10}
+                fill
+                priority
+                src={aboutMe?.image ? aboutMe.image : ""}
+                alt="aboutMe"
+              />
+            )}
             <Image
-              className="absolute w-auto h-auto left-[-126px] translate-x-[50%] top-[118px] group-hover:scale-[108%] transition-all duration-300"
+              className={cn(
+                "absolute w-auto h-auto left-[-126px] translate-x-[50%] top-[118px] group-hover:scale-[108%] transition-all duration-300",
+                isLoading ? "opacity-0" : "opacity-100"
+              )}
               width={700}
               height={700}
               src={aboutMe?.image ? aboutMe.image : ""}
               alt="aboutMe"
+              onLoadingComplete={() => {
+                setIsLoading(false);
+              }}
             />
           </Link>
         </motion.div>

@@ -11,12 +11,16 @@ import { skills } from "@/lib/siteData";
 import { HeaderInfos } from "./HeaderInfos";
 import HeaderPopUp from "./HeaderPopUp";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 import { cn } from "@/lib/utils";
+import usePageWidth from "@/hooks/usePageWidth";
 
 export default function Header() {
   const t = useTranslations("Home");
   const locale = useLocale();
+  const isDesktop = usePageWidth("1440px");
+  const isTablet = usePageWidth("768px");
+  const isSmDesktop = usePageWidth("1024px");
   const {
     setIsCursorActive,
     setCursorBackground,
@@ -46,10 +50,25 @@ export default function Header() {
         <div
           ref={ref}
           onClick={() => {
-            scroll.scrollTo(660, {
-              smooth: true,
-              duration: 500,
-            });
+            isDesktop
+              ? scroll.scrollTo(860, {
+                  smooth: true,
+                  duration: 700,
+                })
+              : isSmDesktop
+              ? scroll.scrollTo(660, {
+                  smooth: true,
+                  duration: 700,
+                })
+              : isTablet
+              ? scroll.scrollTo(510, {
+                  smooth: true,
+                  duration: 700,
+                })
+              : scroll.scrollTo(400, {
+                  smooth: true,
+                  duration: 700,
+                });
           }}
           onMouseEnter={() => {
             setIsCursorActive(true);
