@@ -2,7 +2,7 @@ import AboutMeElement from "@/components/AboutMe/AboutMeElement";
 import Header from "@/components/Header/Header";
 import MainProjects from "@/components/Projects/MainProjects";
 import Recommendations from "@/components/Recommendations";
-import Services from "@/components/Services";
+import Services from "@/components/Services/Services";
 import Skills from "@/components/Skills";
 
 interface HomeProps {

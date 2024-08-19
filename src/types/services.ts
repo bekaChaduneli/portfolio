@@ -18,5 +18,5 @@ export interface IServices {
 }
 
 export interface IServicesResponse {
-  findManyServices: IServices;
+  findManyServices: IServices[];
 }

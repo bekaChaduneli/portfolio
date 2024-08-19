@@ -9,6 +9,7 @@ export function MaskText({
   inView,
   children,
   type,
+  delay,
 }: MaskTextType) {
   const locale = useLocale();
   const animation = {
@@ -18,12 +19,13 @@ export function MaskText({
       transition: {
         duration: 0.75,
         ease: [0.33, 1, 0.68, 1],
-        delay:
-          type === "aboutMeLeft"
-            ? 0.1
-            : type === "aboutMeRight"
-            ? 0.4
-            : 0.34 + 0.075 * i,
+        delay: delay
+          ? delay
+          : type === "aboutMeLeft"
+          ? 0.1
+          : type === "aboutMeRight"
+          ? 0.4
+          : 0.34 + 0.075 * i,
       },
     }),
   };
