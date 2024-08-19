@@ -15,7 +15,11 @@ export default function ServicesDesktop({
   return (
     <div className="w-full flex justify-center relative">
       <div className="flex w-[954px] xl:w-[1200px] justify-between relative">
-        <ServicesDesktopImages currentService={currentService} data={data} />
+        <ServicesDesktopImages
+          locale={locale}
+          currentService={currentService}
+          data={data}
+        />
         <ServicesDesktopInfos
           currentService={currentService}
           locale={locale}

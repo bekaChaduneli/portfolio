@@ -53,7 +53,7 @@ export default function Services() {
   if (error) return <p>Error: {error.message}</p>;
   console.log(data);
   return (
-    <div className="overflow-x-clip mt-[150px] mb-[150px] md:pt-[20px] md:mt-[210px] md:mb-[200px] lg:pt-[50px] lg:mt-[300px] lg:mb-[250px] services_wrapper relative pb-[1180px] flex flex-col justify-center bg-[#cdcdcd] dark:bg-[#131c3e] dark:before:bg-[#131c3e] dark:after:bg-[#131c3e] overflow-visible">
+    <div className="overflow-x-clip mt-[150px] mb-[150px] md:pt-[20px] md:mt-[210px] md:mb-[200px] lg:pt-[50px] lg:mt-[300px] lg:mb-[250px] lg:pb-[150px] services_wrapper relative  flex flex-col justify-center bg-[#cdcdcd] before:bg-[#cdcdcd] dark:bg-[#131c3e] dark:before:bg-[#131c3e] dark:after:bg-[#131c3e] overflow-visible">
       <motion.div
         ref={ref}
         className="flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[30px] md:mb-[50px] lg:mb-[100px]"
