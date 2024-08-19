@@ -12,34 +12,11 @@ export default function ServicesDesktopImages({
   data: IServicesResponse | undefined;
   currentService: number;
 }) {
-  const [isFixed, setIsFixed] = useState(false);
-  const { ref, inView, entry } = useInView({
-    threshold: 0.75,
-    triggerOnce: false, // Set to false to keep tracking the view
-  });
-
-  // Handle scroll event
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (entry && entry.boundingClientRect.top < 0) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [entry]);
-
   const [activeService, setActiveService] = useState(currentService);
 
   return (
     <motion.div
-      ref={ref}
-      className=" relative overflow-hidden whitespace-nowrap"
-      initial="hidden"
-      animate={isFixed ? "visible" : "hidden"}
+      className="overflow-hidden whitespace-nowrap sticky top-[120px] w-[444px] h-[444px] xl:w-[520px] xl:h-[560px]  shadow-lg shadow-black/30 rounded-[30px]"
       exit="exit"
     >
       {data?.findManyServices?.map((service: IServices, index: number) => {
@@ -49,14 +26,9 @@ export default function ServicesDesktopImages({
           <div
             key={index}
             className={cn(
-              "w-[444px] h-[444px] xl:w-[560px] xl:h-[560px] relative rounded-[30px] bg-[#493b95]/60 dark:bg-[#8a7fc5]/60 shadow-lg shadow-black/30 overflow-hidden",
+              "relative  bg-[#493b95]/25 dark:bg-[#8a7fc5]/60 overflow-hidden w-full h-full",
               isActive ? "flex justify-center" : "hidden"
             )}
-            style={{
-              position: isFixed && isActive ? "fixed" : "static",
-              top: isFixed && isActive ? "150px" : "auto",
-              transform: isFixed && isActive ? "translateX(-50%)" : "none",
-            }}
           >
             <h2
               className={cn(
