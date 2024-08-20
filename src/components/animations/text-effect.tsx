@@ -1,8 +1,8 @@
 "use client";
-import Link from "next/link";
 import { TextEffect } from "../core/text-effect";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import NavigationLink from "../Navbar/NavigationLink";
 
 export function TextEffectWithCustomVariants({
   text,
@@ -123,7 +123,11 @@ export const FlipLink = ({
   textAlign: string;
 }) => {
   return (
-    <Link className="w-full" href={href} onClick={onClick ? onClick : () => {}}>
+    <NavigationLink
+      className="w-full"
+      href={href}
+      onClick={onClick ? onClick : () => {}}
+    >
       <motion.div
         initial="initial"
         whileHover="hovered"
@@ -203,6 +207,6 @@ export const FlipLink = ({
           ))}
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   );
 };
