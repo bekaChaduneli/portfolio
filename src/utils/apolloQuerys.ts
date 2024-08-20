@@ -455,25 +455,14 @@ export const GET_MAINPROJECTS = gql`
     ) {
       video
       translations {
-        updatedAt
         name
-        mainProjectsId
         location
         languageCode
         description
-        id
-        createdAt
-        about
       }
-      updatedAt
       skills
-      mobileBackgrounds
-      link
       isReal
-      images
       id
-      github
-      createdAt
       background
     }
   }
