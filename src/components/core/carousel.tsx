@@ -79,14 +79,14 @@ function CarouselNavigation({
   return (
     <div
       className={cn(
-        "pointer-events-none absolute left-[-12.5%] top-1/2 flex w-[125%] -translate-y-1/2 justify-between px-2",
+        "pointer-events-none absolute left-[-12.5%] top-1/4 flex w-[125%] -translate-y-1/2 justify-between px-2",
         className
       )}
     >
       <button
         type="button"
         className={cn(
-          "pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950",
+          "pointer-events-auto h-fit w-fit rounded-full translate-x-[14vw] min-[560px]:translate-x-[80px] bg-secondary/70 dark:bg- p-2 transition-opacity duration-300",
           alwaysShow
             ? "opacity-100"
             : "opacity-0 group-hover/hover:opacity-100",
@@ -102,15 +102,12 @@ function CarouselNavigation({
           }
         }}
       >
-        <ChevronLeft
-          className="stroke-zinc-600 dark:stroke-zinc-50"
-          size={16}
-        />
+        <ChevronLeft className="stroke-primary " size={16} />
       </button>
       <button
         type="button"
         className={cn(
-          "pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950",
+          "pointer-events-auto h-fit w-fit rounded-full translate-x-[-14vw] min-[560px]:translate-x-[-80px] p-2 transition-opacity duration-300 bg-secondary/70",
           alwaysShow
             ? "opacity-100"
             : "opacity-0 group-hover/hover:opacity-100",
@@ -126,10 +123,7 @@ function CarouselNavigation({
           }
         }}
       >
-        <ChevronRight
-          className="stroke-zinc-600 dark:stroke-zinc-50"
-          size={16}
-        />
+        <ChevronRight className="stroke-primary" size={16} />
       </button>
     </div>
   );

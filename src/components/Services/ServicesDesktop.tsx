@@ -10,7 +10,6 @@ export default function ServicesDesktop({
   data: IServicesResponse | undefined;
 }) {
   const [currentService, setcurrentService] = useState<number>(1);
-  const services = data?.findManyServices;
   const locale = useLocale();
   return (
     <div className="w-full flex justify-center relative">
