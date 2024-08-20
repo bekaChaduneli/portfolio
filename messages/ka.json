@@ -86,5 +86,9 @@
   "Services": {
     "my": "ჩემი",
     "services": "სერვისები"
+  },
+  "MainProjects": {
+    "main": "მთავარი",
+    "projects": "პროექტები"
   }
 }

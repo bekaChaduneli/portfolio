@@ -85,5 +85,9 @@
   "Services": {
     "my": "My",
     "services": "Services"
+  },
+  "MainProjects": {
+    "main": "Main",
+    "projects": "Projects"
   }
 }
