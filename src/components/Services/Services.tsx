@@ -56,7 +56,7 @@ export default function Services() {
     <div className="overflow-x-clip mt-[150px] mb-[150px] md:pt-[20px] md:mt-[210px] md:mb-[200px] lg:pt-[50px] lg:mt-[300px] lg:mb-[250px] lg:pb-[150px] services_wrapper relative  flex flex-col justify-center bg-[#cdcdcd] before:bg-[#cdcdcd] dark:bg-[#131c3e] dark:before:bg-[#131c3e] dark:after:bg-[#131c3e] overflow-visible">
       <motion.div
         ref={ref}
-        className="flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[30px] md:mb-[50px] lg:mb-[100px]"
+        className="flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[40px] md:mb-[66px] lg:mb-[100px]"
       >
         <MaskText
           index={0}
@@ -103,7 +103,11 @@ export default function Services() {
           </MaskText>
         </motion.div>
       </motion.div>
-      {isDesktop ? <ServicesDesktop data={data} /> : <ServicesSlider />}
+      {isDesktop ? (
+        <ServicesDesktop data={data} />
+      ) : (
+        <ServicesSlider locale={locale} data={data} />
+      )}
     </div>
   );
 }
