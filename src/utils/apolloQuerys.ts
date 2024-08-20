@@ -447,10 +447,20 @@ export const GET_RECOMMENDATIONS = gql`
 `;
 
 export const GET_MAINPROJECTS = gql`
-  query findManyMainProjects($skip: Int, $take: Int, $createdAt: SortOrder!) {
+  query findManyMainProjects(
+    $skip: Int
+    $take: Int
+    $isReal: Boolean
+    $orIsReal: Boolean
+    $createdAt: SortOrder!
+  ) {
     findManyMainProjects(
       skip: $skip
       take: $take
+      where: {
+        isReal: { equals: $isReal }
+        OR: { isReal: { equals: $orIsReal } }
+      }
       orderBy: { createdAt: $createdAt }
     ) {
       video
