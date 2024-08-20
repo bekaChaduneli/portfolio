@@ -85,5 +85,14 @@
   "Services": {
     "my": "My",
     "services": "Services"
+  },
+  "MainProjects": {
+    "main": "Main",
+    "projects": "Projects",
+    "description": "fasfa sfa fa sfa sf saf af af a ffasfa sfa fa sfa sf saf af af a ffasfa sfa fa sfa sf saf af af a ffasfa sfa fa sfa sf saf af af a f",
+    "any": "Any",
+    "real": "Real",
+    "unReal": "unReal",
+    "seeMore": "See More"
   }
 }

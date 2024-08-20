@@ -13,9 +13,9 @@ import { FlipLink } from "../animations/text-effect";
 import { fadeIn } from "@/utils/motion";
 import { MaskText } from "../animations/MaskText";
 import { InViewBasic } from "../animations/in-view";
-import Link from "next/link";
 import useCursorStore from "@/store/use-cursor-store";
 import { useState } from "react";
+import NavigationLink from "../Navbar/NavigationLink";
 
 export default function AboutMeElement() {
   const { data, loading, error } =
@@ -79,7 +79,7 @@ export default function AboutMeElement() {
           viewport={{ once: true }}
           className="w-full bg-[#9d94e5] rounded-[26px] h-[320px] md:h-[400px] relative overflow-hidden group about_me_link_image group-hover:bg-[#b1a9e9] shadow-md group-hover:shadow-xl"
         >
-          <Link href="/about">
+          <NavigationLink href="/about">
             <h2 className="absolute left-[24px] tracking-[6px] top-[22px] text-[25px] font-bold font-mono text-secondary uppercase group-hover:left-[32px] transition-all duration-300">
               {t("information")}
             </h2>
@@ -114,7 +114,7 @@ export default function AboutMeElement() {
                 setIsLoading(false);
               }}
             />
-          </Link>
+          </NavigationLink>
         </motion.div>
         <div className="w-full relative">
           <div

@@ -22,7 +22,7 @@ export default function ServicesSlider({
   const renderers = {};
 
   return (
-    <div className="relative w-full  lg:hidden flex justify-center pb-[24px] md:pb-[40px]">
+    <div className="relative w-full  lg:hidden flex justify-center pb-[24px] md:pb-[80px]">
       <Carousel className="w-full px-[20px] max-w-[580px]">
         <CarouselContent>
           {data?.findManyServices.map((service, index) => {

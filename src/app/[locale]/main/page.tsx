@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import MainProjects from "@/components/Projects/MainProjects";
+import MainProjects from "@/components/Projects/MainProjectsWrapper";
 import { getTranslations } from "next-intl/server";
 
 type Props = {

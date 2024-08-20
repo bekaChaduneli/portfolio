@@ -5,21 +5,21 @@ import type { AppPathnames } from "@/config";
 import { Link } from "@/navigation";
 
 export default function NavigationLink<Pathname extends AppPathnames>({
-    href,
-    onClick,
-    type,
-    ...rest
+  href,
+  onClick,
+  type,
+  ...rest
 }: ComponentProps<typeof Link<Pathname>>) {
-    const selectedLayoutSegment = useSelectedLayoutSegment();
-    const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : "/";
-    const isActive = pathname === href;
+  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : "/";
+  const isActive = pathname === href;
 
-    return (
-        <Link
-            aria-current={isActive ? "page" : undefined}
-            href={href}
-            onClick={onClick}
-            {...rest}
-        />
-    );
+  return (
+    <Link
+      aria-current={isActive ? "page" : undefined}
+      href={href}
+      onClick={onClick}
+      {...rest}
+    />
+  );
 }
