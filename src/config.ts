@@ -1,4 +1,4 @@
-import { Pathnames } from "next-intl/navigation";
+import { Pathnames, LocalePrefix } from "next-intl/routing";
 
 export const locales = ["ka", "en"] as const;
 
@@ -10,6 +10,6 @@ export const pathnames = {
   "/main": "/main",
 } satisfies Pathnames<typeof locales>;
 
-export const localePrefix = undefined;
+export const localePrefix: LocalePrefix<typeof locales> = "always";
 
 export type AppPathnames = keyof typeof pathnames;

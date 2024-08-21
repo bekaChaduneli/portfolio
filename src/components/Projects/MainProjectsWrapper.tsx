@@ -13,16 +13,17 @@ import { cn } from "@/lib/utils";
 import { Icons } from "../shared/Icons";
 import NavigationLink from "../Navbar/NavigationLink";
 import { FlipLink } from "../animations/text-effect";
+import usePageWidth from "@/hooks/usePageWidth";
 
 export default function MainProjectsWrapper() {
   const [currentType, setCurrentType] = useState("any");
-
+  const isTablet = usePageWidth("768px");
   const { data, loading, error } = useQuery<IMainProjectsResponse>(
     GET_MAINPROJECTS,
     {
       variables: {
         skip: 0,
-        take: 8,
+        take: isTablet ? 8 : 5,
         createdAt: "asc",
         isReal:
           currentType === "any" ? true : currentType === "real" ? true : false,
@@ -131,7 +132,7 @@ export default function MainProjectsWrapper() {
       <div className="lg:flex lg:justify-between lg:items-start lg:w-[954px] w-full xl:w-[1200px]">
         <div
           ref={flipLinkRef}
-          className="mb-[22px] lg:flex lg:flex-col lg:h-[80vh] lg:justify-between lg:mb-0 lg:sticky lg:top-[120px] lg:w-[260px] xl:w-[300px]"
+          className="mb-[60px] lg:flex lg:flex-col lg:h-[80vh] lg:justify-between lg:mb-0 lg:sticky lg:top-[120px] lg:w-[260px] xl:w-[300px]"
         >
           <div className="text-primary text-[18px] md:text-[22px] capitalize dark:text-secondary mb-[20px]">
             {t("description")}

@@ -2,6 +2,7 @@ export interface IMainProjectsTranslation {
   languageCode: string;
   description: string;
   name: string;
+  about: string;
   location: string;
 }
 
