@@ -467,6 +467,7 @@ export const GET_MAINPROJECTS = gql`
       translations {
         name
         location
+        about
         languageCode
         description
       }

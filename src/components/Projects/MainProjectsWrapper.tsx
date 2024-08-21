@@ -3,7 +3,7 @@
 import { IMainProjectsResponse } from "@/types/mainProjects";
 import { GET_MAINPROJECTS } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
-import MainProjects from "./MainProjects";
+import MainProjects from "./RowMainProjects";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -11,18 +11,22 @@ import { motion } from "framer-motion";
 import { MaskText } from "../animations/MaskText";
 import { cn } from "@/lib/utils";
 import { Icons } from "../shared/Icons";
-import NavigationLink from "../Navbar/NavigationLink";
 import { FlipLink } from "../animations/text-effect";
+import usePageWidth from "@/hooks/usePageWidth";
+import { AlignJustify, Grid2X2 } from "lucide-react";
+import RowMainProjects from "./RowMainProjects";
+import GridMainProjects from "./GridMainProjects";
 
 export default function MainProjectsWrapper() {
   const [currentType, setCurrentType] = useState("any");
-
+  const [currentListType, setCurrentListType] = useState("grid");
+  const isTablet = usePageWidth("768px");
   const { data, loading, error } = useQuery<IMainProjectsResponse>(
     GET_MAINPROJECTS,
     {
       variables: {
         skip: 0,
-        take: 8,
+        take: isTablet ? 8 : 5,
         createdAt: "asc",
         isReal:
           currentType === "any" ? true : currentType === "real" ? true : false,
@@ -128,12 +132,58 @@ export default function MainProjectsWrapper() {
           </MaskText>
         </motion.div>
       </motion.div>
+      <div className="hidden lg:flex justify-end mb-[40px] xl:mb-[50px] w-[954px] xl:w-[1200px] gap-[12px] xl:gap-[20px]">
+        <button
+          onClick={() => {
+            setCurrentListType("row");
+          }}
+          className={cn(
+            "p-[14px] xl:p-[16px] rounded-full border-[1px] border-primary dark:border-secondary ",
+            currentListType === "row"
+              ? "bg-primary dark:bg-secondary"
+              : "bg-primary/10 dark:bg-secondary/10 group transition-all duration-500 hover:bg-primary dark:hover:bg-secondary"
+          )}
+        >
+          <AlignJustify
+            width={40}
+            height={40}
+            className={cn(
+              "w-[24px] h-[24px] xl:w-[30px] xl:h-[30px] transition-all duration-500",
+              currentListType === "row"
+                ? "text-secondary dark:text-primary"
+                : "text-primary group-hover:text-secondary dark:group-hover:text-primary dark:text-secondary"
+            )}
+          />
+        </button>
+        <button
+          onClick={() => {
+            setCurrentListType("grid");
+          }}
+          className={cn(
+            " p-[14px] xl:p-[16px] rounded-full border-[1px] border-primary dark:border-secondary ",
+            currentListType === "grid"
+              ? "bg-primary dark:bg-secondary"
+              : "bg-primary/10 dark:bg-secondary/10 group transition-all duration-500 hover:bg-primary dark:hover:bg-secondary"
+          )}
+        >
+          <Grid2X2
+            width={40}
+            height={40}
+            className={cn(
+              "w-[24px] h-[24px] xl:w-[30px] xl:h-[30px] transition-all duration-500",
+              currentListType === "grid"
+                ? "text-secondary dark:text-primary"
+                : "text-primary group-hover:text-secondary dark:group-hover:text-primary dark:text-secondary"
+            )}
+          />
+        </button>
+      </div>
       <div className="lg:flex lg:justify-between lg:items-start lg:w-[954px] w-full xl:w-[1200px]">
         <div
           ref={flipLinkRef}
-          className="mb-[22px] lg:flex lg:flex-col lg:h-[80vh] lg:justify-between lg:mb-0 lg:sticky lg:top-[120px] lg:w-[260px] xl:w-[300px]"
+          className="mb-[60px] lg:flex lg:flex-col lg:h-[80vh] lg:justify-between lg:mb-0 lg:sticky lg:top-[120px] lg:w-[200px] xl:w-[240px]"
         >
-          <div className="text-primary text-[18px] md:text-[22px] capitalize dark:text-secondary mb-[20px]">
+          <div className="text-primary text-[18px] md:text-[22px] lg:text-[20px] xl:text-[22px] capitalize dark:text-secondary mb-[20px]">
             {t("description")}
           </div>
           <div className="">
@@ -185,7 +235,11 @@ export default function MainProjectsWrapper() {
             </div>
           </div>
         </div>
-        <MainProjects data={data} />
+        {currentListType === "grid" ? (
+          <GridMainProjects data={data} />
+        ) : (
+          <RowMainProjects t={t} data={data} />
+        )}
       </div>
     </div>
   );
