@@ -22,6 +22,7 @@ export default function GridMainProjects({
 
         return (
           <div
+            key={index}
             className={cn(
               "pb-[38px] md:py-[24px] w-full md:w-[50%] group lg:py-[28px] border-primary/40 dark:border-secondary/40 xl:py-[32px] md:pl-[46px] lg:pl-[38px] xl:pl-[50px]",
               index + 1 === data?.findManyMainProjects.length

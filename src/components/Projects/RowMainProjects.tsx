@@ -41,6 +41,7 @@ export default function RowMainProjects({
         );
         return (
           <Link
+            key={index}
             href={`/${locale}/main/${project.id}`}
             className="w-full flex items-center py-[40px] xl:py-[50px] border-b-[1px] border-primary/50 dark:border-secondary/50"
           >
