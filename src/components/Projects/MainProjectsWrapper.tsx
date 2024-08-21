@@ -3,7 +3,7 @@
 import { IMainProjectsResponse } from "@/types/mainProjects";
 import { GET_MAINPROJECTS } from "@/utils/apolloQuerys";
 import { useQuery } from "@apollo/client";
-import MainProjects from "./MainProjects";
+import MainProjects from "./RowMainProjects";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -14,6 +14,8 @@ import { Icons } from "../shared/Icons";
 import { FlipLink } from "../animations/text-effect";
 import usePageWidth from "@/hooks/usePageWidth";
 import { AlignJustify, Grid2X2 } from "lucide-react";
+import RowMainProjects from "./RowMainProjects";
+import GridMainProjects from "./GridMainProjects";
 
 export default function MainProjectsWrapper() {
   const [currentType, setCurrentType] = useState("any");
@@ -133,11 +135,11 @@ export default function MainProjectsWrapper() {
       <div className="hidden lg:flex justify-end mb-[40px] xl:mb-[50px] w-[954px] xl:w-[1200px] gap-[12px] xl:gap-[20px]">
         <button
           onClick={() => {
-            setCurrentListType("line");
+            setCurrentListType("row");
           }}
           className={cn(
             "p-[14px] xl:p-[16px] rounded-full border-[1px] border-primary dark:border-secondary ",
-            currentListType === "line"
+            currentListType === "row"
               ? "bg-primary dark:bg-secondary"
               : "bg-primary/10 dark:bg-secondary/10 group transition-all duration-500 hover:bg-primary dark:hover:bg-secondary"
           )}
@@ -147,7 +149,7 @@ export default function MainProjectsWrapper() {
             height={40}
             className={cn(
               "w-[24px] h-[24px] xl:w-[30px] xl:h-[30px] transition-all duration-500",
-              currentListType === "line"
+              currentListType === "row"
                 ? "text-secondary dark:text-primary"
                 : "text-primary group-hover:text-secondary dark:group-hover:text-primary dark:text-secondary"
             )}
@@ -233,7 +235,11 @@ export default function MainProjectsWrapper() {
             </div>
           </div>
         </div>
-        <MainProjects listType={currentListType} data={data} />
+        {currentListType === "grid" ? (
+          <GridMainProjects data={data} />
+        ) : (
+          <RowMainProjects data={data} />
+        )}
       </div>
     </div>
   );
