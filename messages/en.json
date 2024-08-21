@@ -94,6 +94,9 @@
     "real": "Real",
     "unReal": "unReal",
     "seeMore": "See More",
-    "structure": "Structure"
+    "structure": "Structure",
+    "name": "Name",
+    "location": "Location",
+    "type": "Type"
   }
 }

@@ -238,7 +238,7 @@ export default function MainProjectsWrapper() {
         {currentListType === "grid" ? (
           <GridMainProjects data={data} />
         ) : (
-          <RowMainProjects data={data} />
+          <RowMainProjects t={t} data={data} />
         )}
       </div>
     </div>
