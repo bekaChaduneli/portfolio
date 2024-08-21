@@ -99,7 +99,7 @@ export default function ServicesDesktopInfos({
                     : "calc(100% - 56px)"
                 }`,
               }}
-              className="absolute top-[54px] left-[24px] w-0 border-l-[1px] border-dashed border-primary/50"
+              className="absolute top-[54px] left-[24px] w-0 border-l-[1px] border-dashed border-primary/50 dark:border-linearPink/80"
             />
           </div>
         );
