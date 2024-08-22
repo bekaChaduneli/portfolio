@@ -55,12 +55,12 @@ export default function RowMainProjects({
           <motion.div
             variants={fadeInVariants}
             initial="hidden"
+            key={index}
             whileInView="show"
             exit="exit"
             viewport={{ once: true }}
           >
             <Link
-              key={index}
               href={`/${locale}/main/${project.id}`}
               onMouseEnter={() => {
                 setCurrentProject(index + 1);

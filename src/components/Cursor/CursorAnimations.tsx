@@ -240,6 +240,7 @@ export default function CursorAnimations() {
                   {backgrounds.map((background: string, index: number) => (
                     <Image
                       src={background}
+                      key={index}
                       alt="background"
                       width={500}
                       height={500}
@@ -249,7 +250,6 @@ export default function CursorAnimations() {
                           ? "font-geom text-[24px] xl:text-[28px]"
                           : "font-firago text-[22px] xl:text-[32px]"
                       )}
-                      key={index}
                     />
                   ))}
                 </div>
@@ -279,13 +279,13 @@ export default function CursorAnimations() {
                 >
                   {headlines.map((headline: string, index: number) => (
                     <h2
+                      key={index}
                       className={cn(
                         "text-primary pb-[8px] dark:text-secondary",
                         locale === "en"
                           ? "font-geom text-[24px] xl:text-[28px]"
                           : "font-firago text-[22px] xl:text-[32px]"
                       )}
-                      key={index}
                     >
                       {headline}
                     </h2>
@@ -294,14 +294,13 @@ export default function CursorAnimations() {
               </div>
               <div className="mt-[6px] xl:mt-[12px]">
                 {descriptions.map((description: string, index: number) => {
-                  const ind = index + 1;
                   return (
                     <p
                       className={classNames(
                         "text-primary text-[14px] xl:text-[16px] h-[105px] xl:h-[144px] overflow-hidden line-clamp-5 xl:line-clamp-6 dark:text-secondary",
                         {
-                          "!hidden": currentProject !== ind,
-                          "!block": currentProject === ind,
+                          "!hidden": currentProject !== index + 1,
+                          "!block": currentProject === index + 1,
                         }
                       )}
                       key={index}
