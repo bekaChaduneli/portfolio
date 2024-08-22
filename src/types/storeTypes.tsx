@@ -13,6 +13,21 @@ export interface PopUpState {
   isOpen: boolean;
 }
 
+export interface CurrentProjectState {
+  projectImage: string;
+  projectDescription: string;
+  projectHeadline: string;
+  projectBackgroundColor: string;
+}
+
+export interface CurrentProjectActions {
+  setCurrentProjectImage: (image: string) => void;
+  setCurrentProjectDescription: (description: string) => void;
+  setCurrentProjectHeadline: (headline: string) => void;
+  setCurrentProjectText: (backgroundColor: string) => void;
+  onCloseAnimation: () => void;
+}
+
 export interface PopUpActions {
   onOpen: (type: PopUpType) => void;
   onClose: () => void;

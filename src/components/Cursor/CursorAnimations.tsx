@@ -48,7 +48,9 @@ export default function CursorAnimations() {
         </motion.div>
       </>
     );
-  } else if (cursorType === "gif") {
+  }
+
+  if (cursorType === "gif") {
     return (
       <>
         <motion.div
@@ -80,5 +82,9 @@ export default function CursorAnimations() {
         </motion.div>
       </>
     );
-  } else return null;
+  }
+
+  if (cursorType === "project") {
+    return <>{/* TODO: add project tab */}</>;
+  }
 }
