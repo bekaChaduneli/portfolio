@@ -8,7 +8,6 @@ import {
   useAnimationFrame,
 } from "framer-motion";
 import { wrap } from "framer-motion";
-import styles from "./framerText.module.scss";
 import classNames from "classnames";
 
 export default function FramerText({
@@ -19,10 +18,10 @@ export default function FramerText({
   baseVelocity = 100,
 }: {
   children: ReactNode;
-  custom: any;
-  left: any;
-  right: any;
-  baseVelocity: number;
+  custom?: any;
+  left?: any;
+  right?: any;
+  baseVelocity?: number;
 }) {
   const baseX = useMotionValue(0);
   const smoothVelocity = useSpring(0, {
@@ -51,8 +50,8 @@ export default function FramerText({
           className={classNames(
             "inherit uppercase text-[64px] flex whitespace-nowrap flex-nowrap parallax_scroller",
             {
-              [styles["left-[1100px]"]]: left,
-              [styles["right-[-1100px]"]]: right,
+              ["left-[1100px]"]: left,
+              ["right-[-1100px]"]: right,
             }
           )}
           style={{ x }}

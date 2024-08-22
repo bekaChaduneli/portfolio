@@ -97,6 +97,7 @@
     "structure": "Structure",
     "name": "Name",
     "location": "Location",
-    "type": "Type"
+    "type": "Type",
+    "clickToSeeMore": "Click To See More"
   }
 }
