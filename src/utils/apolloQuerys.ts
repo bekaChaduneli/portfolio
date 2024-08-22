@@ -446,6 +446,20 @@ export const GET_RECOMMENDATIONS = gql`
   }
 `;
 
+export const GET_MAINPROJECTSHOVER = gql`
+  query findManyMainProjects($skip: Int, $take: Int) {
+    findManyMainProjects(skip: $skip, take: $take) {
+      id
+      background
+      translations {
+        languageCode
+        name
+        description
+      }
+    }
+  }
+`;
+
 export const GET_MAINPROJECTS = gql`
   query findManyMainProjects(
     $skip: Int

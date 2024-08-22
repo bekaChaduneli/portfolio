@@ -18,3 +18,19 @@ export interface IMainProjects {
 export interface IMainProjectsResponse {
   findManyMainProjects: IMainProjects[];
 }
+
+export interface IMainProjectsHoverTranslation {
+  languageCode: string;
+  description: string;
+  name: string;
+}
+
+export interface IMainProjectsHover {
+  id: string;
+  background: string;
+  translations: IMainProjectsTranslation[];
+}
+
+export interface IMainProjectsHoverResponse {
+  findManyMainProjects: IMainProjectsHover[];
+}

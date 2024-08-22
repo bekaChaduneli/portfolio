@@ -13,6 +13,15 @@ export interface PopUpState {
   isOpen: boolean;
 }
 
+export interface CurrentProjectState {
+  currentProject: number | null;
+}
+
+export interface CurrentProjectActions {
+  setCurrentProject: (index: number | null) => void;
+  onCloseAnimation: () => void;
+}
+
 export interface PopUpActions {
   onOpen: (type: PopUpType) => void;
   onClose: () => void;
