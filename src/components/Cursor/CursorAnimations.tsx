@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
 import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
 import { motion } from "framer-motion";
@@ -6,12 +7,129 @@ import classNames from "classnames";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { useProjectData } from "@/hooks/useProjectData";
+import useCurrentProjectStore from "@/store/use-currentProject-store";
+import usePageWidth from "@/hooks/usePageWidth";
 
 export default function CursorAnimations() {
   const { isCursorActive, cursorText, cursorType, cursorBackground } =
     useCursorStore();
   const { x, y } = useMousePosition();
   const locale = useLocale();
+  const { backgrounds, headlines, descriptions, loading, error } =
+    useProjectData(locale);
+  const { currentProject } = useCurrentProjectStore();
+
+  const [headlineTranslateY, setHeadlineTranslateY] = useState<number>(0);
+  const [backgroundTranslateY, setBackgroundTranslateY] = useState<number>(0);
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
+
+  const isDesktop = usePageWidth("1280px");
+
+  useEffect(() => {
+    if (headlineRef.current) {
+      const headlineHeight =
+        isDesktop && locale === "en"
+          ? 50
+          : !isDesktop && locale === "en"
+          ? 44
+          : isDesktop
+          ? 58
+          : 43;
+      setHeadlineTranslateY(
+        currentProject ? -(currentProject - 1) * headlineHeight : 0
+      );
+    }
+    if (backgroundRef.current) {
+      const backgroundHeight = isDesktop ? 215 : 170;
+      setBackgroundTranslateY(
+        currentProject ? -(currentProject - 1) * backgroundHeight : 0
+      );
+    }
+  }, [currentProject, locale]);
+
+  const laptopVariants = {
+    hidden: {
+      x: 0,
+      scale: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+    visible: {
+      x: [0, 0, -160],
+      scale: 1,
+      transition: {
+        x: {
+          duration: 1,
+          times: [0, 0.4, 1],
+        },
+        scale: {
+          duration: 0.3,
+        },
+      },
+    },
+    active: {
+      x: [-160, 0, 0],
+      scale: [1, 1, 0],
+      transition: {
+        x: {
+          duration: 1.3,
+          times: [0, 0.4, 1],
+        },
+        scale: {
+          duration: 0.6,
+          times: [0, 0.66, 1],
+        },
+      },
+    },
+  };
+
+  const textVariants = {
+    hidden: {
+      x: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+    visible: {
+      x: [-350, -136],
+      opacity: 1,
+      scale: [0, 1],
+      transition: {
+        x: {
+          delay: 0.4,
+          duration: 0.6,
+        },
+        opacity: {
+          delay: 0.4,
+          duration: 0.6,
+        },
+        scale: {
+          delay: 0.4,
+          duration: 0.5,
+          times: [0, 1],
+        },
+      },
+    },
+    active: {
+      x: [-136, -350],
+      scale: 0,
+      transition: {
+        x: {
+          duration: 1.3,
+          delay: 0.52,
+        },
+        scale: {
+          delay: 0.4,
+          duration: 0.5,
+          times: [1, 0],
+        },
+      },
+    },
+  };
 
   if (cursorType === "text") {
     return (
@@ -61,7 +179,7 @@ export default function CursorAnimations() {
             transition: "transform 0.3s ease-out",
           }}
         >
-          <div className=" rotate-[-4deg] relative pointer-events-none w-[110px] h-[140px] top-[-140px] left-[14px] ">
+          <div className="rotate-[-4deg] relative pointer-events-none w-[110px] h-[140px] top-[-140px] left-[14px] ">
             <div
               className={classNames(
                 "relative origin-bottom-left bg-cover transition-all scale-[0%] duration-500 overflow-hidden w-full border-[2px] border-primary h-full rounded-[8px]",
@@ -85,6 +203,120 @@ export default function CursorAnimations() {
   }
 
   if (cursorType === "project") {
-    return <>{/* TODO: add project tab */}</>;
+    return (
+      <>
+        <motion.div
+          className="fixed z-[32] pointer-events-none hidden lg:block"
+          style={{
+            translateX: `${x && x}px`,
+            translateY: `${y && y - 10}px`,
+          }}
+        >
+          <div className="w-[600px] xl:w-[800px] origin-bottom flex justify-between relative pointer-events-none top-[-208px] xl:top-[-270px] left-[-170px] xl:left-[-210px]">
+            <motion.div
+              className="relative w-[340px] xl:w-[430px] origin-bottom h-auto z-[1]"
+              variants={laptopVariants}
+              initial="hidden"
+              animate={isCursorActive ? "visible" : "active"}
+            >
+              <Image
+                src="/laptop.png"
+                width={600}
+                height={600}
+                alt="laptop"
+                className="relative w-full z-[2] origin-bottom transition-all duration-500 overflow-hidden h-auto"
+              />
+              <div
+                ref={backgroundRef}
+                className="absolute w-[80%] top-[2px] left-[34px] h-[170px] xl:top-[5px] xl:left-[43px] xl:h-[215px] bg-cover overflow-hidden z-[0]"
+              >
+                <div
+                  className="w-full h-full"
+                  style={{
+                    transform: `translateY(${backgroundTranslateY}px)`,
+                    transition: "transform 0.3s ease-out",
+                  }}
+                >
+                  {backgrounds.map((background: string, index: number) => (
+                    <Image
+                      src={background}
+                      alt="background"
+                      width={500}
+                      height={500}
+                      className={cn(
+                        "h-full w-auto object-cover cover",
+                        locale === "en"
+                          ? "font-geom text-[24px] xl:text-[28px]"
+                          : "font-firago text-[22px] xl:text-[32px]"
+                      )}
+                      key={index}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              className="w-[240px] xl:w-[340px] overflow-hidden"
+              variants={textVariants}
+              initial="hidden"
+              animate={isCursorActive ? "visible" : "active"}
+            >
+              <div
+                className={cn(
+                  "py-[8px] overflow-hidden",
+                  locale === "en"
+                    ? "h-[48px] xl:h-[56px]"
+                    : "h-[46px] xl:h-[62px]"
+                )}
+                ref={headlineRef}
+              >
+                <div
+                  className="w-full"
+                  style={{
+                    transform: `translateY(${headlineTranslateY}px)`,
+                    transition: "transform 0.3s ease-out",
+                  }}
+                >
+                  {headlines.map((headline: string, index: number) => (
+                    <h2
+                      className={cn(
+                        "text-primary pb-[8px] dark:text-secondary",
+                        locale === "en"
+                          ? "font-geom text-[24px] xl:text-[28px]"
+                          : "font-firago text-[22px] xl:text-[32px]"
+                      )}
+                      key={index}
+                    >
+                      {headline}
+                    </h2>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-[6px] xl:mt-[12px]">
+                {descriptions.map((description: string, index: number) => {
+                  const ind = index + 1;
+                  return (
+                    <p
+                      className={classNames(
+                        "text-primary text-[14px] xl:text-[16px] h-[105px] xl:h-[144px] overflow-hidden line-clamp-5 xl:line-clamp-6 dark:text-secondary",
+                        {
+                          "!hidden": currentProject !== ind,
+                          "!block": currentProject === ind,
+                        }
+                      )}
+                      key={index}
+                    >
+                      {description}
+                    </p>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </>
+    );
   }
+
+  return null;
 }

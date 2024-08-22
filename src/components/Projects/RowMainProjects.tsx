@@ -7,6 +7,7 @@ import { useState } from "react";
 import FramerText from "../core/FramerText";
 import { fadeIn } from "@/utils/motion";
 import useCursorStore from "@/store/use-cursor-store";
+import useCurrentProjectStore from "@/store/use-currentProject-store";
 
 export default function RowMainProjects({
   data,
@@ -16,10 +17,10 @@ export default function RowMainProjects({
   t: any;
 }) {
   const locale = useLocale();
-  const [currentProject, setCurrentProject] = useState<number | null>(null);
   const [cursorVariant, setCursorVariant] = useState("default");
   const { setIsCursorActive, setCursorType } = useCursorStore();
-
+  const { setCurrentProject, currentProject } = useCurrentProjectStore();
+  const headlines = data?.findManyMainProjects;
   return (
     <div className="hidden lg:block w-full lg:w-[74%]">
       <div className="w-full flex pb-[30px] xl:pb-[40px] border-b-[1px] border-primary/50 dark:border-secondary/50">

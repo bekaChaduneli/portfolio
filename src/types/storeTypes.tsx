@@ -14,17 +14,11 @@ export interface PopUpState {
 }
 
 export interface CurrentProjectState {
-  projectImage: string;
-  projectDescription: string;
-  projectHeadline: string;
-  projectBackgroundColor: string;
+  currentProject: number | null;
 }
 
 export interface CurrentProjectActions {
-  setCurrentProjectImage: (image: string) => void;
-  setCurrentProjectDescription: (description: string) => void;
-  setCurrentProjectHeadline: (headline: string) => void;
-  setCurrentProjectText: (backgroundColor: string) => void;
+  setCurrentProject: (index: number | null) => void;
   onCloseAnimation: () => void;
 }
 

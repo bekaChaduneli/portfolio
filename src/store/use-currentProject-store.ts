@@ -4,22 +4,11 @@ import { create } from "zustand";
 const useCurrentProjectStore = create<
   CurrentProjectState & CurrentProjectActions
 >((set) => ({
-  projectImage: "",
-  projectDescription: "",
-  projectHeadline: "",
-  projectBackgroundColor: "",
-  setCurrentProjectImage: (image) => set({ projectImage: image }),
-  setCurrentProjectDescription: (description) =>
-    set({ projectDescription: description }),
-  setCurrentProjectHeadline: (headline) => set({ projectHeadline: headline }),
-  setCurrentProjectText: (backgroundColor) =>
-    set({ projectBackgroundColor: backgroundColor }),
+  currentProject: null,
+  setCurrentProject: (index) => set({ currentProject: index }),
   onCloseAnimation: () =>
     set({
-      projectImage: "",
-      projectDescription: "",
-      projectHeadline: "",
-      projectBackgroundColor: "",
+      currentProject: null,
     }),
 }));
 
