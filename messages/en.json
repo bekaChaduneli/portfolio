@@ -98,6 +98,7 @@
     "name": "Name",
     "location": "Location",
     "type": "Type",
-    "clickToSeeMore": "Click To See More"
+    "clickToSeeMore": "Click To See More",
+    "descriptionHeadline": "Description"
   }
 }

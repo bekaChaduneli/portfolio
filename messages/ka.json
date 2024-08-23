@@ -99,6 +99,7 @@
     "name": "სახელი",
     "location": "ლოკაცია",
     "type": "ტიპი",
-    "clickToSeeMore": "დააწექით მეტის სანახავად"
+    "clickToSeeMore": "დააწექით მეტის სანახავად",
+    "descriptionHeadline": "აღწერა"
   }
 }

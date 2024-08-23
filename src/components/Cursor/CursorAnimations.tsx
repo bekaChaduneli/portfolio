@@ -15,6 +15,7 @@ import {
   laptopWrapperVariant,
   textVariants,
 } from "@/lib/siteData";
+import FramerText from "../core/FramerText";
 
 export default function CursorAnimations() {
   const { isCursorActive, cursorText, cursorType, cursorBackground } =
@@ -88,6 +89,39 @@ export default function CursorAnimations() {
           </div>
         </motion.div>
       </>
+    );
+  }
+
+  if (cursorType === "framerText") {
+    return (
+      <motion.div
+        className="fixed z-[32] pointer-events-none hidden md:block"
+        style={{
+          translateX: `${x && x}px`,
+          translateY: `${y && y - 10}px`,
+          transition: "transform 0.3s ease-out",
+        }}
+      >
+        <div
+          className={classNames(
+            `absolute flex items-center w-[200px] overflow-hidden transition duration-500 scale-[0%] h-[30px] rounded-[30px] bg-[#33897a] dark:bg-[#ff4545] left-[50%] top-[-12px] -translate-x-[50%] rotate-[-4deg] -translate-y-[50%] `,
+            {
+              "!scale-[99%] !rotate-[0deg]": isCursorActive,
+            }
+          )}
+        >
+          <FramerText baseVelocity={locale === "en" ? -2.5 : -2.2}>
+            <span
+              className={cn(
+                "text-[14px] xl:text-[16px] text-white dark:text-black leading-[110%]",
+                locale === "en" ? "font-geom" : "font-firago"
+              )}
+            >
+              {cursorText}
+            </span>
+          </FramerText>
+        </div>
+      </motion.div>
     );
   }
 

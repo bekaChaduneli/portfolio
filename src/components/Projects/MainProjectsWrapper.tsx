@@ -26,7 +26,7 @@ export default function MainProjectsWrapper() {
     {
       variables: {
         skip: 0,
-        take: isTablet ? 8 : 5,
+        take: 8,
         createdAt: "asc",
         isReal:
           currentType === "any" ? true : currentType === "real" ? true : false,
@@ -236,7 +236,7 @@ export default function MainProjectsWrapper() {
           </div>
         </div>
         {currentListType === "grid" ? (
-          <GridMainProjects data={data} />
+          <GridMainProjects t={t} data={data} />
         ) : (
           <RowMainProjects t={t} data={data} />
         )}
