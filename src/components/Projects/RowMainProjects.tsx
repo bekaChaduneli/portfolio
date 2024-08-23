@@ -71,6 +71,7 @@ export default function RowMainProjects({
                 setCurrentProject(null);
                 setIsCursorActive(false);
               }}
+              onClick={() => setIsCursorActive(false)}
               className="w-full block border-b-[1px] border-primary/50 dark:border-secondary/50"
             >
               {currentProject === index + 1 ? (

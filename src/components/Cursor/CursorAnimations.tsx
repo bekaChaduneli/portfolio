@@ -10,6 +10,11 @@ import { cn } from "@/lib/utils";
 import { useProjectData } from "@/hooks/useProjectData";
 import useCurrentProjectStore from "@/store/use-currentProject-store";
 import usePageWidth from "@/hooks/usePageWidth";
+import {
+  laptopVariants,
+  laptopWrapperVariant,
+  textVariants,
+} from "@/lib/siteData";
 
 export default function CursorAnimations() {
   const { isCursorActive, cursorText, cursorType, cursorBackground } =
@@ -48,88 +53,6 @@ export default function CursorAnimations() {
       );
     }
   }, [currentProject, locale]);
-
-  const laptopVariants = {
-    hidden: {
-      x: 0,
-      scale: 0,
-      transition: {
-        duration: 0.3,
-      },
-    },
-    visible: {
-      x: [0, 0, -160],
-      scale: 1,
-      transition: {
-        x: {
-          duration: 1,
-          times: [0, 0.4, 1],
-        },
-        scale: {
-          duration: 0.3,
-        },
-      },
-    },
-    active: {
-      x: [-160, 0, 0],
-      scale: [1, 1, 0],
-      transition: {
-        x: {
-          duration: 1.3,
-          times: [0, 0.4, 1],
-        },
-        scale: {
-          duration: 0.6,
-          times: [0, 0.66, 1],
-        },
-      },
-    },
-  };
-
-  const textVariants = {
-    hidden: {
-      x: 0,
-      opacity: 0,
-      transition: {
-        duration: 0.3,
-      },
-    },
-    visible: {
-      x: [-350, -136],
-      opacity: 1,
-      scale: [0, 1],
-      transition: {
-        x: {
-          delay: 0.4,
-          duration: 0.6,
-        },
-        opacity: {
-          delay: 0.4,
-          duration: 0.6,
-        },
-        scale: {
-          delay: 0.4,
-          duration: 0.5,
-          times: [0, 1],
-        },
-      },
-    },
-    active: {
-      x: [-136, -350],
-      scale: 0,
-      transition: {
-        x: {
-          duration: 1.3,
-          delay: 0.52,
-        },
-        scale: {
-          delay: 0.4,
-          duration: 0.5,
-          times: [1, 0],
-        },
-      },
-    },
-  };
 
   if (cursorType === "text") {
     return (
@@ -212,10 +135,15 @@ export default function CursorAnimations() {
             translateY: `${y && y - 10}px`,
           }}
         >
-          <div className="w-[600px] xl:w-[800px] origin-bottom flex justify-between relative pointer-events-none top-[-208px] xl:top-[-270px] left-[-170px] xl:left-[-210px]">
+          <motion.div
+            variants={laptopWrapperVariant}
+            initial="hidden"
+            animate={isCursorActive ? "visible" : "active"}
+            className="w-[692px] xl:w-[892px] origin-bottom flex justify-between relative pointer-events-none top-[-258px] xl:top-[-318px] left-[-345px] xl:left-[-440px] border-[1px] border-primary/20 rounded-[20px] px-[40px] py-[24px] dark:border-secondary/20 backdrop-blur-[6px] backdrop-saturate-[1.1] bg-secondary/80 dark:bg-primary/40"
+          >
             <motion.div
-              className="relative w-[340px] xl:w-[430px] origin-bottom h-auto z-[1]"
-              variants={laptopVariants}
+              className="relative w-[340px] xl:w-[430px] origin-bottom h-auto z-[1] "
+              variants={laptopVariants(isDesktop)}
               initial="hidden"
               animate={isCursorActive ? "visible" : "active"}
             >
@@ -257,7 +185,7 @@ export default function CursorAnimations() {
             </motion.div>
             <motion.div
               className="w-[240px] xl:w-[340px] overflow-hidden"
-              variants={textVariants}
+              variants={textVariants(isDesktop)}
               initial="hidden"
               animate={isCursorActive ? "visible" : "active"}
             >
@@ -311,7 +239,7 @@ export default function CursorAnimations() {
                 })}
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </>
     );
