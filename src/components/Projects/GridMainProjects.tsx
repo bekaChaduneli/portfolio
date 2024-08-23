@@ -20,24 +20,31 @@ export default function GridMainProjects({
   const isTablet = usePageWidth("768px");
   const { setCursorText, setCursorType, setIsCursorActive } = useCursorStore();
 
+  // Create refs and effects outside of the map loop
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    videoRefs.current.forEach((videoRef, index) => {
+      if (isTablet && videoRef) {
+        if (currentProject === index + 1) {
+          videoRef.currentTime = 0;
+          videoRef.play();
+        } else {
+          videoRef.pause();
+        }
+      }
+    });
+  }, [currentProject, isTablet]);
+
   return (
     <div className="flex flex-wrap gap-[50px] md:gap-0 justify-between w-full lg:w-[76%]">
       {data?.findManyMainProjects.map((project, index) => {
         const translation = project?.translations?.find(
           (translation) => translation.languageCode === locale
         );
-        const videoRef = useRef<HTMLVideoElement>(null);
 
-        useEffect(() => {
-          if (isTablet && videoRef.current) {
-            if (currentProject === index + 1) {
-              videoRef.current.currentTime = 0;
-              videoRef.current.play();
-            } else {
-              videoRef.current.pause();
-            }
-          }
-        }, [currentProject, index, isTablet]);
+        // Store the ref in the array
+        videoRefs.current[index] = videoRefs.current[index] || null;
 
         const isOdd = (index + 1) % 2 !== 0;
 
@@ -135,7 +142,7 @@ export default function GridMainProjects({
                   {isTablet && (
                     <>
                       <video
-                        ref={videoRef}
+                        ref={(el) => (videoRefs.current[index] = el)}
                         src={project?.video[0]}
                         className={cn(
                           "z-[2] cover object-cover absolute left-0 right-0 transition-all duration-500 w-auto h-[60%] min-w-full top-[50%] translate-y-[-50%]",
