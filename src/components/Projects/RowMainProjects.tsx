@@ -3,7 +3,6 @@ import { IMainProjectsResponse } from "@/types/mainProjects";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import FramerText from "../core/FramerText";
 import { fadeIn } from "@/utils/motion";
 import useCursorStore from "@/store/use-cursor-store";
@@ -17,10 +16,8 @@ export default function RowMainProjects({
   t: any;
 }) {
   const locale = useLocale();
-  const [cursorVariant, setCursorVariant] = useState("default");
   const { setIsCursorActive, setCursorType } = useCursorStore();
   const { setCurrentProject, currentProject } = useCurrentProjectStore();
-  const headlines = data?.findManyMainProjects;
   return (
     <div className="hidden lg:block w-full lg:w-[74%]">
       <div className="w-full flex pb-[30px] xl:pb-[40px] border-b-[1px] border-primary/50 dark:border-secondary/50">
@@ -71,6 +68,7 @@ export default function RowMainProjects({
                 setCurrentProject(null);
                 setIsCursorActive(false);
               }}
+              onClick={() => setIsCursorActive(false)}
               className="w-full block border-b-[1px] border-primary/50 dark:border-secondary/50"
             >
               {currentProject === index + 1 ? (
