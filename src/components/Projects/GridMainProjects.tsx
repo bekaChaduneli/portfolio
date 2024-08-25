@@ -137,6 +137,10 @@ export default function GridMainProjects({
                     setCurrentProject(null);
                     setIsCursorActive(false);
                   }}
+                  onClick={() => {
+                    setCurrentProject(null);
+                    setIsCursorActive(false);
+                  }}
                   className="mb-[20px] md:mb-[24px] lg:mb-[20px] xl:mb-[24px] w-full h-[268px] md:h-auto md:aspect-[1/1] overflow-hidden bg-cover transition-all rounded-[16px] md:rounded-none md:hover:rounded-[60%] duration-700 relative"
                 >
                   {isTablet && (
