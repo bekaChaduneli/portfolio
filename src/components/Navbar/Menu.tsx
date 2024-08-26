@@ -1,14 +1,13 @@
 import LanguageChanger from "./LanguageChanger";
 import { navigationLinks } from "@/lib/siteData";
-import classNames from "classnames";
 import ThemeSwitch from "./ThemeSwitch";
 import SoundSwitcher from "./SoundSwitcher";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import NavigationLink from "./NavigationLink";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
 import { FlipLink } from "../animations/text-effect";
+import { cn } from "@/lib/utils";
 
 export default function Menu({
   isOpen,
@@ -31,12 +30,12 @@ export default function Menu({
   return (
     <motion.div
       variants={fadeInVariants}
-      className={classNames(
+      className={cn(
         "fixed flex flex-col duration-300 w-full h-full overflow-hidden lg:hidden bg-secondary dark:bg-[#283d8b] top-0 z-[30] animate-link-opacity",
-        {
-          "opacity-100 visible": isOpen,
-          "opacity-0 invisible": !isOpen,
-        }
+        isOpen ?
+          "opacity-100 visible": 
+          "opacity-0 invisible"
+        
       )}
       style={{
         transitionProperty: "opacity",
@@ -44,22 +43,23 @@ export default function Menu({
     >
       <div className="flex flex-col items-center mt-[20vh]">
         <nav
-          className={classNames(
+          className={cn(
             "lg:hidden flex flex-col min-[420px]:px-[28px] sm:px-[30px] md:px-[40px] gap-[20px] sm:gap-[26px] md:gap-[30px] items-center px-[20px]",
-            {
-              " w-full z-[44]": isOpen,
-              "hidden ": !isOpen,
-              "font-firago": locale === "ka",
-              "font-geom": locale === "en",
-            }
+            isOpen ?
+              " w-full z-[44]" :
+              "hidden ",
+            locale === "ka" ?
+              "font-firago": 
+              "font-geom"
+            
           )}
         >
           <FlipLink
-            className={classNames(
+            className={cn(
               "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              {
-                "opacity-[75%]": pathname === `/${locale}`,
-              }
+              pathname === `/${locale}` && 
+                "opacity-[75%]"
+              
             )}
             textAlign="left"
             href="/"
@@ -74,11 +74,11 @@ export default function Menu({
             top="top-[45%]"
             wordSpace="min-w-[14px]"
             href="/about"
-            className={classNames(
+            className={cn(
               "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              {
-                "opacity-[75%]": pathname === `/${locale}/about`,
-              }
+              pathname === `/${locale}/about` &&
+                "opacity-[75%]"
+              
             )}
             onClick={() => isOpen && changeMenu()}
           >
@@ -89,11 +89,11 @@ export default function Menu({
             wordSpace="min-w-[14px]"
             href="/main"
             top="top-[45%]"
-            className={classNames(
+            className={cn(
               "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              {
-                "opacity-[75%]": pathname === `/${locale}/main`,
-              }
+              pathname === `/${locale}/main` && 
+                "opacity-[75%]"
+              
             )}
             onClick={() => isOpen && changeMenu()}
           >
@@ -104,11 +104,10 @@ export default function Menu({
             top="top-[45%]"
             wordSpace="min-w-[14px]"
             textAlign="left"
-            className={classNames(
+            className={cn(
               "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              {
-                "opacity-[75%]": pathname === `/${locale}/blog`,
-              }
+              pathname === `/${locale}/blog` &&
+                "opacity-[75%]"
             )}
             onClick={() => isOpen && changeMenu()}
           >

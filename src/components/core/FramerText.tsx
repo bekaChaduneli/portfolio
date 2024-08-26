@@ -8,7 +8,7 @@ import {
   useAnimationFrame,
 } from "framer-motion";
 import { wrap } from "framer-motion";
-import classNames from "classnames";
+import { cn } from "@/lib/utils";
 
 export default function FramerText({
   children,
@@ -47,13 +47,11 @@ export default function FramerText({
     return (
       <div className="overflow-hidden relative leading-[100%] m-0 left-0 w-full flex whitespace-nowrap flex-nowrap">
         <motion.div
-          className={classNames(
+          className={cn(
             "inherit uppercase text-[64px] flex whitespace-nowrap flex-nowrap parallax_scroller",
-            {
-              ["left-[1100px]"]: left,
-              ["right-[-1100px]"]: right,
-            }
+            left ? "left-[1100px]" : right && "right-[-1100px]"
           )}
+          
           style={{ x }}
         >
           {children}

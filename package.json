@@ -24,7 +24,6 @@
     "@uidotdev/usehooks": "github:uidotdev/usehooks",
     "axios": "^1.7.3",
     "class-variance-authority": "^0.7.0",
-    "classnames": "^2.5.1",
     "cloudinary": "^2.3.0",
     "clsx": "^2.1.1",
     "css-loader": "^7.1.2",

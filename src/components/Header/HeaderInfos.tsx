@@ -7,7 +7,6 @@ import {
 } from "@/utils/motion";
 import { Icons } from "../shared/Icons";
 import { useEffect } from "react";
-import classNames from "classnames";
 import Image from "next/image";
 import { HeaderInfosProps } from "@/types/ComponentTypes";
 import usePopUpStore from "@/store/use-popup-store";
@@ -53,12 +52,12 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
   return (
     <>
       <div
-        className={classNames(
+        className={cn(
           "hidden transition-all h-full w-full !duration-[2s] lg:block absolute z-[0]",
-          {
-            "opacity-[75%] scale-[96%]": scrollHover,
-            "opacity-[100%] scale-[100%]": !scrollHover,
-          }
+          scrollHover ?
+            "opacity-[75%] scale-[96%]": 
+            "opacity-[100%] scale-[100%]"
+          
         )}
       >
         <span
@@ -77,15 +76,14 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
           />
 
           <span
-            className={classNames(
+            className={cn(
               "absolute z-[2] xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]",
-              {
-                "font-geom translate-x-[-2px] xl:translate-x-[-8px]":
-                  locale === "en",
-                "font-firago translate-x-[-8px] xl:translate-x-[-14px]":
-                  locale === "ka",
-                "opacity-[100%]": isOpen && type === "profile",
-              }
+              locale === "en" ? 
+                "font-geom translate-x-[-2px] xl:translate-x-[-8px]"
+                  :
+                "font-firago translate-x-[-8px] xl:translate-x-[-14px]",
+                isOpen && type === "profile" && "opacity-[100%]" 
+              
             )}
           >
             {t("who-i-am")}
@@ -127,13 +125,13 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
               )}
             />
             <span
-              className={classNames(
+              className={cn(
                 "absolute z-[2] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]",
-                {
-                  "font-geom xl:text-[20px]": locale === "en",
-                  "font-firago xl:text-[17px]": locale === "ka",
-                  "opacity-[100%]": isOpen && type === "books",
-                }
+                locale === "en" ?
+                  "font-geom xl:text-[20px]": 
+                  "font-firago xl:text-[17px]",
+                   isOpen && type === "books" && "opacity-[100%]"
+                
               )}
             >
               {t("reading-list")}

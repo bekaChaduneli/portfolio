@@ -1,10 +1,10 @@
 "use client";
-import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import useSoundStore from "@/store/use-sound-store";
 import useSound from "use-sound";
 import toLang from "@/sounds/language.mp3";
+import { cn } from "@/lib/utils";
 
 export default function LanguageChanger({ locale }: { locale: string }) {
   let currentLocale = locale;
@@ -34,12 +34,11 @@ export default function LanguageChanger({ locale }: { locale: string }) {
       <div className="w-[48px] relative h-[2px]">
         <div className="relative w-full h-full bg-primary dark:bg-secondary dark:bg-opacity-[30%] bg-opacity-[30%]"></div>
         <div
-          className={classNames(
+          className={cn(
             "absolute w-[50%] top-0 h-full bg-primary dark:bg-secondary",
-            {
-              "right-0": currentLocale === "ka",
-              "left-0": currentLocale === "en",
-            }
+            currentLocale === "ka" ?
+              "right-0": 
+              "left-0"
           )}
         ></div>
       </div>

@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import useMousePosition from "@/utils/useMousePosition";
 import useCursorStore from "@/store/use-cursor-store";
 import { motion } from "framer-motion";
-import classNames from "classnames";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -67,22 +66,20 @@ export default function CursorAnimations() {
           }}
         >
           <div
-            className={classNames(
+            className={cn(
               `absolute w-[110px] shadow-sm shadow-white dark:shadow-[#283d8b] overflow-hidden transition duration-300 scale-[0%] h-[78px] rounded-[30px] dark:bg-[#283d8b]/[0.92] bg-[#fff]/[0.91] backdrop-blur-[2px] left-[50%] top-[50%] -translate-x-[50%] rotate-[-32deg] -translate-y-[50%] `,
-              {
-                "!scale-[99%] !rotate-[0deg]": isCursorActive,
-              }
+              isCursorActive && 
+                "!scale-[99%] !rotate-[0deg]"
+              
             )}
           >
             <h1
-              className={classNames(
+              className={cn(
                 "whitespace-nowrap absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-44%] text-[#283d8b] dark:text-white capitalize font-bold",
-                {
-                  "": isCursorActive,
-                  "  font-geom text-[20px]": locale === "en",
-                  "font-firago text-[18px]": locale === "ka",
-                }
-              )}
+               locale === "en" ?
+                  "  font-geom text-[20px]" :  
+                  "font-firago text-[18px]"
+                )}
             >
               {cursorText}
             </h1>
@@ -103,11 +100,11 @@ export default function CursorAnimations() {
         }}
       >
         <div
-          className={classNames(
+          className={cn(
             `absolute flex items-center w-[200px] overflow-hidden transition duration-500 scale-[0%] h-[30px] rounded-[30px] bg-[#33897a] dark:bg-[#ff4545] left-[50%] top-[-12px] -translate-x-[50%] rotate-[-4deg] -translate-y-[50%] `,
-            {
-              "!scale-[99%] !rotate-[0deg]": isCursorActive,
-            }
+            isCursorActive && 
+              "!scale-[99%] !rotate-[0deg]"
+            
           )}
         >
           <FramerText baseVelocity={locale === "en" ? -2.5 : -2.2}>
@@ -138,11 +135,11 @@ export default function CursorAnimations() {
         >
           <div className="rotate-[-4deg] relative pointer-events-none w-[110px] h-[140px] top-[-140px] left-[14px] ">
             <div
-              className={classNames(
+              className={cn(
                 "relative origin-bottom-left bg-cover transition-all scale-[0%] duration-500 overflow-hidden w-full border-[2px] border-primary h-full rounded-[8px]",
-                {
-                  "!scale-[100%] ": isCursorActive,
-                }
+                isCursorActive &&
+                  "!scale-[100%] "
+                
               )}
             >
               <Image
@@ -258,12 +255,10 @@ export default function CursorAnimations() {
                 {descriptions.map((description: string, index: number) => {
                   return (
                     <p
-                      className={classNames(
+                      className={cn(
                         "text-primary text-[14px] xl:text-[16px] h-[105px] xl:h-[144px] overflow-hidden line-clamp-5 xl:line-clamp-6 dark:text-secondary",
-                        {
-                          "!hidden": currentProject !== index + 1,
-                          "!block": currentProject === index + 1,
-                        }
+                        currentProject === index + 1 ? "!block" : "!hidden"
+                        
                       )}
                       key={index}
                     >
