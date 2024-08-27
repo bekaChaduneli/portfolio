@@ -21,7 +21,7 @@ const config = {
     extend: {
       fontFamily: {
         graphik: ["Graphik"],
-        firago: ["FiraGO"],
+        firago: ['FiraGO', 'sans-serif'], 
         geom: ["Geom"],
       },
       colors: {

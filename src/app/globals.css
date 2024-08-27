@@ -20,6 +20,10 @@
     font-feature-settings: "case" on;
   }
 
+  * {
+    font-feature-settings: 'case' on !important;
+  }
+
   .dark {
     transition: all 0.3s ease;
     --scrollbar-thumb-color: #ede7de;
@@ -323,11 +327,41 @@
 }
 
 @font-face {
-  font-family: "FiraGO";
-  src: url("./[locale]/static-fonts/firago-700.woff2") format("woff2");
-  font-weight: normal;
+  font-family: 'FiraGO';
+  src: url('./[locale]/static-fonts/FiraGO-Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'FiraGO';
+  src: url('./[locale]/static-fonts/FiraGO-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraGO';
+  src: url('./[locale]/static-fonts/FiraGO-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraGO';
+  src: url('./[locale]/static-fonts/FiraGO-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraGO';
+  src: url('./[locale]/static-fonts/FiraGO-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
 
 @font-face {
   font-family: "Geom";
@@ -339,7 +373,6 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
-    /* Set default font family */
     font-family: "Graphik", sans-serif;
   }
 }
