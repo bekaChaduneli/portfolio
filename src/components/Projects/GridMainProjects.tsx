@@ -70,7 +70,7 @@ export default function GridMainProjects({
             >
               <h2
                 className={cn(
-                  "text-[22px] xl:text-[26px] text-primary dark:text-secondary mb-[4px]",
+                  "text-[22px] font-bold xl:text-[26px] text-primary dark:text-secondary mb-[4px]",
                   locale === "en" ? "font-geom" : "font-firago"
                 )}
               >
@@ -81,7 +81,7 @@ export default function GridMainProjects({
               </div>
               <h2
                 className={cn(
-                  "text-[22px] xl:text-[26px] text-primary dark:text-secondary mb-[4px]",
+                  "text-[22px] font-bold xl:text-[26px] text-primary dark:text-secondary mb-[4px]",
                   locale === "en" ? "font-geom" : "font-firago"
                 )}
               >
@@ -175,7 +175,7 @@ export default function GridMainProjects({
                 </div>
                 <h2
                   className={cn(
-                    "text-[28px] line-clamp-1 text-primary dark:text-secondary uppercase md:text-[30px] lg:text-[26px] xl:text-[28px]",
+                    "text-[28px] line-clamp-1 font-bold text-primary dark:text-secondary uppercase md:text-[30px] lg:text-[26px] xl:text-[28px]",
                     locale === "en" ? "font-geom" : "font-firago"
                   )}
                 >

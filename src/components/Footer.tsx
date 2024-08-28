@@ -46,7 +46,7 @@ export default function Footer() {
               <h3
                 className={cn(
                   "font-extrabold text-[16px] sm:text-[18px] md:text-[20px] text-primary dark:text-secondary font-geom leading-[100%]",
-                  locale === "ka" && "leading-[140%]"
+                  locale === "ka" && "font-firago leading-[140%]"
                 )}
               >
                 {t("Name")}
@@ -125,7 +125,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-[24px] hidden lg:flex justify-between duration-300 transition-all">
-          <h1 className="text-[18px] text-primary dark:text-secondary font-graphik font-semibold">
+          <h1 className={cn("text-[18px]  text-primary dark:text-secondary font-semibold", locale === "en" ? "font-graphik" : "font-firago")}>
             {t("take-a-look")}
           </h1>
           <div className="flex gap-[20px] items-center">

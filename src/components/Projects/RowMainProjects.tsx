@@ -23,7 +23,7 @@ export default function RowMainProjects({
       <div className="w-full flex pb-[30px] xl:pb-[40px] border-b-[1px] border-primary/50 dark:border-secondary/50">
         <div
           className={cn(
-            "pl-[6%] w-[70%] text-primary/80 dark:text-secondary/80 text-[14px] uppercase",
+            "pl-[6%] font-bold w-[70%] text-primary/80 dark:text-secondary/80 text-[14px] uppercase",
             locale === "en" ? "font-geom" : "font-firago"
           )}
         >
@@ -31,7 +31,7 @@ export default function RowMainProjects({
         </div>
         <div
           className={cn(
-            "w-[30%] pr-[6%] text-primary/80 dark:text-secondary/80 text-[14px] uppercase",
+            "w-[30%] pr-[6%] font-bold text-primary/80 dark:text-secondary/80 text-[14px] uppercase",
             locale === "en" ? "font-geom" : "font-firago"
           )}
         >
@@ -86,7 +86,7 @@ export default function RowMainProjects({
                   <FramerText baseVelocity={locale === "en" ? -1.5 : -1.2}>
                     <span
                       className={cn(
-                        "text-[28px] mr-[22px] xl:text-[36px] xl:mr-[24px] text-primary dark:text-secondary leading-[110%]",
+                        "text-[28px] font-semibold mr-[22px] xl:text-[36px] xl:mr-[24px] text-primary dark:text-secondary leading-[110%]",
                         locale === "en" ? "font-geom" : "font-firago"
                       )}
                     >
@@ -96,7 +96,7 @@ export default function RowMainProjects({
                   <FramerText baseVelocity={locale === "en" ? 1.5 : 1.2}>
                     <span
                       className={cn(
-                        "text-[28px] mr-[22px] xl:text-[36px] xl:mr-[24px] text-primary dark:text-secondary leading-[110%]",
+                        "text-[28px] font-semibold mr-[22px] xl:text-[36px] xl:mr-[24px] text-primary dark:text-secondary leading-[110%]",
                         locale === "en" ? "font-geom" : "font-firago"
                       )}
                     >
@@ -119,7 +119,7 @@ export default function RowMainProjects({
                 >
                   <div
                     className={cn(
-                      "pl-[6%] w-[70%] text-primary pr-[20px] line-clamp-1 dark:text-secondary uppercase",
+                      "pl-[6%] w-[70%] font-bold text-primary pr-[20px] line-clamp-1 dark:text-secondary uppercase",
                       locale === "en"
                         ? "font-geom text-[49px] xl:text-[60px]"
                         : "font-firago text-[42px] xl:text-[52px]"
@@ -129,7 +129,7 @@ export default function RowMainProjects({
                   </div>
                   <div
                     className={cn(
-                      "w-[30%] pr-[6%] text-primary dark:text-secondary text-[19px] xl:text-[22px] uppercase",
+                      "w-[30%] pr-[6%] font-bold text-primary dark:text-secondary text-[19px] xl:text-[22px] uppercase",
                       locale === "ka" && "font-firago"
                     )}
                   >

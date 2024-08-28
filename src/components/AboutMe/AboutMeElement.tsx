@@ -80,13 +80,13 @@ export default function AboutMeElement() {
           className="w-full bg-[#9d94e5] rounded-[26px] h-[320px] md:h-[400px] relative overflow-hidden group about_me_link_image group-hover:bg-[#b1a9e9] shadow-md group-hover:shadow-xl"
         >
           <NavigationLink href="/about">
-            <h2 className="absolute left-[24px] tracking-[6px] top-[22px] text-[25px] font-bold font-mono text-secondary uppercase group-hover:left-[32px] transition-all duration-300">
+            <h2 className={cn("absolute left-[24px] tracking-[6px] top-[22px] text-[25px] font-bold text-secondary uppercase group-hover:left-[32px] transition-all duration-300", locale === "en" ? "font-mono" : "font-firago")}>
               {t("information")}
             </h2>
             <h2
               className={cn(
-                "absolute left-[24px] text-[34px] font-geom text-[#505067] capitalize group-hover:left-[32px] transition-all duration-300",
-                locale === "en" ? "top-[47px]" : "top-[56px]"
+                "absolute left-[24px] text-[34px] text-[#505067] capitalize group-hover:left-[32px] transition-all duration-300",
+                locale === "en" ? "top-[47px] font-geom" : "font-firago top-[56px]"
               )}
             >
               {t("aboutMe")}
@@ -125,7 +125,7 @@ export default function AboutMeElement() {
               index={0}
               type="aboutMeLeft"
               className={cn(
-                "leading-[100%] text-primary dark:text-linearPink",
+                "leading-[100%] font-bold text-primary dark:text-linearPink",
                 locale === "en"
                   ? "font-geom translate-x-[-40px] text-[40px] min-[500px]:text-[70px] md:text-[44px] xl:text-[66px]"
                   : "font-firago translate-x-[-70px] text-[46px] min-[500px]:text-[66px] md:text-[44px] xl:text-[60px]"
@@ -138,7 +138,7 @@ export default function AboutMeElement() {
               index={0}
               type="aboutMeRight"
               className={cn(
-                "leading-[100%] text-linearPink dark:text-secondary",
+                "leading-[100%] font-bold text-linearPink dark:text-secondary",
                 locale === "en"
                   ? "font-geom top-[26px] min-[500px]:top-[36px] rotate-[-8deg] left-[46%] min-[500px]:left-[47%] text-[40px] min-[500px]:text-[70px] md:text-[44px] xl:text-[66px]"
                   : "font-firago top-[36px] min-[500px]:top-[40px] left-[34%] min-[500px]:left-[38%] rotate-[-6deg] min-[500px]:rotate-[-4deg] text-[36px] min-[500px]:text-[55px] md:text-[40px] xl:text-[57px]"

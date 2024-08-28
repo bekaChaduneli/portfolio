@@ -88,7 +88,7 @@ export default function MainProjectsWrapper() {
           delay={0.1}
           inView={inView}
           className={cn(
-            "text-primary dark:text-secondary md:text-[48px] lg:text-[58px] xl:text-[70px]",
+            "text-primary font-bold dark:text-secondary md:text-[48px] lg:text-[58px] xl:text-[70px]",
             locale === "en"
               ? "font-geom text-[36px] "
               : "font-firago text-[23px] min-[500px]:text-[30px]"
@@ -121,7 +121,7 @@ export default function MainProjectsWrapper() {
             index={0}
             delay={0.3}
             className={cn(
-              " text-secondary min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
+              " text-secondary font-bold min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
               locale === "en"
                 ? "font-geom text-[20px]"
                 : "font-firago text-[18px]"

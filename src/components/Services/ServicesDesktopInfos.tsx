@@ -75,7 +75,7 @@ export default function ServicesDesktopInfos({
           >
             <h2
               className={cn(
-                "text-[32px] leading-[160%]  dark:text-secondary xl:text-[40px] xl:leading-[130%] mb-[12px] text-primary capitalize ",
+                "text-[32px] font-bold leading-[160%]  dark:text-secondary xl:text-[40px] xl:leading-[130%] mb-[12px] text-primary capitalize ",
                 locale === "en" ? "font-geom" : "font-firago"
               )}
             >

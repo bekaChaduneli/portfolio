@@ -62,7 +62,7 @@ export default function Services() {
           delay={0.1}
           inView={inView}
           className={cn(
-            "text-primary dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]",
+            "text-primary font-bold dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]",
             locale === "en" ? "font-geom" : "font-firago"
           )}
         >
@@ -93,7 +93,7 @@ export default function Services() {
             index={0}
             delay={0.3}
             className={cn(
-              " text-secondary text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
+              " text-secondary font-bold text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
               locale === "en" ? "font-geom" : "font-firago"
             )}
             inView={inView}

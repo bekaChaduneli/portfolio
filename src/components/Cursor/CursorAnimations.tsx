@@ -240,7 +240,7 @@ export default function CursorAnimations() {
                     <h2
                       key={index}
                       className={cn(
-                        "text-primary pb-[8px] dark:text-secondary",
+                        "text-primary pb-[8px] font-bold dark:text-secondary",
                         locale === "en"
                           ? "font-geom text-[24px] xl:text-[28px]"
                           : "font-firago text-[22px] xl:text-[32px]"

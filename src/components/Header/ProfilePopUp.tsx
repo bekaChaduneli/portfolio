@@ -67,7 +67,7 @@ export default function ProfilePopUp() {
               <>
                 <TextEffectPerWord
                   className={cn(
-                    " mb-[6px] !leading-[100%] text-primary flex text-start w-full",
+                    " mb-[6px] !leading-[100%] font-bold text-primary flex text-start w-full",
                     locale === "en"
                       ? "font-geom text-[64px] xl:text-[80px]"
                       : "font-firago text-[34px] xl:text-[44px]"
@@ -76,7 +76,7 @@ export default function ProfilePopUp() {
                 />
                 <TextEffectPerChar
                   className={cn(
-                    " text-primary capitalize mb-[6px]",
+                    " text-primary font-semibold capitalize mb-[6px]",
                     locale === "en"
                       ? " text-[16px] xl:text-[20px]"
                       : "font-firago text-[17px] xl:text-[22px]"

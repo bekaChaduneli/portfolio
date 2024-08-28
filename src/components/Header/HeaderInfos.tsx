@@ -77,7 +77,7 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
 
           <span
             className={cn(
-              "absolute z-[2] xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]",
+              "absolute z-[2] font-bold xl:text-[20px] rotate-[13deg] transition duration-300 opacity-[0%] group-hover:opacity-[100%] xl:translate-y-[-43px] uppercase translate-y-[-34px] text-[#203277] dark:text-[#a9baff]",
               locale === "en" ? 
                 "font-geom translate-x-[-2px] xl:translate-x-[-8px]"
                   :
@@ -126,7 +126,7 @@ export const HeaderInfos: React.FC<HeaderInfosProps> = ({ scrollHover }) => {
             />
             <span
               className={cn(
-                "absolute z-[2] transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]",
+                "absolute z-[2] font-bold transition duration-300 opacity-0 group-hover:opacity-[100%] xl:translate-x-[8px] xl:translate-y-[-59px] uppercase translate-y-[-50px] text-[#203277] dark:text-[#a9baff]",
                 locale === "en" ?
                   "font-geom xl:text-[20px]": 
                   "font-firago xl:text-[17px]",
