@@ -16,7 +16,7 @@ interface InViewProps {
   };
   transition?: Transition;
   viewOptions?: UseInViewOptions;
-  triggerOnce?: boolean; // Make triggerOnce optional
+  triggerOnce?: boolean; 
 }
 
 const defaultVariants = {

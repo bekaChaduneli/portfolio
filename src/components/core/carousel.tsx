@@ -67,12 +67,14 @@ type CarouselNavigationProps = {
   className?: string;
   classNameButton?: string;
   alwaysShow?: boolean;
+  classNameChevron?: string;
 };
 
 function CarouselNavigation({
   className,
   classNameButton,
   alwaysShow,
+  classNameChevron
 }: CarouselNavigationProps) {
   const { index, setIndex, itemsCount } = useCarousel();
 
@@ -102,7 +104,7 @@ function CarouselNavigation({
           }
         }}
       >
-        <ChevronLeft className="stroke-primary " size={16} />
+        <ChevronLeft className={cn("stroke-primary ", classNameChevron)} size={16} />
       </button>
       <button
         type="button"
@@ -123,7 +125,7 @@ function CarouselNavigation({
           }
         }}
       >
-        <ChevronRight className="stroke-primary" size={16} />
+        <ChevronRight className={cn("stroke-primary ", classNameChevron)} size={16} />
       </button>
     </div>
   );
@@ -155,10 +157,10 @@ function CarouselIndicator({
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setIndex(i)}
             className={cn(
-              "h-2 w-2 rounded-full transition-opacity duration-300",
+              "h-3 w-3 rounded-full transition-opacity duration-300",
               index === i
-                ? "bg-zinc-950 dark:bg-zinc-50"
-                : "bg-zinc-900/50 dark:bg-zinc-100/50",
+                ? "bg-primary"
+                : "bg-primary/50",
               classNameButton
             )}
           />

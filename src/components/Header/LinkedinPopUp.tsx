@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 import TopSkillsList from "./TopSkillsList";
-import Post from "./Post";
+import Posts from "./Posts";
 
 export default function LinkedinPopUp() {
   const { data, loading, error } = useQuery<ILinkedinResponse>(GET_LINKEDIN);
@@ -26,7 +26,7 @@ export default function LinkedinPopUp() {
   return (
     <div
       className={cn(
-        "w-[670px] xl:w-[822px] h-[550px] xl:h-[600px]  bg-[#f7f2f2]/[.92] py-[8px] px-[10px] xl:px-[14px] xl:py-[12px] backdrop-blur-[6px] backdrop-saturate-[1.4] rounded-[8px] absolute origin-bottom-left left-[144px] xl:left-[160px] bottom-[50px] xl:bottom-[36px] z-[11]",
+        "w-[670px] xl:w-[822px] h-[560px] xl:h-[600px]  bg-[#f7f2f2]/[.92] py-[8px] px-[10px] xl:px-[14px] xl:py-[12px] backdrop-blur-[6px] backdrop-saturate-[1.4] rounded-[8px] absolute origin-bottom-left left-[144px] xl:left-[160px] bottom-[50px] xl:bottom-[36px] z-[11]",
         isOpen && type === "linkedin"
           ? " transition-all duration-700 scale-100"
           : "scale-0"
@@ -145,18 +145,13 @@ export default function LinkedinPopUp() {
           >
             {t("lastPosts")}
           </h1>
-          <div className="flex gap-[14px] overflow-x-scroll flex-nowrap custom-posts-scrollbar pb-[4px] mb-[4px]">
-            {data?.findFirstLinkedin.posts.map((post, index) => (
-              <Post
-                t={t}
-                key={index}
-                logo={data?.findFirstLinkedin.image}
-                name={linkedin?.name}
-                locale={locale}
-                post={post}
-              />
-            ))}
-          </div>
+          <Posts
+            t={t}
+            posts={data?.findFirstLinkedin.posts}
+            locale={locale}
+            logo={data?.findFirstLinkedin.image}
+            name={linkedin?.name}
+          />
         </div>
       </div>
     </div>
