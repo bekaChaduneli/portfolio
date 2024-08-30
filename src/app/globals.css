@@ -66,6 +66,14 @@
     animation: bounce-bottom 3s ease-in-out infinite;
   }
 
+  .light .skills_wrapper {
+    background: radial-gradient(49.67% 88.67% at 69.2% 48.14%, rgb(232 237 123 / 50%) 0%, rgb(147 147 255 / 8%) 100%);
+  }
+
+  .dark .skills_wrapper {
+    background: radial-gradient(49.67% 88.67% at 69.2% 48.14%, rgb(56 117 135 / 50%) 0%, rgb(194 98 199 / 11%) 100%)
+  }
+
   .cursor-open {
     transform: scale(100%);
     transition: 0.4 ease;

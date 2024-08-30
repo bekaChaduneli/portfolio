@@ -67,9 +67,9 @@ export default function Navbar({ locale }: { locale: string }) {
         variants={fadeInVariants}
         className={cn(
           "hidden lg:flex fixed z-[9] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
-          scrolled && 
-            " bg-[#f7f2f2]/[.78] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[6px] backdrop-saturate-[1.4]"
-          
+          scrolled &&
+          " bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[10px] backdrop-saturate-[1.4]"
+
         )}
       >
         <div
@@ -86,7 +86,7 @@ export default function Navbar({ locale }: { locale: string }) {
               id="home"
               className={cn(
                 "px-4 h-full rounded-[24px] font-bold  text-primary flex items-center dark:text-secondary",
-                pathname === `/${locale}` && "backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]"
+                pathname === `/${locale}` && "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
               )}
               href="/"
             >
@@ -99,8 +99,8 @@ export default function Navbar({ locale }: { locale: string }) {
               className={cn(
                 "px-4 rounded-[24px] h-full font-bold  text-primary flex items-center dark:text-secondary",
                 pathname === `/${locale}/about` &&
-                  " backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]"
-                
+                "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
+
               )}
               href="/about"
             >
@@ -112,11 +112,11 @@ export default function Navbar({ locale }: { locale: string }) {
             <button
               className={cn(
                 "px-4 rounded-[24px] font-bold flex items-center text-primary dark:text-secondary h-full",
-                pathname === `/${locale}/main` || pathname === `/${locale}/archive` && 
-                  " backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]"
-              
+                pathname === `/${locale}/main` || pathname === `/${locale}/archive` &&
+                "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
+
               )}
-              
+
             >
               {pathname === `/${locale}/main`
                 ? t("main")
@@ -132,9 +132,9 @@ export default function Navbar({ locale }: { locale: string }) {
                       <div
                         className={cn(
                           "w-[454px] box-shadow-light dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9bb] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
-                          pathname.endsWith("main") && 
-                            "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
-                          
+                          pathname.endsWith("main") &&
+                          "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
+
                         )}
                       >
                         <span className="p-[25px] flex items-start justify-between">
@@ -160,10 +160,10 @@ export default function Navbar({ locale }: { locale: string }) {
                       <div
                         className={cn(
                           "w-[454px] box-shadow-light flex items-center dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9aa] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
-                          pathname.endsWith("archive") && 
-                            "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
-                              
-                          
+                          pathname.endsWith("archive") &&
+                          "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
+
+
                         )}
                       >
                         <span className="p-[25px] w-full flex items-start justify-between">
@@ -192,9 +192,9 @@ export default function Navbar({ locale }: { locale: string }) {
               id="blog"
               className={cn(
                 "px-4 rounded-[24px] flex items-center h-full font-bold relative text-primary dark:text-secondary",
-                pathname === `/${locale}/blog` && 
-                  "backdrop-filter bg-[#ffffffa2] bg-opacity-[70%] dark:bg-opacity-[70%] dark:bg-[#4960bf9f] backdrop-saturate-[2] backdrop-blur-[20px]"
-                
+                pathname === `/${locale}/blog` &&
+                "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
+
               )}
               href="/blog"
             >
@@ -203,12 +203,8 @@ export default function Navbar({ locale }: { locale: string }) {
           </span>
         </div>
         <div
-          className={cn(
-            "flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center",
-            locale === "ka" &&
-              "gap-[px]"
-            
-          )}
+          className=
+          "flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center"
         >
           <Calendly />
           <span data-cy="theme-switcher">
