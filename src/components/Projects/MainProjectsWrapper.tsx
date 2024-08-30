@@ -76,7 +76,7 @@ export default function MainProjectsWrapper() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  console.log(data);
+
   return (
     <div className="flex flex-col items-center px-[20px] md:px-[40px]">
       <motion.div
