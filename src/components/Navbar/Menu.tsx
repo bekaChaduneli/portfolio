@@ -32,10 +32,7 @@ export default function Menu({
       variants={fadeInVariants}
       className={cn(
         "fixed flex flex-col duration-300 w-full h-full overflow-hidden lg:hidden bg-secondary dark:bg-[#283d8b] top-0 z-[30] animate-link-opacity",
-        isOpen ?
-          "opacity-100 visible": 
-          "opacity-0 invisible"
-        
+        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
       )}
       style={{
         transitionProperty: "opacity",
@@ -45,21 +42,15 @@ export default function Menu({
         <nav
           className={cn(
             "lg:hidden flex flex-col min-[420px]:px-[28px] sm:px-[30px] md:px-[40px] gap-[20px] sm:gap-[26px] md:gap-[30px] items-center px-[20px]",
-            isOpen ?
-              " w-full z-[44]" :
-              "hidden ",
-            locale === "ka" ?
-              "font-firago": 
-              "font-geom"
-            
+            isOpen ? " w-full z-[44]" : "hidden ",
+            locale === "ka" ? "font-firago" : "font-geom"
           )}
         >
           <FlipLink
             className={cn(
-              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              pathname === `/${locale}` && 
-                "opacity-[75%]"
-              
+              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] relative overflow-hidden whitespace-nowrap",
+              pathname === `/${locale}` && "opacity-[75%]",
+              locale === "en" ? "font-geom" : "font-firago font-bold"
             )}
             textAlign="left"
             href="/"
@@ -75,10 +66,9 @@ export default function Menu({
             wordSpace="min-w-[14px]"
             href="/about"
             className={cn(
-              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              pathname === `/${locale}/about` &&
-                "opacity-[75%]"
-              
+              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] uppercase !w-full flex justify-center h-[60px] rounded-[16px] relative overflow-hidden whitespace-nowrap",
+              pathname === `/${locale}/about` && "opacity-[75%]",
+              locale === "en" ? "font-geom" : "font-firago font-bold"
             )}
             onClick={() => isOpen && changeMenu()}
           >
@@ -90,10 +80,9 @@ export default function Menu({
             href="/main"
             top="top-[45%]"
             className={cn(
-              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              pathname === `/${locale}/main` && 
-                "opacity-[75%]"
-              
+              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] uppercase !w-full flex justify-center h-[60px] rounded-[16px] relative overflow-hidden whitespace-nowrap",
+              pathname === `/${locale}/main` && "opacity-[75%]",
+              locale === "en" ? "font-geom" : "font-firago font-bold"
             )}
             onClick={() => isOpen && changeMenu()}
           >
@@ -105,9 +94,9 @@ export default function Menu({
             wordSpace="min-w-[14px]"
             textAlign="left"
             className={cn(
-              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] font-bold uppercase !w-full flex justify-center h-[60px] rounded-[16px] font-geom relative overflow-hidden whitespace-nowrap",
-              pathname === `/${locale}/blog` &&
-                "opacity-[75%]"
+              "text-[#283d8b] dark:text-secondary text-[38px] sm:text-[46px] md:text-[52px] uppercase !w-full flex justify-center h-[60px] rounded-[16px] relative overflow-hidden whitespace-nowrap",
+              pathname === `/${locale}/blog` && "opacity-[75%]",
+              locale === "en" ? "font-geom" : "font-firago font-bold"
             )}
             onClick={() => isOpen && changeMenu()}
           >

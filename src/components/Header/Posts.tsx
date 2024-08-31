@@ -4,14 +4,20 @@ import React from "react";
 import { Icons } from "../shared/Icons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Carousel, CarouselContent, CarouselIndicator, CarouselItem, CarouselNavigation } from "../core/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselIndicator,
+  CarouselItem,
+  CarouselNavigation,
+} from "../core/carousel";
 
 export default function Posts({
   posts,
   locale,
   t,
   logo,
-  name
+  name,
 }: {
   posts: IPosts[] | undefined;
   locale: string;
@@ -19,8 +25,6 @@ export default function Posts({
   logo: string | undefined;
   name: string | undefined;
 }) {
-
-
   const renderMedia = (url: string) => {
     const fileExtension = url.split(".").pop()?.toLowerCase();
 
@@ -42,7 +46,6 @@ export default function Posts({
       );
     }
   };
-
 
   return (
     <Carousel className="w-full pb-[40px]">
@@ -78,7 +81,7 @@ export default function Posts({
                     <h1
                       className={cn(
                         "xl:text-[14px] text-[12px] text-primary/75 font-light",
-                        locale === "ka" && "font-firago"
+                        locale === "ka" && "font-firago font-medium"
                       )}
                     >
                       {t("profession")}
@@ -91,7 +94,9 @@ export default function Posts({
                 </div>
 
                 {post.image && (
-                  <div className="mb-[12px] mt-[8px]">{renderMedia(post.image)}</div>
+                  <div className="mb-[12px] mt-[8px]">
+                    {renderMedia(post.image)}
+                  </div>
                 )}
 
                 <div className="flex justify-between items-center pb-[4px] border-b-[1px] border-primary/20 ">
@@ -105,8 +110,9 @@ export default function Posts({
                       {post.likes}
                     </p>
                   </div>
-                  <span className="text-[12px] font-bold text-primary/70">{`${post.commentsSum
-                    } ${t("comments")}`}</span>
+                  <span className="text-[12px] font-bold text-primary/70">{`${
+                    post.commentsSum
+                  } ${t("comments")}`}</span>
                 </div>
                 <Link
                   href={post.link}

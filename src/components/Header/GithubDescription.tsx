@@ -21,7 +21,7 @@ export default function GithubDescription({
       <div
         className={cn(
           "markdown ul-wrapper w-full text-primary font-medium text-start flex flex-col text-[14px] smDesktop:text-[16px] gap-[4px] smDesktop:gap-[6px] ",
-          locale === "ka" ? "font-firago font-light" : "font-bold"
+          locale === "ka" ? "font-firago font-medium" : "font-bold"
         )}
       >
         <ReactMarkdown

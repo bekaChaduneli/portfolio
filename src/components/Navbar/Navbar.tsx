@@ -68,8 +68,7 @@ export default function Navbar({ locale }: { locale: string }) {
         className={cn(
           "hidden lg:flex fixed z-[9] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
           scrolled &&
-          " bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[10px] backdrop-saturate-[1.4]"
-
+            " bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[10px] backdrop-saturate-[1.4]"
         )}
       >
         <div
@@ -78,7 +77,6 @@ export default function Navbar({ locale }: { locale: string }) {
             "flex px-3 gap-[20px] xl:gap-[35px] rounded-[30px] transition duration-500 relative",
 
             locale === "ka" && "gap-[7px]"
-
           )}
         >
           <span className="py-3">
@@ -86,7 +84,9 @@ export default function Navbar({ locale }: { locale: string }) {
               id="home"
               className={cn(
                 "px-4 h-full rounded-[24px] font-bold  text-primary flex items-center dark:text-secondary",
-                pathname === `/${locale}` && "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
+                pathname === `/${locale}` &&
+                  "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]",
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/"
             >
@@ -99,8 +99,8 @@ export default function Navbar({ locale }: { locale: string }) {
               className={cn(
                 "px-4 rounded-[24px] h-full font-bold  text-primary flex items-center dark:text-secondary",
                 pathname === `/${locale}/about` &&
-                "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
-
+                  "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]",
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/about"
             >
@@ -112,17 +112,17 @@ export default function Navbar({ locale }: { locale: string }) {
             <button
               className={cn(
                 "px-4 rounded-[24px] font-bold flex items-center text-primary dark:text-secondary h-full",
-                pathname === `/${locale}/main` || pathname === `/${locale}/archive` &&
-                "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
-
+                pathname === `/${locale}/main` ||
+                  (pathname === `/${locale}/archive` &&
+                    "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"),
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
-
             >
               {pathname === `/${locale}/main`
                 ? t("main")
                 : pathname === `/${locale}/archive`
-                  ? t("archive")
-                  : t("projects")}
+                ? t("archive")
+                : t("projects")}
               <ChevronDown className="w-[16px] h-[16px] transition-all duration-300 group-hover:rotate-180 ml-[8px]" />
               <div className="hidden group-hover:flex hover:flex relative right-[275px] top-[78%]">
                 <div className="w-[500px] h-[12px] absolute"></div>
@@ -133,8 +133,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         className={cn(
                           "w-[454px] box-shadow-light dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9bb] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
                           pathname.endsWith("main") &&
-                          "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
-
+                            "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
                         )}
                       >
                         <span className="p-[25px] flex items-start justify-between">
@@ -161,9 +160,7 @@ export default function Navbar({ locale }: { locale: string }) {
                         className={cn(
                           "w-[454px] box-shadow-light flex items-center dark:box-shadow-dark filter saturate-[1.2] rounded-[8px] backdrop-filter hover:bg-[#e7e1d9aa] dark:hover:bg-[#203277]/[.9] transition-all duration-300 backdrop-blur-[20px]",
                           pathname.endsWith("archive") &&
-                          "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
-
-
+                            "bg-[#e7e1d9aa] dark:bg-[#203277]/[.9]"
                         )}
                       >
                         <span className="p-[25px] w-full flex items-start justify-between">
@@ -193,8 +190,7 @@ export default function Navbar({ locale }: { locale: string }) {
               className={cn(
                 "px-4 rounded-[24px] flex items-center h-full font-bold relative text-primary dark:text-secondary",
                 pathname === `/${locale}/blog` &&
-                "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
-
+                  "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"
               )}
               href="/blog"
             >
@@ -202,10 +198,7 @@ export default function Navbar({ locale }: { locale: string }) {
             </NavigationLink>
           </span>
         </div>
-        <div
-          className=
-          "flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center"
-        >
+        <div className="flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center">
           <Calendly />
           <span data-cy="theme-switcher">
             <ThemeSwitch />
@@ -246,8 +239,8 @@ export default function Navbar({ locale }: { locale: string }) {
                   isOpen
                     ? "#CE1B1B"
                     : theme.theme === "light"
-                      ? "#ede7de"
-                      : "#283D8B"
+                    ? "#ede7de"
+                    : "#283D8B"
                 }
                 toggled={isOpen}
                 toggle={changeMenu}

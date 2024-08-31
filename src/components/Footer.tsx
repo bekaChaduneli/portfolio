@@ -66,7 +66,8 @@ export default function Footer() {
             <NavigationLink
               className={cn(
                 "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
-                pathname === `/${locale}` && "opacity-100 underline"
+                pathname === `/${locale}` && "opacity-100 underline",
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/"
             >
@@ -75,7 +76,8 @@ export default function Footer() {
             <NavigationLink
               className={cn(
                 "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
-                pathname === `/${locale}/about` && "opacity-100 underline"
+                pathname === `/${locale}/about` && "opacity-100 underline",
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/about"
             >
@@ -84,7 +86,8 @@ export default function Footer() {
             <NavigationLink
               className={cn(
                 "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
-                pathname === `/${locale}/main` && "opacity-100 underline"
+                pathname === `/${locale}/main` && "opacity-100 underline",
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/main"
             >
@@ -93,7 +96,8 @@ export default function Footer() {
             <NavigationLink
               className={cn(
                 "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
-                pathname === `/${locale}/blog` && "opacity-100 underline"
+                pathname === `/${locale}/blog` && "opacity-100 underline",
+                locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/blog"
             >
@@ -125,7 +129,12 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-[24px] hidden lg:flex justify-between duration-300 transition-all">
-          <h1 className={cn("text-[18px]  text-primary dark:text-secondary font-semibold", locale === "en" ? "font-graphik" : "font-firago")}>
+          <h1
+            className={cn(
+              "text-[18px]  text-primary dark:text-secondary font-semibold",
+              locale === "en" ? "font-graphik" : "font-firago"
+            )}
+          >
             {t("take-a-look")}
           </h1>
           <div className="flex gap-[20px] items-center">

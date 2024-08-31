@@ -69,7 +69,7 @@ export default function LinkedinPopUp() {
               <h1
                 className={cn(
                   "xl:text-[18px] text-primary/75 font-light",
-                  locale === "ka" && "font-firago"
+                  locale === "ka" && "font-firago font-medium"
                 )}
               >
                 {t("profession")}

@@ -194,7 +194,7 @@ export default function MainProjectsWrapper() {
                 className={cn(
                   "py-[8px] transition-all cursor-pointer text-primary dark:text-secondary capitalize duration-300 md:py-[12px] border-b-[1px] border-primary/50 dark:border-secondary/50 text-[18px]",
                   currentType === "any" ? "opacity-100" : "opacity-50",
-                  locale === "ka" && "font-firago"
+                  locale === "ka" && "font-firago font-semibold"
                 )}
               >
                 {t("any")}
@@ -204,7 +204,7 @@ export default function MainProjectsWrapper() {
                 className={cn(
                   "py-[8px] md:py-[12px] cursor-pointer text-primary dark:text-secondary capitalize transition-all duration-300 border-b-[1px] border-primary/50 dark:border-secondary/50 text-[18px]",
                   currentType === "real" ? "opacity-100" : "opacity-50",
-                  locale === "ka" && "font-firago"
+                  locale === "ka" && "font-firago font-semibold"
                 )}
               >
                 {t("real")}
@@ -214,7 +214,7 @@ export default function MainProjectsWrapper() {
                 className={cn(
                   "py-[8px] md:py-[12px] cursor-pointer text-primary dark:text-secondary capitalize dark:border-secondary/50 transition-all duration-300 text-[18px]",
                   currentType === "unReal" ? "opacity-100" : "opacity-50",
-                  locale === "ka" && "font-firago"
+                  locale === "ka" && "font-firago font-semibold"
                 )}
               >
                 {t("unReal")}

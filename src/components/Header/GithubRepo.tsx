@@ -65,7 +65,7 @@ export default function GithubRepo({
       <p
         className={cn(
           "text-[12px] text-primary/50 line-clamp-1",
-          locale === "ka" && "font-firago"
+          locale === "ka" && "font-firago font-medium"
         )}
       >
         {repo?.description}
