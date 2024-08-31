@@ -37,7 +37,7 @@ export default function RowLoading({ t }: { t: any }) {
                 : "h-[144px] xl:h-[179px] "
             )}
           >
-            <div className="h-[63px] w-full bg-secondary dark:bg-[#16255f] rounded-[14px] animate-skeleton"></div>
+            <div className="h-[63px] w-full bg-[#e3ded6] dark:bg-[#16255f] rounded-[14px] animate-skeleton"></div>
           </div>
         </div>
       ))}

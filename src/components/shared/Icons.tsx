@@ -565,4 +565,46 @@ export const Icons = {
       </svg>
     );
   },
+  SkillsBottom(props: IconProps) {
+    return (
+      <svg
+        version="1.2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 891 66"
+        width="891"
+        height="66"
+        {...props}
+      >
+        <path
+          className=" fill-[#ddd9d9] transition-all duration-500 dark:fill-[#172351]"
+          d="m468.3 0.4c69.7 0 105.2 19.8 136.5 37.3 28.3 15.7 50.6 28.2 98.4 28.2 47.7 0 70-12.5 98.3-28.2 31.3-17.5 66.8-37.3 136.5-37.3z"
+        />
+        <path
+          className=" fill-[#ddd9d9] transition-all duration-500 dark:fill-[#172351]"
+          d="m0 0.4c69.7 0 105.2 19.8 136.5 37.3 28.3 15.7 50.6 28.2 98.4 28.2 47.7 0 70.1-12.5 98.3-28.2 31.3-17.5 66.8-37.3 136.5-37.3z"
+        />
+      </svg>
+    );
+  },
+  SkillsTop(props: IconProps) {
+    return (
+      <svg
+        version="1.2"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 938 66"
+        width="938"
+        height="66"
+        {...props}
+      >
+        <path
+          className=" fill-[#ddd9d9] transition-all duration-500 dark:fill-[#172351]"
+          d="m469.7 65.4c-69.7 0-105.2-19.7-136.5-37.2-28.3-15.8-50.6-28.2-98.4-28.2-47.7 0-70 12.4-98.3 28.2-31.3 17.5-66.8 37.2-136.5 37.2z"
+        />
+        <path
+          className=" fill-[#ddd9d9] transition-all duration-500 dark:fill-[#172351]"
+          d="m938 65.4c-69.7 0-105.2-19.7-136.5-37.2-28.3-15.8-50.6-28.2-98.4-28.2-47.7 0-70.1 12.4-98.3 28.2-31.3 17.5-66.8 37.2-136.5 37.2z"
+        />
+      </svg>
+    );
+  },
 };

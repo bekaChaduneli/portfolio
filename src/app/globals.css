@@ -67,19 +67,11 @@
   }
 
   .light .skills_wrapper {
-    background: radial-gradient(
-      49.67% 88.67% at 69.2% 48.14%,
-      rgb(78 183 235 / 56%) 0%,
-      rgb(100 100 255 / 25%) 100%
-    );
+    background-color: #ddd9d9;
   }
 
   .dark .skills_wrapper {
-    background: radial-gradient(
-      49.67% 88.67% at 69.2% 48.14%,
-      rgb(10 46 61 / 27%) 0%,
-      rgb(8 22 61 / 60%) 100%
-    );
+    background-color: #172351;
   }
 
   .cursor-open {
