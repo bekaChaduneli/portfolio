@@ -27,7 +27,7 @@ export default function GithubProfile({
         {github?.name}
       </h2>
       <h6 className=" text-primary/60 mb-[6px] line-clamp-1">{`${github?.login} * he/him`}</h6>
-      <p className="text-[12px] xl:text-[13px] font-light text-primary/80 mb-[8px] line-clamp-4">
+      <p className="text-[12px] font-medium xl:text-[13px] text-primary/80 mb-[8px] line-clamp-4">
         {github?.bio}
       </p>
       <div

@@ -19,5 +19,5 @@ export interface ISkills {
 }
 
 export interface ISkillsResponse {
-  findManySkills: ISkills;
+  findManySkills: ISkills[];
 }
