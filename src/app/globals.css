@@ -21,7 +21,7 @@
   }
 
   * {
-    font-feature-settings: 'case' on !important;
+    font-feature-settings: "case" on !important;
   }
 
   .dark {
@@ -67,11 +67,19 @@
   }
 
   .light .skills_wrapper {
-    background: radial-gradient(49.67% 88.67% at 69.2% 48.14%, rgb(232 237 123 / 50%) 0%, rgb(147 147 255 / 8%) 100%);
+    background: radial-gradient(
+      49.67% 88.67% at 69.2% 48.14%,
+      rgb(78 183 235 / 56%) 0%,
+      rgb(100 100 255 / 25%) 100%
+    );
   }
 
   .dark .skills_wrapper {
-    background: radial-gradient(49.67% 88.67% at 69.2% 48.14%, rgb(56 117 135 / 50%) 0%, rgb(194 98 199 / 11%) 100%)
+    background: radial-gradient(
+      49.67% 88.67% at 69.2% 48.14%,
+      rgb(10 46 61 / 27%) 0%,
+      rgb(8 22 61 / 60%) 100%
+    );
   }
 
   .cursor-open {
@@ -285,6 +293,9 @@
     .parallax_scroller span {
       margin-right: 24px;
     }
+    .project_wrapper:hover div {
+      border-radius: 60%;
+    }
   }
   @media screen and (min-width: 1024px) {
     .service::before {
@@ -335,41 +346,39 @@
 }
 
 @font-face {
-  font-family: 'FiraGO';
-  src: url('./[locale]/static-fonts/FiraGO-Regular.woff2') format('woff2');
+  font-family: "FiraGO";
+  src: url("./[locale]/static-fonts/FiraGO-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FiraGO';
-  src: url('./[locale]/static-fonts/FiraGO-Light.woff2') format('woff2');
+  font-family: "FiraGO";
+  src: url("./[locale]/static-fonts/FiraGO-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FiraGO';
-  src: url('./[locale]/static-fonts/FiraGO-Medium.woff2') format('woff2');
+  font-family: "FiraGO";
+  src: url("./[locale]/static-fonts/FiraGO-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FiraGO';
-  src: url('./[locale]/static-fonts/FiraGO-SemiBold.woff2') format('woff2');
+  font-family: "FiraGO";
+  src: url("./[locale]/static-fonts/FiraGO-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FiraGO';
-  src: url('./[locale]/static-fonts/FiraGO-Bold.woff2') format('woff2');
+  font-family: "FiraGO";
+  src: url("./[locale]/static-fonts/FiraGO-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
-
-
 
 @font-face {
   font-family: "Geom";

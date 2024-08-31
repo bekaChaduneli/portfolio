@@ -16,6 +16,8 @@ import usePageWidth from "@/hooks/usePageWidth";
 import { AlignJustify, Grid2X2 } from "lucide-react";
 import RowMainProjects from "./RowMainProjects";
 import GridMainProjects from "./GridMainProjects";
+import GridLoading from "./GridLoading";
+import RowLoading from "./RowLoading";
 
 export default function MainProjectsWrapper() {
   const [currentType, setCurrentType] = useState("any");
@@ -74,7 +76,6 @@ export default function MainProjectsWrapper() {
     triggerOnce: true,
   });
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
@@ -236,7 +237,13 @@ export default function MainProjectsWrapper() {
           </div>
         </div>
         {currentListType === "grid" ? (
-          <GridMainProjects t={t} data={data} />
+          loading ? (
+            <GridLoading />
+          ) : (
+            <GridMainProjects t={t} data={data} />
+          )
+        ) : loading ? (
+          <RowLoading t={t} />
         ) : (
           <RowMainProjects t={t} data={data} />
         )}

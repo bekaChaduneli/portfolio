@@ -20,7 +20,6 @@ export default function GridMainProjects({
   const isTablet = usePageWidth("768px");
   const { setCursorText, setCursorType, setIsCursorActive } = useCursorStore();
 
-  // Create refs and effects outside of the map loop
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
@@ -43,7 +42,6 @@ export default function GridMainProjects({
           (translation) => translation.languageCode === locale
         );
 
-        // Store the ref in the array
         videoRefs.current[index] = videoRefs.current[index] || null;
 
         const isOdd = (index + 1) % 2 !== 0;
@@ -64,8 +62,8 @@ export default function GridMainProjects({
                     ? "translate-x-[100%] duration-700 border-r-[1px] shadow-r- right-0 rounded-r-[10px] rounded-l-none"
                     : "translate-x-[-100%] border-l-[1px] shadow-l- left-0 rounded-l-[10px] rounded-r-none"
                   : isOdd
-                  ? "translate-x-[0] duration-700 right-0 rounded-r-[100%] rounded-l-none"
-                  : "translate-x-[0] left-0 rounded-l-[100%] rounded-r-none"
+                    ? "translate-x-[0] duration-700 right-0 rounded-r-[100%] rounded-l-none"
+                    : "translate-x-[0] left-0 rounded-l-[100%] rounded-r-none"
               )}
             >
               <h2
@@ -107,10 +105,10 @@ export default function GridMainProjects({
                 index + 1 === data?.findManyMainProjects.length
                   ? "border-b-[1px] md:border-b-0 md:border-l-[1px] lg:border-x-[1px] "
                   : index + 2 === data?.findManyMainProjects.length
-                  ? "border-b-[1px] md:border-b-0"
-                  : (index + 1) % 2 === 0
-                  ? "md:border-l-[1px] lg:border-x-[1px] border-b-[1px] "
-                  : "border-b-[1px]"
+                    ? "border-b-[1px] md:border-b-0"
+                    : (index + 1) % 2 === 0
+                      ? "md:border-l-[1px] lg:border-x-[1px] border-b-[1px] "
+                      : "border-b-[1px]"
               )}
               style={{
                 transition: "all 0.3s ease",
@@ -118,30 +116,31 @@ export default function GridMainProjects({
             >
               <Link
                 href={`${locale}/main/${project.id}`}
+                onMouseEnter={() => {
+                  setCurrentProject(index + 1);
+                  setCursorText(t("seeMore"));
+
+                  setCursorType("framerText");
+                  setIsCursorActive(true);
+                }}
+                onMouseLeave={() => {
+                  setCurrentProject(null);
+                  setIsCursorActive(false);
+                }}
+                onClick={() => {
+                  setCurrentProject(null);
+                  setIsCursorActive(false);
+                }}
                 className={cn(
-                  "w-full block md:w-[88%]  xl:w-[80%] transition-all duration-700 cursor-pointer",
+                  "w-full block md:w-[88%] project_wrapper xl:w-[80%] transition-all duration-700 cursor-pointer",
                   currentProject !== null && currentProject !== index + 1
                     ? "opacity-[40%]"
                     : "opacity-[100%]"
                 )}
               >
                 <div
-                  onMouseEnter={() => {
-                    setCurrentProject(index + 1);
-                    setCursorText(t("seeMore"));
 
-                    setCursorType("framerText");
-                    setIsCursorActive(true);
-                  }}
-                  onMouseLeave={() => {
-                    setCurrentProject(null);
-                    setIsCursorActive(false);
-                  }}
-                  onClick={() => {
-                    setCurrentProject(null);
-                    setIsCursorActive(false);
-                  }}
-                  className="mb-[20px] md:mb-[24px] lg:mb-[20px] xl:mb-[24px] w-full h-[268px] md:h-auto md:aspect-[1/1] overflow-hidden bg-cover transition-all rounded-[16px] md:rounded-none md:hover:rounded-[60%] duration-700 relative"
+                  className="mb-[20px] md:mb-[24px] lg:mb-[20px] xl:mb-[24px] w-full h-[268px] md:h-auto md:aspect-[1/1] overflow-hidden bg-cover transition-all rounded-[16px] md:rounded- duration-700 relative"
                 >
                   {isTablet && (
                     <>
