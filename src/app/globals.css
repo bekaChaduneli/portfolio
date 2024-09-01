@@ -169,6 +169,43 @@
     background: #283d8b;
   }
 
+  .skills_shadow::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    height: 120px;
+    transition: all 500ms ease;
+  }
+
+  .skills_shadow::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: 2;
+    height: 120px;
+    transition: all 500ms ease;
+  }
+
+  .light .skills_shadow::after {
+    background: linear-gradient(transparent, #ddd9d9);
+  }
+  .light .skills_shadow::before {
+    background: linear-gradient(#ddd9d9, transparent);
+  }
+  .dark .skills_shadow::after {
+    background: linear-gradient(transparent, #172351);
+  }
+  .dark .skills_shadow::before {
+    background: linear-gradient(#172351, transparent);
+  }
+
   .navButton_light,
   .navButton_dark {
     position: relative;
