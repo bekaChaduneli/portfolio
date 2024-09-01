@@ -11,6 +11,7 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { MaskText } from "./animations/MaskText";
 import Image from "next/image";
+import FramerText from "./core/FramerText";
 
 export default function Skills() {
   const { data, loading, error } = useQuery<ISkillsResponse>(GET_SKILLS);
@@ -127,9 +128,10 @@ export default function Skills() {
         </div>
         <div className="w-full lg:w-[42%] flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
           {chunkedSkills.map((chunk, index) => (
-            <div
+            <FramerText
+              custom={true}
               key={index}
-              className="overflow-hidden flex flex-row flex-nowrap lg:flex-col gap-[12px] xl:h-[700px] skills_shadow transition-all duration-500 relative"
+              baseVelocity={index === 0 ? -3 : index === 1 ? 3 : -3}
             >
               {chunk.map((skill, skillIndex) => {
                 const translation = skill?.translations?.find(
@@ -138,24 +140,20 @@ export default function Skills() {
                 return (
                   <div
                     key={skillIndex}
-                    className={cn(
-                      "relative w-[123px] cursor-pointer h-[123px] min-w-[123px] flex justify-center items-center rounded-[12px] md:rounded-[16px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:min-h-[154px] xl:h-[154px]"
-                    )}
-                    style={{
-                      backgroundColor: skill.color,
-                    }}
+                    className="relative w-[123px] h-[123px] min-w-[123px] flex justify-center items-center rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]"
+                    style={{ backgroundColor: skill.color }}
                   >
                     <Image
-                      src={skill.image ? skill.image : ""}
-                      alt={translation?.name ? translation?.name : "image"}
+                      src={skill.image || ""}
+                      alt={translation?.name || "image"}
                       width={400}
                       height={400}
-                      className=" max-w-[50%] h-auto max-h-[80%] w-[60%]"
+                      className="max-w-[50%] max-h-[80%] w-[60%] h-auto"
                     />
                   </div>
                 );
               })}
-            </div>
+            </FramerText>
           ))}
         </div>
       </div>
