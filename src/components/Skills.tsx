@@ -12,12 +12,14 @@ import { motion } from "framer-motion";
 import { MaskText } from "./animations/MaskText";
 import Image from "next/image";
 import FramerText from "./core/FramerText";
+import { useScrollStore } from "@/store/use-skillsScroll-store";
 
 export default function Skills() {
   const { data, loading, error } = useQuery<ISkillsResponse>(GET_SKILLS);
-  const [currentSkill, setCurrentSkill] = useState(0);
+  const { setScrolling } = useScrollStore();
   const locale = useLocale();
   const t = useTranslations("Skills");
+  const [currentSkill, setCurrentSkill] = useState<string | null>(null);
   const chunkArray = (array: ISkills[] | never[], size: number) => {
     const result: ISkills[][] = [];
     for (let i = 0; i < array.length; i += size) {
@@ -126,7 +128,7 @@ export default function Skills() {
             {t("description")}
           </motion.div>
         </div>
-        <div className="w-full lg:w-[42%] flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
+        <div className="w-full lg:w-[42%] overflow-hidden flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
           {chunkedSkills.map((chunk, index) => (
             <FramerText
               custom={true}
@@ -140,16 +142,49 @@ export default function Skills() {
                 return (
                   <div
                     key={skillIndex}
-                    className="relative w-[123px] h-[123px] min-w-[123px] flex justify-center items-center rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]"
+                    className={cn(
+                      "relative cursor-pointer h-[123px] min-w-[123px] flex justify-between items-center rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
+                      currentSkill === skill.id ? "w-[268px]" : "w-[123px]"
+                    )}
                     style={{ backgroundColor: skill.color }}
+                    onMouseEnter={() => {
+                      setScrolling(false);
+                      setCurrentSkill(skill.id);
+                    }}
+                    onMouseLeave={() => {
+                      setScrolling(true);
+                      setCurrentSkill(null);
+                    }}
                   >
                     <Image
                       src={skill.image || ""}
                       alt={translation?.name || "image"}
                       width={400}
                       height={400}
-                      className="max-w-[50%] max-h-[80%] w-[60%] h-auto"
+                      className="max-w-[50%] ml-[24%] max-h-[80%] w-[50%] h-auto"
                     />
+                    <div
+                      className={cn(
+                        "w-[145px] pl-[24px] overflow-hidden text-secondary"
+                      )}
+                    >
+                      <h2
+                        className={cn(
+                          "font-bold line-clamp-1",
+                          locale === "ka" && "font-firago"
+                        )}
+                      >
+                        {translation?.name}
+                      </h2>
+                      <p
+                        className={cn(
+                          "line-clamp-2 text-[12px] font-medium",
+                          locale === "ka" && "font-firago"
+                        )}
+                      >
+                        {translation?.about}
+                      </p>
+                    </div>
                   </div>
                 );
               })}

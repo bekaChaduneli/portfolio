@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { wrap } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useScrollStore } from "@/store/use-skillsScroll-store";
 
 export default function FramerText({
   children,
@@ -40,7 +41,11 @@ export default function FramerText({
   const x = useTransform(baseX, (v) => `${wrap(-0, -54, v)}%`);
   const directionFactor = useRef(1);
 
+  const { isScrolling } = useScrollStore();
+
   useAnimationFrame((t, delta) => {
+    if (!isScrolling) return;
+
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
     const currentY = baseY.get();
     if (velocityFactor.get() < 0) {
@@ -64,11 +69,13 @@ export default function FramerText({
         className={cn(
           wrapperClassName
             ? wrapperClassName
-            : "overflow-hidden skills_shadow relative h-[650px] w-full flex flex-col"
+            : " overflow-visible skills_shadow relative h-[650px] w-full flex flex-col"
         )}
       >
         <motion.div
-          className={cn(className ? className : "flex flex-col gap-[12px]")}
+          className={cn(
+            className ? className : "flex overflow-visible flex-col gap-[12px]"
+          )}
           style={{ y }}
         >
           {children}
@@ -81,7 +88,7 @@ export default function FramerText({
     <div className="overflow-hidden relative leading-[100%] m-0 left-0 w-full flex whitespace-nowrap flex-nowrap">
       <motion.div
         className={cn(
-          " inherit uppercase text-[64px] flex whitespace-nowrap flex-nowrap parallax_scroller"
+          "inherit uppercase text-[64px] flex whitespace-nowrap flex-nowrap parallax_scroller"
         )}
         style={{ x }}
       >
