@@ -13,13 +13,22 @@ import { MaskText } from "./animations/MaskText";
 import Image from "next/image";
 import FramerText from "./core/FramerText";
 import { useScrollStore } from "@/store/use-skillsScroll-store";
+import { FlipLink } from "./animations/text-effect";
 
 export default function Skills() {
   const { data, loading, error } = useQuery<ISkillsResponse>(GET_SKILLS);
   const { setScrolling } = useScrollStore();
   const locale = useLocale();
+
   const t = useTranslations("Skills");
+  const [skillChanged, setSkillChanged] = useState(false);
   const [currentSkill, setCurrentSkill] = useState<string | null>(null);
+  const [skillBottomHeadline, setSkillBottomHeadline] =
+    useState<JSX.Element | null>(null);
+
+  const [skillBottomDescription, setSkillBottomDescription] =
+    useState<JSX.Element | null>(null);
+
   const chunkArray = (array: ISkills[] | never[], size: number) => {
     const result: ISkills[][] = [];
     for (let i = 0; i < array.length; i += size) {
@@ -27,6 +36,7 @@ export default function Skills() {
     }
     return result;
   };
+
   const skills = data?.findManySkills || [];
   const chunkedSkills = chunkArray(skills, 12);
   const isDesktop = usePageWidth("1024px");
@@ -39,6 +49,7 @@ export default function Skills() {
     threshold: 0.75,
     triggerOnce: false,
   });
+
   const scaleVariants = {
     hidden: { scale: 0 },
     visible: {
@@ -65,68 +76,79 @@ export default function Skills() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="relative w-full  transition-all duration-500 skills_wrapper lg:flex lg:justify-center dark:dark_skills_wrapper mt-[130px] md:mt-[190px] lg:mt-[250px] xl:mt-[360px]">
+    <div className="relative w-full transition-all duration-500 skills_wrapper lg:flex lg:justify-center dark:dark_skills_wrapper mt-[130px] md:mt-[190px] lg:mt-[250px] xl:mt-[360px]">
       <Icons.SkillsTop className="w-[50%] h-auto absolute left-0 top-0 translate-y-[-97%]" />
       <Icons.SkillsBottom className="w-[50%] h-auto absolute right-0 bottom-0 translate-y-[97%]" />
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center py-[60px] md:py-[100px] lg:py-[130px] xl:py-[160px] px-[28px] md:px-[46px] lg:px-0 lg:w-[954px] xl:w-[1200px]">
         <div className="lg:max-w-[50%]">
-          <motion.div
-            ref={ref}
-            className="flex justify-center lg:justify-start items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[34px] md:mb-[46px] lg:mb-[24px] xl:mb-[28px]"
-          >
-            <MaskText
-              index={0}
-              delay={0.1}
-              inView={inView}
-              className={cn(
-                "text-primary font-bold dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]",
-                locale === "en" ? "font-geom" : "font-firago"
-              )}
-            >
-              {t("my")}
-            </MaskText>
-            <motion.div
-              ref={serviceWrapperRef}
-              initial="hidden"
-              animate={serviceWrapperInView ? "visible" : "hidden"}
-              exit="exit"
-              variants={scaleVariants}
-              className={cn(
-                "px-[16px] md:px-[20px] lg:px-[24px] xl:px-[30px] py-[6px] md:py-[8px] xl:py-[10px] rounded-[46px] md:rounded-[50px] lg:rounded-[60px] bg-primary/90 dark:bg-primary/30 dark:border-[2px] backdrop-blur-lg border-[1px] border-primary flex items-center gap-[12px] md:gap-[15px] xl:gap-[18px] text-secondary text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
-                locale === "en" ? "font-geom" : "font-firago"
-              )}
-            >
-              <motion.span
-                ref={serviceWrapperRef}
-                initial="hidden"
-                animate={serviceWrapperInView ? "visible" : "hidden"}
-                exit="exit"
-                variants={iconScaleVariants}
-                className=""
+          <FlipLink
+            skillChanged={skillChanged}
+            top="top-[50%] h-full md:top-[50%]"
+            skills={true}
+            skillTopHeadline={
+              <motion.div
+                ref={ref}
+                className="flex justify-center lg:justify-start items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[34px] md:mb-[46px] lg:mb-[24px] xl:mb-[28px] debug-border" // Add debug border
               >
-                <Icons.Skills className="w-[24px] h-[24px] min-[500px]:w-[26px] min-[500px]:h-[26px] md:w-[28px] md:h-[28px] lg:w-[33px] lg:h-[33px] xl:w-[40px] xl:h-[40px]" />
-              </motion.span>
-              <MaskText
-                index={0}
-                delay={0.3}
+                <MaskText
+                  index={0}
+                  delay={0.1}
+                  inView={inView}
+                  className={cn(
+                    "text-primary font-bold dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]",
+                    locale === "en" ? "font-geom" : "font-firago"
+                  )}
+                >
+                  {t("my")}
+                </MaskText>
+                <motion.div
+                  ref={serviceWrapperRef}
+                  initial="hidden"
+                  animate={serviceWrapperInView ? "visible" : "hidden"}
+                  exit="exit"
+                  variants={scaleVariants}
+                  className={cn(
+                    "px-[16px] md:px-[20px] lg:px-[24px] xl:px-[30px] py-[6px] md:py-[8px] xl:py-[10px] rounded-[46px] md:rounded-[50px] lg:rounded-[60px] bg-primary/90 dark:bg-primary/30 dark:border-[2px] backdrop-blur-lg border-[1px] border-primary flex items-center gap-[12px] md:gap-[15px] xl:gap-[18px] text-secondary text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
+                    locale === "en" ? "font-geom" : "font-firago"
+                  )}
+                >
+                  <motion.span
+                    ref={serviceWrapperRef}
+                    initial="hidden"
+                    animate={serviceWrapperInView ? "visible" : "hidden"}
+                    exit="exit"
+                    variants={iconScaleVariants}
+                    className=""
+                  >
+                    <Icons.Skills className="w-[24px] h-[24px] min-[500px]:w-[26px] min-[500px]:h-[26px] md:w-[28px] md:h-[28px] lg:w-[33px] lg:h-[33px] xl:w-[40px] xl:h-[40px]" />
+                  </motion.span>
+                  <MaskText
+                    index={0}
+                    delay={0.3}
+                    className={cn(
+                      "text-secondary font-bold text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
+                      locale === "en" ? "font-geom" : "font-firago"
+                    )}
+                    inView={inView}
+                  >
+                    {t("skills")}
+                  </MaskText>
+                </motion.div>
+              </motion.div>
+            }
+            skillTopDescription={
+              <motion.div
                 className={cn(
-                  " text-secondary font-bold text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
-                  locale === "en" ? "font-geom" : "font-firago"
+                  "text-[14px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-[60px] md:mb-[100px] lg:mb-0 text-primary font-medium dark:text-secondary",
+                  locale === "ka" && "font-firago"
                 )}
-                inView={inView}
               >
-                {t("skills")}
-              </MaskText>
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className={cn(
-              "text-[14px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-[60px] md:mb-[100px] lg:mb-0 text-primary font-medium dark:text-secondary",
-              locale === "ka" && "font-firago"
-            )}
-          >
-            {t("description")}
-          </motion.div>
+                {t("description")}
+              </motion.div>
+            }
+            skillBottomHeadline={skillBottomHeadline}
+            skillBottomDescription={skillBottomDescription}
+          />
         </div>
         <div className="w-full lg:w-[42%] overflow-hidden flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
           {chunkedSkills.map((chunk, index) => (
@@ -143,17 +165,41 @@ export default function Skills() {
                   <div
                     key={skillIndex}
                     className={cn(
-                      "relative cursor-pointer h-[123px] min-w-[123px] flex justify-between items-center rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
+                      "relative cursor-pointer h-[123px] min-w-[123px] flex justify-center items-center rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
                       currentSkill === skill.id ? "w-[268px]" : "w-[123px]"
                     )}
                     style={{ backgroundColor: skill.color }}
                     onMouseEnter={() => {
                       setScrolling(false);
                       setCurrentSkill(skill.id);
+                      setSkillChanged(true);
+                      setSkillBottomHeadline(
+                        <motion.div
+                          ref={ref}
+                          className="flex justify-center lg:justify-start items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[34px] md:mb-[46px] lg:mb-[24px] xl:mb-[28px]"
+                        >
+                          <h2 className="text-primary font-bold dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]">
+                            {translation?.name}
+                          </h2>
+                        </motion.div>
+                      );
+                      setSkillBottomDescription(
+                        <motion.div
+                          className={cn(
+                            "text-[14px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-[60px] md:mb-[100px] lg:mb-0 text-primary font-medium dark:text-secondary",
+                            locale === "ka" && "font-firago"
+                          )}
+                        >
+                          {translation?.about}
+                        </motion.div>
+                      );
                     }}
                     onMouseLeave={() => {
                       setScrolling(true);
                       setCurrentSkill(null);
+                      setSkillChanged(false);
+                      setSkillBottomHeadline(null);
+                      setSkillBottomDescription(null);
                     }}
                   >
                     <Image
@@ -161,30 +207,8 @@ export default function Skills() {
                       alt={translation?.name || "image"}
                       width={400}
                       height={400}
-                      className="max-w-[50%] ml-[24%] max-h-[80%] w-[50%] h-auto"
+                      className="max-w-[50%] max-h-[80%] w-[50%] h-auto"
                     />
-                    <div
-                      className={cn(
-                        "w-[145px] pl-[24px] overflow-hidden text-secondary"
-                      )}
-                    >
-                      <h2
-                        className={cn(
-                          "font-bold line-clamp-1",
-                          locale === "ka" && "font-firago"
-                        )}
-                      >
-                        {translation?.name}
-                      </h2>
-                      <p
-                        className={cn(
-                          "line-clamp-2 text-[12px] font-medium",
-                          locale === "ka" && "font-firago"
-                        )}
-                      >
-                        {translation?.about}
-                      </p>
-                    </div>
                   </div>
                 );
               })}

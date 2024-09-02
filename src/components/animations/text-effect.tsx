@@ -110,18 +110,231 @@ export const FlipLink = ({
   href,
   className,
   top,
+  skillChanged,
+  skillTopHeadline,
+  skillTopClassName,
+  skillTopDescription,
+  skillTopDescriptionClassName,
+  skillBottomHeadline,
+  skillBottomDescription,
+  skillBottomClassName,
+  skillBottomDescriptionClassName,
   onClick,
+  skills,
   textAlign,
   wordSpace,
 }: {
-  children: any;
-  href: any;
-  className: any;
-  top: string;
+  children?: any;
+  href?: any;
+  className?: any;
+  skillTopHeadline?: any;
+  skillTopClassName?: any;
+  skillTopDescription?: any;
+  skillTopDescriptionClassName?: any;
+  skillBottomHeadline?: any;
+  skillBottomClassName?: any;
+  skillBottomDescription?: any;
+  skillBottomDescriptionClassName?: any;
+  top?: string;
+  skillChanged?: boolean;
   onClick?: any;
-  wordSpace: string;
-  textAlign: string;
+  skills?: boolean;
+  wordSpace?: string;
+  textAlign?: string;
 }) => {
+  if (skills) {
+    return (
+      <>
+        <motion.div
+          initial="initial"
+          animate={skillChanged ? "hovered" : "initial"}
+          className={
+            className
+              ? className
+              : "relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-9xl"
+          }
+          style={{
+            lineHeight: 0.75,
+          }}
+        >
+          <div
+            className={cn(
+              "absolute inset-0 flex justify-center translate-y-[-50%]",
+              top ? top : "top-[56%]",
+              textAlign === "left"
+                ? "justify-start"
+                : textAlign === "center"
+                ? "justify-center"
+                : "justify-end"
+            )}
+          >
+            <motion.div
+              className={skillTopClassName ? skillTopClassName : ""}
+              variants={{
+                initial: {
+                  y: 0,
+                },
+                hovered: {
+                  y: "-200%",
+                },
+              }}
+              transition={{
+                duration: DURATION,
+                ease: "easeInOut",
+                delay: STAGGER,
+              }}
+            >
+              {skillTopHeadline}
+            </motion.div>
+          </div>
+          <motion.div
+            initial="initial"
+            animate={skillChanged ? "hovered" : "initial"}
+            className={cn(
+              "absolute inset-0 flex justify-center translate-y-[-50%]",
+              top ? `${top}` : "top-[56%]",
+              textAlign === "left"
+                ? "justify-start"
+                : textAlign === "center"
+                ? "justify-center"
+                : "justify-end"
+            )}
+            style={{
+              lineHeight: 0.75,
+            }}
+          >
+            <div
+              className={cn(
+                "absolute inset-0 flex justify-center translate-y-[-50%]",
+                top ? top : "top-[56%]",
+                textAlign === "left"
+                  ? "justify-start"
+                  : textAlign === "center"
+                  ? "justify-center"
+                  : "justify-end"
+              )}
+            >
+              <motion.div
+                className={skillBottomClassName ? skillBottomClassName : ""}
+                variants={{
+                  initial: {
+                    y: "200%",
+                  },
+                  hovered: {
+                    y: 0,
+                  },
+                }}
+                transition={{
+                  duration: DURATION,
+                  ease: "easeInOut",
+                  delay: STAGGER,
+                }}
+              >
+                {skillBottomHeadline}
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+        <motion.div
+          initial="initial"
+          animate={skillChanged ? "hovered" : "initial"}
+          className={
+            className
+              ? className
+              : "relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-9xl"
+          }
+          style={{
+            lineHeight: 0.75,
+          }}
+        >
+          <div
+            className={cn(
+              "absolute inset-0 flex justify-center translate-y-[-50%]",
+              top ? top : "top-[56%]",
+              textAlign === "left"
+                ? "justify-start"
+                : textAlign === "center"
+                ? "justify-center"
+                : "justify-end"
+            )}
+          >
+            <motion.div
+              className={
+                skillTopDescriptionClassName ? skillTopDescriptionClassName : ""
+              }
+              variants={{
+                initial: {
+                  y: 0,
+                },
+                hovered: {
+                  y: "-200%",
+                },
+              }}
+              transition={{
+                duration: DURATION,
+                ease: "easeInOut",
+                delay: STAGGER,
+              }}
+            >
+              {skillTopDescription}
+            </motion.div>
+          </div>
+          <motion.div
+            initial="initial"
+            animate={skillChanged ? "hovered" : "initial"}
+            className={cn(
+              "absolute inset-0 flex justify-center translate-y-[-50%]",
+              top ? `${top}` : "top-[56%]",
+              textAlign === "left"
+                ? "justify-start"
+                : textAlign === "center"
+                ? "justify-center"
+                : "justify-end"
+            )}
+            style={{
+              lineHeight: 0.75,
+            }}
+          >
+            <div
+              className={cn(
+                "absolute inset-0 flex justify-center translate-y-[-50%]",
+                top ? top : "top-[56%]",
+                textAlign === "left"
+                  ? "justify-start"
+                  : textAlign === "center"
+                  ? "justify-center"
+                  : "justify-end"
+              )}
+            >
+              <motion.div
+                className={
+                  skillBottomDescriptionClassName
+                    ? skillBottomDescriptionClassName
+                    : ""
+                }
+                variants={{
+                  initial: {
+                    y: "200%",
+                  },
+                  hovered: {
+                    y: 0,
+                  },
+                }}
+                transition={{
+                  duration: DURATION,
+                  ease: "easeInOut",
+                  delay: STAGGER,
+                }}
+              >
+                {skillBottomDescription}
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </>
+    );
+  }
+
   return (
     <NavigationLink
       className="w-full"
