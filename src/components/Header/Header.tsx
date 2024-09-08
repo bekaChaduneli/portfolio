@@ -89,11 +89,9 @@ export default function Header() {
                   index={0}
                   className={cn(
                     "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
-                    locale === "en" ?
-                      "text-[21.5vw] lg:text-[126px] xl:text-[164px] font-geom leading-[100%] font-extrabold":
-                        
-                      "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]"
-                    
+                    locale === "en"
+                      ? "text-[21.5vw] lg:text-[126px] xl:text-[164px] font-geom leading-[100%] font-extrabold"
+                      : "text-[15vw] sm:text-[15.2vw] lg:text-[90px] xl:text-[114px] font-firago font-bold leading-[100%]"
                   )}
                   inView={inView}
                 >
@@ -102,11 +100,10 @@ export default function Header() {
                 <MaskText
                   index={1}
                   className={cn(
-                    "text-[#203277] z-[1] dark:text-[#a9baff] capitalize",
-                     locale === "en" ?
-                      "text-[10.4vw] pl-[1.7%] lg:pl-0 lg:text-[62px] xl:text-[80.5px] font-geom leading-[112%] font-extrabold":
-                      "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]"
-                    
+                    "text-[#203277] !tracking-[0.6px] z-[1] dark:text-[#a9baff] capitalize",
+                    locale === "en"
+                      ? "text-[10.4vw] pl-[1.7%] lg:pl-0 lg:text-[62px] xl:text-[80.5px] font-geom leading-[112%] font-extrabold"
+                      : "text-[10vw] md:text-[10.2vw] lg:text-[59px] xl:text-[75px] font-firago font-bold leading-[100%]"
                   )}
                   inView={inView}
                 >

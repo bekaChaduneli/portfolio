@@ -3,6 +3,8 @@ import { TextEffect } from "../core/text-effect";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import NavigationLink from "../Navbar/NavigationLink";
+import ComponentHeadline from "../shared/ComponentHeadline";
+import { useLocale, useTranslations } from "next-intl";
 
 export function TextEffectWithCustomVariants({
   text,
@@ -111,14 +113,9 @@ export const FlipLink = ({
   className,
   top,
   skillChanged,
-  skillTopHeadline,
-  skillTopClassName,
-  skillTopDescription,
-  skillTopDescriptionClassName,
-  skillBottomHeadline,
+  skillType,
   skillBottomDescription,
-  skillBottomClassName,
-  skillBottomDescriptionClassName,
+  skillBottomHeadline,
   onClick,
   skills,
   textAlign,
@@ -127,24 +124,21 @@ export const FlipLink = ({
   children?: any;
   href?: any;
   className?: any;
-  skillTopHeadline?: any;
-  skillTopClassName?: any;
-  skillTopDescription?: any;
-  skillTopDescriptionClassName?: any;
-  skillBottomHeadline?: any;
-  skillBottomClassName?: any;
-  skillBottomDescription?: any;
-  skillBottomDescriptionClassName?: any;
+  skillType?: string;
   top?: string;
+  skillBottomDescription?: string | null;
+  skillBottomHeadline?: string | null;
   skillChanged?: boolean;
   onClick?: any;
   skills?: boolean;
   wordSpace?: string;
   textAlign?: string;
 }) => {
+  const locale = useLocale();
+  const t = useTranslations("Skills");
   if (skills) {
-    return (
-      <>
+    if (skillType === "headline") {
+      return (
         <motion.div
           initial="initial"
           animate={skillChanged ? "hovered" : "initial"}
@@ -169,7 +163,6 @@ export const FlipLink = ({
             )}
           >
             <motion.div
-              className={skillTopClassName ? skillTopClassName : ""}
               variants={{
                 initial: {
                   y: 0,
@@ -179,17 +172,20 @@ export const FlipLink = ({
                 },
               }}
               transition={{
-                duration: DURATION,
+                duration: 0.5,
                 ease: "easeInOut",
                 delay: STAGGER,
               }}
+              className={cn("flex items-center w-full")}
             >
-              {skillTopHeadline}
+              <ComponentHeadline
+                component="skills"
+                leftText={t("my")}
+                rightText={t("skills")}
+              />
             </motion.div>
           </div>
-          <motion.div
-            initial="initial"
-            animate={skillChanged ? "hovered" : "initial"}
+          <div
             className={cn(
               "absolute inset-0 flex justify-center translate-y-[-50%]",
               top ? `${top}` : "top-[56%]",
@@ -199,42 +195,33 @@ export const FlipLink = ({
                 ? "justify-center"
                 : "justify-end"
             )}
-            style={{
-              lineHeight: 0.75,
-            }}
           >
-            <div
+            <motion.div
+              variants={{
+                initial: {
+                  y: "200%",
+                },
+                hovered: {
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.5,
+                ease: "easeInOut",
+                delay: STAGGER,
+              }}
               className={cn(
-                "absolute inset-0 flex justify-center translate-y-[-50%]",
-                top ? top : "top-[56%]",
-                textAlign === "left"
-                  ? "justify-start"
-                  : textAlign === "center"
-                  ? "justify-center"
-                  : "justify-end"
+                "flex items-center w-full text-[36px] lg:text-[54px] xl:text-[62px] font-bold text-primary dark:text-secondary",
+                locale === "en" ? "font-geom" : "font-firago"
               )}
             >
-              <motion.div
-                className={skillBottomClassName ? skillBottomClassName : ""}
-                variants={{
-                  initial: {
-                    y: "200%",
-                  },
-                  hovered: {
-                    y: 0,
-                  },
-                }}
-                transition={{
-                  duration: DURATION,
-                  ease: "easeInOut",
-                  delay: STAGGER,
-                }}
-              >
-                {skillBottomHeadline}
-              </motion.div>
-            </div>
-          </motion.div>
+              {skillBottomHeadline}
+            </motion.div>
+          </div>
         </motion.div>
+      );
+    } else {
+      return (
         <motion.div
           initial="initial"
           animate={skillChanged ? "hovered" : "initial"}
@@ -259,9 +246,6 @@ export const FlipLink = ({
             )}
           >
             <motion.div
-              className={
-                skillTopDescriptionClassName ? skillTopDescriptionClassName : ""
-              }
               variants={{
                 initial: {
                   y: 0,
@@ -271,17 +255,23 @@ export const FlipLink = ({
                 },
               }}
               transition={{
-                duration: DURATION,
+                duration: 0.5,
                 ease: "easeInOut",
                 delay: STAGGER,
               }}
+              className={cn("flex items-start w-full")}
             >
-              {skillTopDescription}
+              <p
+                className={cn(
+                  "flex items-center w-full line-clamp-[9] text-[17px] md:text-[22px] lg:text-[22px] lg:leading-[34px] font-bold text-primary dark:text-secondary",
+                  locale === "en" ? "font-geom" : "font-firago"
+                )}
+              >
+                {t("description")}
+              </p>
             </motion.div>
           </div>
-          <motion.div
-            initial="initial"
-            animate={skillChanged ? "hovered" : "initial"}
+          <div
             className={cn(
               "absolute inset-0 flex justify-center translate-y-[-50%]",
               top ? `${top}` : "top-[56%]",
@@ -291,48 +281,32 @@ export const FlipLink = ({
                 ? "justify-center"
                 : "justify-end"
             )}
-            style={{
-              lineHeight: 0.75,
-            }}
           >
-            <div
+            <motion.div
+              variants={{
+                initial: {
+                  y: "200%",
+                },
+                hovered: {
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.5,
+                ease: "easeInOut",
+                delay: STAGGER,
+              }}
               className={cn(
-                "absolute inset-0 flex justify-center translate-y-[-50%]",
-                top ? top : "top-[56%]",
-                textAlign === "left"
-                  ? "justify-start"
-                  : textAlign === "center"
-                  ? "justify-center"
-                  : "justify-end"
+                "flex items-center w-full line-clamp-[9] text-[17px] md:text-[22px] lg:text-[22px] lg:leading-[34px] font-bold text-primary dark:text-secondary",
+                locale === "en" ? "font-geom" : "font-firago"
               )}
             >
-              <motion.div
-                className={
-                  skillBottomDescriptionClassName
-                    ? skillBottomDescriptionClassName
-                    : ""
-                }
-                variants={{
-                  initial: {
-                    y: "200%",
-                  },
-                  hovered: {
-                    y: 0,
-                  },
-                }}
-                transition={{
-                  duration: DURATION,
-                  ease: "easeInOut",
-                  delay: STAGGER,
-                }}
-              >
-                {skillBottomDescription}
-              </motion.div>
-            </div>
-          </motion.div>
+              {skillBottomDescription}
+            </motion.div>
+          </div>
         </motion.div>
-      </>
-    );
+      );
+    }
   }
 
   return (
