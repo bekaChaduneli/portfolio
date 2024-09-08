@@ -51,7 +51,10 @@ export default function ComponentHeadline({
   return (
     <motion.div
       ref={ref}
-      className="flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[40px] md:mb-[66px] lg:mb-[100px]"
+      className={cn(
+        "flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[40px] md:mb-[66px] lg:mb-[100px]",
+        component === "skills" && "translate-y-[90%] xl:translate-y-[80%]"
+      )}
     >
       <MaskText
         index={0}

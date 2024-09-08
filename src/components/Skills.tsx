@@ -14,6 +14,7 @@ import Image from "next/image";
 import FramerText from "./core/FramerText";
 import { useScrollStore } from "@/store/use-skillsScroll-store";
 import { FlipLink } from "./animations/text-effect";
+import ComponentHeadline from "./shared/ComponentHeadline";
 
 export default function Skills() {
   const { data, loading, error } = useQuery<ISkillsResponse>(GET_SKILLS);
@@ -23,11 +24,13 @@ export default function Skills() {
   const t = useTranslations("Skills");
   const [skillChanged, setSkillChanged] = useState(false);
   const [currentSkill, setCurrentSkill] = useState<string | null>(null);
-  const [skillBottomHeadline, setSkillBottomHeadline] =
-    useState<JSX.Element | null>(null);
+  const [skillBottomHeadline, setSkillBottomHeadline] = useState<string | null>(
+    null
+  );
 
-  const [skillBottomDescription, setSkillBottomDescription] =
-    useState<JSX.Element | null>(null);
+  const [skillBottomDescription, setSkillBottomDescription] = useState<
+    string | null
+  >(null);
 
   const chunkArray = (array: ISkills[] | never[], size: number) => {
     const result: ISkills[][] = [];
@@ -39,39 +42,10 @@ export default function Skills() {
 
   const skills = data?.findManySkills || [];
   const chunkedSkills = chunkArray(skills, 12);
-  const isDesktop = usePageWidth("1024px");
   const { ref, inView, entry } = useInView({
     threshold: 0.75,
     triggerOnce: false,
   });
-
-  const { ref: serviceWrapperRef, inView: serviceWrapperInView } = useInView({
-    threshold: 0.75,
-    triggerOnce: false,
-  });
-
-  const scaleVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const iconScaleVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-        delay: 0.4,
-      },
-    },
-  };
 
   if (error) return <p>Error: {error.message}</p>;
 
@@ -80,75 +54,39 @@ export default function Skills() {
       <Icons.SkillsTop className="w-[50%] h-auto absolute left-0 top-0 translate-y-[-97%]" />
       <Icons.SkillsBottom className="w-[50%] h-auto absolute right-0 bottom-0 translate-y-[97%]" />
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center py-[60px] md:py-[100px] lg:py-[130px] xl:py-[160px] px-[28px] md:px-[46px] lg:px-0 lg:w-[954px] xl:w-[1200px]">
-        <div className="lg:max-w-[50%]">
-          <FlipLink
-            skillChanged={skillChanged}
-            top="top-[50%] h-full md:top-[50%]"
-            skills={true}
-            skillTopHeadline={
-              <motion.div
-                ref={ref}
-                className="flex justify-center lg:justify-start items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[34px] md:mb-[46px] lg:mb-[24px] xl:mb-[28px] debug-border" // Add debug border
-              >
-                <MaskText
-                  index={0}
-                  delay={0.1}
-                  inView={inView}
-                  className={cn(
-                    "text-primary font-bold dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]",
-                    locale === "en" ? "font-geom" : "font-firago"
-                  )}
-                >
-                  {t("my")}
-                </MaskText>
-                <motion.div
-                  ref={serviceWrapperRef}
-                  initial="hidden"
-                  animate={serviceWrapperInView ? "visible" : "hidden"}
-                  exit="exit"
-                  variants={scaleVariants}
-                  className={cn(
-                    "px-[16px] md:px-[20px] lg:px-[24px] xl:px-[30px] py-[6px] md:py-[8px] xl:py-[10px] rounded-[46px] md:rounded-[50px] lg:rounded-[60px] bg-primary/90 dark:bg-primary/30 dark:border-[2px] backdrop-blur-lg border-[1px] border-primary flex items-center gap-[12px] md:gap-[15px] xl:gap-[18px] text-secondary text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
-                    locale === "en" ? "font-geom" : "font-firago"
-                  )}
-                >
-                  <motion.span
-                    ref={serviceWrapperRef}
-                    initial="hidden"
-                    animate={serviceWrapperInView ? "visible" : "hidden"}
-                    exit="exit"
-                    variants={iconScaleVariants}
-                    className=""
-                  >
-                    <Icons.Skills className="w-[24px] h-[24px] min-[500px]:w-[26px] min-[500px]:h-[26px] md:w-[28px] md:h-[28px] lg:w-[33px] lg:h-[33px] xl:w-[40px] xl:h-[40px]" />
-                  </motion.span>
-                  <MaskText
-                    index={0}
-                    delay={0.3}
-                    className={cn(
-                      "text-secondary font-bold text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
-                      locale === "en" ? "font-geom" : "font-firago"
-                    )}
-                    inView={inView}
-                  >
-                    {t("skills")}
-                  </MaskText>
-                </motion.div>
-              </motion.div>
-            }
-            skillTopDescription={
-              <motion.div
-                className={cn(
-                  "text-[14px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-[60px] md:mb-[100px] lg:mb-0 text-primary font-medium dark:text-secondary",
-                  locale === "ka" && "font-firago"
-                )}
-              >
-                {t("description")}
-              </motion.div>
-            }
-            skillBottomHeadline={skillBottomHeadline}
-            skillBottomDescription={skillBottomDescription}
-          />
+        <div className="lg:max-w-[50%] lg:w-[50%]">
+          <div className="w-full flex mb-[16px] xl:mb-[20px] relative justify-center h-[100px] overflow-hidden transition-all duration-500 ">
+            <FlipLink
+              href="/main"
+              wordSpace="min-w-[7px]"
+              skillChanged={skillChanged}
+              top="top-[50%] h-full md:top-[50%]"
+              skillBottomHeadline={skillBottomHeadline}
+              skillType="headline"
+              textAlign="center"
+              skills={true}
+              className={cn(
+                "text-[17px] text-secondary",
+                locale === "en" ? "font-geom" : "font-firago"
+              )}
+            />
+          </div>
+          <div className="w-full flex relative justify-center h-[300px] overflow-hidden transition-all duration-500 ">
+            <FlipLink
+              href="/main"
+              wordSpace="min-w-[7px]"
+              skillType="description"
+              skillChanged={skillChanged}
+              skillBottomDescription={skillBottomDescription}
+              top="top-[50%] h-full md:top-[50%]"
+              textAlign="center"
+              skills={true}
+              className={cn(
+                "text-[17px] text-secondary",
+                locale === "en" ? "font-geom" : "font-firago"
+              )}
+            />
+          </div>
         </div>
         <div className="w-full lg:w-[42%] overflow-hidden flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
           {chunkedSkills.map((chunk, index) => (
@@ -165,8 +103,10 @@ export default function Skills() {
                   <div
                     key={skillIndex}
                     className={cn(
-                      "relative cursor-pointer h-[123px] min-w-[123px] flex justify-center items-center rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
-                      currentSkill === skill.id ? "w-[268px]" : "w-[123px]"
+                      "relative cursor-pointer group h-[123px] min-w-[123px] flex justify-center items-center translation-all duration-300 rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
+                      currentSkill !== skill.id && skillChanged
+                        ? "opacity-50"
+                        : "opacity-100"
                     )}
                     style={{ backgroundColor: skill.color }}
                     onMouseEnter={() => {
@@ -174,32 +114,16 @@ export default function Skills() {
                       setCurrentSkill(skill.id);
                       setSkillChanged(true);
                       setSkillBottomHeadline(
-                        <motion.div
-                          ref={ref}
-                          className="flex justify-center lg:justify-start items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[34px] md:mb-[46px] lg:mb-[24px] xl:mb-[28px]"
-                        >
-                          <h2 className="text-primary font-bold dark:text-secondary text-[36px] md:text-[48px] lg:text-[58px] xl:text-[70px]">
-                            {translation?.name}
-                          </h2>
-                        </motion.div>
+                        translation?.name ? translation?.name : ""
                       );
                       setSkillBottomDescription(
-                        <motion.div
-                          className={cn(
-                            "text-[14px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-[60px] md:mb-[100px] lg:mb-0 text-primary font-medium dark:text-secondary",
-                            locale === "ka" && "font-firago"
-                          )}
-                        >
-                          {translation?.about}
-                        </motion.div>
+                        translation?.about ? translation?.about : " "
                       );
                     }}
                     onMouseLeave={() => {
                       setScrolling(true);
                       setCurrentSkill(null);
                       setSkillChanged(false);
-                      setSkillBottomHeadline(null);
-                      setSkillBottomDescription(null);
                     }}
                   >
                     <Image
@@ -207,7 +131,7 @@ export default function Skills() {
                       alt={translation?.name || "image"}
                       width={400}
                       height={400}
-                      className="max-w-[50%] max-h-[80%] w-[50%] h-auto"
+                      className="max-w-[50%] group-hover:scale-125 duration-300 transition-all max-h-[80%] w-[50%] h-auto"
                     />
                   </div>
                 );
