@@ -124,7 +124,7 @@ export const FlipLink = ({
   children?: any;
   href?: any;
   className?: any;
-  skillType: string;
+  skillType?: string;
   top?: string;
   skillBottomDescription?: string | null;
   skillBottomHeadline?: string | null;

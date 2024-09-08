@@ -24,7 +24,7 @@ export default function FramerText({
 }: {
   children: ReactNode;
   custom?: any;
-  direction: string;
+  direction?: string;
   left?: any;
   wrapperClassName?: string;
   right?: any;

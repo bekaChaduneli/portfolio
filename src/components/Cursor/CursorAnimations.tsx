@@ -38,10 +38,10 @@ export default function CursorAnimations() {
         isDesktop && locale === "en"
           ? 50
           : !isDesktop && locale === "en"
-            ? 44
-            : isDesktop
-              ? 58
-              : 43;
+          ? 44
+          : isDesktop
+          ? 58
+          : 43;
       setHeadlineTranslateY(
         currentProject ? -(currentProject - 1) * headlineHeight : 0
       );
@@ -68,17 +68,15 @@ export default function CursorAnimations() {
           <div
             className={cn(
               `absolute w-[110px] shadow-sm shadow-white dark:shadow-[#283d8b] overflow-hidden transition duration-300 scale-[0%] h-[78px] rounded-[30px] dark:bg-[#283d8b]/[0.92] bg-[#fff]/[0.91] backdrop-blur-[2px] left-[50%] top-[50%] -translate-x-[50%] rotate-[-32deg] -translate-y-[50%] `,
-              isCursorActive &&
-              "!scale-[99%] !rotate-[0deg]"
-
+              isCursorActive && "!scale-[99%] !rotate-[0deg]"
             )}
           >
             <h1
               className={cn(
                 "whitespace-nowrap absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-44%] text-[#283d8b] dark:text-white capitalize font-bold",
-                locale === "en" ?
-                  "  font-geom text-[20px]" :
-                  "font-firago text-[18px]"
+                locale === "en"
+                  ? "  font-geom text-[20px]"
+                  : "font-firago text-[18px]"
               )}
             >
               {cursorText}
@@ -102,12 +100,13 @@ export default function CursorAnimations() {
         <div
           className={cn(
             `absolute flex items-center w-[200px] overflow-hidden transition duration-500 scale-[0%] h-[30px] rounded-[30px] bg-[#33897a] dark:bg-[#ff4545] left-[50%] top-[-12px] -translate-x-[50%] rotate-[-4deg] -translate-y-[50%] `,
-            isCursorActive &&
-            "!scale-[99%] !rotate-[0deg]"
-
+            isCursorActive && "!scale-[99%] !rotate-[0deg]"
           )}
         >
-          <FramerText baseVelocity={locale === "en" ? -2.5 : -2.2}>
+          <FramerText
+            direction="x"
+            baseVelocity={locale === "en" ? -2.5 : -2.2}
+          >
             <span
               className={cn(
                 "text-[14px] xl:text-[16px] text-white dark:text-black leading-[110%]",
@@ -137,9 +136,7 @@ export default function CursorAnimations() {
             <div
               className={cn(
                 "relative origin-bottom-left bg-cover transition-all scale-[0%] duration-500 overflow-hidden w-full border-[2px] border-primary h-full rounded-[8px]",
-                isCursorActive &&
-                "!scale-[100%] "
-
+                isCursorActive && "!scale-[100%] "
               )}
             >
               <Image
@@ -258,7 +255,6 @@ export default function CursorAnimations() {
                       className={cn(
                         "text-primary text-[14px] xl:text-[16px] h-[105px] xl:h-[144px] overflow-hidden line-clamp-5 xl:line-clamp-6 dark:text-secondary",
                         currentProject === index + 1 ? "!block" : "!hidden"
-
                       )}
                       key={index}
                     >
