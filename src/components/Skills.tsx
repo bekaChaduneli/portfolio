@@ -40,6 +40,8 @@ export default function Skills() {
     return result;
   };
 
+  const isDesktop = usePageWidth("1024px");
+
   const skills = data?.findManySkills || [];
   const chunkedSkills = chunkArray(skills, 12);
   const { ref, inView, entry } = useInView({
@@ -55,45 +57,72 @@ export default function Skills() {
       <Icons.SkillsBottom className="w-[50%] h-auto absolute right-0 bottom-0 translate-y-[97%]" />
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center py-[60px] md:py-[100px] lg:py-[130px] xl:py-[160px] px-[28px] md:px-[46px] lg:px-0 lg:w-[954px] xl:w-[1200px]">
         <div className="lg:max-w-[50%] lg:w-[50%]">
-          <div className="w-full flex mb-[16px] xl:mb-[20px] relative justify-center h-[100px] overflow-hidden transition-all duration-500 ">
-            <FlipLink
-              href="/main"
-              wordSpace="min-w-[7px]"
-              skillChanged={skillChanged}
-              top="top-[50%] h-full md:top-[50%]"
-              skillBottomHeadline={skillBottomHeadline}
-              skillType="headline"
-              textAlign="center"
-              skills={true}
-              className={cn(
-                "text-[17px] text-secondary",
-                locale === "en" ? "font-geom" : "font-firago"
-              )}
-            />
-          </div>
-          <div className="w-full flex relative justify-center h-[300px] overflow-hidden transition-all duration-500 ">
-            <FlipLink
-              href="/main"
-              wordSpace="min-w-[7px]"
-              skillType="description"
-              skillChanged={skillChanged}
-              skillBottomDescription={skillBottomDescription}
-              top="top-[50%] h-full md:top-[50%]"
-              textAlign="center"
-              skills={true}
-              className={cn(
-                "text-[17px] text-secondary",
-                locale === "en" ? "font-geom" : "font-firago"
-              )}
-            />
-          </div>
+          {isDesktop ? (
+            <>
+              <div className="w-full flex mb-[16px] xl:mb-[20px] relative justify-center h-[100px] overflow-hidden transition-all duration-500 ">
+                <FlipLink
+                  href="/main"
+                  wordSpace="min-w-[7px]"
+                  skillChanged={skillChanged}
+                  top="top-[50%] h-full md:top-[50%]"
+                  skillBottomHeadline={skillBottomHeadline}
+                  skillType="headline"
+                  textAlign="center"
+                  skills={true}
+                  className={cn(
+                    "text-[17px] text-secondary",
+                    locale === "en" ? "font-geom" : "font-firago"
+                  )}
+                />
+              </div>
+              <div className="w-full flex relative justify-center h-[300px] overflow-hidden transition-all duration-500 ">
+                <FlipLink
+                  href="/main"
+                  wordSpace="min-w-[7px]"
+                  skillType="description"
+                  skillChanged={skillChanged}
+                  skillBottomDescription={skillBottomDescription}
+                  top="top-[50%] h-full md:top-[50%]"
+                  textAlign="center"
+                  skills={true}
+                  className={cn(
+                    "text-[17px] text-secondary",
+                    locale === "en" ? "font-geom" : "font-firago"
+                  )}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <ComponentHeadline leftText={t("my")} rightText={t("skills")} />
+              <div
+                className={cn(
+                  "text=[18px] leading-[24px] md:text-[25px] md:leading-[32px] font-bold text-primary dark:text-secondary mb-[60px] md:mb-[90px] mt-[10px]",
+                  locale === "ka" && "font-firago"
+                )}
+              >
+                {t("description")}
+              </div>
+            </>
+          )}
         </div>
         <div className="w-full lg:w-[42%] overflow-hidden flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
           {chunkedSkills.map((chunk, index) => (
             <FramerText
+              direction={isDesktop ? "y" : "x"}
               custom={true}
               key={index}
-              baseVelocity={index === 0 ? -3 : index === 1 ? 3 : -3}
+              baseVelocity={
+                index === 0 || (index === 2 && isDesktop)
+                  ? -3
+                  : index === 0 && !isDesktop
+                  ? -6
+                  : index === 1 && isDesktop
+                  ? 3
+                  : index === 1 && !isDesktop
+                  ? 6
+                  : -6
+              }
             >
               {chunk.map((skill, skillIndex) => {
                 const translation = skill?.translations?.find(
@@ -103,27 +132,31 @@ export default function Skills() {
                   <div
                     key={skillIndex}
                     className={cn(
-                      "relative cursor-pointer group h-[123px] min-w-[123px] flex justify-center items-center translation-all duration-300 rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
+                      "relative cursor-pointer group h-[70px] min-w-[70px] md:h-[90px] md:min-w-[90px] lg:h-[123px] lg:min-w-[123px] flex justify-center items-center translation-all duration-300 rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
                       currentSkill !== skill.id && skillChanged
                         ? "opacity-50"
                         : "opacity-100"
                     )}
                     style={{ backgroundColor: skill.color }}
                     onMouseEnter={() => {
-                      setScrolling(false);
-                      setCurrentSkill(skill.id);
-                      setSkillChanged(true);
-                      setSkillBottomHeadline(
-                        translation?.name ? translation?.name : ""
-                      );
-                      setSkillBottomDescription(
-                        translation?.about ? translation?.about : " "
-                      );
+                      if (isDesktop) {
+                        setScrolling(false);
+                        setCurrentSkill(skill.id);
+                        setSkillChanged(true);
+                        setSkillBottomHeadline(
+                          translation?.name ? translation?.name : ""
+                        );
+                        setSkillBottomDescription(
+                          translation?.about ? translation?.about : " "
+                        );
+                      }
                     }}
                     onMouseLeave={() => {
-                      setScrolling(true);
-                      setCurrentSkill(null);
-                      setSkillChanged(false);
+                      if (isDesktop) {
+                        setScrolling(true);
+                        setCurrentSkill(null);
+                        setSkillChanged(false);
+                      }
                     }}
                   >
                     <Image

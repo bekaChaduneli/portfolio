@@ -211,7 +211,7 @@ export const FlipLink = ({
                 delay: STAGGER,
               }}
               className={cn(
-                "flex items-center w-full text-[36px] lg:text-[54px] xl:text-[62px] font-bold text-primary",
+                "flex items-center w-full text-[36px] lg:text-[54px] xl:text-[62px] font-bold text-primary dark:text-secondary",
                 locale === "en" ? "font-geom" : "font-firago"
               )}
             >
@@ -263,7 +263,7 @@ export const FlipLink = ({
             >
               <p
                 className={cn(
-                  "flex items-center w-full line-clamp-[9] text-[17px] md:text-[22px] lg:text-[22px] lg:leading-[34px] font-bold text-primary",
+                  "flex items-center w-full line-clamp-[9] text-[17px] md:text-[22px] lg:text-[22px] lg:leading-[34px] font-bold text-primary dark:text-secondary",
                   locale === "en" ? "font-geom" : "font-firago"
                 )}
               >
@@ -297,7 +297,7 @@ export const FlipLink = ({
                 delay: STAGGER,
               }}
               className={cn(
-                "flex items-center w-full line-clamp-[9] text-[17px] md:text-[22px] lg:text-[22px] lg:leading-[34px] font-bold text-primary",
+                "flex items-center w-full line-clamp-[9] text-[17px] md:text-[22px] lg:text-[22px] lg:leading-[34px] font-bold text-primary dark:text-secondary",
                 locale === "en" ? "font-geom" : "font-firago"
               )}
             >

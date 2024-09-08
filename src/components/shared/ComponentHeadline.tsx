@@ -60,6 +60,7 @@ export default function ComponentHeadline({
         index={0}
         delay={0.1}
         inView={inView}
+        type="left"
         className={cn(
           "text-primary font-bold dark:text-secondary",
           locale === "en" ? "font-geom" : "font-firago",

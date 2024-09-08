@@ -10,11 +10,13 @@ import {
 import { wrap } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useScrollStore } from "@/store/use-skillsScroll-store";
+import usePageWidth from "@/hooks/usePageWidth";
 
 export default function FramerText({
   children,
   custom,
   left,
+  direction,
   wrapperClassName,
   className,
   right,
@@ -22,6 +24,7 @@ export default function FramerText({
 }: {
   children: ReactNode;
   custom?: any;
+  direction: string;
   left?: any;
   wrapperClassName?: string;
   right?: any;
@@ -69,17 +72,32 @@ export default function FramerText({
         className={cn(
           wrapperClassName
             ? wrapperClassName
-            : " overflow-visible skills_shadow relative h-[650px] w-full flex flex-col"
+            : " overflow-visible skills_shadow relative h-[76px] md:h-[96px] lg:h-[650px] w-full flex flex-col"
         )}
       >
-        <motion.div
-          className={cn(
-            className ? className : "flex overflow-visible flex-col gap-[12px]"
-          )}
-          style={{ y }}
-        >
-          {children}
-        </motion.div>
+        {direction === "y" ? (
+          <motion.div
+            className={cn(
+              className
+                ? className
+                : "flex overflow-visible flex-col gap-[12px]"
+            )}
+            style={{ y }}
+          >
+            {children}
+          </motion.div>
+        ) : (
+          <motion.div
+            className={cn(
+              className
+                ? className
+                : "flex overflow-visible flex-row gap-[12px]"
+            )}
+            style={{ x }}
+          >
+            {children}
+          </motion.div>
+        )}
       </div>
     );
   }

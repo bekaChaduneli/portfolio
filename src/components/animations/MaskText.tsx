@@ -34,12 +34,15 @@ export function MaskText({
     <div
       key={index}
       className={cn(
-        "overflow-hidden",
+        "overflow-hidden flex items-center",
         type === "aboutMeRight"
           ? "relative top-[17px] h-[60px] left-[-5px] rotate-[-5deg] min-[500px]:h-[90px] md:h-[56px] xl:h-[90px]"
           : type === "aboutMeLeft" &&
               "relative h-[72px] rotate-[-5deg] min-[500px]:h-[90px] md:h-[56px] xl:h-[90px]",
-        locale === "ka" && type === "aboutMeRight" ? "xl:top-[23px]" : ""
+        locale === "ka" && type === "aboutMeRight" ? "xl:top-[23px]" : "",
+        type === "left"
+          ? "min-h-[60px] md:min-h-[84px] lg:min-h-[56px] xl:min-h-[73px] h-full tracking-[2.5px]"
+          : "tracking-[1.7px]"
       )}
     >
       <motion.p
@@ -47,7 +50,7 @@ export function MaskText({
         variants={animation}
         initial="initial"
         animate={inView ? "enter" : ""}
-        className={className}
+        className={cn(className, "h-full")}
       >
         {children}
       </motion.p>
