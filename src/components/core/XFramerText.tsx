@@ -11,24 +11,17 @@ import { wrap } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useScrollStore } from "@/store/use-skillsScroll-store";
 
-export default function FramerText({
+export default function XFramerText({
   children,
-  custom,
-  left,
   wrapperClassName,
   className,
-  right,
   baseVelocity = 100,
 }: {
   children: ReactNode;
-  custom?: any;
-  left?: any;
   wrapperClassName?: string;
-  right?: any;
   className?: string;
   baseVelocity?: number;
 }) {
-  const baseY = useMotionValue(0);
   const baseX = useMotionValue(0);
   const smoothVelocity = useSpring(0, {
     damping: 50,
@@ -37,7 +30,6 @@ export default function FramerText({
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
     clamp: false,
   });
-  const y = useTransform(baseY, (v) => `${wrap(-70, 0, v)}%`);
   const x = useTransform(baseX, (v) => `${wrap(-0, -54, v)}%`);
   const directionFactor = useRef(1);
 
@@ -47,33 +39,36 @@ export default function FramerText({
     if (!isScrolling) return;
 
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-    const currentY = baseY.get();
+    const currentX = baseX.get();
     if (velocityFactor.get() < 0) {
-      currentY <= -50
+      currentX <= -50
         ? (directionFactor.current = 1)
         : (directionFactor.current = -1);
     } else if (velocityFactor.get() > 0) {
-      currentY >= 50
+      currentX >= 50
         ? (directionFactor.current = -1)
         : (directionFactor.current = 1);
     }
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
 
-    baseY.set(baseY.get() + moveBy);
     baseX.set(baseX.get() + moveBy);
   });
 
   return (
-    <div className="overflow-hidden relative leading-[100%] m-0 left-0 w-full flex whitespace-nowrap flex-nowrap">
+    <div
+      className={cn(
+        wrapperClassName
+          ? wrapperClassName
+          : " overflow-visible skills_shadow relative h-[76px] md:h-[96px] lg:!hidden w-full flex flex-col"
+      )}
+    >
       <motion.div
         className={cn(
-          "inherit uppercase text-[64px] flex whitespace-nowrap flex-nowrap parallax_scroller"
+          className ? className : "flex overflow-visible flex-row gap-[12px]"
         )}
         style={{ x }}
       >
-        {[...Array(20)].map((_, index) => (
-          <span key={index}>{children} </span>
-        ))}
+        {children}
       </motion.div>
     </div>
   );

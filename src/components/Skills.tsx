@@ -11,10 +11,12 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { MaskText } from "./animations/MaskText";
 import Image from "next/image";
-import FramerText from "./core/FramerText";
+import FramerText from "./core/YFramerText";
 import { useScrollStore } from "@/store/use-skillsScroll-store";
 import { FlipLink } from "./animations/text-effect";
 import ComponentHeadline from "./shared/ComponentHeadline";
+import YFramerText from "./core/YFramerText";
+import XFramerText from "./core/XFramerText";
 
 export default function Skills() {
   const { data, loading, error } = useQuery<ISkillsResponse>(GET_SKILLS);
@@ -107,70 +109,115 @@ export default function Skills() {
           )}
         </div>
         <div className="w-full lg:w-[42%] overflow-hidden flex flex-col lg:flex-row gap-[16px] xl:gap-[22px]">
-          {chunkedSkills.map((chunk, index) => (
-            <FramerText
-              direction={isDesktop ? "y" : "x"}
-              custom={true}
-              key={index}
-              baseVelocity={
-                index === 0 || (index === 2 && isDesktop)
-                  ? -3
-                  : index === 0 && !isDesktop
-                  ? -6
-                  : index === 1 && isDesktop
-                  ? 3
-                  : index === 1 && !isDesktop
-                  ? 6
-                  : -6
-              }
-            >
-              {chunk.map((skill, skillIndex) => {
-                const translation = skill?.translations?.find(
-                  (translation) => translation.languageCode === locale
-                );
-                return (
-                  <div
-                    key={skillIndex}
-                    className={cn(
-                      "relative cursor-pointer group h-[70px] min-w-[70px] md:h-[90px] md:min-w-[90px] lg:h-[123px] lg:min-w-[123px] flex justify-center items-center translation-all duration-300 rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
-                      currentSkill !== skill.id && skillChanged
-                        ? "opacity-50"
-                        : "opacity-100"
-                    )}
-                    style={{ backgroundColor: skill.color }}
-                    onMouseEnter={() => {
-                      if (isDesktop) {
-                        setScrolling(false);
-                        setCurrentSkill(skill.id);
-                        setSkillChanged(true);
-                        setSkillBottomHeadline(
-                          translation?.name ? translation?.name : ""
-                        );
-                        setSkillBottomDescription(
-                          translation?.about ? translation?.about : " "
-                        );
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      if (isDesktop) {
-                        setScrolling(true);
-                        setCurrentSkill(null);
-                        setSkillChanged(false);
-                      }
-                    }}
-                  >
-                    <Image
-                      src={skill.image || ""}
-                      alt={translation?.name || "image"}
-                      width={400}
-                      height={400}
-                      className="max-w-[50%] group-hover:scale-125 duration-300 transition-all max-h-[80%] w-[50%] h-auto"
-                    />
-                  </div>
-                );
-              })}
-            </FramerText>
-          ))}
+          {chunkedSkills.map((chunk, index) => {
+            if (isDesktop) {
+              return (
+                <YFramerText
+                  key={index}
+                  baseVelocity={index === 0 || index === 2 ? -3 : 3}
+                >
+                  {chunk.map((skill, skillIndex) => {
+                    const translation = skill?.translations?.find(
+                      (translation) => translation.languageCode === locale
+                    );
+                    return (
+                      <div
+                        key={skillIndex}
+                        className={cn(
+                          "relative cursor-pointer group h-[70px] min-w-[70px] md:h-[90px] md:min-w-[90px] lg:h-[123px] lg:min-w-[123px] flex justify-center items-center translation-all duration-300 rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
+                          currentSkill !== skill.id && skillChanged
+                            ? "opacity-50"
+                            : "opacity-100"
+                        )}
+                        style={{ backgroundColor: skill.color }}
+                        onMouseEnter={() => {
+                          if (isDesktop) {
+                            setScrolling(false);
+                            setCurrentSkill(skill.id);
+                            setSkillChanged(true);
+                            setSkillBottomHeadline(
+                              translation?.name ? translation?.name : ""
+                            );
+                            setSkillBottomDescription(
+                              translation?.about ? translation?.about : " "
+                            );
+                          }
+                        }}
+                        onMouseLeave={() => {
+                          if (isDesktop) {
+                            setScrolling(true);
+                            setCurrentSkill(null);
+                            setSkillChanged(false);
+                          }
+                        }}
+                      >
+                        <Image
+                          src={skill.image || ""}
+                          alt={translation?.name || "image"}
+                          width={400}
+                          height={400}
+                          className="max-w-[50%] group-hover:scale-125 duration-300 transition-all max-h-[80%] w-[50%] h-auto"
+                        />
+                      </div>
+                    );
+                  })}
+                </YFramerText>
+              );
+            } else {
+              return (
+                <XFramerText
+                  key={index}
+                  baseVelocity={index === 0 ? -6 : index === 1 ? 6 : -6}
+                >
+                  {chunk.map((skill, skillIndex) => {
+                    const translation = skill?.translations?.find(
+                      (translation) => translation.languageCode === locale
+                    );
+                    return (
+                      <div
+                        key={skillIndex}
+                        className={cn(
+                          "relative cursor-pointer group h-[70px] min-w-[70px] md:h-[90px] md:min-w-[90px] lg:h-[123px] lg:min-w-[123px] flex justify-center items-center translation-all duration-300 rounded-[12px] lg:rounded-[22px] xl:rounded-[36px] xl:w-[154px] xl:h-[154px]",
+                          currentSkill !== skill.id && skillChanged
+                            ? "opacity-50"
+                            : "opacity-100"
+                        )}
+                        style={{ backgroundColor: skill.color }}
+                        onMouseEnter={() => {
+                          if (isDesktop) {
+                            setScrolling(false);
+                            setCurrentSkill(skill.id);
+                            setSkillChanged(true);
+                            setSkillBottomHeadline(
+                              translation?.name ? translation?.name : ""
+                            );
+                            setSkillBottomDescription(
+                              translation?.about ? translation?.about : " "
+                            );
+                          }
+                        }}
+                        onMouseLeave={() => {
+                          if (isDesktop) {
+                            setScrolling(true);
+                            setCurrentSkill(null);
+                            setSkillChanged(false);
+                          }
+                        }}
+                      >
+                        <Image
+                          src={skill.image || ""}
+                          alt={translation?.name || "image"}
+                          width={400}
+                          height={400}
+                          className="max-w-[50%] group-hover:scale-125 duration-300 transition-all max-h-[80%] w-[50%] h-auto"
+                        />
+                      </div>
+                    );
+                  })}
+                </XFramerText>
+              );
+            }
+          })}
         </div>
       </div>
     </div>
