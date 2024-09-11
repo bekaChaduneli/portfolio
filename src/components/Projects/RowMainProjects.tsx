@@ -3,7 +3,7 @@ import { IMainProjectsResponse } from "@/types/mainProjects";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import FramerText from "../core/FramerText";
+import FramerText from "../core/YFramerText";
 import { fadeIn } from "@/utils/motion";
 import useCursorStore from "@/store/use-cursor-store";
 import useCurrentProjectStore from "@/store/use-currentProject-store";

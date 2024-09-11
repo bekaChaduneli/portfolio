@@ -104,7 +104,7 @@ export default function CursorAnimations() {
           )}
         >
           <FramerText
-            direction="x"
+            // direction="x"
             baseVelocity={locale === "en" ? -2.5 : -2.2}
           >
             <span
