@@ -56,6 +56,10 @@
   .box-shadow-light:hover {
     box-shadow: 0 0 0 4px #e2d7c573;
   }
+  #cw-bubble-holder {
+    z-index: 3;
+    position: relative;
+  }
   .box-shadow-dark:hover {
     box-shadow: 0 0 0 4px #1d2f7642;
   }
