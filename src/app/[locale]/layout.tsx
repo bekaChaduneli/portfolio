@@ -58,7 +58,7 @@ export default async function LocaleLayout({
       <body
         id="root"
         className={`overflow-hidden transition-all duration-300
-        ${locale === "en" ? "font-graphik" : "font-firago" }
+        ${locale === "en" ? "font-graphik" : "font-firago"}
         `}
       >
         <ApolloWrapper>
