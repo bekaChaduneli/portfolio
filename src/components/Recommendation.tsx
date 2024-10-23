@@ -1,4 +1,3 @@
-import { recommendationsColors } from "@/lib/siteData";
 import { cn } from "@/lib/utils";
 import { IRecommendations } from "@/types/recommendations";
 import { useLocale } from "next-intl";

@@ -166,8 +166,3 @@ export const textVariants = (isDesktop: boolean) => ({
     },
   },
 });
-
-export const recommendationsColors = {
-  light: ["#e6f5f0", "#F8F5F2", "#F0F5FF"],
-  dark: ["#e6f5f0", "#F8F5F2", "#F0F5FF"],
-};
