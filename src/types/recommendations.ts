@@ -20,5 +20,5 @@ export interface IRecommendations {
 }
 
 export interface IRecommendationsResponse {
-  findManyRecommendations: IRecommendations;
+  findManyRecommendations: IRecommendations[];
 }
