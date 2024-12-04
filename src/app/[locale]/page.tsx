@@ -17,7 +17,7 @@ const HomePage: React.FC<HomeProps> = ({ params: { locale } }) => {
       <Services />
       <MainProjectsWrapper />
       <Skills />
-      <Recommendations />
+      <Recommendations autoplay={true} />
     </main>
   );
 };

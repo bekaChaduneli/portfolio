@@ -12,7 +12,7 @@ export interface IRecommendationsTranslation {
 
 export interface IRecommendations {
   id: string;
-  image?: string;
+  image: string;
   date: string;
   translations: IRecommendationsTranslation[];
   link: string;
