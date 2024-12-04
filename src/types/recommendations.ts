@@ -15,6 +15,7 @@ export interface IRecommendations {
   image?: string;
   date: string;
   translations: IRecommendationsTranslation[];
+  link: string;
   createdAt: string;
   updatedAt: string;
 }

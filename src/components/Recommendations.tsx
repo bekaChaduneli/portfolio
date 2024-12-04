@@ -10,6 +10,8 @@ import { useTranslations } from "next-intl";
 export default function Recommendations() {
   const { data, loading, error } =
     useQuery<IRecommendationsResponse>(GET_RECOMMENDATIONS);
+  const t = useTranslations("Recommendations");
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -18,13 +20,13 @@ export default function Recommendations() {
       <div className="w-full flex justify-start max-w-[1200px]">
         <ComponentHeadline
           component="recommendations"
-          leftText={"my"}
-          rightText={"recommendations"}
+          leftText={t("my")}
+          rightText={t("recommendations")}
         />
       </div>
       <div className="flex flex-row gap-6 max-w-[1200px] w-full">
         {data?.findManyRecommendations.map((recommendation, index) => (
-          <Recommendation data={recommendation} index={index} key={index} />
+          <Recommendation data={recommendation} key={index} />
         ))}
       </div>
     </div>
