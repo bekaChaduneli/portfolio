@@ -54,7 +54,7 @@ export default function Skills() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="relative w-full transition-all duration-500 skills_wrapper lg:flex lg:justify-center dark:dark_skills_wrapper mt-[130px] md:mt-[190px] lg:mt-[250px] xl:mt-[360px]">
+    <div className="relative w-full transition-all duration-500 skills_wrapper lg:flex lg:justify-center dark:dark_skills_wrapper mt-[130px] md:mt-[190px] lg:mt-[250px] xl:mt-[360px] mb-[110px] sm:mb-[120px] md:mb-[180px] lg:mb-[250px]">
       <Icons.SkillsTop className="w-[50%] h-auto absolute left-0 top-0 translate-y-[-97%]" />
       <Icons.SkillsBottom className="w-[50%] h-auto absolute right-0 bottom-0 translate-y-[97%]" />
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center py-[60px] md:py-[100px] lg:py-[130px] xl:py-[160px] px-[28px] md:px-[46px] lg:px-0 lg:w-[954px] xl:w-[1200px]">

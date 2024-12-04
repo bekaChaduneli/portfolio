@@ -101,7 +101,10 @@ export default function ComponentHeadline({
             locale === "en" ? "font-geom" : "font-firago",
             component === "projects"
               ? "text-[18px] min-[500px]:text-[26px] md:text-[28px] lg:text-[34px] xl:text-[40px]"
-              : "text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]"
+              : "text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
+            locale === "en"
+              ? component === "recommendations" && "text-[17px]"
+              : component === "recommendations" && "text-[13px]"
           )}
           inView={inView}
         >

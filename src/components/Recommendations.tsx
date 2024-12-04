@@ -16,7 +16,7 @@ export default function Recommendations() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="flex items-center mt-[400px] flex-col">
+    <div className="flex items-center flex-col px-[20px] mb-[120px]">
       <div className="w-full flex justify-start max-w-[1200px]">
         <ComponentHeadline
           component="recommendations"
@@ -25,9 +25,11 @@ export default function Recommendations() {
         />
       </div>
       <div className="flex flex-row gap-6 max-w-[1200px] w-full">
-        {data?.findManyRecommendations.map((recommendation, index) => (
-          <Recommendation data={recommendation} key={index} />
-        ))}
+        {data?.findManyRecommendations.map((recommendation, index) => {
+          if (index === 0) {
+            return <Recommendation data={recommendation} key={index} />;
+          }
+        })}
       </div>
     </div>
   );
