@@ -460,3 +460,9 @@
     font-family: "Graphik", sans-serif;
   }
 }
+
+@layer utilities {
+  .lg\:left-padding-custom {
+    @apply lg:pl-[calc(50%-620px)];
+  }
+}

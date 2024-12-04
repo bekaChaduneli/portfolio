@@ -56,7 +56,7 @@ type Carousel = {
 function Carousel({ children, className }: Carousel) {
   return (
     <CarouselProvider>
-      <div className={cn("group/hover relative", className)}>
+      <div className={cn("group/hover !px-0 relative", className)}>
         <div className="overflow-hidden">{children}</div>
       </div>
     </CarouselProvider>
@@ -74,7 +74,7 @@ function CarouselNavigation({
   className,
   classNameButton,
   alwaysShow,
-  classNameChevron
+  classNameChevron,
 }: CarouselNavigationProps) {
   const { index, setIndex, itemsCount } = useCarousel();
 
@@ -104,7 +104,10 @@ function CarouselNavigation({
           }
         }}
       >
-        <ChevronLeft className={cn("stroke-primary ", classNameChevron)} size={16} />
+        <ChevronLeft
+          className={cn("stroke-primary ", classNameChevron)}
+          size={16}
+        />
       </button>
       <button
         type="button"
@@ -125,7 +128,10 @@ function CarouselNavigation({
           }
         }}
       >
-        <ChevronRight className={cn("stroke-primary ", classNameChevron)} size={16} />
+        <ChevronRight
+          className={cn("stroke-primary ", classNameChevron)}
+          size={16}
+        />
       </button>
     </div>
   );
@@ -158,9 +164,7 @@ function CarouselIndicator({
             onClick={() => setIndex(i)}
             className={cn(
               "h-3 w-3 rounded-full transition-opacity duration-300",
-              index === i
-                ? "bg-primary"
-                : "bg-primary/50",
+              index === i ? "bg-primary" : "bg-primary/50",
               classNameButton
             )}
           />
@@ -173,11 +177,13 @@ function CarouselIndicator({
 type CarouselContentProps = {
   children: ReactNode;
   className?: string;
+  type?: string;
   transition?: Transition;
 };
 
 function CarouselContent({
   children,
+  type,
   className,
   transition,
 }: CarouselContentProps) {
@@ -187,28 +193,48 @@ function CarouselContent({
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsLength = Children.count(children);
 
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
+  if (type === "recommendations") {
+    useEffect(() => {
+      const updateVisibleItems = () => {
+        const width = window.innerWidth;
+        if (width >= 1024) {
+          setVisibleItemsCount(2.5);
+        } else if (width >= 768) {
+          setVisibleItemsCount(2.2);
+        } else {
+          setVisibleItemsCount(1.15);
+        }
+      };
 
-    const options = {
-      root: containerRef.current,
-      threshold: 0.5,
-    };
+      updateVisibleItems();
+      window.addEventListener("resize", updateVisibleItems);
 
-    const observer = new IntersectionObserver((entries) => {
-      const visibleCount = entries.filter(
-        (entry) => entry.isIntersecting
-      ).length;
-      setVisibleItemsCount(visibleCount);
-    }, options);
+      return () => window.removeEventListener("resize", updateVisibleItems);
+    }, []);
+  } else {
+    useEffect(() => {
+      if (!containerRef.current) {
+        return;
+      }
 
-    const childNodes = containerRef.current.children;
-    Array.from(childNodes).forEach((child) => observer.observe(child));
+      const options = {
+        root: containerRef.current,
+        threshold: 0.5,
+      };
 
-    return () => observer.disconnect();
-  }, [children, setItemsCount]);
+      const observer = new IntersectionObserver((entries) => {
+        const visibleCount = entries.filter(
+          (entry) => entry.isIntersecting
+        ).length;
+        setVisibleItemsCount(visibleCount);
+      }, options);
+
+      const childNodes = containerRef.current.children;
+      Array.from(childNodes).forEach((child) => observer.observe(child));
+
+      return () => observer.disconnect();
+    }, [children, setItemsCount]);
+  }
 
   useEffect(() => {
     if (!itemsLength) {
@@ -250,7 +276,9 @@ function CarouselContent({
         duration: 0.2,
       }}
       className={cn(
-        "flex cursor-grab items-center active:cursor-grabbing",
+        type === "recommendation"
+          ? "flex w-full !px-0 space-x-[12px] md:space-x-[16px] lg:space-x-[20px] transition-transform"
+          : "flex cursor-grab items-center active:cursor-grabbing",
         className
       )}
       ref={containerRef}

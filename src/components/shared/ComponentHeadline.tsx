@@ -52,8 +52,9 @@ export default function ComponentHeadline({
     <motion.div
       ref={ref}
       className={cn(
-        "flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[40px] md:mb-[66px] lg:mb-[100px]",
-        component === "skills" && "translate-y-[90%] xl:translate-y-[80%]"
+        "flex justify-center items-center gap-[12px] lg:gap-[16px] xl:gap-[22px] z-[1] mb-[40px] md:mb-[66px] ",
+        component === "skills" && "translate-y-[90%] xl:translate-y-[80%]",
+        component === "recommendations" ? "!lg:mb-[30px]" : "lg:mb-[100px]"
       )}
     >
       <MaskText
@@ -100,7 +101,10 @@ export default function ComponentHeadline({
             locale === "en" ? "font-geom" : "font-firago",
             component === "projects"
               ? "text-[18px] min-[500px]:text-[26px] md:text-[28px] lg:text-[34px] xl:text-[40px]"
-              : "text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]"
+              : "text-[20px] min-[500px]:text-[28px] md:text-[32px] lg:text-[37px] xl:text-[44px]",
+            locale === "en"
+              ? component === "recommendations" && "text-[17px]"
+              : component === "recommendations" && "text-[13px]"
           )}
           inView={inView}
         >

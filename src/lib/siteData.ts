@@ -166,3 +166,18 @@ export const textVariants = (isDesktop: boolean) => ({
     },
   },
 });
+
+export const months = [
+  "იან",
+  "თებ",
+  "მარ",
+  "აპრ",
+  "მაი",
+  "ივნ",
+  "ივლ",
+  "აგვ",
+  "სექ",
+  "ოქტ",
+  "ნოე",
+  "დეკ",
+];
