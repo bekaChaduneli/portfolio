@@ -66,7 +66,7 @@ export default function Navbar({ locale }: { locale: string }) {
       <motion.div
         variants={fadeInVariants}
         className={cn(
-          "hidden lg:flex fixed z-[9] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
+          "hidden lg:flex fixed z-[22] w-[954px] xl:w-[1200px] backdrop-filter transition-all duration-500 justify-between rounded-[70px] px-[6px]",
           scrolled &&
             " bg-[#f7f2f2]/[.6] duration-500 dark:bg-[#37498e]/[.78] backdrop-blur-[10px] backdrop-saturate-[1.4]"
         )}
@@ -235,13 +235,7 @@ export default function Navbar({ locale }: { locale: string }) {
               <Hamburger
                 size={24}
                 rounded
-                color={
-                  isOpen
-                    ? "#CE1B1B"
-                    : theme.theme === "light"
-                    ? "#ede7de"
-                    : "#283D8B"
-                }
+                color={theme.theme === "light" ? "#ede7de" : "#283D8B"}
                 toggled={isOpen}
                 toggle={changeMenu}
               />
