@@ -88,7 +88,7 @@ export default function Menu({
           >
             {t("projects")}
           </FlipLink>
-          <FlipLink
+          {/* <FlipLink
             href="/blog"
             top="top-[45%]"
             wordSpace="min-w-[14px]"
@@ -101,7 +101,7 @@ export default function Menu({
             onClick={() => isOpen && changeMenu()}
           >
             {t("blog")}
-          </FlipLink>
+          </FlipLink> */}
         </nav>
       </div>
       <div className="absolute bottom-[40px] w-full px-[40px] flex justify-between items-center gap-[20px]">

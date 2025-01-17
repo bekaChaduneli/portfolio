@@ -15,10 +15,10 @@ export const navigationLinks = [
     name: "archive",
     path: "/archive",
   },
-  {
-    name: "blog",
-    path: "/blog",
-  },
+  // {
+  //   name: "blog",
+  //   path: "/blog",
+  // },
 ] as const;
 
 export const skills = [

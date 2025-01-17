@@ -184,7 +184,7 @@ export default function Navbar({ locale }: { locale: string }) {
             </button>
           </span>
 
-          <span className="py-3">
+          {/* <span className="py-3">
             <NavigationLink
               id="blog"
               className={cn(
@@ -196,7 +196,7 @@ export default function Navbar({ locale }: { locale: string }) {
             >
               {t("blog")}
             </NavigationLink>
-          </span>
+          </span> */}
         </div>
         <div className="flex gap-[16px] xl:gap-[30px] py-3 px-3 rounded-[30px] transition duration-500 relative items-center">
           <Calendly />

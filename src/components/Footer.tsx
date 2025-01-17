@@ -93,7 +93,7 @@ export default function Footer() {
             >
               {b("projects")}
             </NavigationLink>
-            <NavigationLink
+            {/* <NavigationLink
               className={cn(
                 "text-[18px]  text-primary dark:text-secondary opacity-50 hover:opacity-100 hover:underline transition-all duration-300",
                 pathname === `/${locale}/blog` && "opacity-100 underline",
@@ -102,7 +102,7 @@ export default function Footer() {
               href="/blog"
             >
               {b("blog")}
-            </NavigationLink>
+            </NavigationLink> */}
           </div>
           <div className="flex lg:hidden gap-[20px] items-center">
             <Link
