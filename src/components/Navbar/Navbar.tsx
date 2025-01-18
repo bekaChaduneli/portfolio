@@ -85,7 +85,7 @@ export default function Navbar({ locale }: { locale: string }) {
               className={cn(
                 "px-4 h-full rounded-[24px] font-bold  text-primary flex items-center dark:text-secondary",
                 pathname === `/${locale}` &&
-                  "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]",
+                  "backdrop-filter text-secondary dark:text-primary bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]",
                 locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/"
@@ -99,7 +99,7 @@ export default function Navbar({ locale }: { locale: string }) {
               className={cn(
                 "px-4 rounded-[24px] h-full font-bold  text-primary flex items-center dark:text-secondary",
                 pathname === `/${locale}/about` &&
-                  "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]",
+                  "backdrop-filter text-secondary dark:text-primary bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]",
                 locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
               href="/about"
@@ -114,7 +114,7 @@ export default function Navbar({ locale }: { locale: string }) {
                 "px-4 rounded-[24px] font-bold flex items-center text-primary dark:text-secondary h-full",
                 pathname === `/${locale}/main` ||
                   (pathname === `/${locale}/archive` &&
-                    "backdrop-filter bg-opacity-[70%] text-secondary dark:text-primary dark:bg-opacity-[70%] bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"),
+                    "backdrop-filter text-secondary dark:text-primary bg-primary dark:bg-secondary backdrop-saturate-[2] backdrop-blur-[20px]"),
                 locale === "en" ? "font-geom" : "font-firago font-bold"
               )}
             >
