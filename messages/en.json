@@ -109,5 +109,9 @@
   "Recommendations": {
     "my": "My",
     "recommendations": "Recommendations"
+  },
+  "AboutMe": {
+    "me": "ME",
+    "about": "About"
   }
 }
